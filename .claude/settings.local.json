@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sysctl -n hw.optional.arm64)",
+      "Bash(sysctl -n machdep.cpu.brand_string)"
+    ]
+  }
+}
