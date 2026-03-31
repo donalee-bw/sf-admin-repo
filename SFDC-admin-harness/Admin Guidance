@@ -1,0 +1,391 @@
+---
+name: Salesforce Admin AI Harness
+overview: Design a two-layer AI harness (generic SF admin foundation + Brightwheel overlay) for junior Salesforce admins using Claude Code/Cowork, with rules as safety guardrails, skills as step-by-step playbooks wrapping `sf` CLI, and agents for multi-step autonomous workflows like change review and deployment.
+todos:
+  - id: rules
+    content: "Create the 4 rule files: sfdc-safety.mdc, sfdc-naming.mdc, sfdc-change-management.mdc, bw-sfdc-domain.mdc"
+    status: completed
+  - id: core-skills
+    content: "Create core skills: sfdc-impact-analysis, sfdc-ric-scoring, sfdc-deployment, sfdc-soql"
+    status: completed
+  - id: task-skills
+    content: "Create task-specific skills: sfdc-flow-builder, sfdc-field-management, sfdc-validation-rules, sfdc-permissions, sfdc-troubleshooting"
+    status: in_progress
+  - id: bw-overlay
+    content: "Create Brightwheel overlay skill: bw-engagement-cycle"
+    status: pending
+  - id: agents
+    content: "Create agents: sfdc-change-reviewer (composes RIC scoring), sfdc-deployment-manager"
+    status: pending
+isProject: false
+---
+
+# Salesforce Admin AI Harness -- Architecture Design
+
+## Design principles
+
+These admins are **junior** -- the harness must prevent before correct, teach through the process, and have clear escalation gates. Every destructive or production-facing operation requires an explicit human gate.
+
+The harness is **two-layered**: a generic Salesforce admin foundation (reusable across any org) plus a Brightwheel domain overlay that reads from an **architect-maintained context directory** (`context/sfdc/`). The Architect owns this directory and keeps it current -- the harness consumes it at runtime but never writes to it.
+
+Primary tool surface: `**sf` CLI** (Salesforce CLI) against an SFDX source-tracked project. Skills wrap CLI commands with guardrails. No custom MCP required initially -- the `sf` CLI provides SOQL, metadata API, deployment, and org inspection natively via the shell.
+
+**No hooks layer.** With CLI-based access, admins cannot accidentally deploy -- `sf project deploy start` requires an explicit command with `--target-org`. SFDC's Setup Audit Trail captures all production metadata changes. The `sfdc-change-management` rule already prescribes impact analysis before deployment. A glob-triggered hook would be redundant. The **RIC scoring mechanism** (see below) is the real gate to architect QA.
+
+## Project structure
+
+```
+salesforce-project/                    # The SFDX project admins work in
+├── .cursor/
+│   ├── agents/
+│   │   ├── sfdc-change-reviewer.md    # Reviews proposed changes pre-deploy
+│   │   └── sfdc-deployment-manager.md # Orchestrates sandbox→prod deployments
+│   ├── skills/
+│   │   ├── sfdc-impact-analysis/SKILL.md
+│   │   ├── sfdc-flow-builder/SKILL.md
+│   │   ├── sfdc-field-management/SKILL.md
+│   │   ├── sfdc-validation-rules/SKILL.md
+│   │   ├── sfdc-deployment/SKILL.md
+│   │   ├── sfdc-soql/SKILL.md
+│   │   ├── sfdc-permissions/SKILL.md
+│   │   ├── sfdc-troubleshooting/SKILL.md
+│   │   ├── sfdc-ric-scoring/SKILL.md       # Risk/Impact/Complexity scoring
+│   │   └── bw-engagement-cycle/SKILL.md    # Brightwheel overlay
+│   └── rules/
+│       ├── sfdc-safety.mdc                 # Always-on safety guardrails
+│       ├── sfdc-naming.mdc                 # Naming conventions (glob-triggered)
+│       ├── sfdc-change-management.mdc      # Plan→impact→sandbox→test→deploy loop
+│       └── bw-sfdc-domain.mdc              # Brightwheel domain overlay
+├── context/
+│   └── sfdc/                               # Architect-maintained domain context
+│       ├── README.md                        # What this directory contains, freshness expectations
+│       ├── object-model.md                  # Objects, fields, relationships, custom objects
+│       ├── business-processes.md            # Sales motions, pipeline stages, cadences
+│       ├── automation-inventory.md          # Flows, validation rules, triggers, integrations
+│       ├── field-reference.md               # Key custom fields, fill rates, gotchas
+│       └── ...                              # Architect adds files as needed
+├── change-log/                             # Institutional learning
+│   └── YYYY-MM-DD-short-description.md
+├── force-app/main/default/                 # Standard SFDX source
+│   ├── objects/
+│   ├── flows/
+│   ├── classes/
+│   ├── triggers/
+│   ├── permissionsets/
+│   └── ...
+└── sfdx-project.json
+```
+
+The `bw-*` prefixed skill and `bw-sfdc-domain.mdc` rule are the Brightwheel overlay. Remove them and the `context/sfdc/` directory for a generic SF admin harness (or repopulate the directory for a different org).
+
+---
+
+## Layer 1: Rules (always-on guardrails)
+
+### `sfdc-safety.mdc` -- Non-negotiable safety
+
+```yaml
+alwaysApply: true
+```
+
+Core constraints:
+
+- **Sandbox-first**: NEVER run `sf project deploy start` against production without a prior successful sandbox deployment in the same session. Require `--target-org` on every deploy command. If omitted, refuse and ask.
+- **No destructive metadata**: Field deletion, object deletion, flow deactivation in production require explicit user confirmation, a stated rollback path, and a backup retrieval (`sf project retrieve start`) before the change.
+- **No bulk data mutations without preview**: Any `sf data` command that writes (update, delete, upsert) must show a `LIMIT 10` preview first and state the total affected row count.
+- **No hardcoded IDs**: Flag any Salesforce 18-character ID (`/[a-zA-Z0-9]{18}/`) in metadata or Apex. IDs differ between sandbox and production.
+- **No permission escalation without review**: Any change to Profile, PermissionSet, or PermissionSetGroup requires stating what access is being granted and why.
+- **Escalation gate**: If the admin says "I'm not sure" or the change touches 5+ dependent components, stop and recommend involving a senior admin. State: "This change has broad impact. I recommend reviewing with [senior admin] before proceeding."
+
+### `sfdc-naming.mdc` -- Naming conventions
+
+```yaml
+alwaysApply: false
+globs:
+  - force-app/**/*.field-meta.xml
+  - force-app/**/*.object-meta.xml
+  - force-app/**/*.flow-meta.xml
+  - force-app/**/*.cls
+  - force-app/**/*.trigger
+  - force-app/**/*.permissionset-meta.xml
+  - force-app/**/*.validationRule-meta.xml
+```
+
+Enforced conventions:
+
+- Custom fields: `Descriptive_Snake_Case__c` (e.g., `Center_Capacity__c`, not `cap__c`)
+- Custom objects: `Descriptive_Name__c`
+- Flows: `ObjectName_TriggerType_Purpose` (e.g., `Lead_AfterUpdate_SetOutreachStage`)
+- Validation rules: `VR_ObjectName_Purpose` (e.g., `VR_Lead_RequireCapacityOnDisposition`)
+- Apex classes: PascalCase with role suffix (`LeadHandler`, `LeadService`, `LeadTriggerHandler`)
+- Permission sets: `PS_Role_Purpose` (e.g., `PS_SalesOps_LeadDistribution`)
+- When reviewing existing metadata, note violations but do not rename without explicit approval (renames can break references).
+
+### `sfdc-change-management.mdc` -- The change loop
+
+```yaml
+alwaysApply: true
+```
+
+Every configuration change follows this loop:
+
+1. **Plan** -- What are you changing and why? State in one sentence.
+2. **Impact analysis** -- Run `sfdc-impact-analysis` skill. What depends on this component?
+3. **RIC score** -- Run `sfdc-ric-scoring` skill. Score the change on Risk, Impact, and Complexity (1-5 each). The composite score determines routing (see RIC scoring skill below).
+4. **Gate check** -- If RIC score is Red (10+), STOP. Present the score card and require Architect review before proceeding. If Yellow (7-9), proceed but notify the Architect async and flag in the change log.
+5. **Build** -- Make the change in SFDX source files.
+6. **Deploy to sandbox** -- `sf project deploy start --target-org sandbox`
+7. **Test** -- Verify the change works and nothing broke (SOQL queries, run test classes, manual check).
+8. **Document** -- Write a change-log entry including the RIC score.
+9. **Deploy to production** -- After human approval (and Architect approval if Red), `sf project deploy start --target-org production --test-level RunLocalTests`
+10. **Verify** -- Confirm production deployment with a quick SOQL check.
+
+If any step fails, stop and diagnose before proceeding.
+
+### `bw-sfdc-domain.mdc` -- Brightwheel domain overlay
+
+```yaml
+alwaysApply: true
+```
+
+- Before any Salesforce configuration change, **read all files in `context/sfdc/`** for domain understanding. The Architect maintains this directory -- treat its contents as authoritative. If the directory is empty or missing, warn the admin and recommend asking the Architect to populate it before proceeding with non-trivial changes.
+- The `context/sfdc/README.md` documents what each file contains and when it was last refreshed. If any file's freshness exceeds its stated TTL, flag it: "Domain context for [topic] may be stale (last updated [date]). Consider asking the Architect to refresh before proceeding."
+- Apply any domain-specific guardrails documented in the context files (e.g., fragile automation cycles, field consolidation constraints, hidden field cautions). These guardrails are defined by the Architect in the context files, not hardcoded in this rule.
+
+---
+
+## Layer 2: Skills (step-by-step playbooks)
+
+### Foundation skills
+
+`**sfdc-impact-analysis/SKILL.md`** -- Run before any metadata change
+
+- Input: the component being changed (field API name, flow name, etc.)
+- Steps: (1) `sf project retrieve start` to get latest metadata, (2) search `force-app/` for references -- grep field names across flows, classes, validation rules, page layouts, (3) run SOQL to check data population: `sf data query --query "SELECT COUNT(Id) FROM Lead WHERE Field__c != null"`, (4) present a dependency list with risk assessment, (5) if 5+ dependents, recommend senior review
+- Output: dependency table with risk flags -- feeds directly into RIC scoring
+
+`**sfdc-ric-scoring/SKILL.md`** -- Risk / Impact / Complexity scoring
+
+Scores every proposed change on three dimensions (1-5 each). The composite score (sum of R+I+C, range 3-15) determines whether the admin can proceed autonomously or must route to the Architect for QA.
+
+**Risk (R) -- What could break?**
+
+- 1: Additive-only, no dependencies (new report, new dashboard, new field with no automation)
+- 2: Low-dependency modification (page layout change, help text, field description)
+- 3: Modification to component with 3-4 dependents (field used in a few flows/reports)
+- 4: Change to automation/flows with cross-object effects, or changes to components read by integrations
+- 5: Change to circular automation (e.g., engagement cycle), permission model, or integration endpoints
+
+**Impact (I) -- Who/what is affected?**
+
+- 1: Admin/internal visibility only (reports, dashboards, list views)
+- 2: Single team's workflow (one team's page layout, one team's validation rule)
+- 3: Multiple teams or >50 users affected
+- 4: Customer-facing processes or data integrity (fields that feed external systems, conversion logic)
+- 5: Revenue pipeline, compliance, or org-wide automation (opportunity stages, lead routing, cadence logic)
+
+**Complexity (C) -- How hard to implement and test?**
+
+- 1: Single-component, declarative, no logic (add a field, modify a layout)
+- 2: Multi-component, declarative, simple logic (validation rule with straightforward formula)
+- 3: Multi-component with conditional logic (flow with decision elements, formula fields with cross-object references)
+- 4: Cross-object automation with timing or order dependencies (record-triggered flows that update related records)
+- 5: Multi-system change or Apex required (SF + external API, trigger + flow interaction, batch processing)
+
+**Routing by composite score:**
+
+- **Green (3-6)**: Admin proceeds autonomously. Document in change log.
+- **Yellow (7-9)**: Admin proceeds. Architect notified async. Change log entry must include RIC score card and rationale for each dimension.
+- **Red (10-15)**: STOP. Present the RIC score card to the admin. Architect must review and approve before any production deployment. The admin may continue building and testing in sandbox while awaiting review.
+
+**Output format:**
+
+```
+## RIC Score Card
+
+| Dimension  | Score | Rationale |
+|------------|-------|-----------|
+| Risk       | X/5   | [one sentence] |
+| Impact     | X/5   | [one sentence] |
+| Complexity | X/5   | [one sentence] |
+| **Total**  | **X/15** | **[Green/Yellow/Red]** |
+
+Routing: [Admin proceeds / Architect notification / Architect review required]
+```
+
+**Scoring rules:**
+
+- Score based on the impact analysis output (dependency count, component types touched, data population)
+- Score based on domain context from `context/sfdc/` (does this touch documented fragile areas?)
+- When in doubt, round UP -- false positives (unnecessary architect review) are cheaper than false negatives (broken production)
+- Any single dimension at 5 forces the composite to Yellow minimum, regardless of other scores
+
+`**sfdc-flow-builder/SKILL.md`** -- Build or modify Salesforce Flows
+
+- Steps: (1) clarify the requirement -- what object, what trigger, what should happen, (2) check for existing flows on the same object/trigger combo: `ls force-app/main/default/flows/ | grep ObjectName`, (3) determine flow type (Record-Triggered, Screen, Autolaunched, Scheduled), (4) write the flow metadata XML with fault paths, bulkification awareness, and proper entry criteria, (5) validate: no Process Builder (use Flow), no Workflow Rules, no hardcoded IDs, fault paths defined, (6) deploy to sandbox, (7) test with sample records via SOQL
+- Anti-patterns to flag: Process Builder usage, missing fault paths, overly broad entry criteria (e.g., running on every update instead of specific field changes), recursive flow risk
+- For Brightwheel: if the flow touches engagement cycle components, compose `bw-engagement-cycle` skill
+
+`**sfdc-field-management/SKILL.md`** -- Create or modify custom fields
+
+- Steps: (1) state the business need, (2) check if an existing field already captures this data -- search `force-app/**/objects/` and SOQL `DESCRIBE` results for similar names, (3) if creating: name per `sfdc-naming` conventions, choose appropriate type and length, write description and help text, (4) set field-level security: principle of least privilege -- start with admin-only visibility, add profiles/permission sets explicitly, (5) add to relevant page layouts, (6) if formula: validate syntax with `sf project deploy validate`, (7) deploy to sandbox, verify fill rate with SOQL
+- Escalation: if the field duplicates an existing one, stop and propose consolidation instead
+
+`**sfdc-validation-rules/SKILL.md`** -- Write and test validation rules
+
+- Steps: (1) define the business rule in plain language, (2) name per convention: `VR_ObjectName_Purpose`, (3) write the formula with proper null handling (always check `ISBLANK()` first), (4) test the formula against existing data before activation: `sf data query --query "SELECT Id, Field__c FROM Object WHERE <condition that would fail>" --target-org sandbox`, (5) document bypass mechanism for data migrations (e.g., a `Bypass_Validation__c` checkbox on User), (6) deploy and verify
+
+`**sfdc-deployment/SKILL.md`** -- Manage sandbox-to-production deployments
+
+- Steps: (1) preview: `sf project deploy preview --target-org sandbox`, (2) deploy to sandbox: `sf project deploy start --target-org sandbox`, (3) verify in sandbox with SOQL + functional check, (4) run Apex tests: `sf apex run test --target-org sandbox --test-level RunLocalTests --wait 10`, (5) get human approval ("Ready for production. Approve?"), (6) deploy to production: `sf project deploy start --target-org production --test-level RunLocalTests`, (7) verify in production, (8) write change-log entry
+- Rollback: if production deployment fails or causes issues, retrieve the prior version from git (`git checkout HEAD~1 -- force-app/...`) and redeploy
+
+`**sfdc-soql/SKILL.md`** -- Write and run SOQL queries
+
+- Encode common patterns: Lead -> Tasks via `who_id`, Contact -> Tasks via `who_id`, Account -> Contacts -> Tasks (two-hop), relationship queries (`Owner.Name`, `Account.Name`)
+- Governor limits awareness: 50,000 row query limit, 20 relationship queries per call
+- Always add `WHERE` filters and `LIMIT` for exploratory queries
+- Run via: `sf data query --query "..." --target-org sandbox`
+- For Brightwheel: encode join patterns from `context/sfdc/` field reference and object model files (e.g., Lead -> Gong calls, common SOQL patterns)
+
+`**sfdc-permissions/SKILL.md`** -- Permission set and profile management
+
+- Steps: (1) state what access is needed and why, (2) prefer Permission Sets over Profile changes (profiles are org-wide), (3) name per convention: `PS_Role_Purpose`, (4) grant minimum necessary access -- field-level, object-level, then system permissions, (5) retrieve current state: `sf project retrieve start --metadata PermissionSet:PS_Name`, (6) modify and deploy to sandbox, (7) verify with a test user, (8) deploy to production
+
+`**sfdc-troubleshooting/SKILL.md`** -- Debug broken automation
+
+- Steps: (1) identify the symptom (stuck leads, wrong stage, missing tasks), (2) check recent changes: `git log --oneline -10 -- force-app/`, (3) trace the data flow: query the affected record's field values with SOQL, (4) check flow execution: Salesforce Setup > Automation > Flow History (or query `FlowInterview` if accessible), (5) check for conflicting automation -- multiple flows on the same object/trigger, (6) identify root cause and propose fix, (7) test fix in sandbox before production
+- For Brightwheel: compose `bw-engagement-cycle` skill for cadence/outreach stage issues
+
+### Brightwheel overlay skills
+
+`**bw-engagement-cycle/SKILL.md`** -- The fragile engagement cycle
+
+- Context: reads relevant files from `context/sfdc/` (automation inventory, business processes)
+- Encodes the circular dependency: `Outreach_Stage__c` -> Cadence entry -> Task creation -> `Most_Recent_Disposition__c` -> `Outreach_Stage__c` update -> Cadence exit/entry
+- Before any change to components in this cycle: (1) map the full cycle path, (2) identify which link is being modified, (3) verify all upstream and downstream links still function, (4) test with a sample lead through the full cycle (create a test Lead in sandbox, trigger each step, verify final state)
+- Known failure modes to check: stage not updating after disposition, lead stuck in cadence after recycling, `Unqualified_Reason__c` not cleared on re-entry, `Manage_Stage_Update` manual override masking automation bugs
+- Escalation: any change to this cycle that touches 3+ links should involve a senior admin
+
+---
+
+## Layer 3: Agents (autonomous multi-step workflows)
+
+### `sfdc-change-reviewer.md`
+
+```yaml
+name: sfdc-change-reviewer
+description: Reviews proposed Salesforce metadata changes for impact, naming, safety, and domain risks before deployment. Use proactively before any sf project deploy, or when an admin asks for a change review.
+```
+
+Process:
+
+1. Run `git diff --name-only` to identify changed metadata files
+2. For each changed component, run `sfdc-impact-analysis` skill
+3. Run `sfdc-ric-scoring` skill on the aggregate change set
+4. Validate naming against `sfdc-naming` conventions
+5. If any changed component touches documented fragile areas (from `context/sfdc/`), flag with high-risk warning
+6. Produce a change review report:
+  - Components changed (table)
+  - Dependencies affected (table)
+  - **RIC score card** (the scoring table with per-dimension rationale)
+  - Naming violations (list)
+  - Routing decision: Green (proceed) / Yellow (proceed + notify architect) / Red (architect review required)
+
+Composes: `sfdc-impact-analysis`, `sfdc-ric-scoring`, `sfdc-naming` (rule), `bw-engagement-cycle` (conditional)
+
+### `sfdc-deployment-manager.md`
+
+```yaml
+name: sfdc-deployment-manager
+description: Orchestrates end-to-end Salesforce deployments from sandbox to production. Use when an admin has changes ready to deploy, or when deploying after a successful change review.
+```
+
+Process:
+
+1. Run `sfdc-change-reviewer` agent first (or verify it ran recently)
+2. Deploy to sandbox: compose `sfdc-deployment` skill steps 1-4
+3. Run test classes, verify
+4. Present results and ask for human approval
+5. If approved: deploy to production with `--test-level RunLocalTests`
+6. Verify production deployment
+7. Write change-log entry to `change-log/YYYY-MM-DD-description.md`
+
+Composes: `sfdc-change-reviewer` (agent), `sfdc-deployment` (skill)
+
+---
+
+## Composition graph
+
+```mermaid
+graph TD
+  subgraph rules [Rules -- always-on guardrails]
+    sfdcSafety["sfdc-safety"]
+    sfdcNaming["sfdc-naming"]
+    sfdcChangeMgmt["sfdc-change-management"]
+    bwDomain["bw-sfdc-domain"]
+  end
+
+  subgraph agents [Agents -- autonomous workflows]
+    changeReviewer["sfdc-change-reviewer"]
+    deployManager["sfdc-deployment-manager"]
+  end
+
+  subgraph foundationSkills [Skills -- foundation]
+    impactAnalysis["sfdc-impact-analysis"]
+    ricScoring["sfdc-ric-scoring"]
+    flowBuilder["sfdc-flow-builder"]
+    fieldMgmt["sfdc-field-management"]
+    valRules["sfdc-validation-rules"]
+    deployment["sfdc-deployment"]
+    soql["sfdc-soql"]
+    permissions["sfdc-permissions"]
+    troubleshoot["sfdc-troubleshooting"]
+  end
+
+  subgraph bwSkills [Skills -- Brightwheel overlay]
+    engCycle["bw-engagement-cycle"]
+  end
+
+  subgraph context [Context -- architect-maintained]
+    sfdcDir["context/sfdc/"]
+  end
+
+  changeReviewer -->|"composes"| impactAnalysis
+  changeReviewer -->|"composes"| ricScoring
+  changeReviewer -->|"conditional"| engCycle
+  impactAnalysis -->|"feeds"| ricScoring
+  ricScoring -->|"gates"| deployment
+  deployManager -->|"composes"| changeReviewer
+  deployManager -->|"composes"| deployment
+  flowBuilder -->|"conditional"| engCycle
+  troubleshoot -->|"conditional"| engCycle
+  bwDomain -->|"reads"| sfdcDir
+  engCycle -->|"reads"| sfdcDir
+  ricScoring -->|"reads"| sfdcDir
+```
+
+
+
+---
+
+## Implementation sequence
+
+Build in this order -- each step is independently useful:
+
+1. **Context directory + domain rule** -- Have the Architect populate `context/sfdc/` with at minimum `object-model.md` and `automation-inventory.md`. Create `bw-sfdc-domain.mdc` to point at it. This is the foundation everything else reads from.
+2. **Rules** -- `sfdc-safety` + `sfdc-naming` + `sfdc-change-management` provide immediate guardrails with zero skill/agent infrastructure.
+3. **Core skills** -- `sfdc-impact-analysis` + `sfdc-ric-scoring` + `sfdc-deployment` + `sfdc-soql`. The RIC scoring skill is critical early -- it's the gate that routes work to the Architect.
+4. **Task-specific skills** -- `sfdc-flow-builder`, `sfdc-field-management`, `sfdc-validation-rules`, `sfdc-permissions`, `sfdc-troubleshooting` based on which admin tasks are most frequent.
+5. **Brightwheel overlay** -- `bw-engagement-cycle` skill for the fragile automation cycle.
+6. **Agents** -- `sfdc-change-reviewer` (composes impact analysis + RIC scoring) + `sfdc-deployment-manager`. Build these last since they depend on the skills being solid.
+
+## What this does NOT include (and why)
+
+- **Hooks / glob-triggered rules on metadata files**: With CLI access, admins cannot accidentally deploy. SFDC Setup Audit Trail provides post-hoc audit. The `sfdc-change-management` rule and RIC scoring are the real gates. A glob hook would be redundant.
+- **Lead management skill**: Lead-specific domain knowledge (conflation, dedup, conversion lifecycle) is better maintained in `context/sfdc/` by the Architect than encoded in a skill. Skills should be generic procedures; domain gotchas belong in context.
+- **Custom MCP for Salesforce**: The `sf` CLI provides SOQL, metadata API, and deployment. An MCP would add value for real-time org inspection (describe objects, read setup audit trail, inspect flow history) but is not required for the initial harness. Build it when CLI friction becomes the bottleneck.
+- **Apex code generation**: Junior admins should not be writing Apex. If Apex is needed, the RIC score will be high (Complexity 5) and route to the Architect. Add an `sfdc-apex` skill later if the audience expands.
+- **Data migration skill**: Mass data operations are high-risk for junior admins. Defer until the safety guardrails are battle-tested.
+- **Org-wide health monitoring agent**: A periodic health check agent (stale cadences, field fill rates, dormant automation) is valuable but is a separate concern from admin task support. Add after the core harness is stable.
+
