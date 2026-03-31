@@ -143,4 +143,5 @@ Run these in Claude by typing `/command-name`:
 | `/sfdc-permissions` | Managing permission sets and profiles |
 | `/sfdc-soql` | Writing and running SOQL queries |
 | `/sfdc-troubleshooting` | Debugging broken automation or stuck records |
+| `/leandata-routing` | Diagnosing why a Lead or Contact was routed to a specific rep, team, or queue |
 | `/bw-engagement-cycle` | Changes touching the Outreach Stage / Cadence / Disposition cycle |
