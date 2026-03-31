@@ -5,21 +5,45 @@
 // Run in VS Code: highlight query text → SFDX: Execute SOQL Query with Currently Selected Text
 //   OR via CLI: sf data query --query "..." --target-org production --result-format table
 //
-// FIELD NOTES:
-//   LeanData managed package fields use the LeanData__ namespace prefix.
-//   Custom org fields that mirror LeanData state:
-//     LeanData__Routing_Action__c   → Lean_Data_Action GVS
-//     LeanData__Processing_Timeframe__c → LeanData_Processing_Timeframe GVS
-//     LeanData__Revenue_Sequence_Type__c → LeanData_Revenue_Sequence_Type GVS
+// IMPORTANT — FIELD NAMING IN THIS ORG:
+//   LeanData fields here are CUSTOM fields (no LeanData__ namespace prefix).
+//   Confirmed from LeanData Field Mapping sheet in the SalesOps Routing Configurator.
+//     lean_data_action__c                 ← routing decision (Target - Assigned, Non-Target, etc.)
+//     leandata_processing_timeframe__c    ← time-of-day bucket (Working Hours, After Hours, etc.)
+//     leandata_revenue_sequence_type__c   ← journey/sequence type (Demo/Pricing, Government, etc.)
+//     leandata_reprocess__c               ← whether LeanData should re-process this record
+//
+// ROUTING MATRIX CONTEXT (Apr '26):
+//   CS (Core SaaS) routing decisions are driven by:
+//     user_type__c (Staff vs Parent), open_and_operating__c, hs_number_of_sites__c (multi-site),
+//     school_size__c (capacity), lead_source_routing_criteria__c, hs_last_form_submission_type__c
+//     (offer type), demo_path__c, state, center_type__c
+//
+//   EDU routing decisions are driven by:
+//     center_type__c, school_size__c, leadsource (Paid Social vs not), hs_last_form_submission_type__c,
+//     demo_path__c
+//
+//   Apr '26 teams and their LeanData pool names:
+//     CS:  US_Rapid-Response  → CORE_US_Rapid-Response_Lead / CORE_US_Rapid-Response_Contact
+//          US_Low-Intent      → CORE_US_Low-Intent_Lead / CORE_US_Low-Intent_Contact
+//          US_High-Value      → CORE_US_High-Value_Lead / CORE_US_High-Value_Contact
+//          PK_SDR             → CORE_PK_SDR_Lead / CORE_PK_SDR_Contact
+//          PK_AE              → CORE_PK_AE_Lead / CORE_PK_AE_Contact
+//          Split 10-59        → CORE_Split_10-59_Lead / CORE_Split_10-59_Contact
+//          Split 1-9          → CORE_Split_1-9_Lead / CORE_Split_1-9_Contact
+//     EDU: CAT Inbound-Large  → CAT_IB-Large_Lead / CAT_IB-Large_Contact
+//          CAT Inbound-High   → CAT_IB-High_Lead / CAT_IB-High_Contact
+//          CAT Inbound-Low    → CAT_IB-Low_Lead / CAT_IB-Low_Contact
 //
 // SAFETY: All queries are read-only. Run against production with LIMIT.
 // ============================================================
 
 
 // ------------------------------------------------------------
-// QUERY 1 — Lead routing snapshot (look up by email)
+// QUERY 1 — Full routing snapshot for a Lead (look up by email)
 // ------------------------------------------------------------
-// Use when an admin asks: "Why was this lead assigned to [rep]?"
+// Use when an admin asks: "Why was this lead assigned to [rep/team]?"
+// Includes all routing decision fields from the Apr '26 matrix.
 // Replace the email value before running.
 // ------------------------------------------------------------
 
@@ -33,20 +57,39 @@ SELECT
     Owner.UserRole.Name,
     Owner.IsActive,
 
-    // LeanData routing decision fields
-    LeanData__Routing_Action__c,           // What action LeanData took (Target - Assigned, Non-Target, etc.)
-    LeanData__Processing_Timeframe__c,     // Time-of-day bucket when routed (Working Hours, After Working Hours, etc.)
-    LeanData__Revenue_Sequence_Type__c,    // Journey/sequence type (Demo/Pricing, FB, Government, etc.)
-    LeanData__Last_Routed_Date__c,         // When LeanData last processed this record
-    LeanData__Routed_By__c,               // Internal LeanData identifier for the routing path taken
-    LeanData__Account_Based_Match__c,      // Was this lead matched to an existing Account?
-    LeanData__Reporting_Matched_Account__c, // Account it was matched to (if ABM match)
+    // --- LeanData outcome fields (custom, no namespace) ---
+    lean_data_action__c,                // Routing decision: Target - Assigned, Non-Target, Converted, etc.
+    leandata_processing_timeframe__c,   // Time bucket: Working Hours, After Working Hours, Overnight, etc.
+    leandata_revenue_sequence_type__c,  // Journey: Demo/Pricing, Government, EEL, FB, PTL, etc.
+    leandata_reprocess__c,              // TRUE = LeanData is queued to re-evaluate this record
+    routing_action__c,                  // Secondary routing action stamp
 
-    // Timestamps for timeline reconstruction
+    // --- CS matrix routing decision fields ---
+    user_type__c,                       // Staff/Parent — top-level split in CS matrix
+    open_and_operating__c,              // Open/Operating status — drives BNP vs active routing
+    hs_number_of_sites__c,              // Multi-site flag — High Value trigger
+    school_size__c,                     // Capacity bucket (1-9, 10-19, 20-59, 60-100, 100+)
+    center_type__c,                     // Center type — EDU-only filter (Camp, etc.)
+    hs_last_form_submission_type__c,    // Offer type: Demo Request, PTL, Pricing Inquiry, Content Request
+    demo_path__c,                       // Demo path: Chase Me, Autodial, Schedule Me
+    lead_source_routing_criteria__c,    // Paid Social, MPP, PS — affects Low-Intent routing
+    State,                              // State/Province — used in Gov and region routing
+    inbound_or_outbound__c,             // Inbound vs Outbound flag
+
+    // --- Supporting context fields ---
+    outreach_stage__c,                  // Current outreach stage (Assigned, Working, etc.)
+    owned_by_sales__c,                  // Whether currently owned by a sales rep (not a queue)
+    logic_owned_by_queue__c,            // System flag: true if owner is a queue
+    hs_behavior_score__c,               // HubSpot behavior score
+    hs_recent_conversion__c,            // Most recent HubSpot conversion string (shows form + source)
+    cp_active_form__c,                  // ChiliPiper active form flag
+    form_abandonment_lead__c,           // Form abandonment flag — routes to Low-Intent per matrix rule 3
+    primary_lead__c,                    // Primary lead flag
+
     CreatedDate,
     LastModifiedDate,
-    ConvertedDate,
-    IsConverted
+    IsConverted,
+    ConvertedDate
 
 FROM Lead
 WHERE Email = 'replace@withemail.com'  -- REPLACE with lead email
@@ -54,9 +97,7 @@ LIMIT 5
 
 
 // ------------------------------------------------------------
-// QUERY 2 — Lead routing snapshot (look up by name or phone)
-// ------------------------------------------------------------
-// Use when you have the name but not the email.
+// QUERY 2 — Full routing snapshot for a Lead (look up by name)
 // ------------------------------------------------------------
 
 SELECT
@@ -68,27 +109,34 @@ SELECT
     Status,
     Owner.Name,
     Owner.UserRole.Name,
-    LeanData__Routing_Action__c,
-    LeanData__Processing_Timeframe__c,
-    LeanData__Revenue_Sequence_Type__c,
-    LeanData__Last_Routed_Date__c,
-    LeanData__Routed_By__c,
-    LeanData__Account_Based_Match__c,
-    LeanData__Reporting_Matched_Account__c,
+    lean_data_action__c,
+    leandata_processing_timeframe__c,
+    leandata_revenue_sequence_type__c,
+    leandata_reprocess__c,
+    user_type__c,
+    open_and_operating__c,
+    school_size__c,
+    center_type__c,
+    hs_last_form_submission_type__c,
+    demo_path__c,
+    lead_source_routing_criteria__c,
+    outreach_stage__c,
+    owned_by_sales__c,
+    logic_owned_by_queue__c,
+    inbound_or_outbound__c,
     CreatedDate,
     LastModifiedDate
 FROM Lead
-WHERE Name LIKE '%Replace LastName%'    -- REPLACE with lead last name
+WHERE Name LIKE '%Replace LastName%'   -- REPLACE with lead last name
 AND IsConverted = false
 ORDER BY CreatedDate DESC
 LIMIT 10
 
 
 // ------------------------------------------------------------
-// QUERY 3 — Contact routing snapshot (look up by email)
+// QUERY 3 — Full routing snapshot for a Contact (look up by email)
 // ------------------------------------------------------------
-// Use for contacts that went through LeanData routing post-conversion
-// or via the Contact-based routing path.
+// Use for contacts routed via the Contact-based LeanData flow.
 // ------------------------------------------------------------
 
 SELECT
@@ -100,13 +148,14 @@ SELECT
     Owner.Name,
     Owner.UserRole.Name,
     Owner.IsActive,
-    LeanData__Routing_Action__c,
-    LeanData__Processing_Timeframe__c,
-    LeanData__Revenue_Sequence_Type__c,
-    LeanData__Last_Routed_Date__c,
-    LeanData__Routed_By__c,
-    LeanData__Account_Based_Match__c,
-    LeanData__Reporting_Matched_Account__c,
+    lean_data_action__c,
+    leandata_processing_timeframe__c,
+    leandata_revenue_sequence_type__c,
+    leandata_reprocess__c,
+    outreach_stage__c,
+    owned_by_sales__c,
+    logic_owned_by_queue__c,
+    inbound_or_outbound__c,
     CreatedDate,
     LastModifiedDate
 FROM Contact
@@ -115,10 +164,54 @@ LIMIT 5
 
 
 // ------------------------------------------------------------
-// QUERY 4 — Recent routing activity across all Leads (last 24 hours)
+// QUERY 4 — Reconstruct routing decision path for a specific Lead
 // ------------------------------------------------------------
-// Use to spot routing patterns, errors, or mis-routes across a time window.
-// Increase LAST_N_DAYS:1 to LAST_N_DAYS:7 for a weekly view.
+// Use this after Query 1 to understand WHICH matrix rule should have applied.
+// Cross-reference the output against the SalesOps Routing Configurator (Apr '26 sheets).
+// CS matrix columns: user_type → open_and_operating → hs_number_of_sites
+//                    → school_size → lead_source_routing_criteria → hs_last_form_submission_type
+//                    → demo_path → state/center_type → team
+// EDU matrix columns: center_type → school_size → leadsource → hs_last_form_submission_type → demo_path → team
+// ------------------------------------------------------------
+
+SELECT
+    Id,
+    Name,
+    Email,
+    Owner.Name,
+    lean_data_action__c,
+    leandata_revenue_sequence_type__c,
+
+    // CS matrix decision columns in order
+    user_type__c,
+    open_and_operating__c,
+    hs_number_of_sites__c,
+    school_size__c,
+    lead_source_routing_criteria__c,
+    leadsource,
+    hs_last_form_submission_type__c,
+    demo_path__c,
+    State,
+    center_type__c,
+    form_abandonment_lead__c,
+    hs_recent_conversion__c,            // Check this for Reddit routing (rule 2 in CS matrix)
+
+    // Outcome
+    outreach_stage__c,
+    logic_owned_by_queue__c,
+    CreatedDate
+FROM Lead
+WHERE Email = 'replace@withemail.com'  -- REPLACE with lead email
+LIMIT 5
+
+
+// ------------------------------------------------------------
+// QUERY 5 — Leads currently stuck in a LDC queue (un-routed)
+// ------------------------------------------------------------
+// Use when a rep says "I never got the lead" or routing appears to have stalled.
+// LDC Queues: LDC_Queue_1 through LDC_Queue_10, Lead_Distribution_Center,
+//             Lead_Working_Hours_Queue, Lead_After_Hours_Queue,
+//             Lead_Before_Hours_Queue, Lead_Overnight_Hours_Queue
 // ------------------------------------------------------------
 
 SELECT
@@ -128,52 +221,28 @@ SELECT
     LeadSource,
     Status,
     Owner.Name,
-    Owner.UserRole.Name,
-    LeanData__Routing_Action__c,
-    LeanData__Processing_Timeframe__c,
-    LeanData__Revenue_Sequence_Type__c,
-    LeanData__Last_Routed_Date__c,
-    LeanData__Routed_By__c,
-    CreatedDate
-FROM Lead
-WHERE LeanData__Last_Routed_Date__c = LAST_N_DAYS:1
-AND IsConverted = false
-ORDER BY LeanData__Last_Routed_Date__c DESC
-LIMIT 200
-
-
-// ------------------------------------------------------------
-// QUERY 5 — Leads currently owned by a LDC Queue (stuck / un-routed)
-// ------------------------------------------------------------
-// Use when a rep says "I never got the lead" or routing appears to have stopped.
-// LDC Queues in this org: LDC_Queue_1 through LDC_Queue_10,
-// Lead_Distribution_Center, Lead_Working_Hours_Queue,
-// Lead_After_Hours_Queue, Lead_Before_Hours_Queue, Lead_Overnight_Hours_Queue.
-// ------------------------------------------------------------
-
-SELECT
-    Id,
-    Name,
-    Email,
-    LeadSource,
-    Status,
-    Owner.Name,          // Will show the Queue name if unassigned
-    LeanData__Routing_Action__c,
-    LeanData__Processing_Timeframe__c,
-    LeanData__Last_Routed_Date__c,
+    lean_data_action__c,
+    leandata_processing_timeframe__c,
+    leandata_reprocess__c,
+    user_type__c,
+    open_and_operating__c,
+    school_size__c,
+    hs_last_form_submission_type__c,
     CreatedDate
 FROM Lead
 WHERE Owner.Type = 'Queue'
-AND Owner.Name LIKE '%LDC%'           // Adjust to target a specific queue
+AND Owner.Name LIKE '%LDC%'           -- Adjust to target a specific queue
 AND IsConverted = false
 ORDER BY CreatedDate DESC
 LIMIT 50
 
 
 // ------------------------------------------------------------
-// QUERY 6 — Non-target leads (routed to Unqualified queue by LeanData)
+// QUERY 6 — Non-target leads (last 7 days)
 // ------------------------------------------------------------
 // Use when investigating why a lead was marked Non-Target.
+// Non-Target is set by LeanData when no matrix rule matches or
+// the lead fails the target qualification check.
 // ------------------------------------------------------------
 
 SELECT
@@ -183,41 +252,52 @@ SELECT
     LeadSource,
     Status,
     Owner.Name,
-    LeanData__Routing_Action__c,
-    LeanData__Processing_Timeframe__c,
-    LeanData__Revenue_Sequence_Type__c,
-    LeanData__Last_Routed_Date__c,
+    lean_data_action__c,
+    leandata_processing_timeframe__c,
+    user_type__c,
+    open_and_operating__c,
+    school_size__c,
+    center_type__c,
+    hs_last_form_submission_type__c,
+    demo_path__c,
+    lead_source_routing_criteria__c,
+    State,
     CreatedDate
 FROM Lead
-WHERE LeanData__Routing_Action__c = 'Non-Target'
+WHERE lean_data_action__c = 'Non-Target'
 AND CreatedDate = LAST_N_DAYS:7
 ORDER BY CreatedDate DESC
 LIMIT 100
 
 
 // ------------------------------------------------------------
-// QUERY 7 — LeanData round-robin pool history for a rep
+// QUERY 7 — Leads flagged for LeanData reprocessing
 // ------------------------------------------------------------
-// Use when a rep claims they are not receiving leads from a pool.
-// RoundRobin__c is the org's custom round-robin tracking object.
-// Adjust field names if the Architect has customized this object.
+// Use when checking if a lead is queued to be re-evaluated by LeanData.
+// leandata_reprocess__c = true means LeanData will pick it up again.
 // ------------------------------------------------------------
 
 SELECT
     Id,
     Name,
+    Email,
+    Owner.Name,
+    lean_data_action__c,
+    leandata_reprocess__c,
+    leandata_processing_timeframe__c,
+    outreach_stage__c,
+    logic_owned_by_queue__c,
     CreatedDate,
     LastModifiedDate
-FROM RoundRobin__c
+FROM Lead
+WHERE leandata_reprocess__c = true
+AND IsConverted = false
 ORDER BY LastModifiedDate DESC
-LIMIT 20
+LIMIT 50
 
 
 // ------------------------------------------------------------
-// QUERY 8 — Leads routed to a specific rep (by rep name)
-// ------------------------------------------------------------
-// Use when a manager asks "show me all leads LeanData sent to [rep] this week."
-// Replace owner name value before running.
+// QUERY 8 — Leads routed to a specific rep (by rep name, last 7 days)
 // ------------------------------------------------------------
 
 SELECT
@@ -228,31 +308,96 @@ SELECT
     Status,
     Owner.Name,
     Owner.UserRole.Name,
-    LeanData__Routing_Action__c,
-    LeanData__Processing_Timeframe__c,
-    LeanData__Revenue_Sequence_Type__c,
-    LeanData__Last_Routed_Date__c,
+    lean_data_action__c,
+    leandata_revenue_sequence_type__c,
+    leandata_processing_timeframe__c,
+    user_type__c,
+    school_size__c,
+    hs_last_form_submission_type__c,
+    demo_path__c,
+    inbound_or_outbound__c,
     CreatedDate
 FROM Lead
-WHERE Owner.Name = 'First Last'       -- REPLACE with rep's full name
-AND LeanData__Last_Routed_Date__c = LAST_N_DAYS:7
+WHERE Owner.Name = 'First Last'        -- REPLACE with rep full name
 AND IsConverted = false
-ORDER BY LeanData__Last_Routed_Date__c DESC
+AND CreatedDate = LAST_N_DAYS:7
+ORDER BY CreatedDate DESC
 LIMIT 100
 
 
 // ------------------------------------------------------------
-// QUERY 9 — Routing action distribution (aggregate summary)
+// QUERY 9 — Routing action distribution (30-day aggregate)
 // ------------------------------------------------------------
-// Use for a quick count of how many leads went to each routing bucket
-// in the past 30 days. Good for spot-checking routing health.
+// Health check: how many leads went to each routing bucket and team.
+// Cross-reference pool names against Apr '26 matrix to confirm
+// LeanData is routing to the expected pools.
 // ------------------------------------------------------------
 
 SELECT
-    LeanData__Routing_Action__c,
-    LeanData__Processing_Timeframe__c,
+    lean_data_action__c,
+    leandata_revenue_sequence_type__c,
+    leandata_processing_timeframe__c,
     COUNT(Id) Total
 FROM Lead
 WHERE CreatedDate = LAST_N_DAYS:30
-GROUP BY LeanData__Routing_Action__c, LeanData__Processing_Timeframe__c
+GROUP BY lean_data_action__c, leandata_revenue_sequence_type__c, leandata_processing_timeframe__c
 ORDER BY COUNT(Id) DESC
+
+
+// ------------------------------------------------------------
+// QUERY 10 — Matrix rule validation: did the right leads go to High Value?
+// ------------------------------------------------------------
+// Apr '26 CS matrix rules 7, 8, 10, 11:
+//   High Value = open/operating OR opening within 3 months
+//                AND (school_size 60-100/100+ OR multi-site)
+// Use to spot-check whether High Value routing is capturing the right leads.
+// ------------------------------------------------------------
+
+SELECT
+    Id,
+    Name,
+    Email,
+    Owner.Name,
+    lean_data_action__c,
+    open_and_operating__c,
+    school_size__c,
+    hs_number_of_sites__c,
+    hs_last_form_submission_type__c,
+    demo_path__c,
+    outreach_stage__c,
+    CreatedDate
+FROM Lead
+WHERE lean_data_action__c LIKE '%High Value%'
+AND CreatedDate = LAST_N_DAYS:30
+AND IsConverted = false
+ORDER BY CreatedDate DESC
+LIMIT 100
+
+
+// ------------------------------------------------------------
+// QUERY 11 — Matrix rule validation: PK (Pakistan) routing check
+// ------------------------------------------------------------
+// Apr '26 CS matrix:
+//   PK_SDR = not Staff/Parent + Opening in more than 3 months
+//   PK_AE  = not Staff/Parent + Opening within 3 months + capacity <10 + not multi-site
+// Use to confirm PK routing is working as expected.
+// ------------------------------------------------------------
+
+SELECT
+    Id,
+    Name,
+    Email,
+    Owner.Name,
+    Owner.UserRole.Name,
+    lean_data_action__c,
+    user_type__c,
+    open_and_operating__c,
+    school_size__c,
+    hs_number_of_sites__c,
+    inbound_or_outbound__c,
+    CreatedDate
+FROM Lead
+WHERE lean_data_action__c IN ('Target - Assigned to PK AE', 'Target - Assigned to PK SDR')
+AND CreatedDate = LAST_N_DAYS:30
+ORDER BY CreatedDate DESC
+LIMIT 100
