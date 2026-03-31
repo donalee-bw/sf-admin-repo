@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Converted into Existing Account</fullName>
+        <default>false</default>
+        <label>Converted into Existing Account</label>
+    </customValue>
+    <customValue>
+        <fullName>Converted into Existing Contact</fullName>
+        <default>false</default>
+        <label>Converted into Existing Contact</label>
+    </customValue>
+    <customValue>
+        <fullName>Marketing Test Assigned</fullName>
+        <default>false</default>
+        <label>Marketing Test Assigned</label>
+    </customValue>
+    <customValue>
+        <fullName>Merged into Existing Lead</fullName>
+        <default>false</default>
+        <label>Merged into Existing Lead</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-Target</fullName>
+        <default>false</default>
+        <label>Non-Target</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned</fullName>
+        <default>false</default>
+        <label>Target - Assigned</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Not Assigned</fullName>
+        <default>false</default>
+        <label>Target - Not Assigned</label>
+    </customValue>
+    <customValue>
+        <fullName>EEL - Converted to a New Account</fullName>
+        <default>false</default>
+        <label>EEL - Converted to a New Account</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned Low Intent</fullName>
+        <default>false</default>
+        <label>Target - Assigned Low Intent</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned High Intent</fullName>
+        <default>false</default>
+        <label>Target - Assigned High Intent</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned BNP</fullName>
+        <default>false</default>
+        <label>Target - Assigned BNP</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned High Value</fullName>
+        <default>false</default>
+        <label>Target - Assigned High Value</label>
+    </customValue>
+    <customValue>
+        <fullName>Professional Development - Target</fullName>
+        <default>false</default>
+        <label>Professional Development - Target</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned Rapid Response</fullName>
+        <default>false</default>
+        <label>Target - Assigned Rapid Response</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned Proactive Parent</fullName>
+        <default>false</default>
+        <label>Target - Assigned Proactive Parent</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned Proactive Staff</fullName>
+        <default>false</default>
+        <label>Target - Assigned Proactive Staff</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned High Value MultiSite</fullName>
+        <default>false</default>
+        <label>Target - Assigned High Value MultiSite</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned to PK AE</fullName>
+        <default>false</default>
+        <label>Target - Assigned to PK AE</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned to PK SDR</fullName>
+        <default>false</default>
+        <label>Target - Assigned to PK SDR</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned to US Inbound</fullName>
+        <default>false</default>
+        <label>Target - Assigned to US Inbound</label>
+    </customValue>
+    <customValue>
+        <fullName>Target - Assigned to US-PK Split</fullName>
+        <default>false</default>
+        <label>Target - Assigned to US-PK Split</label>
+    </customValue>
+    <masterLabel>Lean Data Action</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

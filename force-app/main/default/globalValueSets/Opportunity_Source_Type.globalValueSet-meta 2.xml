@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Inbound Self-Sourced</fullName>
+        <default>false</default>
+        <label>Inbound Self-Sourced</label>
+    </customValue>
+    <customValue>
+        <fullName>Outbound Self-Sourced</fullName>
+        <default>false</default>
+        <label>Outbound Self-Sourced</label>
+    </customValue>
+    <customValue>
+        <fullName>Site-Add</fullName>
+        <default>false</default>
+        <label>Site-Add</label>
+    </customValue>
+    <description>PE - [Acquisition 2023-09-05 9:31:56] (Sprint 20)</description>
+    <masterLabel>Opportunity Source Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

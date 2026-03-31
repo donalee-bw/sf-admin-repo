@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Business permanently closing</fullName>
+        <default>false</default>
+        <label>Business permanently closing</label>
+    </customValue>
+    <customValue>
+        <fullName>Business is closed temporarily</fullName>
+        <default>false</default>
+        <label>Business is closed temporarily</label>
+    </customValue>
+    <customValue>
+        <fullName>Brightwheel seems too expensive</fullName>
+        <default>false</default>
+        <label>Brightwheel seems too expensive</label>
+    </customValue>
+    <customValue>
+        <fullName>Brightwheel may be currently missing functionality that you need</fullName>
+        <default>false</default>
+        <label>Brightwheel may be currently missing functionality that you need</label>
+    </customValue>
+    <customValue>
+        <fullName>I only want to pause my subscription</fullName>
+        <default>false</default>
+        <label>I only want to pause my subscription</label>
+    </customValue>
+    <customValue>
+        <fullName>Not currently using Brightwheel’s features</fullName>
+        <default>false</default>
+        <label>Not currently using Brightwheel’s features</label>
+    </customValue>
+    <customValue>
+        <fullName>Provided customer service does not meet my program&apos;s needs</fullName>
+        <default>false</default>
+        <label>Provided customer service does not meet my program&apos;s needs</label>
+    </customValue>
+    <customValue>
+        <fullName>Brightwheel features are not meeting my program&apos;s needs</fullName>
+        <default>false</default>
+        <label>Brightwheel features are not meeting my program&apos;s needs</label>
+    </customValue>
+    <customValue>
+        <fullName>Struggling to get my staff to adopt and use Brightwheel regularly</fullName>
+        <default>false</default>
+        <label>Struggling to get my staff to adopt and use Brightwheel regularly</label>
+    </customValue>
+    <customValue>
+        <fullName>Struggling to get guardians to adopt and use Brightwheel regularly</fullName>
+        <default>false</default>
+        <label>Struggling to get guardians to adopt and use Brightwheel regularly</label>
+    </customValue>
+    <customValue>
+        <fullName>My staff and/or guardians have expressed not liking Brightwheel</fullName>
+        <default>false</default>
+        <label>My staff and/or guardians have expressed not liking Brightwheel</label>
+    </customValue>
+    <customValue>
+        <fullName>Set up seems too time consuming</fullName>
+        <default>false</default>
+        <label>Set up seems too time consuming</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Brightwheel’s value doesn’t match the price paid per month</fullName>
+        <default>false</default>
+        <label>Brightwheel’s value doesn’t match the price paid per month</label>
+    </customValue>
+    <customValue>
+        <fullName>Brightwheel&apos;s value doesn&apos;t match the price paid per month</fullName>
+        <default>false</default>
+        <label>Brightwheel&apos;s value doesn&apos;t match the price paid per month</label>
+    </customValue>
+    <customValue>
+        <fullName>Setup is too hard</fullName>
+        <default>false</default>
+        <label>Setup is too hard</label>
+    </customValue>
+    <customValue>
+        <fullName>Product features are limited</fullName>
+        <default>false</default>
+        <label>Product features are limited</label>
+    </customValue>
+    <customValue>
+        <fullName>Too expensive</fullName>
+        <default>false</default>
+        <label>Too expensive</label>
+    </customValue>
+    <customValue>
+        <fullName>Quality of customer service</fullName>
+        <default>false</default>
+        <label>Quality of customer service</label>
+    </customValue>
+    <customValue>
+        <fullName>Temporarily closing</fullName>
+        <default>false</default>
+        <label>Temporarily closing</label>
+    </customValue>
+    <customValue>
+        <fullName>Permanently closing</fullName>
+        <default>false</default>
+        <label>Permanently closing</label>
+    </customValue>
+    <customValue>
+        <fullName>Acquired New Owner Not Using BW</fullName>
+        <default>false</default>
+        <label>Acquired New Owner Not Using BW</label>
+    </customValue>
+    <description>For cancelation from logic</description>
+    <masterLabel>What’s holding you back?</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Multi-Site: New Org</fullName>
+        <default>false</default>
+        <label>Multi-Site: New Org</label>
+    </customValue>
+    <customValue>
+        <fullName>Multi-Site: Site-Add</fullName>
+        <default>false</default>
+        <label>Multi-Site: Site-Add</label>
+    </customValue>
+    <customValue>
+        <fullName>Multi-Site: Site-Add BNP</fullName>
+        <default>false</default>
+        <label>Multi-Site: Site-Add BNP</label>
+    </customValue>
+    <description>Used on SaaS Opps to capture the type of Multi-Site</description>
+    <masterLabel>Multi-Site Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

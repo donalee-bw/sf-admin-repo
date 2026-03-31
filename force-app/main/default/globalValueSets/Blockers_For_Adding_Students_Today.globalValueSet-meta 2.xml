@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Planning to Manually Upload</fullName>
+        <default>false</default>
+        <label>Planning to Manually Upload</label>
+    </customValue>
+    <customValue>
+        <fullName>No Students Currently Enrolled</fullName>
+        <default>false</default>
+        <label>No Students Currently Enrolled</label>
+    </customValue>
+    <customValue>
+        <fullName>Need to Export From Other System</fullName>
+        <default>false</default>
+        <label>Need to Export From Other System</label>
+    </customValue>
+    <customValue>
+        <fullName>Electronic Version of Information Does Not Exist</fullName>
+        <default>false</default>
+        <label>Electronic Version of Information Does Not Exist</label>
+    </customValue>
+    <customValue>
+        <fullName>Time Constraints</fullName>
+        <default>false</default>
+        <label>Time Constraints</label>
+    </customValue>
+    <description>Used on Opp and Account. Shows what is blocking a school from being able to add students at the time of closed won opp.</description>
+    <masterLabel>Blockers For Adding Students Today</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

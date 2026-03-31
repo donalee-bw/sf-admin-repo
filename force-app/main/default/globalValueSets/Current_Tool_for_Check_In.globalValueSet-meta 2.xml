@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Pen and Paper</fullName>
+        <default>false</default>
+        <label>Pen and Paper</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech Competitor</fullName>
+        <default>false</default>
+        <label>Tech Competitor</label>
+    </customValue>
+    <masterLabel>Current Tool for Check-In</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

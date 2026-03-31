@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Dance &apos;N Beats</fullName>
+        <default>false</default>
+        <label>Dance &apos;N Beats</label>
+    </customValue>
+    <customValue>
+        <fullName>Experience God</fullName>
+        <default>false</default>
+        <label>Experience God</label>
+    </customValue>
+    <customValue>
+        <fullName>Experience Play Toy Box</fullName>
+        <default>false</default>
+        <label>Experience Play Toy Box</label>
+    </customValue>
+    <customValue>
+        <fullName>More Math &amp; More Literacy</fullName>
+        <default>false</default>
+        <label>More Math &amp; More Literacy</label>
+    </customValue>
+    <customValue>
+        <fullName>Multi-Age</fullName>
+        <default>false</default>
+        <label>Multi-Age</label>
+    </customValue>
+    <customValue>
+        <fullName>STEAM Pack</fullName>
+        <default>false</default>
+        <label>STEAM Pack</label>
+    </customValue>
+    <masterLabel>Add-Ons Purchased</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

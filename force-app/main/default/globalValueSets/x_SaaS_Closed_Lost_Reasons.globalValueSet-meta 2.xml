@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Chose Competitor</fullName>
+        <default>false</default>
+        <label>Chose Competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Chose Free Version</fullName>
+        <default>false</default>
+        <label>Chose Free Version</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID-19</fullName>
+        <default>false</default>
+        <label>COVID-19</label>
+    </customValue>
+    <customValue>
+        <fullName>Need more Features</fullName>
+        <default>false</default>
+        <label>Need more Features</label>
+    </customValue>
+    <customValue>
+        <fullName>No Budget</fullName>
+        <default>false</default>
+        <label>No Budget</label>
+    </customValue>
+    <customValue>
+        <fullName>Not interested</fullName>
+        <default>false</default>
+        <label>Not interested</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Ready</fullName>
+        <default>false</default>
+        <label>Not Ready</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Responding</fullName>
+        <default>false</default>
+        <label>Not Responding</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing - need to carry balance</fullName>
+        <default>false</default>
+        <label>Billing - need to carry balance</label>
+    </customValue>
+    <customValue>
+        <fullName>Duplicate</fullName>
+        <default>false</default>
+        <label>Duplicate</label>
+    </customValue>
+    <customValue>
+        <fullName>Dead on Arrival</fullName>
+        <default>false</default>
+        <label>Dead on Arrival</label>
+    </customValue>
+    <customValue>
+        <fullName>Neglected</fullName>
+        <default>false</default>
+        <label>Neglected</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-Target</fullName>
+        <default>false</default>
+        <label>Non-Target</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Responding - Spoke to Non-DM</fullName>
+        <default>false</default>
+        <label>Not Responding - Spoke to Non-DM</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Responding - Spoke to DM (Did Not Pitch)</fullName>
+        <default>false</default>
+        <label>Not Responding - Spoke to DM (Did Not Pitch)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Other</label>
+    </customValue>
+    <description>Closed Lost Reason picklist on SaaS Opportunities</description>
+    <masterLabel>x_SaaS Closed Lost Reasons</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

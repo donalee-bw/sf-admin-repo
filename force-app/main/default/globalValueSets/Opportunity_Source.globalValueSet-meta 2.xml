@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Chat (Intercom)</fullName>
+        <default>false</default>
+        <label>Chat (Intercom)</label>
+    </customValue>
+    <customValue>
+        <fullName>Mixpanel</fullName>
+        <default>false</default>
+        <label>Mixpanel</label>
+    </customValue>
+    <customValue>
+        <fullName>Inbound Form</fullName>
+        <default>false</default>
+        <label>Inbound Form</label>
+    </customValue>
+    <customValue>
+        <fullName>SaaS - Referral</fullName>
+        <default>false</default>
+        <label>SaaS - Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Re-engage</fullName>
+        <default>false</default>
+        <label>Re-engage</label>
+    </customValue>
+    <customValue>
+        <fullName>Cancelled/Churn</fullName>
+        <default>false</default>
+        <label>Cancelled/Churn</label>
+    </customValue>
+    <customValue>
+        <fullName>Cold Call</fullName>
+        <default>false</default>
+        <label>Cold Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Closed Lost</fullName>
+        <default>false</default>
+        <label>Closed Lost</label>
+    </customValue>
+    <customValue>
+        <fullName>Expired Pre Paid</fullName>
+        <default>false</default>
+        <label>Expired Pre Paid</label>
+    </customValue>
+    <customValue>
+        <fullName>Content Download</fullName>
+        <default>false</default>
+        <label>Content Download</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU Referral</fullName>
+        <default>false</default>
+        <label>EDU Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Rep Created</fullName>
+        <default>false</default>
+        <label>Rep Created</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP</fullName>
+        <default>false</default>
+        <label>BNP</label>
+    </customValue>
+    <description>Values to be used to populate the opportunity source, starting from the Lead and Contact records</description>
+    <masterLabel>Opportunity Source</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

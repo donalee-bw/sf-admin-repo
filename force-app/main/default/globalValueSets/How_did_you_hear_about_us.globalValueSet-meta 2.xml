@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Facebook Ad</fullName>
+        <default>false</default>
+        <label>Facebook Ad</label>
+    </customValue>
+    <customValue>
+        <fullName>Internet Search (Google, Bing, etc.)</fullName>
+        <default>false</default>
+        <label>Internet Search (Google, Bing, etc.)</label>
+    </customValue>
+    <customValue>
+        <fullName>AI Chatbot (ChatGPT, etc.)</fullName>
+        <default>false</default>
+        <label>AI Chatbot (ChatGPT, etc.)</label>
+    </customValue>
+    <customValue>
+        <fullName>Outbound_Sales</fullName>
+        <default>false</default>
+        <label>Outbound Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>Social Media</fullName>
+        <default>false</default>
+        <label>Social Media</label>
+    </customValue>
+    <customValue>
+        <fullName>Site-Add</fullName>
+        <default>false</default>
+        <label>Site-Add</label>
+    </customValue>
+    <customValue>
+        <fullName>Marketing_Email</fullName>
+        <default>false</default>
+        <label>Marketing Email</label>
+    </customValue>
+    <customValue>
+        <fullName>Referral/Word of Mouth</fullName>
+        <default>false</default>
+        <label>Referral/Word of Mouth</label>
+    </customValue>
+    <customValue>
+        <fullName>Reddit</fullName>
+        <default>false</default>
+        <label>Reddit</label>
+    </customValue>
+    <customValue>
+        <fullName>Capterra/Review Site</fullName>
+        <default>false</default>
+        <label>Capterra/Review Site</label>
+    </customValue>
+    <customValue>
+        <fullName>Previous Customer</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Previous Customer</label>
+    </customValue>
+    <customValue>
+        <fullName>Unknown</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Unknown</label>
+    </customValue>
+    <customValue>
+        <fullName>Event</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Word of Mouth</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Word of Mouth</label>
+    </customValue>
+    <customValue>
+        <fullName>Existing Customer</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Existing Customer</label>
+    </customValue>
+    <customValue>
+        <fullName>Internet Search</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Internet Search (Google, Bing)</label>
+    </customValue>
+    <customValue>
+        <fullName>Phone Call</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Phone Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Referral</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Direct Mail</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Direct Mail</label>
+    </customValue>
+    <masterLabel>How did you hear about us?</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

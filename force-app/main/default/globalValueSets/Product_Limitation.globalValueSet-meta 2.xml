@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Product - Reporting</fullName>
+        <default>false</default>
+        <label>Product - Reporting</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Billing</fullName>
+        <default>false</default>
+        <label>Product - Billing</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Billing (Canada)</fullName>
+        <default>false</default>
+        <label>Product - Billing (Canada)</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Staff mgmt</fullName>
+        <default>false</default>
+        <label>Product - Staff mgmt</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Payroll</fullName>
+        <default>false</default>
+        <label>Product - Payroll</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Other financial management solutions</fullName>
+        <default>false</default>
+        <label>Product - Other financial management solutions</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Multi-site functionality</fullName>
+        <default>false</default>
+        <label>Product - Multi-site functionality</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Admissions</fullName>
+        <default>false</default>
+        <label>Product - Admissions</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Curriculum</fullName>
+        <default>false</default>
+        <label>Product - Curriculum</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Ease of use</fullName>
+        <default>false</default>
+        <label>Product - Ease of use</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Adoption concerns (pen/paper)</fullName>
+        <default>false</default>
+        <label>Product - Adoption concerns (pen/paper)</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Adoption concerns (competitor)</fullName>
+        <default>false</default>
+        <label>Product - Adoption concerns (competitor)</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Other (Note what feature)</fullName>
+        <default>false</default>
+        <label>Product - Other (Note what feature)</label>
+    </customValue>
+    <masterLabel>Product Limitation</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

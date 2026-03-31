@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Invalid Contact Info</fullName>
+        <default>false</default>
+        <label>Invalid Contact Info</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Sales Related</fullName>
+        <default>false</default>
+        <label>Not Sales Related</label>
+    </customValue>
+    <customValue>
+        <fullName>Too Small</fullName>
+        <default>false</default>
+        <label>Too Small</label>
+    </customValue>
+    <customValue>
+        <fullName>Unknown</fullName>
+        <default>false</default>
+        <label>Unknown</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-Target Market</fullName>
+        <default>false</default>
+        <label>Non-Target Market</label>
+    </customValue>
+    <customValue>
+        <fullName>International</fullName>
+        <default>false</default>
+        <label>International</label>
+    </customValue>
+    <customValue>
+        <fullName>Do Not Contact</fullName>
+        <default>false</default>
+        <label>Do Not Contact</label>
+    </customValue>
+    <customValue>
+        <fullName>Out of Business</fullName>
+        <default>false</default>
+        <label>Out of Business</label>
+    </customValue>
+    <customValue>
+        <fullName>Duplicate</fullName>
+        <default>false</default>
+        <label>Duplicate</label>
+    </customValue>
+    <customValue>
+        <fullName>Already a Customer</fullName>
+        <default>false</default>
+        <label>Already a Customer</label>
+    </customValue>
+    <customValue>
+        <fullName>Already talking to Sales</fullName>
+        <default>false</default>
+        <label>Already talking to Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>Language Barrier</fullName>
+        <default>false</default>
+        <label>Language Barrier</label>
+    </customValue>
+    <customValue>
+        <fullName>Public School</fullName>
+        <default>false</default>
+        <label>Public School</label>
+    </customValue>
+    <customValue>
+        <fullName>Franchise/Corporate</fullName>
+        <default>false</default>
+        <label>Franchise/Corporate</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Franchise/Corporate</fullName>
+        <default>false</default>
+        <label>Unqualified - Franchise/Corporate</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Public School District</fullName>
+        <default>false</default>
+        <label>Unqualified - Public School District</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Non-Target Market</fullName>
+        <default>false</default>
+        <label>Unqualified - Non-Target Market</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Language Barrier</fullName>
+        <default>false</default>
+        <label>Unqualified - Language Barrier</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Do Not Contact</fullName>
+        <default>false</default>
+        <label>Unqualified - Do Not Contact</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Invalid Contact Info</fullName>
+        <default>false</default>
+        <label>Unqualified - Invalid Contact Info</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Out of Business</fullName>
+        <default>false</default>
+        <label>Unqualified - Out of Business</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Existing Customer</fullName>
+        <default>false</default>
+        <label>Unqualified - Existing Customer</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Not Sales Related</fullName>
+        <default>false</default>
+        <label>Unqualified - Not Sales Related</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Too Small</fullName>
+        <default>false</default>
+        <label>Unqualified - Too Small</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Unknown</fullName>
+        <default>false</default>
+        <label>Unqualified - Unknown</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Already Talking To Sales</fullName>
+        <default>false</default>
+        <label>Unqualified - Already Talking To Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - International</fullName>
+        <default>false</default>
+        <label>Unqualified - International</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Under Capacity</fullName>
+        <default>false</default>
+        <label>Unqualified - Under Capacity</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Not ECE</fullName>
+        <default>false</default>
+        <label>Unqualified - Not ECE</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Public School - No ECE</fullName>
+        <default>false</default>
+        <label>Unqualified - Public School - No ECE</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Enterprise</fullName>
+        <default>false</default>
+        <label>Unqualified - Enterprise</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Capacity (&lt;20)</fullName>
+        <default>false</default>
+        <label>Unqualified - Capacity (&lt;20)</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Parent</fullName>
+        <default>false</default>
+        <label>Unqualified - Parent</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Public School - No headstart</fullName>
+        <default>false</default>
+        <label>Unqualified - Public School - No headstart</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Invalid Data</fullName>
+        <default>false</default>
+        <label>Unqualified - Invalid Data</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Under Capacity (&lt;10)</fullName>
+        <default>false</default>
+        <label>Unqualified - Under Capacity (&lt;10)</label>
+    </customValue>
+    <customValue>
+        <fullName>Passed to CS</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Passed to CS</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Interested</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Not Interested</label>
+    </customValue>
+    <customValue>
+        <fullName>Not a decision maker</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Not a decision maker</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Primary Contact</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Not Primary Contact</label>
+    </customValue>
+    <customValue>
+        <fullName>Ghost Leads</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Ghost Leads</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Not Interested - Using Competitor</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>REC - Not Interested - Using Competitor</label>
+    </customValue>
+    <masterLabel>Unqualified Reason</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

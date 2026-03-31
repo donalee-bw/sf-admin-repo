@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Not Started</fullName>
+        <default>false</default>
+        <label>Not Started</label>
+    </customValue>
+    <customValue>
+        <fullName>Partially Complete</fullName>
+        <default>false</default>
+        <label>Partially Complete</label>
+    </customValue>
+    <customValue>
+        <fullName>Needs Call(s) Scheduled</fullName>
+        <default>false</default>
+        <label>Needs Call(s) Scheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>Needs Intro Call Scheduled - BNP</fullName>
+        <default>false</default>
+        <label>Needs Intro Call Scheduled - BNP</label>
+    </customValue>
+    <customValue>
+        <fullName>Needs Intro Call Completed - BNP</fullName>
+        <default>false</default>
+        <label>Needs Intro Call Completed - BNP</label>
+    </customValue>
+    <customValue>
+        <fullName>Needs Rescheduling - BNP</fullName>
+        <default>false</default>
+        <label>Needs Rescheduling - BNP</label>
+    </customValue>
+    <customValue>
+        <fullName>In Progress</fullName>
+        <default>false</default>
+        <label>In Progress</label>
+    </customValue>
+    <customValue>
+        <fullName>At-Risk - SaaS</fullName>
+        <default>false</default>
+        <label>At-Risk - SaaS</label>
+    </customValue>
+    <customValue>
+        <fullName>At-Risk - Billing</fullName>
+        <default>false</default>
+        <label>At-Risk - Billing</label>
+    </customValue>
+    <customValue>
+        <fullName>At-Risk - SaaS and Billing</fullName>
+        <default>false</default>
+        <label>At-Risk - SaaS and Billing</label>
+    </customValue>
+    <customValue>
+        <fullName>SaaS Activated, Billing Incomplete</fullName>
+        <default>false</default>
+        <label>SaaS Activated, Billing Incomplete</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Activated, SaaS Incomplete</fullName>
+        <default>false</default>
+        <label>Billing Activated, SaaS Incomplete</label>
+    </customValue>
+    <customValue>
+        <fullName>Fully Activated</fullName>
+        <default>false</default>
+        <label>Fully Activated</label>
+    </customValue>
+    <customValue>
+        <fullName>Churned</fullName>
+        <default>false</default>
+        <label>Churned</label>
+    </customValue>
+    <customValue>
+        <fullName>OBS Owned At Risk</fullName>
+        <default>false</default>
+        <label>OBS Owned At Risk</label>
+    </customValue>
+    <customValue>
+        <fullName>AE Owned At Risk</fullName>
+        <default>false</default>
+        <label>AE Owned At Risk</label>
+    </customValue>
+    <customValue>
+        <fullName>Open Cancel Case</fullName>
+        <default>false</default>
+        <label>Open Cancel Case</label>
+    </customValue>
+    <customValue>
+        <fullName>Unresponsive</fullName>
+        <default>false</default>
+        <label>Unresponsive</label>
+    </customValue>
+    <description>To provide another level of insight to the status of the Opportunity within the Post CW respective Stages.</description>
+    <masterLabel>Post CW Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

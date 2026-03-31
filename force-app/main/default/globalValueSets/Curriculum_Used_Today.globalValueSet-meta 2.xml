@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Experience Curriculum</fullName>
+        <default>false</default>
+        <label>Experience Curriculum</label>
+    </customValue>
+    <customValue>
+        <fullName>We make our own</fullName>
+        <default>false</default>
+        <label>We make our own</label>
+    </customValue>
+    <customValue>
+        <fullName>We don&apos;t use a curriculum</fullName>
+        <default>false</default>
+        <label>We don&apos;t use a curriculum</label>
+    </customValue>
+    <customValue>
+        <fullName>We purchase another curriculum</fullName>
+        <default>false</default>
+        <label>We purchase another curriculum</label>
+    </customValue>
+    <masterLabel>Curriculum Used Today</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

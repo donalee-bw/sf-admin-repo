@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Before/After School Program</fullName>
+        <default>false</default>
+        <label>Before/After School Program</label>
+    </customValue>
+    <customValue>
+        <fullName>K-8 Program</fullName>
+        <default>false</default>
+        <label>K-8 Program</label>
+    </customValue>
+    <customValue>
+        <fullName>Animal Daycare</fullName>
+        <default>false</default>
+        <label>Animal Daycare</label>
+    </customValue>
+    <customValue>
+        <fullName>Senior Citizen Group</fullName>
+        <default>false</default>
+        <label>Senior Citizen Group</label>
+    </customValue>
+    <customValue>
+        <fullName>Camp</fullName>
+        <default>false</default>
+        <label>Camp</label>
+    </customValue>
+    <customValue>
+        <fullName>Sport club</fullName>
+        <default>false</default>
+        <label>Sport club</label>
+    </customValue>
+    <customValue>
+        <fullName>Teacher</fullName>
+        <default>false</default>
+        <label>Teacher</label>
+    </customValue>
+    <customValue>
+        <fullName>Music program</fullName>
+        <default>false</default>
+        <label>Music program</label>
+    </customValue>
+    <customValue>
+        <fullName>Therapy School (HIPAA Compliance)</fullName>
+        <default>false</default>
+        <label>Therapy School (HIPAA Compliance)</label>
+    </customValue>
+    <customValue>
+        <fullName>Other non target</fullName>
+        <default>false</default>
+        <label>Other non target</label>
+    </customValue>
+    <masterLabel>Center Type - Non ECE</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

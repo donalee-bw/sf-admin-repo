@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Free</fullName>
+        <default>false</default>
+        <label>Free</label>
+    </customValue>
+    <customValue>
+        <fullName>Inactive</fullName>
+        <default>false</default>
+        <label>Inactive</label>
+    </customValue>
+    <customValue>
+        <fullName>Premium</fullName>
+        <default>false</default>
+        <label>Premium</label>
+    </customValue>
+    <customValue>
+        <fullName>Trialing</fullName>
+        <default>false</default>
+        <label>Trialing</label>
+    </customValue>
+    <masterLabel>Brightwheel Plan</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

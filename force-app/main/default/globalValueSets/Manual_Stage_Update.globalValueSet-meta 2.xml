@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Assigned</fullName>
+        <default>false</default>
+        <label>Assigned</label>
+    </customValue>
+    <customValue>
+        <fullName>Working</fullName>
+        <default>false</default>
+        <label>Working</label>
+    </customValue>
+    <customValue>
+        <fullName>Connected</fullName>
+        <default>false</default>
+        <label>Connected</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo Confirmed</fullName>
+        <default>false</default>
+        <label>Demo Confirmed</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo Scheduled</fullName>
+        <default>false</default>
+        <label>Demo Scheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo Missed</fullName>
+        <default>false</default>
+        <label>Demo Missed</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Not Interested - Hung Up On Multiple Times</fullName>
+        <default>false</default>
+        <label>Recycled - Not Interested - Hung Up On Multiple Times</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Not Interested - Happy w/ Manual System or P&amp;P</fullName>
+        <default>false</default>
+        <label>Recycled - Not Interested - Happy w/ Manual System or P&amp;P</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Not Interested - Feature / Product Limitation</fullName>
+        <default>false</default>
+        <label>Recycled - Not Interested - Feature / Product Limitation</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Not Interested - Budget Issue</fullName>
+        <default>false</default>
+        <label>Recycled - Not Interested - Budget Issue</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Neglected</fullName>
+        <default>false</default>
+        <label>Recycled - Neglected</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Non Primary</fullName>
+        <default>false</default>
+        <label>Recycled - Non Primary</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Not Yet Qualified</fullName>
+        <default>false</default>
+        <label>Recycled - Not Yet Qualified</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Time of Year</fullName>
+        <default>false</default>
+        <label>Recycled - Time of Year</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Using Competitor</fullName>
+        <default>false</default>
+        <label>Recycled - Using Competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Enterprise</fullName>
+        <default>false</default>
+        <label>Unqualified - Enterprise</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Do not Contact</fullName>
+        <default>false</default>
+        <label>Unqualified - Do not Contact</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Existing Customer</fullName>
+        <default>false</default>
+        <label>Unqualified - Existing Customer</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - International</fullName>
+        <default>false</default>
+        <label>Unqualified - International</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Language Barrier</fullName>
+        <default>false</default>
+        <label>Unqualified - Language Barrier</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Not ECE</fullName>
+        <default>false</default>
+        <label>Unqualified - Not ECE</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Out of Business</fullName>
+        <default>false</default>
+        <label>Unqualified - Out of Business</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Parent</fullName>
+        <default>false</default>
+        <label>Unqualified - Parent</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Under Capacity (&lt;10)</fullName>
+        <default>false</default>
+        <label>Unqualified - Under Capacity (&lt;10)</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Unknown</fullName>
+        <default>false</default>
+        <label>Unqualified - Unknown</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Invalid Data</fullName>
+        <default>false</default>
+        <label>Unqualified - Invalid Data</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Not Interested - Happy w/ P&amp;P</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Recycled - Not Interested - Happy w/ P&amp;P</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Not Responding</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Recycled - Not Responding</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Not Ready</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Recycled - Not Ready</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - No Budget</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Recycled - No Budget</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - In Contract</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Recycled - In Contract</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Features Request</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Recycled - Features Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Enterprise</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Recycled - Enterprise</label>
+    </customValue>
+    <masterLabel>Manual Stage Update</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Subscription</fullName>
+        <default>true</default>
+        <label>Subscription</label>
+    </customValue>
+    <customValue>
+        <fullName>Pre-Paid</fullName>
+        <default>false</default>
+        <label>Pre-Paid</label>
+    </customValue>
+    <customValue>
+        <fullName>Org Funded: Subscription</fullName>
+        <default>false</default>
+        <label>Org Funded: Subscription</label>
+    </customValue>
+    <customValue>
+        <fullName>Org Funded: Pre-Paid</fullName>
+        <default>false</default>
+        <label>Org Funded: Pre-Paid</label>
+    </customValue>
+    <masterLabel>Curriculum Payment Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

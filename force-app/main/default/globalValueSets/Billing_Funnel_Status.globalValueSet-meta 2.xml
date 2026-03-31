@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Billing Prospect - Not Engaged Yet</fullName>
+        <default>true</default>
+        <label>Billing Prospect - Not Engaged Yet</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Prospect - Not Interested</fullName>
+        <default>false</default>
+        <label>Billing Prospect - Not Interested</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Lead - Low Interest</fullName>
+        <default>false</default>
+        <label>Billing Lead - Low Interest</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Lead - High Interest</fullName>
+        <default>false</default>
+        <label>Billing Lead - High Interest</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Opportunity</fullName>
+        <default>false</default>
+        <label>Billing Opportunity</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Closed Won</fullName>
+        <default>false</default>
+        <label>Billing Closed Won</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Closed Lost</fullName>
+        <default>false</default>
+        <label>Billing Closed Lost</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Activated - Old Platform</fullName>
+        <default>false</default>
+        <label>Billing Activated - Old Platform</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Activated - New Platform</fullName>
+        <default>false</default>
+        <label>Billing Activated - New Platform</label>
+    </customValue>
+    <masterLabel>Billing Funnel Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

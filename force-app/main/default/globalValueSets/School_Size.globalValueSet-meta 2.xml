@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>1-9</fullName>
+        <default>false</default>
+        <label>1-9</label>
+    </customValue>
+    <customValue>
+        <fullName>10-19</fullName>
+        <default>false</default>
+        <label>10-19</label>
+    </customValue>
+    <customValue>
+        <fullName>1-19</fullName>
+        <default>false</default>
+        <label>1-19</label>
+    </customValue>
+    <customValue>
+        <fullName>20-59</fullName>
+        <default>false</default>
+        <label>20-59</label>
+    </customValue>
+    <customValue>
+        <fullName>20-99</fullName>
+        <default>false</default>
+        <label>20-99</label>
+    </customValue>
+    <customValue>
+        <fullName>60-99</fullName>
+        <default>false</default>
+        <label>60-99</label>
+    </customValue>
+    <customValue>
+        <fullName>100+</fullName>
+        <default>false</default>
+        <label>100+</label>
+    </customValue>
+    <customValue>
+        <fullName>Multi-Site</fullName>
+        <default>false</default>
+        <label>Multi-Site</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <description>Enrollment range picklist values captured from Hubspot form fills.</description>
+    <masterLabel>School Size</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>On School Break</fullName>
+        <default>false</default>
+        <label>On School Break</label>
+    </customValue>
+    <customValue>
+        <fullName>Temp Closure / Delayed BNP Open</fullName>
+        <default>false</default>
+        <label>Temp Closure / Delayed BNP Open</label>
+    </customValue>
+    <customValue>
+        <fullName>Extenuating Personal Circumstances</fullName>
+        <default>false</default>
+        <label>Extenuating Personal Circumstances</label>
+    </customValue>
+    <customValue>
+        <fullName>Acquisition</fullName>
+        <default>false</default>
+        <label>Acquisition</label>
+    </customValue>
+    <customValue>
+        <fullName>Director / Admin Turnover</fullName>
+        <default>false</default>
+        <label>Director / Admin Turnover</label>
+    </customValue>
+    <customValue>
+        <fullName>Other Inflexible Reason</fullName>
+        <default>false</default>
+        <label>Other Inflexible Reason</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>COVID</label>
+    </customValue>
+    <customValue>
+        <fullName>Center Not Open and Operating</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Center Not Open and Operating</label>
+    </customValue>
+    <customValue>
+        <fullName>Brand New Program</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Brand New Program</label>
+    </customValue>
+    <customValue>
+        <fullName>Waiting On Devices</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Waiting On Devices</label>
+    </customValue>
+    <customValue>
+        <fullName>Waiting on Board Approval</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Waiting on Board Approval</label>
+    </customValue>
+    <customValue>
+        <fullName>Internal Business Reasons</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Internal Business Reasons</label>
+    </customValue>
+    <customValue>
+        <fullName>Multi-Site Rollout</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Multi-Site Rollout</label>
+    </customValue>
+    <masterLabel>SaaS Postponed Reason</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

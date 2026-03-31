@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Save Time</fullName>
+        <default>false</default>
+        <label>Save Time</label>
+    </customValue>
+    <customValue>
+        <fullName>Automation</fullName>
+        <default>false</default>
+        <label>Automation</label>
+    </customValue>
+    <customValue>
+        <fullName>Autopay</fullName>
+        <default>false</default>
+        <label>Autopay</label>
+    </customValue>
+    <customValue>
+        <fullName>Reporting</fullName>
+        <default>false</default>
+        <label>Reporting</label>
+    </customValue>
+    <customValue>
+        <fullName>Subsidy Tracking</fullName>
+        <default>false</default>
+        <label>Subsidy Tracking</label>
+    </customValue>
+    <customValue>
+        <fullName>Save Money</fullName>
+        <default>false</default>
+        <label>Save Money</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Applicable</fullName>
+        <default>false</default>
+        <label>Not Applicable</label>
+    </customValue>
+    <description>Captured on Opportunities and Onboardings.</description>
+    <masterLabel>Why BW Billing</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

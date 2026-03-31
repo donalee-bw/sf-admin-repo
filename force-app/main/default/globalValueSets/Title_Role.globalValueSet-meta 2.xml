@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Director</fullName>
+        <default>false</default>
+        <label>Director</label>
+    </customValue>
+    <customValue>
+        <fullName>Owner</fullName>
+        <default>false</default>
+        <label>Owner</label>
+    </customValue>
+    <customValue>
+        <fullName>Assistant Director</fullName>
+        <default>false</default>
+        <label>Assistant Director</label>
+    </customValue>
+    <customValue>
+        <fullName>Executive Director</fullName>
+        <default>false</default>
+        <label>Executive Director</label>
+    </customValue>
+    <customValue>
+        <fullName>OwnerDirector</fullName>
+        <default>false</default>
+        <label>Owner/Director</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Admin</fullName>
+        <default>false</default>
+        <label>Billing Admin</label>
+    </customValue>
+    <customValue>
+        <fullName>Admin</fullName>
+        <default>false</default>
+        <label>Admin</label>
+    </customValue>
+    <customValue>
+        <fullName>Bookkeeper Book keeper</fullName>
+        <default>false</default>
+        <label>Bookkeeper / Book keeper</label>
+    </customValue>
+    <customValue>
+        <fullName>IT</fullName>
+        <default>false</default>
+        <label>IT</label>
+    </customValue>
+    <customValue>
+        <fullName>Board Member</fullName>
+        <default>false</default>
+        <label>Board Member</label>
+    </customValue>
+    <customValue>
+        <fullName>Teacher</fullName>
+        <default>false</default>
+        <label>Teacher</label>
+    </customValue>
+    <customValue>
+        <fullName>Manager</fullName>
+        <default>false</default>
+        <label>Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Principal</fullName>
+        <default>false</default>
+        <label>Principal</label>
+    </customValue>
+    <customValue>
+        <fullName>Head of School</fullName>
+        <default>false</default>
+        <label>Head of School</label>
+    </customValue>
+    <customValue>
+        <fullName>President</fullName>
+        <default>false</default>
+        <label>President</label>
+    </customValue>
+    <customValue>
+        <fullName>Founder</fullName>
+        <default>false</default>
+        <label>Founder</label>
+    </customValue>
+    <customValue>
+        <fullName>Assistant</fullName>
+        <default>false</default>
+        <label>Assistant</label>
+    </customValue>
+    <customValue>
+        <fullName>VP</fullName>
+        <default>false</default>
+        <label>VP</label>
+    </customValue>
+    <customValue>
+        <fullName>Executive</fullName>
+        <default>false</default>
+        <label>Executive</label>
+    </customValue>
+    <customValue>
+        <fullName>CEO</fullName>
+        <default>false</default>
+        <label>CEO</label>
+    </customValue>
+    <customValue>
+        <fullName>CFO</fullName>
+        <default>false</default>
+        <label>CFO</label>
+    </customValue>
+    <customValue>
+        <fullName>COO</fullName>
+        <default>false</default>
+        <label>COO</label>
+    </customValue>
+    <customValue>
+        <fullName>CIO</fullName>
+        <default>false</default>
+        <label>CIO</label>
+    </customValue>
+    <customValue>
+        <fullName>CTO</fullName>
+        <default>false</default>
+        <label>CTO</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <description>Used for sales instead of standard title field</description>
+    <masterLabel>Title/Role</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Pen and Paper</fullName>
+        <default>false</default>
+        <label>Pen and Paper</label>
+    </customValue>
+    <customValue>
+        <fullName>Email</fullName>
+        <default>false</default>
+        <label>Email</label>
+    </customValue>
+    <customValue>
+        <fullName>App Competitor</fullName>
+        <default>false</default>
+        <label>App Competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Blog/Website</fullName>
+        <default>false</default>
+        <label>Blog/Website</label>
+    </customValue>
+    <masterLabel>Current Tool for Parent Engagement</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

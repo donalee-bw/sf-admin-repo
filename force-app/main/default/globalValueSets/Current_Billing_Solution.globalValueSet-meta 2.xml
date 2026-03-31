@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Procare</fullName>
+        <default>false</default>
+        <label>Procare</label>
+    </customValue>
+    <customValue>
+        <fullName>Quickbooks</fullName>
+        <default>false</default>
+        <label>Quickbooks</label>
+    </customValue>
+    <customValue>
+        <fullName>FACTS</fullName>
+        <default>false</default>
+        <label>FACTS</label>
+    </customValue>
+    <customValue>
+        <fullName>EZCare</fullName>
+        <default>false</default>
+        <label>EZCare</label>
+    </customValue>
+    <customValue>
+        <fullName>SmartCare</fullName>
+        <default>false</default>
+        <label>SmartCare</label>
+    </customValue>
+    <customValue>
+        <fullName>Kinderlime</fullName>
+        <default>false</default>
+        <label>Kinderlime</label>
+    </customValue>
+    <customValue>
+        <fullName>LifeCubby</fullName>
+        <default>false</default>
+        <label>LifeCubby</label>
+    </customValue>
+    <customValue>
+        <fullName>HiMama</fullName>
+        <default>false</default>
+        <label>HiMama</label>
+    </customValue>
+    <customValue>
+        <fullName>OnCare</fullName>
+        <default>false</default>
+        <label>OnCare</label>
+    </customValue>
+    <customValue>
+        <fullName>Sandbox</fullName>
+        <default>false</default>
+        <label>Sandbox</label>
+    </customValue>
+    <customValue>
+        <fullName>Venmo</fullName>
+        <default>false</default>
+        <label>Venmo</label>
+    </customValue>
+    <customValue>
+        <fullName>Zelle</fullName>
+        <default>false</default>
+        <label>Zelle</label>
+    </customValue>
+    <customValue>
+        <fullName>Bank Auto Drafts</fullName>
+        <default>false</default>
+        <label>Bank Auto Drafts</label>
+    </customValue>
+    <customValue>
+        <fullName>Square</fullName>
+        <default>false</default>
+        <label>Square</label>
+    </customValue>
+    <customValue>
+        <fullName>Cash App</fullName>
+        <default>false</default>
+        <label>Cash App</label>
+    </customValue>
+    <customValue>
+        <fullName>Offline</fullName>
+        <default>false</default>
+        <label>Offline</label>
+    </customValue>
+    <customValue>
+        <fullName>None - BNP</fullName>
+        <default>false</default>
+        <label>None - BNP</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Checks/Cash</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Checks/Cash</label>
+    </customValue>
+    <customValue>
+        <fullName>Pen/Paper/Excel</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Pen/Paper/Excel</label>
+    </customValue>
+    <masterLabel>Current Billing Solution</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

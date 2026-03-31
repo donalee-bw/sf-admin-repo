@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Organic Search (SEO)</fullName>
+        <default>false</default>
+        <label>Organic Search (SEO)</label>
+    </customValue>
+    <customValue>
+        <fullName>Direct Traffic</fullName>
+        <default>false</default>
+        <label>Direct Traffic</label>
+    </customValue>
+    <customValue>
+        <fullName>SEM Brand</fullName>
+        <default>false</default>
+        <label>SEM Brand</label>
+    </customValue>
+    <customValue>
+        <fullName>SEM Non-Brand</fullName>
+        <default>false</default>
+        <label>SEM Non-Brand</label>
+    </customValue>
+    <customValue>
+        <fullName>PMax</fullName>
+        <default>false</default>
+        <label>PMax</label>
+    </customValue>
+    <customValue>
+        <fullName>DemandGen</fullName>
+        <default>false</default>
+        <label>DemandGen</label>
+    </customValue>
+    <customValue>
+        <fullName>Youtube (Paid Social)</fullName>
+        <default>false</default>
+        <label>Youtube (Paid Social)</label>
+    </customValue>
+    <customValue>
+        <fullName>Youtube (Organic Social)</fullName>
+        <default>false</default>
+        <label>Youtube (Organic Social)</label>
+    </customValue>
+    <customValue>
+        <fullName>Paid Social</fullName>
+        <default>false</default>
+        <label>Paid Social</label>
+    </customValue>
+    <customValue>
+        <fullName>Organic Social</fullName>
+        <default>false</default>
+        <label>Organic Social</label>
+    </customValue>
+    <customValue>
+        <fullName>PTL</fullName>
+        <default>false</default>
+        <label>PTL</label>
+    </customValue>
+    <customValue>
+        <fullName>Referrals</fullName>
+        <default>false</default>
+        <label>Referrals</label>
+    </customValue>
+    <customValue>
+        <fullName>Email</fullName>
+        <default>false</default>
+        <label>Email</label>
+    </customValue>
+    <customValue>
+        <fullName>Direct Mail</fullName>
+        <default>false</default>
+        <label>Direct Mail</label>
+    </customValue>
+    <customValue>
+        <fullName>Capterra</fullName>
+        <default>false</default>
+        <label>Capterra</label>
+    </customValue>
+    <customValue>
+        <fullName>Content Syndication</fullName>
+        <default>false</default>
+        <label>Content Syndication</label>
+    </customValue>
+    <customValue>
+        <fullName>TikTok</fullName>
+        <default>false</default>
+        <label>TikTok</label>
+    </customValue>
+    <masterLabel>Lead Source - Routing Criteria</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

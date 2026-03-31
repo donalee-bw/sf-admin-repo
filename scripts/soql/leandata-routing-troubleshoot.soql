@@ -1,0 +1,258 @@
+// ============================================================
+// LeanData Routing Troubleshooting Queries
+// ============================================================
+// Use: Admin troubleshooting for "why was this lead/contact routed here?"
+// Run in VS Code: highlight query text → SFDX: Execute SOQL Query with Currently Selected Text
+//   OR via CLI: sf data query --query "..." --target-org production --result-format table
+//
+// FIELD NOTES:
+//   LeanData managed package fields use the LeanData__ namespace prefix.
+//   Custom org fields that mirror LeanData state:
+//     LeanData__Routing_Action__c   → Lean_Data_Action GVS
+//     LeanData__Processing_Timeframe__c → LeanData_Processing_Timeframe GVS
+//     LeanData__Revenue_Sequence_Type__c → LeanData_Revenue_Sequence_Type GVS
+//
+// SAFETY: All queries are read-only. Run against production with LIMIT.
+// ============================================================
+
+
+// ------------------------------------------------------------
+// QUERY 1 — Lead routing snapshot (look up by email)
+// ------------------------------------------------------------
+// Use when an admin asks: "Why was this lead assigned to [rep]?"
+// Replace the email value before running.
+// ------------------------------------------------------------
+
+SELECT
+    Id,
+    Name,
+    Email,
+    LeadSource,
+    Status,
+    Owner.Name,
+    Owner.UserRole.Name,
+    Owner.IsActive,
+
+    // LeanData routing decision fields
+    LeanData__Routing_Action__c,           // What action LeanData took (Target - Assigned, Non-Target, etc.)
+    LeanData__Processing_Timeframe__c,     // Time-of-day bucket when routed (Working Hours, After Working Hours, etc.)
+    LeanData__Revenue_Sequence_Type__c,    // Journey/sequence type (Demo/Pricing, FB, Government, etc.)
+    LeanData__Last_Routed_Date__c,         // When LeanData last processed this record
+    LeanData__Routed_By__c,               // Internal LeanData identifier for the routing path taken
+    LeanData__Account_Based_Match__c,      // Was this lead matched to an existing Account?
+    LeanData__Reporting_Matched_Account__c, // Account it was matched to (if ABM match)
+
+    // Timestamps for timeline reconstruction
+    CreatedDate,
+    LastModifiedDate,
+    ConvertedDate,
+    IsConverted
+
+FROM Lead
+WHERE Email = 'replace@withemail.com'  -- REPLACE with lead email
+LIMIT 5
+
+
+// ------------------------------------------------------------
+// QUERY 2 — Lead routing snapshot (look up by name or phone)
+// ------------------------------------------------------------
+// Use when you have the name but not the email.
+// ------------------------------------------------------------
+
+SELECT
+    Id,
+    Name,
+    Email,
+    Phone,
+    LeadSource,
+    Status,
+    Owner.Name,
+    Owner.UserRole.Name,
+    LeanData__Routing_Action__c,
+    LeanData__Processing_Timeframe__c,
+    LeanData__Revenue_Sequence_Type__c,
+    LeanData__Last_Routed_Date__c,
+    LeanData__Routed_By__c,
+    LeanData__Account_Based_Match__c,
+    LeanData__Reporting_Matched_Account__c,
+    CreatedDate,
+    LastModifiedDate
+FROM Lead
+WHERE Name LIKE '%Replace LastName%'    -- REPLACE with lead last name
+AND IsConverted = false
+ORDER BY CreatedDate DESC
+LIMIT 10
+
+
+// ------------------------------------------------------------
+// QUERY 3 — Contact routing snapshot (look up by email)
+// ------------------------------------------------------------
+// Use for contacts that went through LeanData routing post-conversion
+// or via the Contact-based routing path.
+// ------------------------------------------------------------
+
+SELECT
+    Id,
+    Name,
+    Email,
+    Account.Name,
+    Account.Type,
+    Owner.Name,
+    Owner.UserRole.Name,
+    Owner.IsActive,
+    LeanData__Routing_Action__c,
+    LeanData__Processing_Timeframe__c,
+    LeanData__Revenue_Sequence_Type__c,
+    LeanData__Last_Routed_Date__c,
+    LeanData__Routed_By__c,
+    LeanData__Account_Based_Match__c,
+    LeanData__Reporting_Matched_Account__c,
+    CreatedDate,
+    LastModifiedDate
+FROM Contact
+WHERE Email = 'replace@withemail.com'  -- REPLACE with contact email
+LIMIT 5
+
+
+// ------------------------------------------------------------
+// QUERY 4 — Recent routing activity across all Leads (last 24 hours)
+// ------------------------------------------------------------
+// Use to spot routing patterns, errors, or mis-routes across a time window.
+// Increase LAST_N_DAYS:1 to LAST_N_DAYS:7 for a weekly view.
+// ------------------------------------------------------------
+
+SELECT
+    Id,
+    Name,
+    Email,
+    LeadSource,
+    Status,
+    Owner.Name,
+    Owner.UserRole.Name,
+    LeanData__Routing_Action__c,
+    LeanData__Processing_Timeframe__c,
+    LeanData__Revenue_Sequence_Type__c,
+    LeanData__Last_Routed_Date__c,
+    LeanData__Routed_By__c,
+    CreatedDate
+FROM Lead
+WHERE LeanData__Last_Routed_Date__c = LAST_N_DAYS:1
+AND IsConverted = false
+ORDER BY LeanData__Last_Routed_Date__c DESC
+LIMIT 200
+
+
+// ------------------------------------------------------------
+// QUERY 5 — Leads currently owned by a LDC Queue (stuck / un-routed)
+// ------------------------------------------------------------
+// Use when a rep says "I never got the lead" or routing appears to have stopped.
+// LDC Queues in this org: LDC_Queue_1 through LDC_Queue_10,
+// Lead_Distribution_Center, Lead_Working_Hours_Queue,
+// Lead_After_Hours_Queue, Lead_Before_Hours_Queue, Lead_Overnight_Hours_Queue.
+// ------------------------------------------------------------
+
+SELECT
+    Id,
+    Name,
+    Email,
+    LeadSource,
+    Status,
+    Owner.Name,          // Will show the Queue name if unassigned
+    LeanData__Routing_Action__c,
+    LeanData__Processing_Timeframe__c,
+    LeanData__Last_Routed_Date__c,
+    CreatedDate
+FROM Lead
+WHERE Owner.Type = 'Queue'
+AND Owner.Name LIKE '%LDC%'           // Adjust to target a specific queue
+AND IsConverted = false
+ORDER BY CreatedDate DESC
+LIMIT 50
+
+
+// ------------------------------------------------------------
+// QUERY 6 — Non-target leads (routed to Unqualified queue by LeanData)
+// ------------------------------------------------------------
+// Use when investigating why a lead was marked Non-Target.
+// ------------------------------------------------------------
+
+SELECT
+    Id,
+    Name,
+    Email,
+    LeadSource,
+    Status,
+    Owner.Name,
+    LeanData__Routing_Action__c,
+    LeanData__Processing_Timeframe__c,
+    LeanData__Revenue_Sequence_Type__c,
+    LeanData__Last_Routed_Date__c,
+    CreatedDate
+FROM Lead
+WHERE LeanData__Routing_Action__c = 'Non-Target'
+AND CreatedDate = LAST_N_DAYS:7
+ORDER BY CreatedDate DESC
+LIMIT 100
+
+
+// ------------------------------------------------------------
+// QUERY 7 — LeanData round-robin pool history for a rep
+// ------------------------------------------------------------
+// Use when a rep claims they are not receiving leads from a pool.
+// RoundRobin__c is the org's custom round-robin tracking object.
+// Adjust field names if the Architect has customized this object.
+// ------------------------------------------------------------
+
+SELECT
+    Id,
+    Name,
+    CreatedDate,
+    LastModifiedDate
+FROM RoundRobin__c
+ORDER BY LastModifiedDate DESC
+LIMIT 20
+
+
+// ------------------------------------------------------------
+// QUERY 8 — Leads routed to a specific rep (by rep name)
+// ------------------------------------------------------------
+// Use when a manager asks "show me all leads LeanData sent to [rep] this week."
+// Replace owner name value before running.
+// ------------------------------------------------------------
+
+SELECT
+    Id,
+    Name,
+    Email,
+    LeadSource,
+    Status,
+    Owner.Name,
+    Owner.UserRole.Name,
+    LeanData__Routing_Action__c,
+    LeanData__Processing_Timeframe__c,
+    LeanData__Revenue_Sequence_Type__c,
+    LeanData__Last_Routed_Date__c,
+    CreatedDate
+FROM Lead
+WHERE Owner.Name = 'First Last'       -- REPLACE with rep's full name
+AND LeanData__Last_Routed_Date__c = LAST_N_DAYS:7
+AND IsConverted = false
+ORDER BY LeanData__Last_Routed_Date__c DESC
+LIMIT 100
+
+
+// ------------------------------------------------------------
+// QUERY 9 — Routing action distribution (aggregate summary)
+// ------------------------------------------------------------
+// Use for a quick count of how many leads went to each routing bucket
+// in the past 30 days. Good for spot-checking routing health.
+// ------------------------------------------------------------
+
+SELECT
+    LeanData__Routing_Action__c,
+    LeanData__Processing_Timeframe__c,
+    COUNT(Id) Total
+FROM Lead
+WHERE CreatedDate = LAST_N_DAYS:30
+GROUP BY LeanData__Routing_Action__c, LeanData__Processing_Timeframe__c
+ORDER BY COUNT(Id) DESC

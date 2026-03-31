@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Before Working Hours</fullName>
+        <default>false</default>
+        <label>Before Working Hours</label>
+    </customValue>
+    <customValue>
+        <fullName>After Working Hours</fullName>
+        <default>false</default>
+        <label>After Working Hours</label>
+    </customValue>
+    <customValue>
+        <fullName>Working Hours</fullName>
+        <default>false</default>
+        <label>Working Hours</label>
+    </customValue>
+    <customValue>
+        <fullName>Overnight Hours</fullName>
+        <default>false</default>
+        <label>Overnight Hours</label>
+    </customValue>
+    <masterLabel>LeanData Processing Timeframe</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

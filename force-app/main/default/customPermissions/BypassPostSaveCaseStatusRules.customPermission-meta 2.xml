@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>included in validation rule assigned to users who need to bypass validation rule on case that restricts users from updating post save cases to specific statuses</description>
+    <isLicensed>false</isLicensed>
+    <label>BypassPostSaveCaseStatusRules</label>
+</CustomPermission>

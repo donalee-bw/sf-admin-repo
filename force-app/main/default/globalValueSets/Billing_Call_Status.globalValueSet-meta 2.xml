@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Scheduling</fullName>
+        <default>false</default>
+        <label>Scheduling</label>
+    </customValue>
+    <customValue>
+        <fullName>Scheduled</fullName>
+        <default>false</default>
+        <label>Scheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>Complete</fullName>
+        <default>false</default>
+        <label>Complete</label>
+    </customValue>
+    <customValue>
+        <fullName>Postponed</fullName>
+        <default>false</default>
+        <label>Postponed</label>
+    </customValue>
+    <customValue>
+        <fullName>Missed</fullName>
+        <default>false</default>
+        <label>Missed</label>
+    </customValue>
+    <customValue>
+        <fullName>Missed 2x</fullName>
+        <default>false</default>
+        <label>Missed 2x</label>
+    </customValue>
+    <customValue>
+        <fullName>Declined/Completed Offline</fullName>
+        <default>false</default>
+        <label>Declined/Completed Offline</label>
+    </customValue>
+    <description>Used to track call statuses for billing calls.</description>
+    <masterLabel>Billing Call Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

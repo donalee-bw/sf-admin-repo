@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Internal Pass-Off</fullName>
+        <default>false</default>
+        <label>Internal Pass-Off</label>
+    </customValue>
+    <customValue>
+        <fullName>MQL</fullName>
+        <default>false</default>
+        <label>MQL</label>
+    </customValue>
+    <customValue>
+        <fullName>Low Intent Lead</fullName>
+        <default>false</default>
+        <label>Low Intent Lead</label>
+    </customValue>
+    <customValue>
+        <fullName>Rep Relaunch</fullName>
+        <default>false</default>
+        <label>Rep Relaunch</label>
+    </customValue>
+    <customValue>
+        <fullName>Auto Relaunch</fullName>
+        <default>false</default>
+        <label>Auto Relaunch</label>
+    </customValue>
+    <customValue>
+        <fullName>Site Add</fullName>
+        <default>false</default>
+        <label>Site Add - Inbound</label>
+    </customValue>
+    <customValue>
+        <fullName>Site Add - Outbound</fullName>
+        <default>false</default>
+        <label>Site Add - Outbound</label>
+    </customValue>
+    <customValue>
+        <fullName>Outbound</fullName>
+        <default>false</default>
+        <label>Outbound</label>
+    </customValue>
+    <customValue>
+        <fullName>Pilot Channel</fullName>
+        <default>false</default>
+        <label>Pilot Channel</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Churn</fullName>
+        <default>false</default>
+        <label>Billing Churn</label>
+    </customValue>
+    <customValue>
+        <fullName>Never Upsold</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Never Upsold</label>
+    </customValue>
+    <customValue>
+        <fullName>Less than 3 CL</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Less than 3 CL</label>
+    </customValue>
+    <customValue>
+        <fullName>CL Customer Didn&apos;t Upsell</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CL Customer Didn&apos;t Upsell</label>
+    </customValue>
+    <customValue>
+        <fullName>Inbound Other</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Inbound Other</label>
+    </customValue>
+    <customValue>
+        <fullName>CL Demo Logistics</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CL Demo Logistics</label>
+    </customValue>
+    <customValue>
+        <fullName>Multisite</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Multisite</label>
+    </customValue>
+    <customValue>
+        <fullName>Large</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Large</label>
+    </customValue>
+    <customValue>
+        <fullName>Gov</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Gov</label>
+    </customValue>
+    <customValue>
+        <fullName>CL Adoption Timeline</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CL Adoption Timeline</label>
+    </customValue>
+    <customValue>
+        <fullName>CL Implementation Concerns</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CL Implementation Concerns</label>
+    </customValue>
+    <customValue>
+        <fullName>CL Fees Too High</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CL Fees Too High</label>
+    </customValue>
+    <customValue>
+        <fullName>Spanish Speaking</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Spanish Speaking</label>
+    </customValue>
+    <customValue>
+        <fullName>CL Expense Management</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CL Expense Management</label>
+    </customValue>
+    <customValue>
+        <fullName>No Private Payers</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>No Private Payers</label>
+    </customValue>
+    <customValue>
+        <fullName>CL Another Contract Provider</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CL Another Contract Provider</label>
+    </customValue>
+    <customValue>
+        <fullName>Canada</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Canada</label>
+    </customValue>
+    <customValue>
+        <fullName>Square</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Square</label>
+    </customValue>
+    <customValue>
+        <fullName>CL Product</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CL Product</label>
+    </customValue>
+    <customValue>
+        <fullName>CL Unable to Connect</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CL Unable to Connect</label>
+    </customValue>
+    <customValue>
+        <fullName>MQL Email</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>MQL Email</label>
+    </customValue>
+    <customValue>
+        <fullName>MQL In-app</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>MQL In-app</label>
+    </customValue>
+    <customValue>
+        <fullName>MQL Webinar</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>MQL Webinar</label>
+    </customValue>
+    <customValue>
+        <fullName>New Customer</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>New Customer</label>
+    </customValue>
+    <customValue>
+        <fullName>Offline Solutions</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Offline Solutions</label>
+    </customValue>
+    <customValue>
+        <fullName>Previous CW not Activated</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Previous CW not Activated</label>
+    </customValue>
+    <customValue>
+        <fullName>Procare</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Procare</label>
+    </customValue>
+    <masterLabel>Billing Upsell Opportunity Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Yes - Sales Only</fullName>
+        <default>false</default>
+        <label>Yes - Sales Only</label>
+    </customValue>
+    <customValue>
+        <fullName>No</fullName>
+        <default>false</default>
+        <label>No</label>
+    </customValue>
+    <customValue>
+        <fullName>Did Not Cover</fullName>
+        <default>false</default>
+        <label>Did Not Cover</label>
+    </customValue>
+    <customValue>
+        <fullName>Co-Pays Only in bw</fullName>
+        <default>false</default>
+        <label>Co-Pays Only in bw</label>
+    </customValue>
+    <customValue>
+        <fullName>Co-Pays &amp; Subsidy Tool in bw</fullName>
+        <default>false</default>
+        <label>Co-Pays &amp; Subsidy Tool in bw</label>
+    </customValue>
+    <customValue>
+        <fullName>Fixed Payments</fullName>
+        <default>false</default>
+        <label>Fixed Payments</label>
+    </customValue>
+    <customValue>
+        <fullName>Variable Payments</fullName>
+        <default>false</default>
+        <label>Variable Payments</label>
+    </customValue>
+    <customValue>
+        <fullName>Parents Should See Subsidy Charges</fullName>
+        <default>false</default>
+        <label>Parents Should See Subsidy Charges</label>
+    </customValue>
+    <customValue>
+        <fullName>Parents Should NOT See Subsidy Charges</fullName>
+        <default>false</default>
+        <label>Parents Should NOT See Subsidy Charges</label>
+    </customValue>
+    <customValue>
+        <fullName>Want Subsidy Reporting</fullName>
+        <default>false</default>
+        <label>Want Subsidy Reporting</label>
+    </customValue>
+    <customValue>
+        <fullName>Yes: Desktop - Sales Only</fullName>
+        <default>false</default>
+        <label>Yes: Desktop - Sales Only</label>
+    </customValue>
+    <customValue>
+        <fullName>Yes: Online - Sales Only</fullName>
+        <default>false</default>
+        <label>Yes: Online - Sales Only</label>
+    </customValue>
+    <customValue>
+        <fullName>Yes - Not in Brightwheel</fullName>
+        <default>false</default>
+        <label>Yes - Not in Brightwheel</label>
+    </customValue>
+    <customValue>
+        <fullName>Yes - In Brightwheel</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Yes - In Brightwheel</label>
+    </customValue>
+    <customValue>
+        <fullName>In the Future</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>In the Future</label>
+    </customValue>
+    <masterLabel>Subsidy Tracking</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>preschool_or_child_care</fullName>
+        <default>false</default>
+        <label>Preschool or Child Care</label>
+    </customValue>
+    <customValue>
+        <fullName>after_school</fullName>
+        <default>false</default>
+        <label>After school</label>
+    </customValue>
+    <customValue>
+        <fullName>Camp</fullName>
+        <default>false</default>
+        <label>Camp</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Preschool Or Child Care</fullName>
+        <default>false</default>
+        <label>Preschool Or Child Care2</label>
+    </customValue>
+    <description>Program type from forms</description>
+    <masterLabel>Program Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

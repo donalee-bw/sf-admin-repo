@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Postponed</fullName>
+        <default>false</default>
+        <label>Postponed</label>
+    </customValue>
+    <customValue>
+        <fullName>Intake</fullName>
+        <default>false</default>
+        <label>Intake</label>
+    </customValue>
+    <customValue>
+        <fullName>Initial Setup Call Scheduled</fullName>
+        <default>false</default>
+        <label>Initial Setup Call Scheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>Missed Setup Call</fullName>
+        <default>false</default>
+        <label>Missed Setup Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Onboarding Call</fullName>
+        <default>false</default>
+        <label>Onboarding Call Scheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>Missed Onboarding Call</fullName>
+        <default>false</default>
+        <label>Missed Onboarding Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Check-In Scheduled</fullName>
+        <default>false</default>
+        <label>Check-In Scheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>Unsuccessful Check-In</fullName>
+        <default>false</default>
+        <label>Unsuccessful Check-In</label>
+    </customValue>
+    <customValue>
+        <fullName>Soft Launch</fullName>
+        <default>false</default>
+        <label>Soft Launch</label>
+    </customValue>
+    <customValue>
+        <fullName>Piloting</fullName>
+        <default>false</default>
+        <label>Piloting</label>
+    </customValue>
+    <customValue>
+        <fullName>Go-Live</fullName>
+        <default>false</default>
+        <label>Go-Live</label>
+    </customValue>
+    <customValue>
+        <fullName>Working Cancellation</fullName>
+        <default>false</default>
+        <label>Working Cancellation</label>
+    </customValue>
+    <customValue>
+        <fullName>Activated</fullName>
+        <default>false</default>
+        <label>Adopting (Activated)</label>
+    </customValue>
+    <customValue>
+        <fullName>Setting up Account</fullName>
+        <default>false</default>
+        <label>Setting up Account</label>
+    </customValue>
+    <customValue>
+        <fullName>Pre-Launch Check-in</fullName>
+        <default>false</default>
+        <label>Pre-Launch Check-in</label>
+    </customValue>
+    <customValue>
+        <fullName>Unresponsive</fullName>
+        <default>false</default>
+        <label>Unresponsive</label>
+    </customValue>
+    <customValue>
+        <fullName>Canceled</fullName>
+        <default>false</default>
+        <label>Canceled</label>
+    </customValue>
+    <customValue>
+        <fullName>Low Touch Onboarding</fullName>
+        <default>false</default>
+        <label>Low Touch Onboarding</label>
+    </customValue>
+    <customValue>
+        <fullName>Self-Assist</fullName>
+        <default>false</default>
+        <label>Self-Assist</label>
+    </customValue>
+    <customValue>
+        <fullName>Inactive</fullName>
+        <default>false</default>
+        <label>Archived Backlog</label>
+    </customValue>
+    <customValue>
+        <fullName>In Contact</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>In Contact</label>
+    </customValue>
+    <customValue>
+        <fullName>Passback</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Passback</label>
+    </customValue>
+    <customValue>
+        <fullName>Unknown</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Unknown</label>
+    </customValue>
+    <masterLabel>Onboarding Stage</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

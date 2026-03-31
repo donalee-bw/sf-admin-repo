@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Chose Competitor</fullName>
+        <default>false</default>
+        <label>Chose Competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Chose Free Version</fullName>
+        <default>false</default>
+        <label>Chose Free Version</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID-19</fullName>
+        <default>false</default>
+        <label>COVID-19</label>
+    </customValue>
+    <customValue>
+        <fullName>Need more Features</fullName>
+        <default>false</default>
+        <label>Need more Features</label>
+    </customValue>
+    <customValue>
+        <fullName>No Budget</fullName>
+        <default>false</default>
+        <label>No Budget</label>
+    </customValue>
+    <customValue>
+        <fullName>Not interested</fullName>
+        <default>false</default>
+        <label>Not interested</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Ready</fullName>
+        <default>false</default>
+        <label>Not Ready</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Responding</fullName>
+        <default>false</default>
+        <label>Not Responding</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing - need to carry balance</fullName>
+        <default>false</default>
+        <label>Billing - need to carry balance</label>
+    </customValue>
+    <customValue>
+        <fullName>Duplicate</fullName>
+        <default>false</default>
+        <label>Duplicate</label>
+    </customValue>
+    <customValue>
+        <fullName>Dead on Arrival</fullName>
+        <default>false</default>
+        <label>Dead on Arrival</label>
+    </customValue>
+    <customValue>
+        <fullName>Neglected</fullName>
+        <default>false</default>
+        <label>Neglected</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-Target</fullName>
+        <default>false</default>
+        <label>Non-Target</label>
+    </customValue>
+    <customValue>
+        <fullName>Cost - Not Enough Value</fullName>
+        <default>false</default>
+        <label>Cost - Not Enough Value</label>
+    </customValue>
+    <customValue>
+        <fullName>Like current solution</fullName>
+        <default>false</default>
+        <label>Like current solution</label>
+    </customValue>
+    <customValue>
+        <fullName>Curriculum quality</fullName>
+        <default>false</default>
+        <label>Curriculum quality</label>
+    </customValue>
+    <customValue>
+        <fullName>Lack of digital features</fullName>
+        <default>false</default>
+        <label>Lack of digital features</label>
+    </customValue>
+    <customValue>
+        <fullName>Too busy to change</fullName>
+        <default>false</default>
+        <label>Too busy to change</label>
+    </customValue>
+    <customValue>
+        <fullName>Not flexible enough</fullName>
+        <default>false</default>
+        <label>Not flexible enough</label>
+    </customValue>
+    <customValue>
+        <fullName>Enjoy making their own curriculum</fullName>
+        <default>false</default>
+        <label>Enjoy making their own curriculum</label>
+    </customValue>
+    <customValue>
+        <fullName>Want to change later</fullName>
+        <default>false</default>
+        <label>Want to change later</label>
+    </customValue>
+    <customValue>
+        <fullName>Cost - Does not have budget</fullName>
+        <default>false</default>
+        <label>Cost - Does not have budget</label>
+    </customValue>
+    <customValue>
+        <fullName>Cost - Gets better deal with competitor</fullName>
+        <default>false</default>
+        <label>Cost - Gets better deal with competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Cost - In contract with competitor</fullName>
+        <default>false</default>
+        <label>Cost - In contract with competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Cost - Processing fees are too high</fullName>
+        <default>false</default>
+        <label>Cost - Processing fees are too high</label>
+    </customValue>
+    <customValue>
+        <fullName>Cost - Shipping too pricey</fullName>
+        <default>false</default>
+        <label>Cost - Shipping too pricey</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Reporting</fullName>
+        <default>false</default>
+        <label>Product - Reporting</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Billing</fullName>
+        <default>false</default>
+        <label>Product - Billing</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Billing (Canada)</fullName>
+        <default>false</default>
+        <label>Product - Billing (Canada)</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Staff mgmt</fullName>
+        <default>false</default>
+        <label>Product - Staff mgmt</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Payroll</fullName>
+        <default>false</default>
+        <label>Product - Payroll</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Other financial management solutions</fullName>
+        <default>false</default>
+        <label>Product - Other financial management solutions</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Multi-site functionality</fullName>
+        <default>false</default>
+        <label>Product - Multi-site functionality</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Admissions</fullName>
+        <default>false</default>
+        <label>Product - Admissions</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Curriculum</fullName>
+        <default>false</default>
+        <label>Product - Curriculum</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Ease of use</fullName>
+        <default>false</default>
+        <label>Product - Ease of use</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Adoption concerns (pen/paper)</fullName>
+        <default>false</default>
+        <label>Product - Adoption concerns (pen/paper)</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Adoption concerns (competitor)</fullName>
+        <default>false</default>
+        <label>Product - Adoption concerns (competitor)</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Other (Note what feature)</fullName>
+        <default>false</default>
+        <label>Product - Other (Note what feature)</label>
+    </customValue>
+    <customValue>
+        <fullName>Process - Could not get right DM on the phone</fullName>
+        <default>false</default>
+        <label>Process - Could not get right DM on the phone</label>
+    </customValue>
+    <customValue>
+        <fullName>Process - Neglected</fullName>
+        <default>false</default>
+        <label>Process - Neglected</label>
+    </customValue>
+    <customValue>
+        <fullName>Process - Time of year</fullName>
+        <default>false</default>
+        <label>Process - Time of year</label>
+    </customValue>
+    <customValue>
+        <fullName>Other - Unable to fulfill security/IT requests/redlining</fullName>
+        <default>false</default>
+        <label>Other - Unable to fulfill security/IT requests/redlining</label>
+    </customValue>
+    <customValue>
+        <fullName>Other - Customer was non-target</fullName>
+        <default>false</default>
+        <label>Other - Customer was non-target</label>
+    </customValue>
+    <customValue>
+        <fullName>Other - Staff buy-in</fullName>
+        <default>false</default>
+        <label>Other - Staff buy-in</label>
+    </customValue>
+    <customValue>
+        <fullName>Other - Not Yet Qualified</fullName>
+        <default>false</default>
+        <label>Other - Not Yet Qualified</label>
+    </customValue>
+    <customValue>
+        <fullName>Other - Duplicate</fullName>
+        <default>false</default>
+        <label>Other - Duplicate</label>
+    </customValue>
+    <customValue>
+        <fullName>Not for Sales - Cancelled SaaS</fullName>
+        <default>false</default>
+        <label>Not for Sales - Cancelled SaaS</label>
+    </customValue>
+    <customValue>
+        <fullName>One time order</fullName>
+        <default>false</default>
+        <label>One time order</label>
+    </customValue>
+    <customValue>
+        <fullName>Current Customer - On a subscription</fullName>
+        <default>false</default>
+        <label>Current Customer - On a subscription</label>
+    </customValue>
+    <customValue>
+        <fullName>Current Customer - Have enough boxes</fullName>
+        <default>false</default>
+        <label>Current Customer - Have enough boxes</label>
+    </customValue>
+    <customValue>
+        <fullName>Permanent Closure</fullName>
+        <default>false</default>
+        <label>Permanent Closure</label>
+    </customValue>
+    <customValue>
+        <fullName>Curriculum - Additional languages (Bilingual / sign language)</fullName>
+        <default>false</default>
+        <label>Curriculum - Additional languages (Bilingual / sign language)</label>
+    </customValue>
+    <customValue>
+        <fullName>Curriculum - Social / Emotional</fullName>
+        <default>false</default>
+        <label>Curriculum - Social / Emotional</label>
+    </customValue>
+    <customValue>
+        <fullName>Curriculum - Montessori / Reggio / Waldorf</fullName>
+        <default>false</default>
+        <label>Curriculum - Montessori / Reggio / Waldorf</label>
+    </customValue>
+    <customValue>
+        <fullName>Curriculum - Not difficult/bad fit</fullName>
+        <default>false</default>
+        <label>Curriculum - Not difficult/bad fit</label>
+    </customValue>
+    <customValue>
+        <fullName>Curriculum - Wants digital only</fullName>
+        <default>false</default>
+        <label>Curriculum - Wants digital only</label>
+    </customValue>
+    <customValue>
+        <fullName>Required to use different curriculum</fullName>
+        <default>false</default>
+        <label>Required to use different curriculum</label>
+    </customValue>
+    <customValue>
+        <fullName>Process - Stopped Responding - Flaked Demo</fullName>
+        <default>false</default>
+        <label>Process - Stopped Responding - Flaked Demo</label>
+    </customValue>
+    <customValue>
+        <fullName>Process - Stopped Responding - Held Demo</fullName>
+        <default>false</default>
+        <label>Process - Stopped Responding - Held Demo</label>
+    </customValue>
+    <customValue>
+        <fullName>Process - Final DM Said No - Budget</fullName>
+        <default>false</default>
+        <label>Process - Final DM Said No - Budget</label>
+    </customValue>
+    <customValue>
+        <fullName>Process - Final DM Said No - Contract/Competitor</fullName>
+        <default>false</default>
+        <label>Process - Final DM Said No - Contract/Competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Process - Board Said No - Budget</fullName>
+        <default>false</default>
+        <label>Process - Board Said No - Budget</label>
+    </customValue>
+    <customValue>
+        <fullName>Process - Board Said No - Contract/Competitor</fullName>
+        <default>false</default>
+        <label>Process - Board Said No - Contract/Competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Process - Stopped Responding</fullName>
+        <default>false</default>
+        <label>Process - Stopped Responding</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Responding - Spoke to Non-DM</fullName>
+        <default>false</default>
+        <label>Not Responding - Spoke to Non-DM</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Responding - Spoke to DM (Did Not Pitch)</fullName>
+        <default>false</default>
+        <label>Not Responding - Spoke to DM (Did Not Pitch)</label>
+    </customValue>
+    <customValue>
+        <fullName>Product fit - missing features</fullName>
+        <default>false</default>
+        <label>Product fit - missing features</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Not brightwheel premium</fullName>
+        <default>false</default>
+        <label>Not brightwheel premium</label>
+    </customValue>
+    <customValue>
+        <fullName>Junk/Spam</fullName>
+        <default>false</default>
+        <label>Junk/Spam</label>
+    </customValue>
+    <customValue>
+        <fullName>Not for Sales</fullName>
+        <default>false</default>
+        <label>Not for Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>Wants Digital Curriculum</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Wants Digital Curriculum</label>
+    </customValue>
+    <masterLabel>SaaS Closed Lost Reasons</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

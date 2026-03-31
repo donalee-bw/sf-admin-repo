@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Ratios</fullName>
+        <default>false</default>
+        <label>Ratios</label>
+    </customValue>
+    <customValue>
+        <fullName>Timecards</fullName>
+        <default>false</default>
+        <label>Timecards</label>
+    </customValue>
+    <customValue>
+        <fullName>Both</fullName>
+        <default>false</default>
+        <label>Both</label>
+    </customValue>
+    <masterLabel>Staff Check-In Tracking</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

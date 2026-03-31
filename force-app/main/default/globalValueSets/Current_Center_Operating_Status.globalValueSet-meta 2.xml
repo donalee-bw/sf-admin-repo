@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Open - Above 50% Enrollment</fullName>
+        <default>false</default>
+        <label>Operating - Above 50% Enrollment</label>
+    </customValue>
+    <customValue>
+        <fullName>Open - Below 50% Enrollment</fullName>
+        <default>false</default>
+        <label>Operating - Below 50% Enrollment</label>
+    </customValue>
+    <customValue>
+        <fullName>Operating - 0 Enrollment</fullName>
+        <default>false</default>
+        <label>Operating - 0 Enrollment</label>
+    </customValue>
+    <customValue>
+        <fullName>Operating - Temporarily Closed</fullName>
+        <default>false</default>
+        <label>Operating - Temporarily Closed</label>
+    </customValue>
+    <customValue>
+        <fullName>In Process of Taking Over a School</fullName>
+        <default>false</default>
+        <label>In Process of Taking Over a School</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP Stage 1 - Opening in 6 + Months</fullName>
+        <default>false</default>
+        <label>BNP Stage 1 - Opening in 6 + Months</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP Stage 2 - Opening in 1 - 6 Months</fullName>
+        <default>false</default>
+        <label>BNP Stage 2 - Opening in 1 - 6 Months</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP Stage 3 - Opening less than 1 Month</fullName>
+        <default>false</default>
+        <label>BNP Stage 3 - Opening less than 1 Month</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID: Limited Open</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DO NOT USE COVID: Limited Open</label>
+    </customValue>
+    <customValue>
+        <fullName>Open and Operating</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DO NOT USE Open and Operating</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP - Looking for Location</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>BNP - Looking for Location</label>
+    </customValue>
+    <customValue>
+        <fullName>Under Construction</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>BNP - Under Construction</label>
+    </customValue>
+    <customValue>
+        <fullName>Going Through Licensing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>BNP - Going Through Licensing</label>
+    </customValue>
+    <customValue>
+        <fullName>On School Break</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DO NOT USE On School Break</label>
+    </customValue>
+    <customValue>
+        <fullName>Licensed and Opening Soon</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>BNP - Licensed and Opening Soon</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID: Temporarily Closed</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DO NOT USE COVID: Temporarily Closed</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID: Closed Indefinitely</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DO NOT USE COVID: Closed Indefinitely</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID: Call for Status</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DO NOT USE COVID: Call for Status</label>
+    </customValue>
+    <description>Used on Opp and Account. Shows the current state of the center - for ex. if they are currently open and operating.</description>
+    <masterLabel>Current Center Operating Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

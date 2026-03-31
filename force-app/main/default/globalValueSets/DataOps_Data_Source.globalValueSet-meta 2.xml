@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Mixpanel</fullName>
+        <default>false</default>
+        <label>Mixpanel</label>
+    </customValue>
+    <customValue>
+        <fullName>Re-engage</fullName>
+        <default>false</default>
+        <label>Re-engage</label>
+    </customValue>
+    <customValue>
+        <fullName>Cancelled/Churn</fullName>
+        <default>false</default>
+        <label>Cancelled/Churn</label>
+    </customValue>
+    <customValue>
+        <fullName>Cold Call</fullName>
+        <default>false</default>
+        <label>Cold Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Closed Lost</fullName>
+        <default>false</default>
+        <label>Closed Lost</label>
+    </customValue>
+    <description>data populated on the Contact which will feed into the Opportunity on the Opportunity Source record</description>
+    <masterLabel>DataOps Data Source</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,23 @@
+<apex:component controller="SigmaEmbedClass_JWTTest">
+    <apex:attribute name="embedPath" 
+                    description="Sigma embed URL" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!embed_path}"/>
+    <apex:attribute name="embedUser" 
+                    description="Salesforce user email" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!embed_user}"/>
+    <apex:attribute name="sfAccountId" 
+                    description="Salesforce Account ID for filtering" 
+                    type="String" 
+                    required="false" 
+                    assignTo="{!sf_account_id}"/>
+    
+    <apex:iframe id="sigmaEmbed" 
+                 src="{!generateIframeUrl}" 
+                 frameborder="0"
+                 width="100%" 
+                 height="800px"/>
+</apex:component>

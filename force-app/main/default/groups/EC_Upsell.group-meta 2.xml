@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Group xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>SaaS Referral leveraging Interested in bw Learning use this pool to RR chase me opps. Additionally, any Inbound Opp created with a Contact that is not assigned to an EDU rep will be RR to this group.</description>
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <name>EC Upsell</name>
+</Group>

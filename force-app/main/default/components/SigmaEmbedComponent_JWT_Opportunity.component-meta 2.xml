@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <description>JWT for Opp sigma embed component</description>
+    <label>SigmaEmbedComponent JWT Opportunity</label>
+</ApexComponent>

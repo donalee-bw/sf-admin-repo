@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>no show</fullName>
+        <default>false</default>
+        <label>no show</label>
+    </customValue>
+    <customValue>
+        <fullName>cancelled</fullName>
+        <default>false</default>
+        <label>cancelled</label>
+    </customValue>
+    <customValue>
+        <fullName>incomplete</fullName>
+        <default>false</default>
+        <label>incomplete</label>
+    </customValue>
+    <customValue>
+        <fullName>complete</fullName>
+        <default>false</default>
+        <label>complete</label>
+    </customValue>
+    <masterLabel>Last Demo Outcome</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

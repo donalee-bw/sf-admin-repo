@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>OB Full Cycle Account Executive Training Team 0</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>OB Full Cycle Account Executive Training Team 0</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>OB_Full_Cycle_Account_Executive_Manager_0</parentRole>
+</Role>

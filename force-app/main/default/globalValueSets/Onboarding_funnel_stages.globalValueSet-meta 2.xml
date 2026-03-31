@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Assigned</fullName>
+        <default>false</default>
+        <label>Assigned</label>
+    </customValue>
+    <customValue>
+        <fullName>Initial Setup Call</fullName>
+        <default>false</default>
+        <label>Initial Setup Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Adding Initial Students</fullName>
+        <default>false</default>
+        <label>Adding Initial Students</label>
+    </customValue>
+    <customValue>
+        <fullName>Onboarding Training Call</fullName>
+        <default>false</default>
+        <label>Onboarding Training Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Completing Student Setup</fullName>
+        <default>false</default>
+        <label>Completing Student Setup</label>
+    </customValue>
+    <customValue>
+        <fullName>Logging Actions</fullName>
+        <default>false</default>
+        <label>Logging Actions</label>
+    </customValue>
+    <customValue>
+        <fullName>Parents Joining</fullName>
+        <default>false</default>
+        <label>Parents Joining</label>
+    </customValue>
+    <customValue>
+        <fullName>New</fullName>
+        <default>false</default>
+        <label>New</label>
+    </customValue>
+    <customValue>
+        <fullName>Started Verification</fullName>
+        <default>false</default>
+        <label>Started Verification</label>
+    </customValue>
+    <customValue>
+        <fullName>Verification Pending</fullName>
+        <default>false</default>
+        <label>Verification Pending</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Setup</fullName>
+        <default>false</default>
+        <label>Billing Setup</label>
+    </customValue>
+    <customValue>
+        <fullName>Sending 1st Bills</fullName>
+        <default>false</default>
+        <label>Sending 1st Bills</label>
+    </customValue>
+    <customValue>
+        <fullName>Completing 1st Bill Cycle</fullName>
+        <default>false</default>
+        <label>Completing 1st Bill Cycle</label>
+    </customValue>
+    <customValue>
+        <fullName>Sending 2nd Bills</fullName>
+        <default>false</default>
+        <label>Sending 2nd Bills</label>
+    </customValue>
+    <customValue>
+        <fullName>Completing 2nd Bill Cycles</fullName>
+        <default>false</default>
+        <label>Completing 2nd Bill Cycles</label>
+    </customValue>
+    <customValue>
+        <fullName>Entering SaaS Funnel</fullName>
+        <default>false</default>
+        <label>Entering SaaS Funnel</label>
+    </customValue>
+    <customValue>
+        <fullName>Entering Billing Funnel</fullName>
+        <default>false</default>
+        <label>Entering Billing Funnel</label>
+    </customValue>
+    <customValue>
+        <fullName>Submitting Verification</fullName>
+        <default>false</default>
+        <label>Submitting Verification</label>
+    </customValue>
+    <customValue>
+        <fullName>Finalizing Verification</fullName>
+        <default>false</default>
+        <label>Finalizing Verification</label>
+    </customValue>
+    <customValue>
+        <fullName>Uploading Students</fullName>
+        <default>false</default>
+        <label>Uploading Students</label>
+    </customValue>
+    <customValue>
+        <fullName>Adding Parents</fullName>
+        <default>false</default>
+        <label>Adding Parents</label>
+    </customValue>
+    <customValue>
+        <fullName>Logging First Activity</fullName>
+        <default>false</default>
+        <label>Logging First Activity</label>
+    </customValue>
+    <customValue>
+        <fullName>Initiating Parent Signup</fullName>
+        <default>false</default>
+        <label>Initiating Parent Signup</label>
+    </customValue>
+    <customValue>
+        <fullName>Logging More Activities</fullName>
+        <default>false</default>
+        <label>Logging More Activities</label>
+    </customValue>
+    <customValue>
+        <fullName>Increasing Parent Adoption</fullName>
+        <default>false</default>
+        <label>Increasing Parent Adoption</label>
+    </customValue>
+    <customValue>
+        <fullName>Setting Up Charges</fullName>
+        <default>false</default>
+        <label>Setting Up Charges</label>
+    </customValue>
+    <customValue>
+        <fullName>Completing Setup</fullName>
+        <default>false</default>
+        <label>Completing Setup</label>
+    </customValue>
+    <customValue>
+        <fullName>Adding Parents Payment Method</fullName>
+        <default>false</default>
+        <label>Adding Parents Payment Method</label>
+    </customValue>
+    <customValue>
+        <fullName>Sending Bills</fullName>
+        <default>false</default>
+        <label>Sending Bills</label>
+    </customValue>
+    <customValue>
+        <fullName>Parents Paying Online</fullName>
+        <default>false</default>
+        <label>Parents Paying Online</label>
+    </customValue>
+    <customValue>
+        <fullName>Webinar Registered</fullName>
+        <default>false</default>
+        <label>Webinar Registered</label>
+    </customValue>
+    <customValue>
+        <fullName>Webinar Attended</fullName>
+        <default>false</default>
+        <label>Webinar Attended</label>
+    </customValue>
+    <customValue>
+        <fullName>Completed Onboarding Sequences</fullName>
+        <default>false</default>
+        <label>Completed Onboarding Sequences</label>
+    </customValue>
+    <customValue>
+        <fullName>Activated</fullName>
+        <default>false</default>
+        <label>Activated</label>
+    </customValue>
+    <customValue>
+        <fullName>Tracking Attendance</fullName>
+        <default>false</default>
+        <label>Tracking Attendance</label>
+    </customValue>
+    <customValue>
+        <fullName>Parents Signing Up</fullName>
+        <default>false</default>
+        <label>Parents Signing Up</label>
+    </customValue>
+    <customValue>
+        <fullName>Adding Students</fullName>
+        <default>false</default>
+        <label>Adding Students</label>
+    </customValue>
+    <customValue>
+        <fullName>Adding Staff</fullName>
+        <default>false</default>
+        <label>Adding Staff</label>
+    </customValue>
+    <customValue>
+        <fullName>Staff Logging In</fullName>
+        <default>false</default>
+        <label>Staff Logging In</label>
+    </customValue>
+    <customValue>
+        <fullName>Logging Activities or Messages</fullName>
+        <default>false</default>
+        <label>Logging Activities or Messages</label>
+    </customValue>
+    <customValue>
+        <fullName>Setting Up Bills</fullName>
+        <default>false</default>
+        <label>Setting Up Bills</label>
+    </customValue>
+    <customValue>
+        <fullName>Completing Bill Set-Up</fullName>
+        <default>false</default>
+        <label>Completing Bill Set-Up</label>
+    </customValue>
+    <customValue>
+        <fullName>Adding Payers</fullName>
+        <default>false</default>
+        <label>Adding Payers</label>
+    </customValue>
+    <customValue>
+        <fullName>Receiving Online Payments</fullName>
+        <default>false</default>
+        <label>Receiving Online Payments</label>
+    </customValue>
+    <customValue>
+        <fullName>Parents Setting Up Accounts</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Parents Setting Up Accounts</label>
+    </customValue>
+    <customValue>
+        <fullName>Waiting for 1st Statement Send Date</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Waiting for 1st Statement Send Date</label>
+    </customValue>
+    <customValue>
+        <fullName>Creating Billing Plans</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Creating Billing Plans</label>
+    </customValue>
+    <customValue>
+        <fullName>Confirming Interest &amp; Setting Expectations</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Confirming Interest &amp; Setting Expectations</label>
+    </customValue>
+    <customValue>
+        <fullName>Setting Up Charge Library</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Setting Up Charge Library</label>
+    </customValue>
+    <customValue>
+        <fullName>Fully Activated</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Fully Activated</label>
+    </customValue>
+    <customValue>
+        <fullName>Early Activated</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Early Activated</label>
+    </customValue>
+    <customValue>
+        <fullName>Waiting for 1st Payments</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Waiting for 1st Payments</label>
+    </customValue>
+    <description>Stages for onboarding object OBS stage</description>
+    <masterLabel>Onboarding funnel stages</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

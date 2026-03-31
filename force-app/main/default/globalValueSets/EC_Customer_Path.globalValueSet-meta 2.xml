@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Self Guided Onboarding</fullName>
+        <default>false</default>
+        <label>Self Guided Onboarding</label>
+    </customValue>
+    <customValue>
+        <fullName>Gold Onboarding</fullName>
+        <default>false</default>
+        <label>Gold Onboarding</label>
+    </customValue>
+    <customValue>
+        <fullName>Silver Onboarding</fullName>
+        <default>false</default>
+        <label>Silver Onboarding</label>
+    </customValue>
+    <customValue>
+        <fullName>Bronze Onboarding</fullName>
+        <default>false</default>
+        <label>Bronze Onboarding</label>
+    </customValue>
+    <customValue>
+        <fullName>Onboarding</fullName>
+        <default>false</default>
+        <label>Onboarding</label>
+    </customValue>
+    <customValue>
+        <fullName>Declined Training</fullName>
+        <default>false</default>
+        <label>Declined Training</label>
+    </customValue>
+    <masterLabel>EC Customer Path</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
