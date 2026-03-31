@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nick_Billing_Completed_w_o_Training_Date</fullName>
+    <columns>FTS_Owner__c</columns>
+    <columns>NAME</columns>
+    <columns>Billing_Call_or_Webinar_Status__c</columns>
+    <columns>Billing_Call_or_Webinar_Date__c</columns>
+    <columns>Original_Close_Date__c</columns>
+    <columns>Billing_Next_Steps__c</columns>
+    <columns>Brand_New_Program__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Billing_Call_or_Webinar_Date__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Billing_Call_or_Webinar_Status__c</field>
+        <operation>equals</operation>
+        <value>Complete</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>9/1/2021</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>9/30/2021</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Combined</value>
+    </filters>
+    <label>Nick Billing Completed w/o Training Date</label>
+</ListView>

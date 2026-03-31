@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Onboardings</fullName>
+    <columns>Account__c</columns>
+    <columns>First_Lesson_Start_Date__c</columns>
+    <columns>Funnel_Stage__c</columns>
+    <columns>NAME</columns>
+    <columns>SaaS_Onboarding__c</columns>
+    <columns>Onboarding_Stage__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>Account_Customer_Type__c</columns>
+    <columns>OBS_Last_Contacted__c</columns>
+    <columns>Next_Steps_Snapshot__c</columns>
+    <columns>Created_at__c</columns>
+    <columns>Owner__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Account_Customer_Type__c</field>
+        <operation>notEqual</operation>
+        <value>Non-Target</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding__c</field>
+        <operation>notContain</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Inactive,Opted Out,Recruiting</value>
+    </filters>
+    <label>My Onboardings</label>
+</ListView>

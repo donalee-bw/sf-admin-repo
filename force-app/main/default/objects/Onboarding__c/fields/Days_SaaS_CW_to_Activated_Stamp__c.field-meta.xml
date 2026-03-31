@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_SaaS_CW_to_Activated_Stamp__c</fullName>
+    <description>Number of days from the Original Close Date Stamp to the SaaS Activation Date Stamp field. (SaaS_Activation_Date_Stamp__c - Original_Close_Date_Stamp__c)</description>
+    <externalId>false</externalId>
+    <formula>SaaS_Activation_Date_Stamp__c - Original_Close_Date_Stamp__c</formula>
+    <inlineHelpText>Number of days from the Original Close Date Stamp to the SaaS Activation Date Stamp field.</inlineHelpText>
+    <label>Days SaaS CW to Activated Stamp</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Remove_Contact_From_Cadence</name>
+        <label>Remove Contact From Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>removeTargetFromSalesCadence</actionName>
+        <actionType>removeTargetFromSalesCadence</actionType>
+        <connector>
+            <targetReference>admin_tag</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>completionReasonCode</name>
+            <value>
+                <stringValue>ManuallyRemoved</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>removeTargetFromSalesCadence</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Eligible_for_Removal</name>
+        <label>Eligible for Removal</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.CSM_Owner1__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>0053u0000035xeBAAQ</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_School_Object.Brightwheel_Plan__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.New_Case_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancel Request</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Brand_New_Program__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Brand New Program</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>BNP Site-Add</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.BNP_Graduation_Date__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Get_Active_Cadence_Tracker</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>School_Object_Found</name>
+        <label>School Object Found</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_School_Object</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Eligible_for_Removal</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Was_Active_Cadence_Tracker_Found</name>
+        <label>Was Active Cadence Tracker Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_in_Active_Cadence</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Active_Cadence_Tracker</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_Contact_From_Cadence</targetReference>
+            </connector>
+            <label>Yes in Active Cadence</label>
+        </rules>
+    </decisions>
+    <description>01.05.2026 - LK - Fixed missing logic to trigger on New Case Type = Cancel Request
+02.03.2026 - LK - Fix - Added Get Active Cadene Element to ensure other flows don&apos;t fail if they are triggered after.</description>
+    <environments>Default</environments>
+    <interviewLabel>Contact - After Save - OBS {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - After Save - Core Onboarding - BNP - Cadence Removal</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Active_Cadence_Tracker</name>
+        <label>Get Active Cadence Tracker</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_Active_Cadence_Tracker_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>TargetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsTrackerActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Complete</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionCadenceTracker</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_School_Object</name>
+        <label>Get School Object</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>School_Object_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Account.School_Object__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>School_Object__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>admin_tag</name>
+        <label>admin tag</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>ADMIN_Tag__c</field>
+            <value>
+                <stringValue>Contact - After Save - Core Onboarding - BNP - Cadence Removal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_School_Object</targetReference>
+        </connector>
+        <filterFormula>AND(
+    TEXT({!$Record.Cadence_Label__c}) = &quot;Core Onboarding - BNP&quot;,
+    OR(
+          TEXT({!$Record.New_Case_Type__c}) = &quot;Cancel Request&quot;,
+        AND(
+            TEXT({!$Record.SaaS_Activation_Funnel_Stage_2024__c}) = &quot;Activated&quot;,
+            OR(
+                AND(
+                    TEXT({!$Record.Billing_Activation_Funnel_Stage_2024__c}) = &quot;Activated&quot;,
+                    TEXT({!$Record__Prior.Billing_Activation_Funnel_Stage_2024__c}) &lt;&gt; &quot;Activated&quot;
+                ),
+                AND(
+                    TEXT({!$Record.Account.Billing_Onboarding_Status__c}) = &quot;Opted Out&quot;,
+                    TEXT({!$Record__Prior.Account.Billing_Onboarding_Status__c}) &lt;&gt; &quot;Opted Out&quot;
+                ),
+                AND(
+                    ISBLANK({!$Record.Account.Billing_Activation_Start_Date__c}),
+                    NOT(
+                        ISBLANK({!$Record__Prior.Account.Billing_Activation_Start_Date__c})
+                    )
+                )
+            )
+        )
+    )
+)</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

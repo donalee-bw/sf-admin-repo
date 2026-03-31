@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_in_SaaS_Activation_Funnel_Stage__c</fullName>
+    <description>Number of days the school has been in their current SaaS Activation Funnel Stage.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Number of days the school has been in their current SaaS Activation Funnel Stage.</inlineHelpText>
+    <label>Days in SaaS Activation Funnel Stage</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

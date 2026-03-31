@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Store_Current_Owner</name>
+        <label>Store Current Owner</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignmentItems>
+            <assignToReference>varCurrentOwner</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Action_to_Deferred</targetReference>
+        </connector>
+    </assignments>
+    <description>PE- Flow triggered when an action is past due, deferring the action and creating a follow-up task. (Revenue.io Implementation Project)
+05-30-25 - BW - Updated to assign Previous Owner from current Owner and assign to myself for manual processing.
+09-19-25 - BW - Updated process to assign to Nicholas Gurzynski instead of myself for daily cleanup</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forT_Subject</name>
+        <dataType>String</dataType>
+        <expression>&quot;Action Overdue:&quot; &amp; &quot; &quot; &amp; {!$Record.RDNACadence__CadenceAction_ID__r.Name}</expression>
+    </formulas>
+    <formulas>
+        <name>forT_WhoId</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISBLANK({!$Record.RDNACadence__Lead_Id__c}),
+{!$Record.RDNACadence__Contact_Id__c},
+{!$Record.RDNACadence__Lead_Id__c}
+)</expression>
+    </formulas>
+    <interviewLabel>Participant Action - {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Participant Action - After Save - Deferred Action Task</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates a follow-up task for the pariticipant action that was skipped.</description>
+        <name>Create_Follow_Up_Task</name>
+        <label>Create Follow-Up Task</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>$Record.RDNACadence__Expected_Execution_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>varCurrentOwner</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RDNACadence__Sequence_Action__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <stringValue>0121I000000OEYFQA4</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Open</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>forT_Subject</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TaskSubtype</field>
+            <value>
+                <stringValue>Task</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Task__c</field>
+            <value>
+                <elementReference>$Record.RDNACadence__Cadence_Action_Type__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>forT_WhoId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordUpdates>
+        <description>Updates the field &quot;IsDeferred&quot; to true.
+05/30/25 - temp fix to not mark as isDefferred, but assign to Brent Wineland for manual processing.</description>
+        <name>Update_Action_to_Deferred</name>
+        <label>Update Action to Deferred</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Create_Follow_Up_Task</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>0053u000003xcrfAAA</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Previous_Owner__c</field>
+            <value>
+                <elementReference>varCurrentOwner</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Store_Current_Owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>FailSafe_Engaged__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>FailSafe_Engaged__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>RDNACadence__Sequence_Action__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>varCurrentOwner</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Template_Madison_R_Billing_List_View</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Billing_Activation_Start_Date__c</columns>
+    <columns>Billing_Activation_Funnel_Stage_Value__c</columns>
+    <columns>Billing_Onboarding_Status__c</columns>
+    <columns>SaaS_Contact_Most_Recent_Sequence__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Bill_Plans_or_Charges_Applied__c</columns>
+    <columns>Billing_Verification_Approved__c</columns>
+    <columns>Active_Students_with_Charges_Set_Up__c</columns>
+    <columns>Billing_Verification_Submitted__c</columns>
+    <columns>Active_Students_with_Payment_Method__c</columns>
+    <columns>Active_Students_with_Bills_Sent__c</columns>
+    <columns>Payers_with_1_Online_Payment_Made__c</columns>
+    <columns>Dollars_Processed_Online__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Postponed,Unresponsive</value>
+    </filters>
+    <filters>
+        <field>Billing_Activation_Funnel_Stage_Value__c</field>
+        <operation>notEqual</operation>
+        <value>9 - Activated</value>
+    </filters>
+    <filters>
+        <field>Billing_Activation_Start_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Madison</value>
+    </filters>
+    <filters>
+        <field>OWNER.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>Renteria</value>
+    </filters>
+    <label>[Template-Madison R] Billing List View</label>
+</ListView>

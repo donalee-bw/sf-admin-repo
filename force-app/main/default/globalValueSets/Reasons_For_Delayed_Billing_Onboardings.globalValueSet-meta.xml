@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Admin Turnover / On Leave</fullName>
+        <default>false</default>
+        <label>Admin Turnover / On Leave</label>
+    </customValue>
+    <customValue>
+        <fullName>Brand New Program</fullName>
+        <default>false</default>
+        <label>Brand New Program</label>
+    </customValue>
+    <customValue>
+        <fullName>Board Approval</fullName>
+        <default>false</default>
+        <label>Board Approval</label>
+    </customValue>
+    <customValue>
+        <fullName>Churn Risk</fullName>
+        <default>false</default>
+        <label>Churn Risk</label>
+    </customValue>
+    <customValue>
+        <fullName>No Charges for Next 90 Days</fullName>
+        <default>false</default>
+        <label>No Charges for Next 90 Days</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Fully Sold</fullName>
+        <default>false</default>
+        <label>Not Fully Sold</label>
+    </customValue>
+    <customValue>
+        <fullName>SaaS Delayed</fullName>
+        <default>false</default>
+        <label>SaaS Delayed</label>
+    </customValue>
+    <customValue>
+        <fullName>School Break / Not Open</fullName>
+        <default>false</default>
+        <label>School Break / Not Open</label>
+    </customValue>
+    <customValue>
+        <fullName>Temporary High % Subsidies</fullName>
+        <default>false</default>
+        <label>Temporary High % Subsidies</label>
+    </customValue>
+    <customValue>
+        <fullName>Waiting for Product Feature</fullName>
+        <default>false</default>
+        <label>Waiting for Product Feature</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID Delayed</fullName>
+        <default>false</default>
+        <label>COVID Delayed</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Staff Turnover</fullName>
+        <default>false</default>
+        <label>Staff Turnover</label>
+    </customValue>
+    <customValue>
+        <fullName>Unclear Timeline</fullName>
+        <default>false</default>
+        <label>Unclear Timeline</label>
+    </customValue>
+    <customValue>
+        <fullName>Currently Closed</fullName>
+        <default>false</default>
+        <label>Currently Closed</label>
+    </customValue>
+    <customValue>
+        <fullName>High % Subsidies / Offline Payers</fullName>
+        <default>false</default>
+        <label>High % Subsidies / Offline Payers</label>
+    </customValue>
+    <customValue>
+        <fullName>New Center / Low Enrollment</fullName>
+        <default>false</default>
+        <label>New Center / Low Enrollment</label>
+    </customValue>
+    <customValue>
+        <fullName>Missed Multiple Meetings</fullName>
+        <default>false</default>
+        <label>Missed Multiple Meetings</label>
+    </customValue>
+    <description>Reasons For Delayed Billing Onboardings, applied to multiple picklist fields on billing onboarding record type for tracking reasons at each delayed funnel stage.</description>
+    <masterLabel>Reasons For Delayed Billing Onboardings</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

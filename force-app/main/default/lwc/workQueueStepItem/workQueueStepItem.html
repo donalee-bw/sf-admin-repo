@@ -1,0 +1,37 @@
+<template>
+    <div class="step-item">
+        <div class="item-info">
+            <div class="item-name-row">
+                <lightning-icon icon-name={targetIcon} size="x-small" class="target-icon"></lightning-icon>
+                <a href="javascript:void(0)" class="target-name" onclick={handleNavigate}>{target.targetName}</a>
+            </div>
+            <div class="item-details">
+                <span class="org-name">{target.organizationName}</span>
+                <template if:true={target.phone}>
+                    <span class="separator">&bull;</span>
+                    <span class="phone-number">{target.phone}</span>
+                </template>
+            </div>
+        </div>
+        <div class="item-actions">
+            <template if:true={isOverdue}>
+                <span class="badge-overdue">{overdueLabel}</span>
+            </template>
+            <lightning-button-icon
+                icon-name="utility:call"
+                alternative-text="Call"
+                title="Call"
+                variant="border-filled"
+                size="small"
+                onclick={handleClickToCall}
+            ></lightning-button-icon>
+            <lightning-button-icon
+                icon-name="utility:chevrondown"
+                alternative-text="More actions"
+                title="More actions"
+                variant="bare"
+                size="small"
+            ></lightning-button-icon>
+        </div>
+    </div>
+</template>

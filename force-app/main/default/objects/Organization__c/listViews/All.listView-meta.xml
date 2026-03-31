@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>School_Name__c</columns>
+    <columns>First_Name__c</columns>
+    <columns>Last_Name__c</columns>
+    <columns>Outbound_Email__c</columns>
+    <columns>LOGIC_associated_leads__c</columns>
+    <columns>LOGIC_associated_Contact__c</columns>
+    <columns>LOGIC_associated_accounts__c</columns>
+    <columns>Target__c</columns>
+    <columns>Sales_Actionable__c</columns>
+    <columns>Account_Status__c</columns>
+    <columns>Open_SaaS_Ops__c</columns>
+    <columns>Target_Leads__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>Created_at__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LOGIC_associated_leads__c</field>
+        <operation>greaterThan</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>LOGIC_associated_accounts__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>All</label>
+</ListView>

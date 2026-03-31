@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Onboardings_Under_30_Days</fullName>
+    <columns>NAME</columns>
+    <columns>Onboarding_Setup_Call_Path__c</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>Funnel_Stage__c</columns>
+    <columns>Active_Student_Count__c</columns>
+    <columns>Current_Enrollment__c</columns>
+    <columns>Active_Student_Action_Count__c</columns>
+    <columns>Last_Action_Date__c</columns>
+    <columns>Ratio_Students_with_Activated_Parent__c</columns>
+    <columns>Initial_Setup_Call_Completed__c</columns>
+    <columns>Onboarding_Call_Complete__c</columns>
+    <columns>Next_Steps_Snapshot__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Bailey</value>
+    </filters>
+    <filters>
+        <field>Days_Since_Closed_Won__c</field>
+        <operation>lessOrEqual</operation>
+        <value>31</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Onboarding__c.Single_site_SaaS</value>
+    </filters>
+    <label>My Onboardings Under 30 Days</label>
+</ListView>

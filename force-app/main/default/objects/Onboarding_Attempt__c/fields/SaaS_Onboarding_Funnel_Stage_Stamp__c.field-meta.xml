@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SaaS_Onboarding_Funnel_Stage_Stamp__c</fullName>
+    <label>SaaS Onboarding Funnel Stage - Stamp</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Onboarding_Stage</valueSetName>
+    </valueSet>
+</CustomField>

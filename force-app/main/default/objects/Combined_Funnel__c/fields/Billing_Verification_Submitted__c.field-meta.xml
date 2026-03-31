@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Verification_Submitted__c</fullName>
+    <formula>Account__r.School_Object__r.Billing_Verification_Submitted__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Deposit information submitted. Box must be checked to complete the funnel stage.</inlineHelpText>
+    <label>Billing Verification Submitted</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

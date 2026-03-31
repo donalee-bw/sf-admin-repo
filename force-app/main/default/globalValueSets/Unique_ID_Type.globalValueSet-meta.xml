@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>License ID</fullName>
+        <default>false</default>
+        <label>License ID</label>
+    </customValue>
+    <customValue>
+        <fullName>Provider ID</fullName>
+        <default>false</default>
+        <label>Provider ID</label>
+    </customValue>
+    <customValue>
+        <fullName>Facility ID</fullName>
+        <default>false</default>
+        <label>Facility ID</label>
+    </customValue>
+    <customValue>
+        <fullName>Internal ID</fullName>
+        <default>false</default>
+        <label>Internal ID</label>
+    </customValue>
+    <customValue>
+        <fullName>Case ID</fullName>
+        <default>false</default>
+        <label>Case ID</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Program ID</fullName>
+        <default>false</default>
+        <label>Program ID</label>
+    </customValue>
+    <customValue>
+        <fullName>Case Number</fullName>
+        <default>false</default>
+        <label>Case Number</label>
+    </customValue>
+    <customValue>
+        <fullName>License number</fullName>
+        <default>false</default>
+        <label>License number</label>
+    </customValue>
+    <customValue>
+        <fullName>License No</fullName>
+        <default>false</default>
+        <label>License No</label>
+    </customValue>
+    <customValue>
+        <fullName>License_number</fullName>
+        <default>false</default>
+        <label>License_number</label>
+    </customValue>
+    <customValue>
+        <fullName>Personnel_UID</fullName>
+        <default>false</default>
+        <label>Personnel_UID</label>
+    </customValue>
+    <customValue>
+        <fullName>InfoGroup ID</fullName>
+        <default>false</default>
+        <label>InfoGroup ID</label>
+    </customValue>
+    <customValue>
+        <fullName>Profile</fullName>
+        <default>false</default>
+        <label>Profile</label>
+    </customValue>
+    <customValue>
+        <fullName>ID</fullName>
+        <default>false</default>
+        <label>ID</label>
+    </customValue>
+    <customValue>
+        <fullName>CLR #</fullName>
+        <default>false</default>
+        <label>CLR #</label>
+    </customValue>
+    <customValue>
+        <fullName>DVN Number</fullName>
+        <default>false</default>
+        <label>DVN Number</label>
+    </customValue>
+    <customValue>
+        <fullName>FACID</fullName>
+        <default>false</default>
+        <label>FACID</label>
+    </customValue>
+    <customValue>
+        <fullName>License/Registration ID</fullName>
+        <default>false</default>
+        <label>License/Registration ID</label>
+    </customValue>
+    <customValue>
+        <fullName>Facility Number</fullName>
+        <default>false</default>
+        <label>Facility Number</label>
+    </customValue>
+    <customValue>
+        <fullName>Credential Number</fullName>
+        <default>false</default>
+        <label>Credential Number</label>
+    </customValue>
+    <customValue>
+        <fullName>CDS Code</fullName>
+        <default>false</default>
+        <label>CDS Code</label>
+    </customValue>
+    <customValue>
+        <fullName>License</fullName>
+        <default>false</default>
+        <label>License</label>
+    </customValue>
+    <customValue>
+        <fullName>Operation ID</fullName>
+        <default>false</default>
+        <label>Operation ID</label>
+    </customValue>
+    <customValue>
+        <fullName>School DBN</fullName>
+        <default>false</default>
+        <label>School DBN</label>
+    </customValue>
+    <masterLabel>Unique ID Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

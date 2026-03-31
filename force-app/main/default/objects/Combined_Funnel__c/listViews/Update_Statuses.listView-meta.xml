@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Update_Statuses</fullName>
+    <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5 AND 6))</booleanFilter>
+    <columns>NAME</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Billing_Onboarding_Status__c</columns>
+    <columns>SaaS_Onboarding_Status__c</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>SaaS_Postponed_Check_In_Date__c</columns>
+    <columns>SaaS_Postponed_Reason__c</columns>
+    <columns>Billing_Postponed_Check_In_Date__c</columns>
+    <columns>Billing_Postponed_Reason__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Postponed,Unresponsive</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Postponed</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>Update Statuses</label>
+</ListView>

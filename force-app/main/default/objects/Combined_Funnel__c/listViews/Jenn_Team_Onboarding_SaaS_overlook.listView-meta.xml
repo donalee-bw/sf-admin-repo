@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Jenn_Team_Onboarding_SaaS_overlook</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>NAME</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>Next_Onboarding_Meeting_Scheduled__c</columns>
+    <columns>Active_Student_Count__c</columns>
+    <columns>Current_Enrollment__c</columns>
+    <columns>Active_Student_Enrollment_Percent__c</columns>
+    <columns>Ratio_Students_with_Activated_Parent__c</columns>
+    <columns>Activities_Per_Student__c</columns>
+    <columns>Last_Activity_Date__c</columns>
+    <columns>Dollars_Processed_Online__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Postponed</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Original_Close_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>7/1/2018</value>
+    </filters>
+    <filters>
+        <field>Original_Close_Date__c</field>
+        <operation>lessOrEqual</operation>
+        <value>9/30/2022</value>
+    </filters>
+    <filters>
+        <field>Account_Customer_Type__c</field>
+        <operation>contains</operation>
+        <value>Single-Site</value>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>contains</operation>
+        <value>bailey,bradley,chessa,ciara,jenny,kelsey,leia,maureen,rebekah,sara,tisha</value>
+    </filters>
+    <label>[Jenn Team] Onboarding SaaS overlook</label>
+</ListView>

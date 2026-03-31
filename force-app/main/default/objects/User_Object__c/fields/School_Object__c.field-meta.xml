@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>School_Object__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Populated by flow - User record school lookup and triggered by PB - Production user record trigger</description>
+    <label>School Object</label>
+    <referenceTo>School_Object__c</referenceTo>
+    <relationshipLabel>User Objects</relationshipLabel>
+    <relationshipName>User_Objects</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

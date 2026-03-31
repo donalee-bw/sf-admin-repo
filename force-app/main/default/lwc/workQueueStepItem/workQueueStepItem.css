@@ -1,0 +1,88 @@
+.step-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #e5e5e5;
+    transition: background-color 0.15s ease;
+}
+.step-item:hover {
+    background-color: #f3f3f3;
+}
+
+.item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.item-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.target-icon {
+    flex-shrink: 0;
+}
+
+.target-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0176d3;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.target-name:hover {
+    text-decoration: underline;
+    color: #014486;
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-top: 0.125rem;
+    padding-left: 1.5rem;
+    font-size: 0.75rem;
+    color: #706e6b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.org-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.separator {
+    color: #b0adab;
+}
+
+.phone-number {
+    white-space: nowrap;
+}
+
+.item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+    margin-left: 0.5rem;
+}
+
+.badge-overdue {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.125rem 0.5rem;
+    border-radius: 12px;
+    background: #fce4e4;
+    color: #ba0517;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Opportunity_Found</name>
+        <label>Opportunity Found?</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_the_Right_Opportunity_to_Update</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Subflow_Opportunity_Post_CW_Stage_Sync</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>When the triggers on the Account change/affect the Opportunity Post CW Stages. Such as the BNP Intro Scheduled and Completed calls, the Billing Training Scheduled and Completed and the initial account completed.
+
+03.24.2025 - Added to be triggered when Account is related to school object.</description>
+    <environments>Default</environments>
+    <interviewLabel>Account - After Save - Opp Post CW Stage Sync {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - After Save - Opp Post CW Stage Sync</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get the right opportunity that is Closed and is one of the Post CW Stages, last modified.</description>
+        <name>Get_the_Right_Opportunity_to_Update</name>
+        <label>Get the Right Opportunity to Update</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Opportunity_Found</targetReference>
+        </connector>
+        <filterLogic>1 AND 2 AND ( 3 OR 4 OR 5 )</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SSPR Collection</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>OB Eligible</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Onboarding In Progress</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_the_Right_Opportunity_to_Update</targetReference>
+        </connector>
+        <filterLogic>( 1 OR 2)  OR  ( 3 AND 4 ) OR ( 5 AND 6)</filterLogic>
+        <filters>
+            <field>Number_of_Open_Cancel_Request_Cases__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Number_of_Open_Cancel_Request_Cases__c</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Bill_Rate_Uploaded_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Bill_Rate_Uploaded_Date__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>School_Object__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>School_Object__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Subflow_Opportunity_Post_CW_Stage_Sync</name>
+        <label>Subflow - Opportunity Post CW Stage Sync</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <flowName>School_Subflow_Sync_Opportunity_Post_CW_Stages</flowName>
+        <inputAssignments>
+            <name>varR_Accountid</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varR_Oppid</name>
+            <value>
+                <elementReference>Get_the_Right_Opportunity_to_Update.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Siblings_Billing__c</fullName>
+    <description>How siblings are billed at the school.
+04/10/23 - Flagged to be deprecated (Sprint 5 - 2023)</description>
+    <inlineHelpText>How siblings are billed at the school.</inlineHelpText>
+    <label>x_Siblings Billing</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Siblings_Billing</valueSetName>
+    </valueSet>
+</CustomField>

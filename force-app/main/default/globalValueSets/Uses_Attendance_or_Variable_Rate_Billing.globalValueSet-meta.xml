@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Yes - Sales Only</fullName>
+        <default>false</default>
+        <label>Yes - Sales Only</label>
+    </customValue>
+    <customValue>
+        <fullName>No</fullName>
+        <default>false</default>
+        <label>No</label>
+    </customValue>
+    <customValue>
+        <fullName>Standard Per Hour or Min.</fullName>
+        <default>false</default>
+        <label>Standard Per Hour or Min.</label>
+    </customValue>
+    <customValue>
+        <fullName>Before/After Program Only</fullName>
+        <default>false</default>
+        <label>Before/After Program Only</label>
+    </customValue>
+    <customValue>
+        <fullName>Complex Rules</fullName>
+        <default>false</default>
+        <label>Complex Rules</label>
+    </customValue>
+    <customValue>
+        <fullName>Want Recurring Automated</fullName>
+        <default>false</default>
+        <label>Want Recurring Automated</label>
+    </customValue>
+    <customValue>
+        <fullName>Charges Ahead For Future Attendance</fullName>
+        <default>false</default>
+        <label>Charges Ahead For Future Attendance</label>
+    </customValue>
+    <customValue>
+        <fullName>Yes</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Yes</label>
+    </customValue>
+    <description>Whether a school uses attendance or variable rate billing. Captured on Opp and Onboarding objects.</description>
+    <masterLabel>Uses Attendance or Variable Rate Billing</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

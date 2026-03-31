@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Org_Monthly_Spend__c</fullName>
+    <description>From the Current Org Subscription Amount field on the school object related to the account. The total monthly subscription amount for the organization the school belongs to.</description>
+    <formula>Account__r.School_Object__r.Current_Org_Subscription_Amount__c</formula>
+    <inlineHelpText>The total monthly subscription amount for the organization the school belongs to (sum of all Monthly Spend amounts per location for multi-sites).</inlineHelpText>
+    <label>Org Monthly Spend</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

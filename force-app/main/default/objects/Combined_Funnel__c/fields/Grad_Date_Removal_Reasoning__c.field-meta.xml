@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Grad_Date_Removal_Reasoning__c</fullName>
+    <inlineHelpText>Manually set by reps to show the reason for the grad date override</inlineHelpText>
+    <label>Grad Date Removal Reasoning</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Date stamped due to old process</fullName>
+                <default>false</default>
+                <label>Date stamped due to old process</label>
+            </value>
+            <value>
+                <fullName>Date stamped due to incorrect CE populated at CW</fullName>
+                <default>false</default>
+                <label>Date stamped due to incorrect CE populated at CW</label>
+            </value>
+            <value>
+                <fullName>Date stamped due to admin adding kids in wrong status too early</fullName>
+                <default>false</default>
+                <label>Date stamped due to admin adding kids in wrong status too early</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

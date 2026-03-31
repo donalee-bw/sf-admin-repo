@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Charging Full Tuition</fullName>
+        <default>false</default>
+        <label>Charging Full Tuition</label>
+    </customValue>
+    <customValue>
+        <fullName>Charging Partial Tuition</fullName>
+        <default>false</default>
+        <label>Charging Partial Tuition</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Charging At All</fullName>
+        <default>false</default>
+        <label>Not Charging At All</label>
+    </customValue>
+    <customValue>
+        <fullName>Receiving Subsidies</fullName>
+        <default>false</default>
+        <label>Receiving Subsidies</label>
+    </customValue>
+    <customValue>
+        <fullName>Accepting Donations</fullName>
+        <default>false</default>
+        <label>Accepting Donations</label>
+    </customValue>
+    <masterLabel>School Revenue Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GOV_Billing_Onboarding_list_view</fullName>
+    <booleanFilter>1 AND 6 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>NAME</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>Days_Since_Billing_Launch_Date__c</columns>
+    <columns>Active_Student_Enrollment_Percent__c</columns>
+    <columns>Ratio_Students_with_Activated_Parent__c</columns>
+    <columns>V3_Number_of_Billing_Plans__c</columns>
+    <columns>Active_Students_with_Billing_Ratio__c</columns>
+    <columns>Active_Students_with_One_Bill_Ratio__c</columns>
+    <columns>Active_Students_with_One_Payment_Ratio__c</columns>
+    <columns>Dollars_Processed__c</columns>
+    <columns>Last_Online_Payment_Date__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Postponed,Unresponsive</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Inactive,Opted Out</value>
+    </filters>
+    <filters>
+        <field>Related_Payer_Account__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>[GOV] Billing Onboarding list view</label>
+</ListView>

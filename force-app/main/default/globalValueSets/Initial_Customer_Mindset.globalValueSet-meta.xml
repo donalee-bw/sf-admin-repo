@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Trialing</fullName>
+        <default>false</default>
+        <label>Trialing</label>
+    </customValue>
+    <customValue>
+        <fullName>Bought-in</fullName>
+        <default>false</default>
+        <label>Bought-in</label>
+    </customValue>
+    <masterLabel>Initial Customer Mindset</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

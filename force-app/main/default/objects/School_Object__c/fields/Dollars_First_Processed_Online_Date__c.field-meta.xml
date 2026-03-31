@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dollars_First_Processed_Online_Date__c</fullName>
+    <description>The date dollars were first processed on online by the school.</description>
+    <inlineHelpText>The date dollars were first processed on online by the school.</inlineHelpText>
+    <label>Dollars First Processed Online Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

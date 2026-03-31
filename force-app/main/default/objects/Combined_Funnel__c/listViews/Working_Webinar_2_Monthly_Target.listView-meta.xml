@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Working_Webinar_2_Monthly_Target</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND (7 OR 8) AND 9</booleanFilter>
+    <columns>NAME</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Initial_Setup_Call_Completed__c</columns>
+    <columns>SaaS_Training_Call_Scheduled__c</columns>
+    <columns>Webinar_1_Scheduled_Date__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Combined</value>
+    </filters>
+    <filters>
+        <field>Initial_Setup_Call_Completed__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>5/1/2022</value>
+    </filters>
+    <filters>
+        <field>Initial_Setup_Call_Completed__c</field>
+        <operation>lessOrEqual</operation>
+        <value>5/31/2022</value>
+    </filters>
+    <filters>
+        <field>Declined_SaaS_Training__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>SaaS_Training_Call_Completed__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>SaaS_Training_Call_Scheduled__c</field>
+        <operation>lessThan</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>SaaS_Training_Call_Scheduled__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Combined</value>
+    </filters>
+    <label>[Working] Webinar 2 (New to Old Webinar)</label>
+</ListView>

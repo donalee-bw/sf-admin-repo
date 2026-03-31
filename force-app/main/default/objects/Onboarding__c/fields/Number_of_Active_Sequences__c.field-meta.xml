@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_Active_Sequences__c</fullName>
+    <description>How many active sequences the Primary Contact is currently in. If being worked by more than one team, the number will be &gt; 1.</description>
+    <externalId>false</externalId>
+    <formula>Primary_Contact__r.Number_of_Active_Sequences__c</formula>
+    <inlineHelpText>How many active sequences the Primary Contact is currently in. If being worked by more than one team, the number will be &gt; 1.</inlineHelpText>
+    <label>Number of Active Sequences</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

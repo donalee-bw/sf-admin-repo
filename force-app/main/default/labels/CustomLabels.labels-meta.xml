@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>ACH_verification_Case_Record_Type</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ACH verification Case Record Type</shortDescription>
+        <value>0123u000000FS4nAAG</value>
+    </labels>
+    <labels>
+        <fullName>Account_Queue</fullName>
+        <categories>User</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Account Queue</shortDescription>
+        <value>0053u0000035xeBAAQ</value>
+    </labels>
+    <labels>
+        <fullName>Assessment_Opportunity_Record_Type_ID</fullName>
+        <categories>Record Type ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Assessment Opportunity Record Type ID</shortDescription>
+        <value>012PB000000QY7hYAG</value>
+    </labels>
+    <labels>
+        <fullName>Billing_Onboarding_Attempt</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Billing Onboarding Attempt</shortDescription>
+        <value>012PB000000HY25YAG</value>
+    </labels>
+    <labels>
+        <fullName>Billing_Onboarding_Record_Type</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Billing Onboarding Record Type</shortDescription>
+        <value>0121I000000OGlsQAG</value>
+    </labels>
+    <labels>
+        <fullName>Billing_Penetration_Case_Record_Type</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Billing Penetration Case Record Type</shortDescription>
+        <value>012Rd000000mil7IAA</value>
+    </labels>
+    <labels>
+        <fullName>Billing_Retention_Case_Record_Type</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Billing Retention Case Record Type</shortDescription>
+        <value>0121I000000ODmeQAG</value>
+    </labels>
+    <labels>
+        <fullName>Billing_Upsell_Opportunity</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Billing Upsell Opportunity</shortDescription>
+        <value>0123u000000aNBlAAM</value>
+    </labels>
+    <labels>
+        <fullName>Cancel_Request_Case</fullName>
+        <categories>RecordTypeId</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancel Request Case</shortDescription>
+        <value>0123u000000aN7yAAE</value>
+    </labels>
+    <labels>
+        <fullName>Experience_Curriculum_Onboarding</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Experience_Curriculum_Onboarding</shortDescription>
+        <value>012Rd000001e7qDIAQ</value>
+    </labels>
+    <labels>
+        <fullName>Experience_Curriculum_Opportunity</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Experience Curriculum Opportunity</shortDescription>
+        <value>0123u000000BZUmAAO</value>
+    </labels>
+    <labels>
+        <fullName>Failed_Payment_Case</fullName>
+        <categories>Record Types</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Failed Payment Case</shortDescription>
+        <value>0121I000000ODmUQAW</value>
+    </labels>
+    <labels>
+        <fullName>Free_Trial</fullName>
+        <categories>Task RecordType</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Free Trial Task RecordTypeID</shortDescription>
+        <value>0121I000000OEYAQA4</value>
+    </labels>
+    <labels>
+        <fullName>Free_Trial_Signup_Queue</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Free Trial Signup Queue</shortDescription>
+        <value>00G1I000002jEvTUAU</value>
+    </labels>
+    <labels>
+        <fullName>Gov_Child_Opportunity</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Gov Child Opportunity</shortDescription>
+        <value>012PB000000IkqnYAC</value>
+    </labels>
+    <labels>
+        <fullName>Government_Licensee_Record_Type</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Government Licensee Record Type</shortDescription>
+        <value>0123u000000FT4KAAW</value>
+    </labels>
+    <labels>
+        <fullName>HubSpot_Form_Submission</fullName>
+        <categories>Task RecordType</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HubSpot Form Submission Task RecordTypeId</shortDescription>
+        <value>0121I000000OEvZQAW</value>
+    </labels>
+    <labels>
+        <fullName>HubSpot_Integration_User</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HubSpot Integration User</shortDescription>
+        <value>0051I000005eT6WQAU</value>
+    </labels>
+    <labels>
+        <fullName>Hubspot_Form_Queue</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Hubspot Form Queue</shortDescription>
+        <value>00G1I000002jGQdUAM</value>
+    </labels>
+    <labels>
+        <fullName>In_Product_Request</fullName>
+        <categories>Task RecordType</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>In Product Request Task RecordTypeID</shortDescription>
+        <value>0121I000000OEnWQAW</value>
+    </labels>
+    <labels>
+        <fullName>Inbound_Leads_Queue</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Inbound Leads Queue</shortDescription>
+        <value>00G1I000002jEvUUAU</value>
+    </labels>
+    <labels>
+        <fullName>Integration_User</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Integration User</shortDescription>
+        <value>0051I000004HUjOQAW</value>
+    </labels>
+    <labels>
+        <fullName>Intercom_Leads_Queue</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Intercom Leads Queue</shortDescription>
+        <value>00G3u000002KIrC</value>
+    </labels>
+    <labels>
+        <fullName>NewLine</fullName>
+        <categories>Dylan</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NewLine</shortDescription>
+        <value>-
+-</value>
+    </labels>
+    <labels>
+        <fullName>Offline_Payer_Renewal_Case_Record_Type_ID</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Offline Payer Renewal Case Record Type ID</shortDescription>
+        <value>0123u000000FSLUAA4</value>
+    </labels>
+    <labels>
+        <fullName>Outbound_Marketing_Queue</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Outbound Marketing Queue</shortDescription>
+        <value>00G1I000002EeRIUA0</value>
+    </labels>
+    <labels>
+        <fullName>Parent_Referral_Queue</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Parent Referral Queue</shortDescription>
+        <value>00G1I000002jI2EUAU</value>
+    </labels>
+    <labels>
+        <fullName>Passback_to_Sales_Case</fullName>
+        <categories>Record Type ID</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Passback to Sales Case</shortDescription>
+        <value>012PB000000LL6HYAW</value>
+    </labels>
+    <labels>
+        <fullName>Post_Save_Case_Record_Type_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Post-Save Case Record Type ID</shortDescription>
+        <value>012Rd0000014MMLIA2</value>
+    </labels>
+    <labels>
+        <fullName>Proactive_Engagement_Case</fullName>
+        <categories>Record Types</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Proactive Engagement Case</shortDescription>
+        <value>0123u000000ivhsAAA</value>
+    </labels>
+    <labels>
+        <fullName>Recycled_Leads_Queue</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Recycled Leads Queue</shortDescription>
+        <value>00G1I000000XOJh</value>
+    </labels>
+    <labels>
+        <fullName>Return_Path_Queue</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Return Path Queue</shortDescription>
+        <value>00G1I000002jHaMUAU</value>
+    </labels>
+    <labels>
+        <fullName>SaaSEntTeam_Public_Group</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SaaSEntTeam Public Group</shortDescription>
+        <value>00GEi000009VKjd</value>
+    </labels>
+    <labels>
+        <fullName>SaaSLargeTeam_Public_Group</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SaaSLargeTeam Public Group</shortDescription>
+        <value>00GRd000001uGWD</value>
+    </labels>
+    <labels>
+        <fullName>SaaSSMBTeam_Public_Group</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SaaSSMBTeam Public Group</shortDescription>
+        <value>00GRd000001uK9x</value>
+    </labels>
+    <labels>
+        <fullName>SaaS_Child_Oppprtunity</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SaaS Child Oppprtunity</shortDescription>
+        <value>012PB000000IkqoYAC</value>
+    </labels>
+    <labels>
+        <fullName>SaaS_Onboarding_Attempt</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SaaS Onboarding Attempt</shortDescription>
+        <value>012PB000000HY26YAG</value>
+    </labels>
+    <labels>
+        <fullName>SaaS_Opportunity_Record_Type</fullName>
+        <categories>Record Type</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SaaS Opportunity Record Type</shortDescription>
+        <value>0123u000000aNBgAAM</value>
+    </labels>
+    <labels>
+        <fullName>Sales_Gone_Dark_Sequence</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sales Gone Dark Sequence</shortDescription>
+        <value>a1RPB000003Ug052AC</value>
+    </labels>
+    <labels>
+        <fullName>Sales_User_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sales User Profile</shortDescription>
+        <value>00e1I000000qsyPQAQ</value>
+    </labels>
+    <labels>
+        <fullName>Stripe_Invoice_Payment_Failed_Queue</fullName>
+        <categories>Queues</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Stripe Invoice Payment Failed Queue</shortDescription>
+        <value>00G3u000002C69nEAC</value>
+    </labels>
+    <labels>
+        <fullName>TeamSysOpsQueue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TeamSysOpsQueue</shortDescription>
+        <value>00GPB000002gTpZ2AU</value>
+    </labels>
+    <labels>
+        <fullName>TeamSysOps_Case_RecordType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>TeamSysOps Case RecordType</shortDescription>
+        <value>012PB000000MgVFYA0</value>
+    </labels>
+    <labels>
+        <fullName>Unqualfied_Leads_ECE_NonTarget</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Unqualfied Leads - ECE, NonTarget</shortDescription>
+        <value>00GRd000002B2ADMA0</value>
+    </labels>
+    <labels>
+        <fullName>Unqualified_Leads_Enterprise</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Unqualified Leads Enterprise</shortDescription>
+        <value>00GRd000002B2F3MAK</value>
+    </labels>
+    <labels>
+        <fullName>Unqualified_Leads_Non_ECE</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Unqualified Leads - Non ECE</shortDescription>
+        <value>00GRd000002B26zMAC</value>
+    </labels>
+    <labels>
+        <fullName>Unqualified_Leads_Queue</fullName>
+        <categories>Queue</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Unqualified Leads Queue</shortDescription>
+        <value>00G1I000000WgI6</value>
+    </labels>
+    <labels>
+        <fullName>WR_Lead_Queue</fullName>
+        <categories>User</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>WR Lead Queue</shortDescription>
+        <value>00G3u00000264Ax</value>
+    </labels>
+</CustomLabels>

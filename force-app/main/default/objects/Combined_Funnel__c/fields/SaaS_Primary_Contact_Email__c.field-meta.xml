@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SaaS_Primary_Contact_Email__c</fullName>
+    <description>Cross-reference field to the email address for the SaaS Primary Contact lookup. Not on pg layout - used in list-views.</description>
+    <externalId>false</externalId>
+    <formula>SaaS_Primary_Contact__r.Email</formula>
+    <inlineHelpText>Email address for the SaaS Primary Contact.</inlineHelpText>
+    <label>SaaS Primary Contact Email</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

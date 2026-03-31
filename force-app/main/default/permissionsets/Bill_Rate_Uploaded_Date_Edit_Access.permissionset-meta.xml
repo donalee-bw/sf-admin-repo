@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Provides edit access on the Account field. When the school object field is populated, automation will update it on the Account but permission gives access to a couple users who need to overwrite or manually populate</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Bill_Rate_Uploaded_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Bill Rate Uploaded Date Edit Access</label>
+    <license>Salesforce</license>
+</PermissionSet>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>charge_created_at__c</columns>
+    <columns>payment_method_billing_details_name__c</columns>
+    <columns>stripe_customer_email__c</columns>
+    <columns>charge_amount__c</columns>
+    <columns>charge_attempt_count__c</columns>
+    <columns>charge_status__c</columns>
+    <columns>bank_account_name__c</columns>
+    <columns>payment_method_card_brand__c</columns>
+    <columns>payment_method_card_funding__c</columns>
+    <columns>charge_failure_code__c</columns>
+    <columns>brightwheel_organization_uuid__c</columns>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Identify if Combined Funnel Record was found</description>
+        <name>Combined_Funnel_Record_Handler</name>
+        <label>Combined Funnel Record Handler</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Get_SaaS_Onboarding_Records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No CF Record</defaultConnectorLabel>
+        <rules>
+            <name>CF_Record_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_Records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity_with_CF_Info</targetReference>
+            </connector>
+            <label>CF Record Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Identify if SaaS onboarding record exists</description>
+        <name>SaaS_Onboarding_Record_Handler</name>
+        <label>SaaS Onboarding Record Handler</label>
+        <locationX>182</locationX>
+        <locationY>947</locationY>
+        <defaultConnectorLabel>No SaaS Onboarding</defaultConnectorLabel>
+        <rules>
+            <name>SaaS_Onboarding_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_SaaS_Onboarding_Records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity_with_SaaS_Onboarding</targetReference>
+            </connector>
+            <label>SaaS Onboarding Found</label>
+        </rules>
+    </decisions>
+    <description>Relates combined funnel and SaaS onboarding records from the opportunity account to the newly created billing upsell opportunity</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>For the SSPR project, the new standard onboarding path was introduced and the following paths were hidden on Billing Upsel Onboarding Path.</description>
+        <name>OnboardingPath_CF</name>
+        <dataType>String</dataType>
+        <expression>IF(
+OR(
+   ISPICKVAL({!Get_Combined_Funnel_Records.Onboarding_Path__c}, &quot;Combined&quot;),
+   ISPICKVAL({!Get_Combined_Funnel_Records.Onboarding_Path__c}, &quot;1:1 Single-Site&quot;),
+  ISPICKVAL({!Get_Combined_Funnel_Records.Onboarding_Path__c}, &quot;1:1 Multi-Site&quot;)
+  ), 
+&quot; &quot;, 
+TEXT({!Get_Combined_Funnel_Records.Onboarding_Path__c}))</expression>
+    </formulas>
+    <interviewLabel>CF - Relate CF Record on Create of Billing Upsell Opportunity {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CF - Relate CF and SaaS Onboarding on Create of Billing Opp</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Retrieved Combined Funnel Record linked to the account</description>
+        <name>Get_Combined_Funnel_Records</name>
+        <label>Get Combined Funnel Records</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Combined_Funnel_Record_Handler</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Billing_CW_Opportunity__c</queriedFields>
+        <queriedFields>SaaS_Conversation_Notes__c</queriedFields>
+        <queriedFields>Billing_Conversation_Notes__c</queriedFields>
+        <queriedFields>Onboarding_Path__c</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Retrieve the SaaS onboarding record related to the opportunity account</description>
+        <name>Get_SaaS_Onboarding_Records</name>
+        <label>Get SaaS Onboarding Records</label>
+        <locationX>182</locationX>
+        <locationY>839</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SaaS_Onboarding_Record_Handler</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>0121I000000OGlsQAG</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Onboarding__c</object>
+        <queriedFields>Id</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update the found combined funnel record with the billing upsell opportunity</description>
+        <name>Update_CF_with_Opportunity</name>
+        <label>Update CF with Opportunity</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Get_SaaS_Onboarding_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Combined_Funnel_Records.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Billing_CW_Opportunity__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Combined_Funnel__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates opportunity record with combined funnel information</description>
+        <name>Update_Opportunity_with_CF_Info</name>
+        <label>Update Opportunity with CF Info</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Update_CF_with_Opportunity</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Billing_CF_Notes__c</field>
+            <value>
+                <elementReference>Get_Combined_Funnel_Records.Billing_Conversation_Notes__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Combined_Funnel__c</field>
+            <value>
+                <elementReference>Get_Combined_Funnel_Records.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Onboarding_Path__c</field>
+            <value>
+                <elementReference>OnboardingPath_CF</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_CF_Notes__c</field>
+            <value>
+                <elementReference>Get_Combined_Funnel_Records.SaaS_Conversation_Notes__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates opportunity record with SaaS Onboarding record</description>
+        <name>Update_Opportunity_with_SaaS_Onboarding</name>
+        <label>Update Opportunity with SaaS Onboarding</label>
+        <locationX>50</locationX>
+        <locationY>1055</locationY>
+        <inputAssignments>
+            <field>SaaS_Onboarding__c</field>
+            <value>
+                <elementReference>Get_SaaS_Onboarding_Records.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Combined_Funnel_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0123u000000aNBlAAM</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

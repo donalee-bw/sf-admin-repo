@@ -1,0 +1,1303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Contact</baseObject>
+    <category>accounts</category>
+    <deployed>true</deployed>
+    <description>Contacts with at least one related activity.</description>
+    <label>Contacts w. Activities</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name</displayNameOverride>
+            <field>Account</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Agile Personnel ID</displayNameOverride>
+            <field>Agile_Personnel_ID__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ambassador</displayNameOverride>
+            <field>Ambassador__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ambassador Confirmation Date</displayNameOverride>
+            <field>Ambassador_Confirmation_Date__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ambassador Nomination Date</displayNameOverride>
+            <field>Ambassador_Nomination_Date__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Assistant</displayNameOverride>
+            <field>AssistantName</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Associated Company</displayNameOverride>
+            <field>Associated_Company__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asst. Phone</displayNameOverride>
+            <field>AssistantPhone</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Birthdate</displayNameOverride>
+            <field>Birthdate</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel Source</displayNameOverride>
+            <field>Original_Source__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel Source Drilldown 1</displayNameOverride>
+            <field>Original_Source_Drilldown_1__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact ID</displayNameOverride>
+            <field>Id</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact ID</displayNameOverride>
+            <field>Contact_ID__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contacts</displayNameOverride>
+            <field>Contacts__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Currency Test</displayNameOverride>
+            <field>rh2__Currency_Test__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Data.com Key</displayNameOverride>
+            <field>Jigsaw</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Department</displayNameOverride>
+            <field>Department</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Describe</displayNameOverride>
+            <field>rh2__Describe__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Description</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outreach Sequence at Lead Conversion</displayNameOverride>
+            <field>Outreach_Sequence_at_Lead_Conversion__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HS Recent conversion date</displayNameOverride>
+            <field>HS_Recent_conversion_date__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opted Out: Outreach Emails</displayNameOverride>
+            <field>Opted_Out_Outreach_Emails__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Actively being Sequenced</displayNameOverride>
+            <field>Actively_being_Sequenced__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Do Not Call</displayNameOverride>
+            <field>DoNotCall</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email</displayNameOverride>
+            <field>Email</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email 2</displayNameOverride>
+            <field>Email_2__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Sequence Status</displayNameOverride>
+            <field>Current_Sequence_Status__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Power of One</displayNameOverride>
+            <field>Power_of_One__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Sequence Name</displayNameOverride>
+            <field>Current_Sequence_Name__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Bounced Date</displayNameOverride>
+            <field>EmailBouncedDate</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Bounced Reason</displayNameOverride>
+            <field>EmailBouncedReason</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Sequence Step Type</displayNameOverride>
+            <field>Current_Sequence_Step_Type__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Opt Out</displayNameOverride>
+            <field>HasOptedOutOfEmail</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Sequence Task Due Date</displayNameOverride>
+            <field>Current_Sequence_Task_Due_Date__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Decision Call No Show</displayNameOverride>
+            <field>Decision_Call_No_Show__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Sequence Step Number</displayNameOverride>
+            <field>Current_Sequence_Step_Number__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Sequence User SFDC ID</displayNameOverride>
+            <field>Current_Sequence_User_SFDC_ID__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Fax</displayNameOverride>
+            <field>Fax</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Fax Opt Out</displayNameOverride>
+            <field>HasOptedOutOfFax</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Name</displayNameOverride>
+            <field>FirstName</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Formula Test</displayNameOverride>
+            <field>rh2__Formula_Test__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intro Call No Show</displayNameOverride>
+            <field>Intro_Call_No_Show__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Demo Call No Show</displayNameOverride>
+            <field>Demo_Call_No_Show__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Full Name</displayNameOverride>
+            <field>Name</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Active Sequences</displayNameOverride>
+            <field>Number_of_Active_Sequences__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Home Phone</displayNameOverride>
+            <field>HomePhone</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Name of Currently Active Sequence</displayNameOverride>
+            <field>Name_of_Currently_Active_Sequence__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Inbound or Outbound</displayNameOverride>
+            <field>Inbound_or_Outbound__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Integer Test</displayNameOverride>
+            <field>rh2__Integer_Test__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Intercom Account Link</displayNameOverride>
+            <field>Intercom_Account_Link__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Interest</displayNameOverride>
+            <field>Interest__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Email Bounced</displayNameOverride>
+            <field>IsEmailBounced</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Activity</displayNameOverride>
+            <field>LastActivityDate</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Name</displayNameOverride>
+            <field>LastName</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Stay-in-Touch Request Date</displayNameOverride>
+            <field>LastCURequestDate</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Stay-in-Touch Save Date</displayNameOverride>
+            <field>LastCUUpdateDate</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Source</displayNameOverride>
+            <field>LeadSource</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Source - Detail</displayNameOverride>
+            <field>Lead_Source_Detail__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Status</displayNameOverride>
+            <field>Lead_Status__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mailing Address</displayNameOverride>
+            <field>MailingAddress</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mailing City</displayNameOverride>
+            <field>MailingCity</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mailing Country</displayNameOverride>
+            <field>MailingCountry</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mailing Geocode Accuracy</displayNameOverride>
+            <field>MailingGeocodeAccuracy</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mailing Latitude</displayNameOverride>
+            <field>MailingLatitude</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mailing Longitude</displayNameOverride>
+            <field>MailingLongitude</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mailing State/Province</displayNameOverride>
+            <field>MailingState</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mailing Street</displayNameOverride>
+            <field>MailingStreet</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mailing Zip/Postal Code</displayNameOverride>
+            <field>MailingPostalCode</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Marketing Emails Bounced</displayNameOverride>
+            <field>Marketing_Emails_Bounced__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Middle Name</displayNameOverride>
+            <field>MiddleName</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mobile</displayNameOverride>
+            <field>MobilePhone</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Students</displayNameOverride>
+            <field>Number_of_Students__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opted out of emails: Marketing Info</displayNameOverride>
+            <field>Opted_out_of_emails_Marketing_Info__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Original Lead Source</displayNameOverride>
+            <field>Original_Lead_Source__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Address</displayNameOverride>
+            <field>OtherAddress</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other City</displayNameOverride>
+            <field>OtherCity</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Country</displayNameOverride>
+            <field>OtherCountry</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Geocode Accuracy</displayNameOverride>
+            <field>OtherGeocodeAccuracy</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Latitude</displayNameOverride>
+            <field>OtherLatitude</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Longitude</displayNameOverride>
+            <field>OtherLongitude</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Phone</displayNameOverride>
+            <field>OtherPhone</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other State/Province</displayNameOverride>
+            <field>OtherState</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Street</displayNameOverride>
+            <field>OtherStreet</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Zip/Postal Code</displayNameOverride>
+            <field>OtherPostalCode</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Phone</displayNameOverride>
+            <field>Phone</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Received Incorrect Messaging</displayNameOverride>
+            <field>Received_Incorrect_Messaging__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reports To</displayNameOverride>
+            <field>ReportsTo</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Salutation</displayNameOverride>
+            <field>Salutation</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SMS Opt Out</displayNameOverride>
+            <field>smagicinteract__SMSOptOut__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Suffix</displayNameOverride>
+            <field>Suffix</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Title</displayNameOverride>
+            <field>Title</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HubSpot Form Priority</displayNameOverride>
+            <field>HS_HubSpot_Form_Priority__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Normalized Phone</displayNameOverride>
+            <field>Normalized_Phone__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Normalized Account Name</displayNameOverride>
+            <field>Normalized_Account_Name__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account State</displayNameOverride>
+            <field>Account_State__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Active Tasks</displayNameOverride>
+            <field>Number_of_Active_Tasks__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Behavior Score</displayNameOverride>
+            <field>HS_Behavior_Score__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Demographic Score</displayNameOverride>
+            <field>HS_Demographic_Score__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outreach stage</displayNameOverride>
+            <field>Outreach_stage__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Licensed Capacity</displayNameOverride>
+            <field>Capacity__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Enrollment</displayNameOverride>
+            <field>Current_Enrollment__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Hubspot Score</displayNameOverride>
+            <field>SFDC_Total_Hubspot_Score__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Active User</displayNameOverride>
+            <field>Is_Active_User__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner Role</displayNameOverride>
+            <field>Owner_Role__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>BNP Webinar Unique Join Link</displayNameOverride>
+            <field>BNP_Webinar_Unique_Join_Link__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Webinar 1 (SaaS) Unique Join Link</displayNameOverride>
+            <field>Webinar_1_Unique_Join_Link__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Webinar 2 (Billing) Unique Join Link</displayNameOverride>
+            <field>Webinar_2_Unique_Join_Link__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Webinar 3 Unique Join Link</displayNameOverride>
+            <field>Webinar_3_Unique_Join_Link__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Coordinator Last Task</displayNameOverride>
+            <field>Onboarding_Coordinator_Last_Task__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Coordinator Last Event</displayNameOverride>
+            <field>Onboarding_Coordinator_Last_Event__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Coordinator Last Contacted</displayNameOverride>
+            <field>Onboarding_Coordinator_Last_Contacted__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Last Connected Event</displayNameOverride>
+            <field>Onboarding_Last_Connected_Event__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Last Connected Task</displayNameOverride>
+            <field>Onboarding_Last_Connected_Task__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Last Connected</displayNameOverride>
+            <field>Onboarding_Last_Connected__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Invalid First or Last Name</displayNameOverride>
+            <field>Invalid_First_or_Last_Name__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>User Object Name Match</displayNameOverride>
+            <field>User_Object_Name_Match__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LOGIC_UO_ScheduledJob_Counter</displayNameOverride>
+            <field>LOGIC_UO_ScheduledJob_Counter__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LOGIC STL Test</displayNameOverride>
+            <field>LOGIC_STL_Test__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CES Survey Send Date</displayNameOverride>
+            <field>CES_Survey_Send_Date__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Demio Test Date and Time</displayNameOverride>
+            <field>Demio_Test_Date_and_Time__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Booking Status</displayNameOverride>
+            <field>Booking_Status_CP__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Meeting Type</displayNameOverride>
+            <field>Meeting_Type_CP__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CP Active Form</displayNameOverride>
+            <field>CP_Active_Form__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tell Us About Yourself</displayNameOverride>
+            <field>Tell_Us_About_Yourself__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>FTS Owner</displayNameOverride>
+            <field>FTS_Owner__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HS Latest Source</displayNameOverride>
+            <field>HS_Latest_Source__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HS Recent Conversion Day in CST</displayNameOverride>
+            <field>HS_Recent_Conversion_Day_in_CST__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HS Recent Conversion Hour in CST</displayNameOverride>
+            <field>HS_Recent_Conversion_Hour_in_CST__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>No Show</displayNameOverride>
+            <field>No_Show_CP__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Related SaaS Opps</displayNameOverride>
+            <field>Number_of_Related_SaaS_Opps__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Sales Task</displayNameOverride>
+            <field>Last_Sales_Task__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Sales Event</displayNameOverride>
+            <field>Last_Sales_Event__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sales Last Contacted</displayNameOverride>
+            <field>Sales_Last_Contacted__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Call Since Last Assignment</displayNameOverride>
+            <field>Call_Since_Last_Assignment__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Customer</displayNameOverride>
+            <field>Current_Customer__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Tech</displayNameOverride>
+            <field>Current_Tech__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ADMIN Tag</displayNameOverride>
+            <field>ADMIN_Tag__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>OPSIQ Lead ID</displayNameOverride>
+            <field>OPSIQ_Lead_ID__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Years in Business</displayNameOverride>
+            <field>Years_in_Business__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owned By Sales</displayNameOverride>
+            <field>Owned_By_Sales__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lean Data Action</displayNameOverride>
+            <field>Lean_Data_Action__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LeanData Reprocess</displayNameOverride>
+            <field>LeanData_Reprocess__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Topics To Discuss</displayNameOverride>
+            <field>Topics_To_Discuss__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Segment</displayNameOverride>
+            <field>Customer_Segment__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Curriculum Used Today</displayNameOverride>
+            <field>Curriculum_Used_Today__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Curriculum Purchased</displayNameOverride>
+            <field>Curriculum_Purchased__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Promo Code - NEW</displayNameOverride>
+            <field>Promo_Code_NEW__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Referrer School</displayNameOverride>
+            <field>Referrer_School__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Referrer First Name</displayNameOverride>
+            <field>Referrer_First_Name__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Referrer Last Name</displayNameOverride>
+            <field>Referrer_Last_Name__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Referrer Email</displayNameOverride>
+            <field>Referrer_Email__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead score: Total</displayNameOverride>
+            <field>Lead_score_Total__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Organization Link</displayNameOverride>
+            <field>Organization_Link__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Organization Owner Email</displayNameOverride>
+            <field>Organization_Owner_Email__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outreach Prospect ID</displayNameOverride>
+            <field>Outreach_Prospect_ID__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LeanData Processing Timeframe</displayNameOverride>
+            <field>LeanData_Processing_Timeframe__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>utm_term</displayNameOverride>
+            <field>utm_term__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>utm_source</displayNameOverride>
+            <field>utm_source__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>utm_medium</displayNameOverride>
+            <field>utm_medium__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>utm_device</displayNameOverride>
+            <field>utm_device__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>utm_content</displayNameOverride>
+            <field>utm_content__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>utm_campaign</displayNameOverride>
+            <field>utm_campaign__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LeanData Sequencing Reprocess</displayNameOverride>
+            <field>LeanData_Sequencing_Reprocess__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Revio Tag</displayNameOverride>
+            <field>Revio_Tag__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EC Upsell Opportunity Owner</displayNameOverride>
+            <field>EC_Upsell_Opportunity_Owner__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Secondary Contact</displayNameOverride>
+            <field>Secondary_Contact__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>BNP Webinar Status</displayNameOverride>
+            <field>BNP_Webinar_Status__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>US Time Zone</displayNameOverride>
+            <field>US_Time_Zone__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>School Name - Template Format</displayNameOverride>
+            <field>School_Name_Template_Format__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LeanData Revenue Sequence Type</displayNameOverride>
+            <field>LeanData_Revenue_Sequence_Type__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Next Steps</displayNameOverride>
+            <field>Next_Steps__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Manual Stage Update</displayNameOverride>
+            <field>Manual_Stage_Update__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Upsell Opportunity Stage</displayNameOverride>
+            <field>Billing_Upsell_Opportunity_Stage__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EC Upsell Opportunity Stage</displayNameOverride>
+            <field>EC_Upsell_Opportunity_Stage__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Next Onboarding Meeting Scheduled</displayNameOverride>
+            <field>Next_Onboarding_Meeting_Scheduled__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Revio Sequence Trigger</displayNameOverride>
+            <field>Revio_Sequence_Trigger__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case Safe Contact ID</displayNameOverride>
+            <field>Case_Safe_Contact_ID__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Online Presence Notes</displayNameOverride>
+            <field>Online_Presence_Notes__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>FTL number of students</displayNameOverride>
+            <field>FTL_number_of_students__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>FTL program type</displayNameOverride>
+            <field>FTL_program_type__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case Origin</displayNameOverride>
+            <field>Case_Origin__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SLA Violation Timestamp</displayNameOverride>
+            <field>SLA_Violation_Timestamp__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SO SaaS Activation Funnel Stage</displayNameOverride>
+            <field>SO_SaaS_Activation_Funnel_Stage__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SO Billing Activation Funnel Stage</displayNameOverride>
+            <field>SO_Billing_Activation_Funnel_Stage__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SO Funnel Mismatch</displayNameOverride>
+            <field>SO_Funnel_Mismatch__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact Campaign Tag</displayNameOverride>
+            <field>Contact_Campaign_Tag__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Demo Path</displayNameOverride>
+            <field>Demo_Path__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>NormalizedPostalCode</displayNameOverride>
+            <field>NormalizedPostalCode__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AE Post-CW Check-In Scheduled Date</displayNameOverride>
+            <field>AE_Post_CW_Check_In_Scheduled_Date__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>AE Post-CW Check-In Completed Date</displayNameOverride>
+            <field>AE_Post_CW_Check_In_Completed_Date__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing AE Post-CW Check-In Completed DT</displayNameOverride>
+            <field>Billing_AE_Post_CW_Check_In_Completed_DT__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing AE Post-CW Check-In Scheduled Dt</displayNameOverride>
+            <field>Billing_AE_Post_CW_Check_In_Scheduled_Da__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Id</displayNameOverride>
+            <field>Wootric__Customer_Id__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HS Number of Sites</displayNameOverride>
+            <field>HS_Number_of_Sites__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sales_Free_User_Upgrade__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Open_and_Operating__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>HS_Recent_conversion__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Id</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Interest_Intent__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>User_Type__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>BNP_Roadmap_Link__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EC_Previously_Purchased__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AI_Voice_Assisted__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SMS_Explicit_Opt_In__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Most_Recent_Disposition__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cadence_Tag__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Most_Recent_Cadence_Entered__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SE_Tag__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cadence_Label__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Standardized_Phone__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Intent_Grouping__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Growth_Test__c</field>
+            <table>Contact</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Form_Abandonment_Lead__c</field>
+            <table>Contact</table>
+        </columns>
+        <masterLabel>Contacts</masterLabel>
+    </sections>
+    <sections>
+        <masterLabel>Activities</masterLabel>
+    </sections>
+</ReportType>

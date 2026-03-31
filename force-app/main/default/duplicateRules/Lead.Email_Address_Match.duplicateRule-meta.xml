@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionOnInsert>Allow</actionOnInsert>
+    <actionOnUpdate>Allow</actionOnUpdate>
+    <alertText xsi:nil="true"/>
+    <description>Matches Leads based on Email Address.</description>
+    <duplicateRuleFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <duplicateRuleFilterItems>
+            <field>LastModifiedByID</field>
+            <operation>notEqual</operation>
+            <value>0051I000002SioQ</value>
+            <sortOrder>1</sortOrder>
+            <table>Lead</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
+            <field>LastModifiedByID</field>
+            <operation>notEqual</operation>
+            <value>0051I000004HUjO</value>
+            <sortOrder>2</sortOrder>
+            <table>Lead</table>
+        </duplicateRuleFilterItems>
+    </duplicateRuleFilter>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Lead</matchRuleSObjectType>
+        <matchingRule>Same_Email_Address_and_Name</matchingRule>
+        <objectMapping xsi:nil="true"/>
+    </duplicateRuleMatchRules>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Contact</matchRuleSObjectType>
+        <matchingRule>Matching_Email_And_Name_Contact</matchingRule>
+        <objectMapping>
+            <inputObject>Lead</inputObject>
+            <mappingFields>
+                <inputField>Email</inputField>
+                <outputField>Email</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>FirstName</inputField>
+                <outputField>FirstName</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>LastName</inputField>
+                <outputField>LastName</outputField>
+            </mappingFields>
+            <outputObject>Contact</outputObject>
+        </objectMapping>
+    </duplicateRuleMatchRules>
+    <isActive>true</isActive>
+    <masterLabel>Email Address Match</masterLabel>
+    <operationsOnInsert>Report</operationsOnInsert>
+    <operationsOnUpdate>Report</operationsOnUpdate>
+    <securityOption>BypassSharingRules</securityOption>
+    <sortOrder>2</sortOrder>
+</DuplicateRule>

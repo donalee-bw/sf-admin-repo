@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Opted_Out_Required_Fields</fullName>
+    <active>true</active>
+    <description>Fields that are required when the Billing Onboarding Status is set to &apos;Hard Opt Out&apos;.</description>
+    <errorConditionFormula>AND(
+   NOT($User.ProfileId = &apos;00e1I000001rqxt&apos;),
+   NOT($User.ProfileId = &apos;00e1I000000qsnN&apos;),
+   ISPICKVAL(Billing_Onboarding_Status__c,&apos;Opted Out&apos;),
+   ISPICKVAL(Billing_Dropout_Reason__c,&quot;&quot;)
+ )</errorConditionFormula>
+    <errorDisplayField>Billing_Dropout_Reason__c</errorDisplayField>
+    <errorMessage>Billing Dropout Reason is required when Billing Onboarding Status is set to &apos;Hard Opt Out&apos;.</errorMessage>
+</ValidationRule>

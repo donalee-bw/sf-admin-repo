@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Needs_Web_1_and_2</fullName>
+    <booleanFilter>1 AND 2 AND (3 AND 10) AND 4 AND 5 AND 6 AND 7 AND (8 AND 9)</booleanFilter>
+    <columns>Onboarding_Coordinator__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Onboarding_Path__c</columns>
+    <columns>NAME</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>SaaS_Onboarding_Status__c</columns>
+    <columns>Webinar_1_Scheduled_Date__c</columns>
+    <columns>Webinar_1_Completed_Date__c</columns>
+    <columns>Billing_Launch_Date__c</columns>
+    <columns>Billing_Onboarding_Status__c</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>Webinar_2_Scheduled_Date__c</columns>
+    <columns>Webinar_2_Completed_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Combined,1:1 Multi-Site,Webinar,Site-Add</value>
+    </filters>
+    <filters>
+        <field>Webinar_1_Completed_Date__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Original_Close_Date__c</field>
+        <operation>greaterThan</operation>
+        <value>1/1/2023</value>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Number_of_Open_Cancel_Request_Cases__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Webinar_2_Completed_Date__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>SaaS_Activation_Date__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Needs Web 1 and 2</label>
+</ListView>

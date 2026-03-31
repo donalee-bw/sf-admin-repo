@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Temp_Create_Billing_OA__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Temporary field. Created to flag combined funnel records that we need to create Billing Onboarding Attempt for at launch day.</description>
+    <label>Temp - Create Billing OA</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Calculated_Billing_Activation_Funnel__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISNULL(Billing_Adding_Students_Stage_Met_Date__c),
+  &quot;Adding Students&quot;,
+  IF(
+    AND(
+      ISNULL(Billing_Setting_Up_Bills_Stage_Met_Date__c),
+      NOT(ISNULL(Billing_Adding_Students_Stage_Met_Date__c))
+    ),
+    &quot;Setting Up Bills&quot;,
+    IF(
+      AND(
+        ISNULL(Billing_Submit_Verify_Stage_Met_Date__c),
+        NOT(ISNULL(Billing_Setting_Up_Bills_Stage_Met_Date__c)),
+        NOT(ISNULL(Billing_Adding_Students_Stage_Met_Date__c))
+      ),
+      &quot;Submitting Verification&quot;,
+      IF(
+        AND(
+          ISNULL(Billing_Complete_Set_Up_Stage_Met_Date__c),
+          NOT(ISNULL(Billing_Submit_Verify_Stage_Met_Date__c)),
+          NOT(ISNULL(Billing_Setting_Up_Bills_Stage_Met_Date__c)),
+          NOT(ISNULL(Billing_Adding_Students_Stage_Met_Date__c))
+        ),
+        &quot;Completing Bill Set-Up&quot;,
+        IF(
+          AND(
+            ISNULL(Billing_FinalVerification_Stage_Met_Date__c),
+            NOT(ISNULL(Billing_Complete_Set_Up_Stage_Met_Date__c)),
+            NOT(ISNULL(Billing_Submit_Verify_Stage_Met_Date__c)),
+            NOT(ISNULL(Billing_Setting_Up_Bills_Stage_Met_Date__c)),
+            NOT(ISNULL(Billing_Adding_Students_Stage_Met_Date__c))
+          ),
+          &quot;Finalizing Verification&quot;,
+          IF(
+            AND(
+              ISNULL(Billing_Adding_Payers_Stage_Met_Date__c),
+              NOT(ISNULL(Billing_FinalVerification_Stage_Met_Date__c)),
+              NOT(ISNULL(Billing_Complete_Set_Up_Stage_Met_Date__c)),
+              NOT(ISNULL(Billing_Submit_Verify_Stage_Met_Date__c)),
+              NOT(ISNULL(Billing_Setting_Up_Bills_Stage_Met_Date__c)),
+              NOT(ISNULL(Billing_Adding_Students_Stage_Met_Date__c))
+            ),
+            &quot;Adding Payers&quot;,
+            IF(
+              AND(
+                ISNULL(Billing_Sending_Bills_Stage_Met_Date__c),
+                NOT(ISNULL(Billing_Adding_Payers_Stage_Met_Date__c)),
+                NOT(ISNULL(Billing_FinalVerification_Stage_Met_Date__c)),
+                NOT(ISNULL(Billing_Complete_Set_Up_Stage_Met_Date__c)),
+                NOT(ISNULL(Billing_Submit_Verify_Stage_Met_Date__c)),
+                NOT(ISNULL(Billing_Setting_Up_Bills_Stage_Met_Date__c)),
+                NOT(ISNULL(Billing_Adding_Students_Stage_Met_Date__c))
+              ),
+              &quot;Sending Bills&quot;,
+              IF(
+                AND(
+                  ISNULL(Billing_Online_Payments_Stage_Met_Date__c),
+                  NOT(ISNULL(Billing_Sending_Bills_Stage_Met_Date__c)),
+                  NOT(ISNULL(Billing_Adding_Payers_Stage_Met_Date__c)),
+                  NOT(ISNULL(Billing_FinalVerification_Stage_Met_Date__c)),
+                  NOT(ISNULL(Billing_Complete_Set_Up_Stage_Met_Date__c)),
+                  NOT(ISNULL(Billing_Submit_Verify_Stage_Met_Date__c)),
+                  NOT(ISNULL(Billing_Setting_Up_Bills_Stage_Met_Date__c)),
+                  NOT(ISNULL(Billing_Adding_Students_Stage_Met_Date__c))
+                ),
+                &quot;Receiving Online Payments&quot;,
+                IF(
+                  AND(
+                    NOT(ISNULL(Billing_Online_Payments_Stage_Met_Date__c)),
+                    NOT(ISNULL(Billing_Sending_Bills_Stage_Met_Date__c)),
+                    NOT(ISNULL(Billing_Adding_Payers_Stage_Met_Date__c)),
+                    NOT(ISNULL(Billing_FinalVerification_Stage_Met_Date__c)),
+                    NOT(ISNULL(Billing_Complete_Set_Up_Stage_Met_Date__c)),
+                    NOT(ISNULL(Billing_Submit_Verify_Stage_Met_Date__c)),
+                    NOT(ISNULL(Billing_Setting_Up_Bills_Stage_Met_Date__c)),
+                    NOT(ISNULL(Billing_Adding_Students_Stage_Met_Date__c))
+                  ),
+                  &quot;Activated&quot;,
+                  &quot;Not Available&quot;
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Calculated Billing Activation Funnel</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

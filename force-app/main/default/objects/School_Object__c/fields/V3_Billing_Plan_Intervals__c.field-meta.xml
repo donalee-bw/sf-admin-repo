@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>V3_Billing_Plan_Intervals__c</fullName>
+    <description>List of all active/paused billing plan recurrence periods (eg, weekly, biweekly, monthly, bimonthly)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>List of all active/paused billing plan recurrence periods (eg, weekly, biweekly, monthly, bimonthly)</inlineHelpText>
+    <label>V3 Billing Plan Intervals</label>
+    <length>200</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

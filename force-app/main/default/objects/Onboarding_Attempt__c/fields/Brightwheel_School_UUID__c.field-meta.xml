@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Brightwheel_School_UUID__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ISPICKVAL(Onboarding_Attempt_Status_New__c , &quot;Closed&quot;) || ISPICKVAL(Onboarding_Attempt_Status_New__c , &quot;Canceled&quot;),
+ Brightwheel_School_UUID_Stamp__c ,
+IF(NOT(ISBLANK( Brightwheel_School_UUID_Stamp__c )),
+Brightwheel_School_UUID_Stamp__c,
+   Account__r.School_Object__r.Brightwheel_School_UUID__c    )
+)</formula>
+    <label>Brightwheel School UUID</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_Check_In_Call_to_1_Bill_Sent_Stamp__c</fullName>
+    <description>If Billing Call 2 Status is Complete, shows the number of days from the Billing Call 2 Date to the One Bill Sent Threshold Met Stamp date. (One_Bill_Sent_Threshold_Met_Stamp__c - Billing_Call_2_Date__c)</description>
+    <externalId>false</externalId>
+    <formula>IF(
+   ISPICKVAL(Billing_Call_2_Status__c, &apos;Complete&apos;),
+   One_Bill_Sent_Threshold_Met_Stamp__c - Billing_Call_2_Date__c,
+   NULL)</formula>
+    <inlineHelpText>If Billing Call 2 Status is Complete, shows the number of days from the Billing Call 2 Date to the One Bill Sent Threshold Met Stamp date.</inlineHelpText>
+    <label>Days Check In Call to 1 Bill Sent Stamp</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

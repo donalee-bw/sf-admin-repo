@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CK_Onboarding_Progress_Overlook</fullName>
+    <booleanFilter>1 AND (( 2 AND 3 AND 4) OR (5 AND 6 AND 7 AND 8)) AND 9</booleanFilter>
+    <columns>NAME</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>OBS_Last_Contacted__c</columns>
+    <columns>Last_Activity_Date__c</columns>
+    <columns>Activities_Per_Student__c</columns>
+    <columns>Next_Onboarding_Meeting_Scheduled__c</columns>
+    <columns>Last_Online_Payment_Date__c</columns>
+    <columns>Last_Visit_To_Billing_Page__c</columns>
+    <columns>V3_Number_of_Billing_Plans__c</columns>
+    <columns>V3_Next_Invoice_Due_Date__c</columns>
+    <columns>JG_Impersonate_Link__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>OWNER.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>Kerr</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Inactive,Opted Out</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Inactive,Opted Out</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>OWNER.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>Kerr</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>1:1 Multi-Site,Site-Add</value>
+    </filters>
+    <label>[CK] Onboarding Progress Overlook</label>
+</ListView>

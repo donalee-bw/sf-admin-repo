@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Customer Success Operations Specialist I - Expansion</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Customer Success Operations Specialist I - Expansion</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>Program_Manager_II_Customer_Success_Expansion</parentRole>
+</Role>

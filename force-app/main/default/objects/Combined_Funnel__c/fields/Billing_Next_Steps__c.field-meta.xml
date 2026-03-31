@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Next_Steps__c</fullName>
+    <description>Mapped to Customer Next Steps on Billing Onboardings in flow.
+04/10/23 - Flagged to be deprecated (Sprint 5 - 2023)</description>
+    <inlineHelpText>Short snapshot of what the billing next steps are for the customer.</inlineHelpText>
+    <label>x_Billing Next Steps</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

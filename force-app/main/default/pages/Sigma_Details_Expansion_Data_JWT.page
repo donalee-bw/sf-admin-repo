@@ -1,0 +1,5 @@
+<apex:page >
+    <!-- CHANGE: Update embedPath to your new workbook URL -->
+    <c:SigmaEmbedComponent_JWT_Opportunity embedPath="https://app.sigmacomputing.com/brightwheel/workbook/6fp9oza5lFuUiMMMkITgt7/page/jHd77xh0sg" 
+        embedUser="salesforce-sigma@mybrightwheel.com"/>
+</apex:page>

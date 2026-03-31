@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Apply_Local_Presence__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This fields calls from the local presence number if it set to true for that particular agent.</description>
+    <label>Apply Local Presence</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

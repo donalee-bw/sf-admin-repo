@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Contact_Ownership_Check</name>
+        <label>Contact Ownership Check</label>
+        <locationX>710</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Update_Contact_Lead_Source</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Update to Contact Ownership</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Ownership_needs_Updated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact.OwnerId</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.OwnerId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_Owner_Lead_Source</targetReference>
+            </connector>
+            <label>Contact Ownership needs Updated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Found_Contact</name>
+        <label>Found Contact</label>
+        <locationX>908</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Process</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contact_Ownership_Check</targetReference>
+            </connector>
+            <label>Contact Process</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Found_Lead</name>
+        <label>Found Lead</label>
+        <locationX>545</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Get_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Lead_Process</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Lead.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Lead_Ownership_check</targetReference>
+            </connector>
+            <label>Lead Process</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Lead_Ownership_check</name>
+        <label>Lead Ownership check</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Update_Lead_Source</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Update to Lead Ownership</defaultConnectorLabel>
+        <rules>
+            <name>Lead_Owner_Needs_Updated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Lead.OwnerId</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.OwnerId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lead_Owner_Source</targetReference>
+            </connector>
+            <label>Lead Owner Needs Updated</label>
+        </rules>
+    </decisions>
+    <description>Automation that populates the Lead Source of Sales Line on any Leads or Contacts in which the Call Flow field is populated
+
+11/12/24 - Updated the triggering logic to not fire on abandoned call.  Also, updated the ownership on the Lead/Contact to match the Conversation record.</description>
+    <environments>Default</environments>
+    <interviewLabel>Conversation - Update Lead/Contact - Lead Source {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Conversation - Update Lead/Contact - Lead Source</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Contact</name>
+        <label>Get Contact</label>
+        <locationX>908</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_Contact</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ringdna__Contact__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Lead</name>
+        <label>Get Lead</label>
+        <locationX>545</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_Lead</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ringdna__Lead__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Contact_Lead_Source</name>
+        <label>Update Contact - Lead Source</label>
+        <locationX>842</locationX>
+        <locationY>863</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ringdna__Contact__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>LeadSource</field>
+            <value>
+                <stringValue>Sales Line</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Contact_Owner_Lead_Source</name>
+        <label>Update Contact - Owner &amp; Lead Source</label>
+        <locationX>578</locationX>
+        <locationY>863</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ringdna__Contact__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>LeadSource</field>
+            <value>
+                <stringValue>Sales Line</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead_Owner_Source</name>
+        <label>Update Lead Owner &amp; Source</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ringdna__Lead__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>LOGIC_Bypass_Validation__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LeadSource</field>
+            <value>
+                <stringValue>Sales Line</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead_Source</name>
+        <label>Update Lead Source</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ringdna__Lead__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>LeadSource</field>
+            <value>
+                <stringValue>Sales Line</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>419</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Lead</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ringdna__Call_Flow__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ringdna__Abandoned_Call__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>ringdna__Conversation__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

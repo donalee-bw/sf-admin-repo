@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotSetBillingStatusToInactive</fullName>
+    <active>true</active>
+    <description>Prevents reps from updated Billing Onboarding Status to Inactive - should only happen through Cancelled Customer Account Type automation.</description>
+    <errorConditionFormula>AND(
+    NOT($User.ProfileId = &apos;00e1I000001rqxt&apos;),
+    NOT($User.ProfileId = &apos;00e1I000000qsnN&apos;),
+    NOT($User.Id = &apos;0053u000003xcrz&apos;),
+    NOT($User.Id = &apos;005Rd000004LI65&apos;),
+    ISPICKVAL(Billing_Onboarding_Status__c, &apos;Inactive&apos;),
+    NOT(ISPICKVAL(Account__r.Type, &apos;Cancelled Customer&apos;))
+ )</errorConditionFormula>
+    <errorDisplayField>Billing_Onboarding_Status__c</errorDisplayField>
+    <errorMessage>You cannot set the Billing Onboarding Status to Inactive if the Account is not a Canceled Customer. Inactive should ONLY be used for Canceled Customers. Please choose a different Status.</errorMessage>
+</ValidationRule>

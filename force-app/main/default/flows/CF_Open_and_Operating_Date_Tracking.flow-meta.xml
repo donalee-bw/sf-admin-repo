@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Open_Operating_Date_Updated</name>
+        <label>Open &amp; Operating Date Updated?</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Open_and_Operating_Date__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Open_and_Operating_Date_tracking_fields</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Flow tracks the date that the open and operating date was last updated and counts the amount of times its updated
+JH 7/7/24: updated to also stamp the BNP Graduation Date on combined funnel when the onboarding path is updated from BNP to non bnp (entry criteria broadened)</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Adds 1 to the current number value in Number of Open Operating Date Updates</description>
+        <name>OODateUpdateCount</name>
+        <dataType>Number</dataType>
+        <expression>{!$Record.Number_of_Open_Operating_Date_Updates__c} + 1</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>CF - Open and Operating Date Tracking {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CF - Open and Operating Date Tracking</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Open_and_Operating_Date_tracking_fields</name>
+        <label>Update Open and Operating Date tracking fields</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>Number_of_Open_Operating_Date_Updates__c</field>
+            <value>
+                <elementReference>OODateUpdateCount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Open_and_Operating_Date_Last_Updated__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Open_Operating_Date_Updated</targetReference>
+        </connector>
+        <filterLogic>((1 AND 2) OR (3 AND 4 AND 5)) AND 6</filterLogic>
+        <filters>
+            <field>Open_and_Operating_Date__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Open_and_Operating_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Path__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Path__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Brand New Program</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Path__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>BNP Site-Add</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Brand_New_Program__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Yes</stringValue>
+            </value>
+        </filters>
+        <object>Combined_Funnel__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Webinar_2_Scheduled_Date__c</fullName>
+    <description>Date the Billing training webinar is scheduled. Formula field to pull this value from related account record.</description>
+    <formula>IF(
+AND(
+NOT(ISBLANK(Account__r.Webinar_2_Scheduled_Date__c)),
+ISBLANK(Primary_Contact__r.Webinar_2_Scheduled_Date__c)
+),
+Account__r.Webinar_2_Scheduled_Date__c,
+IF(
+AND(
+ISBLANK(Account__r.Webinar_2_Scheduled_Date__c),
+NOT(ISBLANK(Primary_Contact__r.Webinar_2_Scheduled_Date__c))
+),
+Primary_Contact__r.Webinar_2_Scheduled_Date__c,
+IF(
+Account__r.Webinar_2_Scheduled_Date__c &gt; Primary_Contact__r.Webinar_2_Scheduled_Date__c,
+Account__r.Webinar_2_Scheduled_Date__c,
+Primary_Contact__r.Webinar_2_Scheduled_Date__c
+)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Webinar 2 Scheduled Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assigns the highest number found on the Capacity field found across all lead records</description>
+        <name>Assign_MAX_Capacity</name>
+        <label>Assign MAX Capacity</label>
+        <locationX>138</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>VariableHighestCapacity</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>FormulaHighestCapacity</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Leads</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Checks if the capacity field was updated and that the related organization has no associated account</description>
+        <name>Capacity_Updated_and_No_Account</name>
+        <label>Capacity Updated and No Account</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Trigger_Organization_Flow</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_CapacityUpdated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Capacity__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Organization__r.LOGIC_associated_accounts__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Capacity__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Capacity__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Leads_With_Capacity</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <description>Formula that captures the highest number on the Capacity field on the lead records.</description>
+        <name>FormulaHighestCapacity</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+{!VariableHighestCapacity} = 0,
+{!Loop_Through_Leads.Capacity__c},
+IF(
+{!VariableHighestCapacity} != 0
+&amp;&amp;
+{!Loop_Through_Leads.Capacity__c} &gt; {!VariableHighestCapacity},
+{!Loop_Through_Leads.Capacity__c},
+{!VariableHighestCapacity}
+)
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>TriggerCheckbox</name>
+        <dataType>Boolean</dataType>
+        <expression>IF({!$Record.Organization__r.Sync_Sales_Fields__c} = TRUE, FALSE, TRUE)</expression>
+    </formulas>
+    <interviewLabel>Lead - Trigger Org Sync Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead - Trigger Org Sync Flow</label>
+    <loops>
+        <description>Loop through lead records found on the previous get node.</description>
+        <name>Loop_Through_Leads</name>
+        <label>Loop Through Leads</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <collectionReference>Get_Leads_With_Capacity</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_MAX_Capacity</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Organization_Capacity</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get lead records associated with the same organization related to the main lead that have the Capacity field Populated</description>
+        <name>Get_Leads_With_Capacity</name>
+        <label>Get Leads With Capacity</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Through_Leads</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Organization__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Organization__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Capacity__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Capacity__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Lead</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Capacity__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Trigger_Organization_Flow</name>
+        <label>Trigger Organization Flow</label>
+        <locationX>182</locationX>
+        <locationY>1031</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Organization__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sync_Sales_Fields__c</field>
+            <value>
+                <elementReference>TriggerCheckbox</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Organization__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Organization_Capacity</name>
+        <label>Update Organization Capacity</label>
+        <locationX>50</locationX>
+        <locationY>839</locationY>
+        <connector>
+            <targetReference>Trigger_Organization_Flow</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Organization__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Organization_Capacity__c</field>
+            <value>
+                <elementReference>FormulaHighestCapacity</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Organization__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Capacity_Updated_and_No_Account</targetReference>
+        </connector>
+        <filterFormula>NOT(ISNULL({!$Record.Organization__c}))
+&amp;&amp;
+OR(
+ISCHANGED({!$Record.Last_Recycled_or_Unqualified_Date__c}),
+ISCHANGED({!$Record.OMQ_return_date__c}),
+ISCHANGED({!$Record.LastTransferDate}),
+ISCHANGED({!$Record.Last_Sales_Event__c}),
+ISCHANGED({!$Record.Last_Sales_Task__c}),
+ISCHANGED({!$Record.Capacity__c}),
+ISCHANGED({!$Record.OwnerId}),
+ISCHANGED({!$Record.Status})
+)</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>600</triggerOrder>
+    <variables>
+        <description>Stores value to populate the Capacity field on the Location</description>
+        <name>VariableHighestCapacity</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+</Flow>

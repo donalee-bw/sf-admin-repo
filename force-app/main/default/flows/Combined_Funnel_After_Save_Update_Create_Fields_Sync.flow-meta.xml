@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Account_BNP_Substatus_to_Update</name>
+        <label>Assign Account BNP Substatus to Update</label>
+        <locationX>380</locationX>
+        <locationY>539</locationY>
+        <assignmentItems>
+            <assignToReference>varMP_BNPSubStatus</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Account__r.BNP_Sub_Status__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Account</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_CF_BNP_Substatus_to_Update</name>
+        <label>Assign CF BNP Substatus to Update</label>
+        <locationX>116</locationX>
+        <locationY>539</locationY>
+        <assignmentItems>
+            <assignToReference>varMP_BNPSubStatus</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.BNP_Sub_Status__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Account</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>Flow_Error</name>
+        <label>Flow Error</label>
+        <locationX>314</locationX>
+        <locationY>1595</locationY>
+        <customErrorMessages>
+            <errorMessage>Oops! The updates you made didn&apos;t sync with the related Primary Contacts. Could you manually update them there as well? Also, please drop us a Zendesk ticket to report this error. Thank you!</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Flow_Error_2</name>
+        <label>Flow Error</label>
+        <locationX>314</locationX>
+        <locationY>2243</locationY>
+        <customErrorMessages>
+            <errorMessage>Oops! The updates you made didn&apos;t sync with the related Primary Contacts. Could you manually update them there as well? Also, please drop us a Zendesk ticket to report this error. Thank you!</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Flow_Error_3</name>
+        <label>Flow Error</label>
+        <locationX>644</locationX>
+        <locationY>839</locationY>
+        <customErrorMessages>
+            <errorMessage>Oops! The updates you made didn&apos;t sync with the related Account. Could you manually update them there as well? Also, please drop us a Zendesk ticket to report this error. Thank you!</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <description>Using Assignment variable since the formula solution being used wouldn&apos;t work with the multi-picklist</description>
+        <name>CF_BNP_Substatus_Changed</name>
+        <label>CF BNP Substatus Changed?</label>
+        <locationX>248</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Account_BNP_Substatus_to_Update</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.BNP_Sub_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.BNP_Sub_Status__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_CF_BNP_Substatus_to_Update</targetReference>
+            </connector>
+            <label>Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Need_to_Update_Account</name>
+        <label>Need to Update Account?</label>
+        <locationX>578</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Get_SaaS_Primary_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_NeedtoUpdateAccount</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Brand_New_Program__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Path__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Onboarding_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Onboarding_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Student_Information_Currently_Stored__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Open_and_Operating_Date__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Next_Steps__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Add_Roster_By__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Add_Staff_By__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Initial_Setup_Call_Completed__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Initial_Setup_Call_Scheduled__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Invite_Parents_By__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Notify_Parents_By__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Reference_SaaS_Training_Call_Completed__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Coordinator__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Reference_SaaS_Training_Call_Scheduled__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Train_Teachers_By__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Center_Operating_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Capacity__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.BNP_Licensing_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.BNP_Intro_Call_status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Open_and_Operating_Date_Last_Updated__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.BNP_Sub_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CF_BNP_Substatus_Changed</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Need_to_Update_Contacts</name>
+        <label>Need to Update Contacts?</label>
+        <locationX>578</locationX>
+        <locationY>1271</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Need_to_Update_Contacts</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.BNP_Webinar_Status__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Declined_Billing_Training__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Declined_SaaS_Training__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Primary_SaaS_Contact_Found</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Primary_Billing_Contact_Found</name>
+        <label>Primary Billing Contact Found?</label>
+        <locationX>314</locationX>
+        <locationY>2027</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_PrimaryBillingContactFound</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Billing_Primary_Contact.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Primary_Billing_Contact</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Primary_SaaS_Contact_Found</name>
+        <label>Primary SaaS Contact Found?</label>
+        <locationX>314</locationX>
+        <locationY>1379</locationY>
+        <defaultConnector>
+            <targetReference>Get_Billing_Primary_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_PrimarySaaSContactFound</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_SaaS_Primary_Contact.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Primary_SaaS_Contact</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>PE - Flow created to keep fields on the Combined Funnel in sync with their counterpart on other objects. (Revenue.io Implementation Project)
+12/18/23 - PE - Added fied &quot;Current Center Operating Status) to mapping.
+12.22.23 - DJ - Removed first decision node for whether to update primary contacts. Added update to contact field called Revio Sequence Trigger to trigger an edit on contact records every time for sequencing. Removed field mapping to old Initial Setup Call Scheduled/Completed fields on CFs
+01/08/24 - Fixed issue with BNP Webinar Status for SaaS Primary Contact
+01/22/24 - PE -  If the &quot;Next Steps&quot; field is updated, check if a Onboarding Meeting call happened today and if found, perform false edit. 
+01/22/24 - PE - Contacts will only get updated if a field related to them is updated (decision node).
+7/18/24- JH - Added in additional BNP fields to the entry criteria and update account node to ensure data is synced between CF/account for fields used in BNP rev sequences
+09/26/24 - MC - added BNP sub status fields to entry criteria and update account node</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>BillingPCRevioSequenceTriggerAdd1</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+   ISBLANK({!Get_Billing_Primary_Contact.Revio_Sequence_Trigger__c}),
+    1, {!Get_Billing_Primary_Contact.Revio_Sequence_Trigger__c}+1
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>forB_BillingPrimary_BNP_Webinar_Status</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.BNP_Webinar_Status__c}),
+TEXT({!$Record.BNP_Webinar_Status__c}),
+{!Get_Billing_Primary_Contact.BNP_Webinar_Status__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forB_BillingPrimary_DeclinedBillingTraining</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Declined_Billing_Training__c}),
+{!$Record.Declined_Billing_Training__c},
+{!Get_Billing_Primary_Contact.Declined_Billing_Training__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forB_BillingPrimary_DeclinedSaaSTraining</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Declined_SaaS_Training__c}),
+{!$Record.Declined_SaaS_Training__c},
+{!Get_Billing_Primary_Contact.Declined_SaaS_Training__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forB_SaaSPrimary_BNP_Webinar_Status</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.BNP_Webinar_Status__c}),
+TEXT({!$Record.BNP_Webinar_Status__c}),
+{!Get_SaaS_Primary_Contact.BNP_Webinar_Status__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forB_SaaSPrimary_DeclinedBillingTraining</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Declined_Billing_Training__c}),
+{!$Record.Declined_Billing_Training__c},
+{!Get_SaaS_Primary_Contact.Declined_Billing_Training__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forB_SaaSPrimary_DeclinedSaaSTraining</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Declined_SaaS_Training__c}),
+{!$Record.Declined_SaaS_Training__c},
+{!Get_SaaS_Primary_Contact.Declined_SaaS_Training__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_Account_AddRosterBy</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Add_Roster_By__c}),
+{!$Record.Add_Roster_By__c},
+{!$Record.Account__r.Add_Roster_by__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_Account_AddStaffBy</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Add_Staff_By__c}),
+{!$Record.Add_Staff_By__c},
+{!$Record.Account__r.Add_Staff_by__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_Account_InitialSetupCallCompleted</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Initial_Setup_Call_Completed__c}),
+{!$Record.Initial_Setup_Call_Completed__c},
+{!$Record.Account__r.Initial_Setup_Call_Completed__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_Account_InitialSetupCallScheduled</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Initial_Setup_Call_Scheduled__c}),
+{!$Record.Initial_Setup_Call_Scheduled__c},
+{!$Record.Account__r.Initial_Setup_Call_Scheduled__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_Account_InviteParentsBy</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Invite_Parents_By__c}),
+{!$Record.Invite_Parents_By__c},
+{!$Record.Account__r.Invite_Parents_by__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_Account_NotifiyParentsBy</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Notify_Parents_By__c}),
+{!$Record.Notify_Parents_By__c},
+{!$Record.Account__r.Notify_Parents_by__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_Account_OnboardingTrainingCallComplete</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+    ISBLANK({!$Record.SaaS_Training_Call_Completed__c}),
+    {!$Record.Account__r.Onboarding_Call_Complete__c},
+    {!$Record.SaaS_Training_Call_Completed__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_Account_OnboardingTrainingCallSchedule</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Reference_SaaS_Training_Call_Scheduled__c}),
+{!$Record.Account__r.Onboarding_Training_Call_Scheduled__c},
+{!$Record.Account__r.Onboarding_Training_Call_Scheduled__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_Account_OpenAndOperatingDate</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Open_and_Operating_Date__c}),
+{!$Record.Open_and_Operating_Date__c},
+{!$Record.Account__r.Open_and_Operating_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_Account_OpenAndOperatingDateLastUpdated</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Open_and_Operating_Date_Last_Updated__c}),
+{!$Record.Open_and_Operating_Date_Last_Updated__c},
+{!$Record.Account__r.Open_and_Operating_Date_Last_Updated__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_Account_TrainTeachersBy</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Train_Teachers_By__c}),
+{!$Record.Train_Teachers_By__c},
+{!$Record.Account__r.Train_Teachers_by__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forN_Account_Capacity</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Capacity__c}),
+{!$Record.Capacity__c},
+{!$Record.Account__r.Capacity__c}
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>forT_Account_BillingOnboardingStatus</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Billing_Onboarding_Status__c}),
+TEXT({!$Record.Billing_Onboarding_Status__c}),
+TEXT({!$Record.Account__r.Billing_Onboarding_Status__c})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forT_Account_BNPIntroCallStatus</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.BNP_Intro_Call_status__c}),
+TEXT({!$Record.BNP_Intro_Call_status__c}),
+TEXT({!$Record.Account__r.BNP_Intro_Call_status__c})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forT_Account_BNPLicensingStatus</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.BNP_Licensing_Status__c}),
+TEXT({!$Record.BNP_Licensing_Status__c}),
+TEXT({!$Record.Account__r.BNP_Licensing_Status__c})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forT_Account_BrandNewProgram</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Brand_New_Program__c}),
+TEXT({!$Record.Brand_New_Program__c}),
+TEXT({!$Record.Account__r.Brand_New_Program__c})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forT_Account_CurrentCenterOperatingStatus</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Current_Center_Operating_Status__c}),
+TEXT({!$Record.Current_Center_Operating_Status__c}),
+TEXT({!$Record.Account__r.Current_Center_Operating_Status__c})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forT_Account_NextSteps</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.SaaS_Next_Steps__c}),
+{!$Record.SaaS_Next_Steps__c},
+{!$Record.Account__r.SaaS_Next_Steps__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forT_Account_OnboardingCoordinator</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Onboarding_Coordinator__c}),
+{!$Record.Onboarding_Coordinator__c},
+{!$Record.Account__r.Onboarding_Coordinator__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forT_Account_OnboardingPath</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Onboarding_Path__c}),
+TEXT({!$Record.Onboarding_Path__c}),
+TEXT({!$Record.Account__r.Onboarding_Setup_Call_Path__c})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forT_Account_SaaSOnboardingStatus</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.SaaS_Onboarding_Status__c}),
+TEXT({!$Record.SaaS_Onboarding_Status__c}),
+TEXT({!$Record.Account__r.SaaS_Onboarding_Status__c})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forT_Account_StudentInformationCurrentlyStored</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Student_Information_Currently_Stored__c}),
+TEXT({!$Record.Student_Information_Currently_Stored__c}),
+TEXT({!$Record.Account__r.Student_Information_Currently_Stored__c})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>RevioSequenceTriggerAdd1</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+    ISBLANK({!Get_SaaS_Primary_Contact.Revio_Sequence_Trigger__c}),
+    1, {!Get_SaaS_Primary_Contact.Revio_Sequence_Trigger__c}+1
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Combined Funnel - After Save - Update/Create - Fields Sync {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Combined Funnel - After Save - Update/Create - Fields Sync</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Billing_Primary_Contact</name>
+        <label>Get Billing Primary Contact</label>
+        <locationX>314</locationX>
+        <locationY>1919</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Primary_Billing_Contact_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Billing_Primary_Contact__r.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>Get_SaaS_Primary_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Declined_SaaS_Training__c</queriedFields>
+        <queriedFields>Declined_Billing_Training__c</queriedFields>
+        <queriedFields>BNP_Webinar_Status__c</queriedFields>
+        <queriedFields>Revio_Sequence_Trigger__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_SaaS_Primary_Contact</name>
+        <label>Get SaaS Primary Contact</label>
+        <locationX>578</locationX>
+        <locationY>1163</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Need_to_Update_Contacts</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SaaS_Primary_Contact__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Declined_SaaS_Training__c</queriedFields>
+        <queriedFields>Declined_Billing_Training__c</queriedFields>
+        <queriedFields>BNP_Webinar_Status__c</queriedFields>
+        <queriedFields>Revio_Sequence_Trigger__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Account</name>
+        <label>Update Account</label>
+        <locationX>248</locationX>
+        <locationY>731</locationY>
+        <connector>
+            <targetReference>Get_SaaS_Primary_Contact</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Flow_Error_3</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Account__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Add_Roster_by__c</field>
+            <value>
+                <elementReference>forD_Account_AddRosterBy</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Add_Staff_by__c</field>
+            <value>
+                <elementReference>forD_Account_AddStaffBy</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BNP_Intro_Call_status__c</field>
+            <value>
+                <elementReference>forT_Account_BNPIntroCallStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BNP_Licensing_Status__c</field>
+            <value>
+                <elementReference>forT_Account_BNPLicensingStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BNP_Sub_Status__c</field>
+            <value>
+                <elementReference>varMP_BNPSubStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Onboarding_Status__c</field>
+            <value>
+                <elementReference>forT_Account_BillingOnboardingStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Brand_New_Program__c</field>
+            <value>
+                <elementReference>forT_Account_BrandNewProgram</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Capacity__c</field>
+            <value>
+                <elementReference>forN_Account_Capacity</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Current_Center_Operating_Status__c</field>
+            <value>
+                <elementReference>forT_Account_CurrentCenterOperatingStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Initial_Setup_Call_Completed__c</field>
+            <value>
+                <elementReference>forD_Account_InitialSetupCallCompleted</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Initial_Setup_Call_Scheduled__c</field>
+            <value>
+                <elementReference>forD_Account_InitialSetupCallScheduled</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Invite_Parents_by__c</field>
+            <value>
+                <elementReference>forD_Account_InviteParentsBy</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Notify_Parents_by__c</field>
+            <value>
+                <elementReference>forD_Account_NotifiyParentsBy</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Onboarding_Call_Complete__c</field>
+            <value>
+                <elementReference>forD_Account_OnboardingTrainingCallComplete</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Onboarding_Coordinator__c</field>
+            <value>
+                <elementReference>forT_Account_OnboardingCoordinator</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Onboarding_Setup_Call_Path__c</field>
+            <value>
+                <elementReference>forT_Account_OnboardingPath</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Onboarding_Training_Call_Scheduled__c</field>
+            <value>
+                <elementReference>forD_Account_OnboardingTrainingCallSchedule</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Open_and_Operating_Date_Last_Updated__c</field>
+            <value>
+                <elementReference>forD_Account_OpenAndOperatingDateLastUpdated</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Open_and_Operating_Date__c</field>
+            <value>
+                <elementReference>forD_Account_OpenAndOperatingDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Next_Steps__c</field>
+            <value>
+                <elementReference>forT_Account_NextSteps</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Onboarding_Status__c</field>
+            <value>
+                <elementReference>forT_Account_SaaSOnboardingStatus</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Student_Information_Currently_Stored__c</field>
+            <value>
+                <elementReference>forT_Account_StudentInformationCurrentlyStored</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Train_Teachers_by__c</field>
+            <value>
+                <elementReference>forD_Account_TrainTeachersBy</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Primary_Billing_Contact</name>
+        <label>Update Primary Billing Contact</label>
+        <locationX>50</locationX>
+        <locationY>2135</locationY>
+        <faultConnector>
+            <targetReference>Flow_Error_2</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Billing_Primary_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>BNP_Webinar_Status__c</field>
+            <value>
+                <elementReference>forB_BillingPrimary_BNP_Webinar_Status</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Declined_Billing_Training__c</field>
+            <value>
+                <elementReference>forB_BillingPrimary_DeclinedBillingTraining</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Declined_SaaS_Training__c</field>
+            <value>
+                <elementReference>forB_BillingPrimary_DeclinedSaaSTraining</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Revio_Sequence_Trigger__c</field>
+            <value>
+                <elementReference>BillingPCRevioSequenceTriggerAdd1</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Primary_SaaS_Contact</name>
+        <label>Update Primary SaaS Contact</label>
+        <locationX>50</locationX>
+        <locationY>1487</locationY>
+        <connector>
+            <targetReference>Get_Billing_Primary_Contact</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Flow_Error</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.SaaS_Primary_Contact__r.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>BNP_Webinar_Status__c</field>
+            <value>
+                <elementReference>forB_SaaSPrimary_BNP_Webinar_Status</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Declined_Billing_Training__c</field>
+            <value>
+                <elementReference>forB_SaaSPrimary_DeclinedBillingTraining</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Declined_SaaS_Training__c</field>
+            <value>
+                <elementReference>forB_SaaSPrimary_DeclinedSaaSTraining</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Revio_Sequence_Trigger__c</field>
+            <value>
+                <elementReference>RevioSequenceTriggerAdd1</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <start>
+        <locationX>452</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Need_to_Update_Account</targetReference>
+        </connector>
+        <filterLogic>20 AND (1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15 OR 16 OR 17 OR 18 OR 19 OR 21 OR 22 OR 23 OR 24 OR 25)</filterLogic>
+        <filters>
+            <field>Brand_New_Program__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Path__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Onboarding_Status__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Onboarding_Status__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Declined_SaaS_Training__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Declined_Billing_Training__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Open_and_Operating_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Student_Information_Currently_Stored__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Next_Steps__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BNP_Webinar_Status__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Add_Roster_By__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Add_Staff_By__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Invite_Parents_By__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Notify_Parents_By__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Reference_SaaS_Training_Call_Completed__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Coordinator__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Reference_SaaS_Training_Call_Scheduled__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Train_Teachers_By__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Current_Center_Operating_Status__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Prevent_Sync_to_Account__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Capacity__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BNP_Licensing_Status__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BNP_Intro_Call_status__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Open_and_Operating_Date_Last_Updated__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BNP_Sub_Status__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Combined_Funnel__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>varMP_BNPSubStatus</name>
+        <dataType>Multipicklist</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

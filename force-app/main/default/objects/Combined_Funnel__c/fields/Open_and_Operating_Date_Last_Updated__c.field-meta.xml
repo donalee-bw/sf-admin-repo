@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_and_Operating_Date_Last_Updated__c</fullName>
+    <description>Date that the Open and Operating Date field was last updated on a BNP</description>
+    <inlineHelpText>Date that the Open and Operating Date field was last updated</inlineHelpText>
+    <label>Open and Operating Date Last Updated</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

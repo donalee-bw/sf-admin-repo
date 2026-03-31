@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Adding the current opportunity from loop interator to the new collection variable of opportunities.</description>
+        <name>Add_Loop_Item_to_Collection</name>
+        <label>Add Loop Item to Collection</label>
+        <locationX>138</locationX>
+        <locationY>2087</locationY>
+        <assignmentItems>
+            <assignToReference>OpportunitiesToUpdate</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_on_Opportunities</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_on_Opportunities</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assigns values to fields related to closed lost opportunities.</description>
+        <name>Assign_CL_Values</name>
+        <label>Assign CL Values</label>
+        <locationX>138</locationX>
+        <locationY>1979</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_on_Opportunities.StageName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed Lost</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Loop_on_Opportunities.Closed_Lost_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Not for Sales - Cancelled SaaS</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Loop_on_Opportunities.Billing_Closed_Lost_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Not for Sales - Cancelled SaaS</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Loop_on_Opportunities.Closed_Lost_Reason_Detail__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Closed Lost by automation - account transitioned to &apos;Cancelled Customer&apos; type</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Loop_on_Opportunities.Billing_Status_at_CW__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Not for Sales - Cancelled SaaS</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Loop_on_Opportunities.PD_Closed_Lost_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Not for Sales - Cancelled SaaS</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_Loop_Item_to_Collection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Inactive_Status</name>
+        <label>Assign Inactive Status</label>
+        <locationX>138</locationX>
+        <locationY>1163</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_Through_Open_Tasks.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Auto completed</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_Record_to_Collection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Record_to_Collection</name>
+        <label>Assign Record to Collection</label>
+        <locationX>138</locationX>
+        <locationY>1271</locationY>
+        <assignmentItems>
+            <assignToReference>TaskRecordCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Through_Open_Tasks</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Open_Tasks</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assign values to Case Status, Cancellation Category and Cancellation Reason fields on case record.</description>
+        <name>Set_Case_Fields</name>
+        <label>Set Case Fields</label>
+        <locationX>138</locationX>
+        <locationY>2795</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_Through_Cases.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Auto Closed</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Loop_Through_Cases.Reason</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Other</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Loop_Through_Cases.Cancellation_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Auto Close - Canceled Customer</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Set_Loop_Item_to_Collection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Adds the current case from loop to the case variable collection</description>
+        <name>Set_Loop_Item_to_Collection</name>
+        <label>Set Loop Item to Collection</label>
+        <locationX>138</locationX>
+        <locationY>2903</locationY>
+        <assignmentItems>
+            <assignToReference>varR_Cases</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Through_Cases</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Cases</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>CF_Record_Found</name>
+        <label>CF Record Found?</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Get_Open_Tasks_on_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No CF Record</defaultConnectorLabel>
+        <rules>
+            <name>CF_Record_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Retrieve_Combined_Funnel_Records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Combined_Funnel_Record</targetReference>
+            </connector>
+            <label>CF Record Exists</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if cases other than Failed Payment record type were found open.</description>
+        <name>Open_Cases_Found</name>
+        <label>Open Cases Found?</label>
+        <locationX>182</locationX>
+        <locationY>2579</locationY>
+        <defaultConnectorLabel>No Open Cases Found</defaultConnectorLabel>
+        <rules>
+            <name>Open_Cases_Found_yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Cases</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Through_Cases</targetReference>
+            </connector>
+            <label>Open Cases Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if any open opportunities were found for the account that fired this flow.</description>
+        <name>Opportunities_Found</name>
+        <label>Opportunities Found</label>
+        <locationX>182</locationX>
+        <locationY>1763</locationY>
+        <defaultConnector>
+            <targetReference>Get_Cases</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_Open_Opportunities</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_on_Opportunities</targetReference>
+            </connector>
+            <label>Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Were_Task_Records_Found</name>
+        <label>Were Task Records Found?</label>
+        <locationX>182</locationX>
+        <locationY>947</locationY>
+        <defaultConnector>
+            <targetReference>Find_Open_Opportunities</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Tasks, End Flow</defaultConnectorLabel>
+        <rules>
+            <name>Tasks_Were_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Open_Tasks_on_Account</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Through_Open_Tasks</targetReference>
+            </connector>
+            <label>Tasks Were Found</label>
+        </rules>
+    </decisions>
+    <description>When account is updated to cancelled customer, update onboarding fields in CF record and auto complete open tasks
+08/09/2023 - PE - Updated the flow to move all open opportunities to &quot;Close Lost&quot; status when associated with an account that has been changed to the &quot;Cancelled Customer&quot; type. (Sprint 14 - 2023)
+08/22/2023 - PE - Updated the flow to move open cases to &quot;Close Lost&quot; status when associated with an account that has been changed to the &quot;Cancelled Customer&quot; type. (Sprint 15 - 2023)
+11/04/2024 - Updated to exclude Cancel Request Cases with origin of Failed Payment ( CRFP Cases) from auto closing .
+1/16/24 JH - Updated to exclude EC Opps from being marked as CL so they remain open
+04/07/25 - PE - Removed Proactivate Engagement Offline Payers cases from being canceled
+04/11/25 - BW - Updated the Opp pull logic to only pull true open opps, not any in CW, CL, SSPR, etc
+07/21/25 - PE - Added mapping to opportunity field PD Closed Lost Reason to prevent firing VR.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Updates the field Closed Lost Reason on Billing Upsell opportunities to &quot;Canceled Saas&quot;. If other record type, does nothing.</description>
+        <name>BillingUpsellCLReason</name>
+        <dataType>String</dataType>
+        <expression>IF(
+{!Loop_on_Opportunities.RecordTypeId} = &quot;0123u000000aNBlAAM&quot; /* Billing Upsell */,
+&quot;Canceled Saas&quot;,
+&quot;&quot;
+)</expression>
+    </formulas>
+    <interviewLabel>CF - Cancelled Customer - Update CF Fields and Open Tasks {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CF - Cancelled Customer - Update CF, Tasks, Opps and Cases</label>
+    <loops>
+        <name>Loop_on_Opportunities</name>
+        <label>Loop on Opportunities</label>
+        <locationX>50</locationX>
+        <locationY>1871</locationY>
+        <collectionReference>Find_Open_Opportunities</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_CL_Values</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Opportunities</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Loop through open cases found</description>
+        <name>Loop_Through_Cases</name>
+        <label>Loop Through Cases</label>
+        <locationX>50</locationX>
+        <locationY>2687</locationY>
+        <collectionReference>Get_Cases</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Set_Case_Fields</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Cases</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Loop_Through_Open_Tasks</name>
+        <label>Loop Through Open Tasks</label>
+        <locationX>50</locationX>
+        <locationY>1055</locationY>
+        <collectionReference>Get_Open_Tasks_on_Account</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Inactive_Status</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Tasks</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets any open opportunities associated with the account</description>
+        <name>Find_Open_Opportunities</name>
+        <label>Find Open Opportunities</label>
+        <locationX>182</locationX>
+        <locationY>1655</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Opportunities_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Label.Experience_Curriculum_Opportunity</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>StageName</queriedFields>
+        <queriedFields>Closed_Lost_Reason__c</queriedFields>
+        <queriedFields>RecordTypeId</queriedFields>
+        <queriedFields>Closed_Lost_Reason_Detail__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get open cases that are not associated with the &apos;Failed Payment&apos; record type.</description>
+        <name>Get_Cases</name>
+        <label>Get Cases</label>
+        <locationX>182</locationX>
+        <locationY>2471</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Open_Cases_Found</targetReference>
+        </connector>
+        <filterLogic>1 AND 3 AND ( 2 AND NOT ( 4 AND 5 ) ) AND NOT ( 6 AND 7 )</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Label.Failed_Payment_Case</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Label.Cancel_Request_Case</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Origin</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Failed Payment</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0123u000000ivhsAAA</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Offline Payer - At-Risk</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Case</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Status</queriedFields>
+        <queriedFields>Reason</queriedFields>
+        <queriedFields>Cancellation_Reason__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Open_Tasks_on_Account</name>
+        <label>Get Open Tasks on Account</label>
+        <locationX>182</locationX>
+        <locationY>839</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Were_Task_Records_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Open</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsRecurrence</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>TaskSubtype</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Cadence</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Task</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Status</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Retrieve_Combined_Funnel_Records</name>
+        <label>Retrieve Combined Funnel Records</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>CF_Record_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Billing_Onboarding_Status__c</queriedFields>
+        <queriedFields>SaaS_Onboarding_Status__c</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Account_Owner</name>
+        <label>Update Account Owner</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <connector>
+            <targetReference>Retrieve_Combined_Funnel_Records</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>0053u0000035xeBAAQ</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>update the case records in the collection after loop finishes</description>
+        <name>Update_Cases</name>
+        <label>Update Cases</label>
+        <locationX>50</locationX>
+        <locationY>3095</locationY>
+        <inputReference>varR_Cases</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Combined_Funnel_Record</name>
+        <label>Update Combined Funnel Record</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Get_Open_Tasks_on_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Retrieve_Combined_Funnel_Records.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Billing_Dropout_Reason__c</field>
+            <value>
+                <stringValue>Not for Sales - Cancelled SaaS</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Onboarding_Status__c</field>
+            <value>
+                <stringValue>Inactive</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Onboarding_Status__c</field>
+            <value>
+                <stringValue>Inactive</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Combined_Funnel__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates the opportunities records in the collection after loop finishes.</description>
+        <name>Update_Opportunities</name>
+        <label>Update Opportunities</label>
+        <locationX>50</locationX>
+        <locationY>2279</locationY>
+        <connector>
+            <targetReference>Get_Cases</targetReference>
+        </connector>
+        <inputReference>OpportunitiesToUpdate</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Tasks</name>
+        <label>Update Tasks</label>
+        <locationX>50</locationX>
+        <locationY>1463</locationY>
+        <connector>
+            <targetReference>Find_Open_Opportunities</targetReference>
+        </connector>
+        <inputReference>TaskRecordCollection</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Account_Owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cancelled Customer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Collection variable to store all opportunitiy records to update at once</description>
+        <name>OpportunitiesToUpdate</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>TaskRecordCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Task</objectType>
+    </variables>
+    <variables>
+        <description>Collection variable to store all case reocrds to update at once</description>
+        <name>varR_Cases</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+</Flow>

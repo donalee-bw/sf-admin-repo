@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Self_Serve_Distro</fullName>
+    <columns>NAME</columns>
+    <columns>Original_Close_Date__c</columns>
+    <columns>Initial_Setup_Call_Completed__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>Onboarding_Path__c</columns>
+    <columns>FTS_Owner__c</columns>
+    <columns>Billing_Launch_Date__c</columns>
+    <columns>Active_Student_Count__c</columns>
+    <columns>Active_Student_Activity_Count__c</columns>
+    <columns>Ratio_Students_with_Activated_Parent__c</columns>
+    <columns>LAST_ACTIVITY</columns>
+    <columns>Account_Customer_Type__c</columns>
+    <columns>Monthly_Spend_Per_Site__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Self Serve</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>activated</value>
+    </filters>
+    <filters>
+        <field>Original_Close_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>11/1/2021</value>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Self Serve Unassigned</label>
+</ListView>

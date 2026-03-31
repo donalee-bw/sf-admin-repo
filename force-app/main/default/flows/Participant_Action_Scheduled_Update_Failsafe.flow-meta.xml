@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Today_Weekend_or_Holiday</name>
+        <label>Today Weekend or Holiday?</label>
+        <locationX>176</locationX>
+        <locationY>360</locationY>
+        <defaultConnector>
+            <targetReference>Set_FailSafe_to_True</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Yes</defaultConnectorLabel>
+        <rules>
+            <name>No_TodayIsWeekendOrHoliday</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>forB_IsWeekendToday</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Weekend</label>
+        </rules>
+        <rules>
+            <name>Holiday</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Holidays.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Holiday</label>
+        </rules>
+    </decisions>
+    <description>PE - Flow to flag when a task of a sequence with a name starting with &quot;OB &amp; ENGT&quot; is overdue by updating the field FailSafe Engaged field (Revenue.io Implementation Project)
+BW - Updated logic to run Tuesday - Saturday as running it on Monday caused all of the weekend tasks to fail before reps had a chance to take action</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forB_IsWeekendToday</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+WEEKDAY(TODAY()) = 1,
+WEEKDAY(TODAY()) = 2
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forD_TodayDate</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <interviewLabel>Participant Action - Scheduled - {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Participant Action - Scheduled - Update FailSafe</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Checks if today&apos;s date matches any of the holidays listed on the custom metadata type &quot;Holidays&quot;.</description>
+        <name>Get_Holidays</name>
+        <label>Get Holidays</label>
+        <locationX>176</locationX>
+        <locationY>252</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Today_Weekend_or_Holiday</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Holiday_Date__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>forD_TodayDate</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Holidays__mdt</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates the field &quot;FailSafe Engaged&quot; to true.</description>
+        <name>Set_FailSafe_to_True</name>
+        <label>Set FailSafe to True</label>
+        <locationX>440</locationX>
+        <locationY>468</locationY>
+        <inputAssignments>
+            <field>FailSafe_Engaged__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Holidays</targetReference>
+        </connector>
+        <filterLogic>(1 OR (13 AND 14)) AND 2 AND (3 OR  4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12)</filterLogic>
+        <filters>
+            <field>RDNACadence__Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>On Engage</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Action_Overdue__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Cadence_Name__c</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>OB &amp; ENGT</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Cadence_Name__c</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>OBS &amp; ENGT</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Cadence_Name__c</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>BNP &amp; ENGT &amp; EC</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Cadence_Name__c</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>OBC &amp; ENGT</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Cadence_Name__c</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>BNP &amp; ENGT</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Cadence_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>BNP &amp; BUO &amp; EC</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Cadence_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>OBC &amp; BUO</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Cadence_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>OB &amp; BUO</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Cadence_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>OBS &amp; BUO</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Cadence_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>OBC &amp; Sales</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>On Engage - Pending Criteria</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>hasSkipCriteria__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>RDNACadence__Sequence_Action__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2023-11-15</startDate>
+            <startTime>00:15:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

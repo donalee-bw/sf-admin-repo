@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Single_Trainer_Onboarding_Start_Date__c</fullName>
+    <description>Min date between Single Trainer Onboarding Start Date on Account and Initial Setup Call Completed on CF.</description>
+    <formula>IF(
+    AND(
+        ISBLANK(Account__r.Single_Trainer_Onboarding_Start_Date__c),
+        ISBLANK(Reference_Initial_Setup_Call_Completed__c),
+        ISBLANK(Billing_Call_or_Webinar_Date__c)        
+    ),
+    NULL,
+IF(
+    AND(
+        NOT(ISBLANK(Reference_Initial_Setup_Call_Completed__c)),
+        ISBLANK(Account__r.Single_Trainer_Onboarding_Start_Date__c),
+        ISBLANK(Billing_Call_or_Webinar_Date__c)   
+    ),
+    Reference_Initial_Setup_Call_Completed__c,
+IF(
+    AND(
+        NOT(ISBLANK(Account__r.Single_Trainer_Onboarding_Start_Date__c)),
+        ISBLANK(Reference_Initial_Setup_Call_Completed__c),
+        ISBLANK(Billing_Call_or_Webinar_Date__c)   
+    ),
+    Account__r.Single_Trainer_Onboarding_Start_Date__c,
+IF(
+    AND(
+        NOT(ISBLANK(Billing_Call_or_Webinar_Date__c)),
+        NOT(ISPICKVAL(Billing_Call_or_Webinar_Status__c, &apos;Missed&apos;)), 
+        ISBLANK(Reference_Initial_Setup_Call_Completed__c),
+        ISBLANK(Account__r.Single_Trainer_Onboarding_Start_Date__c)   
+    ),
+    Billing_Call_or_Webinar_Date__c,
+    IF(
+       AND(
+        BLANKVALUE(Account__r.Single_Trainer_Onboarding_Start_Date__c, DATE(1900, 01, 01)) &lt; BLANKVALUE((Reference_Initial_Setup_Call_Completed__c), DATE(1900, 01, 01)),
+        BLANKVALUE(Account__r.Single_Trainer_Onboarding_Start_Date__c, DATE(1900, 01, 01)) &lt; BLANKVALUE((Billing_Call_or_Webinar_Date__c), DATE(1900, 01, 01))
+       ),
+        Account__r.Single_Trainer_Onboarding_Start_Date__c,
+    IF(
+       AND(
+        BLANKVALUE(Reference_Initial_Setup_Call_Completed__c, DATE(1900, 01, 01)) &lt; BLANKVALUE((Account__r.Single_Trainer_Onboarding_Start_Date__c), DATE(1900, 01, 01)),
+        BLANKVALUE(Reference_Initial_Setup_Call_Completed__c, DATE(1900, 01, 01)) &lt; BLANKVALUE((Billing_Call_or_Webinar_Date__c), DATE(1900, 01, 01))
+       ),
+        Reference_Initial_Setup_Call_Completed__c,
+    IF(
+       AND(
+        BLANKVALUE(Billing_Call_or_Webinar_Date__c, DATE(1900, 01, 01)) &lt; BLANKVALUE((Account__r.Single_Trainer_Onboarding_Start_Date__c), DATE(1900, 01, 01)),
+        BLANKVALUE(Billing_Call_or_Webinar_Date__c, DATE(1900, 01, 01)) &lt; BLANKVALUE((Reference_Initial_Setup_Call_Completed__c), DATE(1900, 01, 01))
+       ),
+        Billing_Call_or_Webinar_Date__c,
+       (Reference_Initial_Setup_Call_Completed__c)
+    )
+))))))</formula>
+    <inlineHelpText>Min date between Single Trainer Onboarding Start Date on Account and Initial Setup Call Completed on CF.</inlineHelpText>
+    <label>Single-Trainer Onboarding Start Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>JG_Impersonate_Link__c</fullName>
+    <description>Quick link to the school&apos;s impersonation URL in JungleGym.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+   NOT(ISBLANK(Account__r.School_Object__r.Brightwheel_Owner_UUID__c)),
+   HYPERLINK(&apos;https://tools.mybrightwheel.com/admin/users/&apos; &amp; Account__r.School_Object__r.Brightwheel_Owner_UUID__c &amp; &apos;/impersonate&apos;, &apos;Impersonate&apos;),
+   &apos;&apos;
+)</formula>
+    <inlineHelpText>Quick link to the school&apos;s impersonation URL in JungleGym.</inlineHelpText>
+    <label>JG Impersonate Link</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

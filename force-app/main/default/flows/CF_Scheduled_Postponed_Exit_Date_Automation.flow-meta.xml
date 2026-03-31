@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Has_the_SaaS_Postponed_Exit_Date_Passed</name>
+        <label>Has the SaaS Postponed Exit Date Passed?</label>
+        <locationX>182</locationX>
+        <locationY>252</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Today_Exit_Date</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Flow.CurrentDate</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.SaaS_Postponed_Exit_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Postponed_Exit_Date__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Combined_Funnel_and_clear_postponed_dates</targetReference>
+            </connector>
+            <label>Today &gt;= Exit Date</label>
+        </rules>
+    </decisions>
+    <description>When the Combined Funnel passes the SaaS Postponed Exit Date, the onboarding status is set back to active and postponed dates are cleared.
+PE - 11/06 - Updated decision node to not run if the SaaS Posponed Exit Date is Blank</description>
+    <environments>Default</environments>
+    <interviewLabel>CF - Scheduled - Postponed Exit Date Automation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CF - Scheduled - Postponed Exit Date Automation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Combined_Funnel_and_clear_postponed_dates</name>
+        <label>Update Combined Funnel and clear postponed dates</label>
+        <locationX>50</locationX>
+        <locationY>360</locationY>
+        <inputAssignments>
+            <field>SaaS_Onboarding_Status__c</field>
+            <value>
+                <stringValue>Active</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Postponed_Check_In_Date__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Postponed_Reason__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Postponed_Start_Date__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Has_the_SaaS_Postponed_Exit_Date_Passed</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SaaS_Onboarding_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Postponed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Postponed_Exit_Date__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Combined_Funnel__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2024-10-16</startDate>
+            <startTime>00:30:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

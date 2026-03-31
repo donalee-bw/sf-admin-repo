@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Standard_Path_Onboarding_Queue_Onboarding</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Standard Path Onboarding Queue</label>
+    <queue>Standard_Path_Onboarding_Queue</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

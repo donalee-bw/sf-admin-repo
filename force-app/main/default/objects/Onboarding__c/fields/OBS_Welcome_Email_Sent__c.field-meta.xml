@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OBS_Welcome_Email_Sent__c</fullName>
+    <description>Max date value from OBS Welcome Email Sent field on Account and Primary Contact</description>
+    <formula>IF(
+    AND(
+       NOT(ISBLANK(Account__r.OBS_Welcome_Email_Sent__c)),
+       ISBLANK(Primary_Contact__r.OBS_Welcome_Email_Sent__c)
+    ),
+    Account__r.OBS_Welcome_Email_Sent__c,
+    IF(
+        AND(
+            ISBLANK(Account__r.OBS_Welcome_Email_Sent__c),
+            NOT(ISBLANK(Primary_Contact__r.OBS_Welcome_Email_Sent__c))
+        ),
+        Primary_Contact__r.OBS_Welcome_Email_Sent__c,
+        IF(
+            Account__r.OBS_Welcome_Email_Sent__c &gt; Primary_Contact__r.OBS_Welcome_Email_Sent__c,
+            Account__r.OBS_Welcome_Email_Sent__c,
+            Primary_Contact__r.OBS_Welcome_Email_Sent__c
+        )
+    )
+)</formula>
+    <inlineHelpText>Max date value from OBS Welcome Email Sent field on Account and Primary Contact</inlineHelpText>
+    <label>OBS Welcome Email Sent</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

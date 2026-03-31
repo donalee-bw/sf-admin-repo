@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clicked_Tuition_Agreement_Banner_Date__c</fullName>
+    <description>Populated by DataEng. Temporary field until DataEng has bandwidth to standup Mixpanel integration with Intercom and Hubspot.  Last date clicked learn more &amp; enable - Tuition Agreement banner - billing</description>
+    <inlineHelpText>Last date clicked learn more &amp; enable - Tuition Agreement banner - billing</inlineHelpText>
+    <label>Clicked Tuition Agreement Banner Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

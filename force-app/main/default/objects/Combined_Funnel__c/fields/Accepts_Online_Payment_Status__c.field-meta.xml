@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Accepts_Online_Payment_Status__c</fullName>
+    <description>From the school object associated to Combined Funnel. Used to make sure customers have enabled online payments before their 1st bills go out.</description>
+    <externalId>false</externalId>
+    <formula>Account__r.School_Object__r.Accepts_Online_Payment_Status__c</formula>
+    <inlineHelpText>From the school object associated to Combined Funnel. Used to make sure customers have enabled online payments before their 1st bills go out.</inlineHelpText>
+    <label>Accepts Online Payment Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BillingOnboardingStatusSaaSAtRisk</fullName>
+    <active>true</active>
+    <description>Rep cannot select SaaS At Risk for the Billing Onboarding Status field</description>
+    <errorConditionFormula>TEXT(Billing_Onboarding_Status__c)=&apos;SaaS at Risk&apos;</errorConditionFormula>
+    <errorDisplayField>Billing_Onboarding_Status__c</errorDisplayField>
+    <errorMessage>SaaS At Risk cannot be selected for the Billing Onboarding Status</errorMessage>
+</ValidationRule>

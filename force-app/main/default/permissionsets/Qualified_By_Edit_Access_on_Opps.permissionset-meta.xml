@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Gives Sales Managers edit access to the old Qualified By field on Opps to correct old Qualified By data captured prior to new processes launched on 3.8.21.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Opportunity.SDR__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Qualified By Edit Access on Opps</label>
+</PermissionSet>

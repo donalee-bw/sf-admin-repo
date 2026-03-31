@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_BNP_Coupon_Expiration_Sequence</fullName>
+    <columns>NAME</columns>
+    <columns>SaaS_Primary_Contact_Email__c</columns>
+    <columns>Active_Student_Count__c</columns>
+    <columns>Current_Center_Operating_Status__c</columns>
+    <columns>JG_Impersonate_Link__c</columns>
+    <columns>Customer_Dynamics__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>SaaS_Primary_Contact__c</columns>
+    <columns>Current_Coupon_End__c</columns>
+    <columns>Current_Coupon__c</columns>
+    <columns>Brightwheel_School_UUID__c</columns>
+    <columns>Open_and_Operating_Date__c</columns>
+    <columns>Number_of_Open_Cancel_Request_Cases__c</columns>
+    <columns>Monthly_Spend_Per_Site__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Brand New Program</value>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Postponed</value>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>contains</operation>
+        <value>Angel,hannah</value>
+    </filters>
+    <filters>
+        <field>Current_Coupon_End__c</field>
+        <operation>equals</operation>
+        <value>NEXT_N_DAYS:4</value>
+    </filters>
+    <label>BNP - Coupon Expiring in Next 4 Days</label>
+</ListView>

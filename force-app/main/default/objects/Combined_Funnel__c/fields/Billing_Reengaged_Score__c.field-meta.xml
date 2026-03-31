@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Reengaged_Score__c</fullName>
+    <description>Score based on Billing Reengaged Date and Billing Onboarding Status.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+   AND(
+        NOT(ISPICKVAL(Billing_Onboarding_Status__c, &apos;Opted Out&apos;)),
+        Billing_Reengaged_Date__c &gt;= TODAY()-30
+      ),
+      35, 0
+ )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Score based on Billing Reengaged Date and Billing Onboarding Status - if Billing Onboarding Status is not Opted Out and Billing Reengaged Date is within the last 30 days, score bumps up to 35. Otherwise, score = 0.</inlineHelpText>
+    <label>Billing Reengaged Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

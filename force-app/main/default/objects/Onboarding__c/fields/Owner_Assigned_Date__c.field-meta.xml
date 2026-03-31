@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Owner_Assigned_Date__c</fullName>
+    <description>Populated by process builder - date stamped any time owner is changed.</description>
+    <inlineHelpText>Date the onboarding owner was changed to the current owner. Date changes every time the owner is changed.</inlineHelpText>
+    <label>Owner Assigned Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

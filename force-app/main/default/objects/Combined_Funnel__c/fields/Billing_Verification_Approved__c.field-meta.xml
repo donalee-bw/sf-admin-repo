@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Verification_Approved__c</fullName>
+    <formula>Account__r.School_Object__r.Billing_Verification_Approved__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Deposit information has been approved by our PayOps team. Box must be checked to complete the funnel stage.</inlineHelpText>
+    <label>Billing Verification Approved</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

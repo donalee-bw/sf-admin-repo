@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ally_s_Onboarding_S_B_overlook</fullName>
+    <booleanFilter>2 AND ((1 AND 5) OR (3 AND 4 AND 6)) AND 7</booleanFilter>
+    <columns>NAME</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>SaaS_Onboarding_Status__c</columns>
+    <columns>SaaS_Activation_Funnel_Stage_Value__c</columns>
+    <columns>Billing_Onboarding_Status__c</columns>
+    <columns>Billing_Activation_Funnel_Stage_Value__c</columns>
+    <columns>V3_Dollars_Processed_Online__c</columns>
+    <columns>SaaS_Contact_Most_Recent_Sequence__c</columns>
+    <columns>Next_Onboarding_Meeting_Scheduled__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SaaS_Activation_Funnel_Stage_Value__c</field>
+        <operation>notEqual</operation>
+        <value>8 - Activated</value>
+    </filters>
+    <filters>
+        <field>OWNER.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>pyun</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Start_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Billing_Activation_Funnel_Stage_Value__c</field>
+        <operation>notEqual</operation>
+        <value>9 - Activated</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>SaaS At Risk,Gone Dark,Requesting Opt Out - Awaiting Approval</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Opted Out,SaaS At Risk</value>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <label>Ally&apos;s Onboarding S+ B overlook</label>
+</ListView>

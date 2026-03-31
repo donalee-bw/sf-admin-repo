@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Auto_Completed_Status_Delayed</name>
+        <label>Assign Auto Completed Status - Delayed</label>
+        <locationX>385</locationX>
+        <locationY>600</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_Thru_All_Tasks_Delayed.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Auto completed</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_to_Record_Collection</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assigns all updated tasks to new record collection</description>
+        <name>Assign_to_Record_Collection</name>
+        <label>Assign to Record Collection</label>
+        <locationX>385</locationX>
+        <locationY>708</locationY>
+        <assignmentItems>
+            <assignToReference>RecordsToUpdate</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Thru_All_Tasks_Delayed</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Thru_All_Tasks_Delayed</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Collection_Update_check</name>
+        <label>Collection Update check</label>
+        <locationX>297</locationX>
+        <locationY>900</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_update_records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RecordsToUpdate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Records_in_Collection</targetReference>
+            </connector>
+            <label>Found update records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Identifies if Tasks were found</description>
+        <name>Were_Tasks_Found_Delayed</name>
+        <label>Were Tasks Found - Delayed</label>
+        <locationX>451</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>No Tasks</defaultConnectorLabel>
+        <rules>
+            <name>Tasks_Found_Delayed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Tasks_Delayed</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Thru_All_Tasks_Delayed</targetReference>
+            </connector>
+            <label>Tasks Found - Delayed</label>
+        </rules>
+    </decisions>
+    <description>Auto closes all tasks associated to recently converted lead</description>
+    <environments>Default</environments>
+    <interviewLabel>Auto CloseI {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Auto Close Tasks - IB Tasks on Converted Leads</label>
+    <loops>
+        <name>Loop_Thru_All_Tasks_Delayed</name>
+        <label>Loop Thru All Tasks - Delayed</label>
+        <locationX>297</locationX>
+        <locationY>492</locationY>
+        <collectionReference>Get_Tasks_Delayed</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Auto_Completed_Status_Delayed</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Collection_Update_check</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get tasks associated to this lead</description>
+        <name>Get_Tasks_Delayed</name>
+        <label>Get Tasks - Delayed</label>
+        <locationX>451</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Were_Tasks_Found_Delayed</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2 OR 3) AND 4</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0121I000000OEYAQA4</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0121I000000OEvZQAW</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0121I000000OEnWQAW</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>WhoId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ConvertedContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Task</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Status</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Records_in_Collection</name>
+        <label>Update Records in Collection</label>
+        <locationX>165</locationX>
+        <locationY>1008</locationY>
+        <inputReference>RecordsToUpdate</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsConverted</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Wait_for_1_hour</name>
+            <connector>
+                <targetReference>Get_Tasks_Delayed</targetReference>
+            </connector>
+            <label>Wait for 1 hour</label>
+            <maxBatchSize>5</maxBatchSize>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>ConvertedContactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>$Record.ConvertedContactId</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>RecordsToUpdate</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Task</objectType>
+    </variables>
+</Flow>

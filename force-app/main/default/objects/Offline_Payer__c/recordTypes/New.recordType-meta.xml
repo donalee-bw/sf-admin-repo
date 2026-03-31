@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New</fullName>
+    <active>true</active>
+    <compactLayoutAssignment>Offline_Payer_Compact_Layout</compactLayoutAssignment>
+    <description>Account&apos;s enrollment as an offline payer</description>
+    <label>New</label>
+    <picklistValues>
+        <picklist>State_or_Government_Subsidized_Sponsored__c</picklist>
+        <values>
+            <fullName>I%27m unsure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Check Received</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Moved Online</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invoice Created and Sent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>

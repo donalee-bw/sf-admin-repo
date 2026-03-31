@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Payer_Account_Stamp__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Related Payer Account - Stamp</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Onboarding Attempts (Related Payer Account - Stamp)</relationshipLabel>
+    <relationshipName>Onboarding_Attempts1</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

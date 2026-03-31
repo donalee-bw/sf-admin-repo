@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OBS_Last_Contacted__c</fullName>
+    <description>OBS Last Contact Date from the Account or SaaS Primary Contact.</description>
+    <formula>IF(
+    AND(
+       NOT(ISBLANK(Account__r.OBS_Last_Contacted__c)),
+       ISBLANK(SaaS_Primary_Contact__r.OBS_Last_Contacted__c)
+    ),
+    Account__r.OBS_Last_Contacted__c,
+    IF(
+        AND(
+            ISBLANK(Account__r.OBS_Last_Contacted__c),
+            NOT(ISBLANK(SaaS_Primary_Contact__r.OBS_Last_Contacted__c))
+        ), 
+        SaaS_Primary_Contact__r.OBS_Last_Contacted__c,
+        IF(
+            Account__r.OBS_Last_Contacted__c &gt; SaaS_Primary_Contact__r.OBS_Last_Contacted__c,
+            Account__r.OBS_Last_Contacted__c,
+            SaaS_Primary_Contact__r.OBS_Last_Contacted__c
+        )
+    )
+)</formula>
+    <inlineHelpText>The most recent task or event logged by the OBS team on the Account or SaaS Primary Contact&apos;s record that are associated to the Combined Funnel.</inlineHelpText>
+    <label>OBS Last Contacted</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

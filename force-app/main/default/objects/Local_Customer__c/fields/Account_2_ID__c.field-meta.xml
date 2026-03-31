@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_2_ID__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Account 2 ID</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Local Customers 2</relationshipLabel>
+    <relationshipName>Local_Customers2</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

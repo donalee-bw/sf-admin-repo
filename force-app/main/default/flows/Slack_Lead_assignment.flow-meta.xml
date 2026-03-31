@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>ActionCallType</name>
+            <value>
+                <stringValue>flow</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>flowSelection</name>
+            <value>
+                <stringValue>Do nothing</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Do nothing</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>Do_nothing</actionName>
+        <actionType>flow</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>Do_nothing</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>apexSelection</name>
+            <value>
+                <stringValue>Post Message to Slack Channel</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_3_A1</name>
+        <label>Slack</label>
+        <locationX>300</locationX>
+        <locationY>200</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Channel ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>channelId</name>
+            <value>
+                <elementReference>myVariable_current.Owner:User.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Token</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Post Contents</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>text</name>
+            <value>
+                <elementReference>formula_4_myRule_3_A1_9253984085</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>apexSelection</name>
+            <value>
+                <stringValue>Post Message to Slack Channel</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_6_A1</name>
+        <label>Slack</label>
+        <locationX>600</locationX>
+        <locationY>200</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Channel ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>channelId</name>
+            <value>
+                <elementReference>myVariable_current.Owner:User.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Token</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Post Contents</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>text</name>
+            <value>
+                <elementReference>formula_7_myRule_6_A1_8713137200</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Do nothing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision5</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_pmetdec</targetReference>
+            </connector>
+            <label>Newly assigned lead</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision5</name>
+        <label>myDecision5</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_6</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_6</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_6_pmetdec</targetReference>
+            </connector>
+            <label>Return path lead</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_3_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>300</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_3_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_3_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_6_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>600</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_6_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_6_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_6_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_6_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_6_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <description>Slack sfdc_service trigger for assigned leads</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>&apos;You have been assigned a new &apos; &amp;
+IF(
+     ISPICKVAL([Lead].LeadSource, &apos;User Outreach&apos;), 
+     &apos;Free Trial sign up&apos;, 
+      TEXT([Lead].HS_Last_form_submission_type__c)
+ ) &amp;
+&apos; lead&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; [Lead].Id  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Lead Source - Detail:* &apos; &amp; [Lead].Lead_Source_Detail__c &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Organization:* &apos; &amp; [Lead].Company &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*First Name:* &apos; &amp; [Lead].FirstName  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Last Name:* &apos; &amp; [Lead].LastName  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Email:* &apos; &amp; [Lead].Email &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Phone:* &apos; &amp; [Lead].Phone &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*State/Province:* &apos; &amp; [Lead].State </stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_4_myRule_3_A1_9253984085</name>
+        <dataType>String</dataType>
+        <expression>&apos;You have been assigned a new &apos; &amp;
+IF(
+     ISPICKVAL({!myVariable_current.LeadSource}, &apos;User Outreach&apos;), 
+     &apos;Free Trial sign up&apos;, 
+      TEXT({!myVariable_current.HS_Last_form_submission_type__c})
+ ) &amp;
+&apos; lead&apos; &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!myVariable_current.Id}  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Lead Source - Detail:* &apos; &amp; {!myVariable_current.Lead_Source_Detail__c} &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Organization:* &apos; &amp; {!myVariable_current.Company} &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*First Name:* &apos; &amp; {!myVariable_current.FirstName}  &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Last Name:* &apos; &amp; {!myVariable_current.LastName}  &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Email:* &apos; &amp; {!myVariable_current.Email} &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Phone:* &apos; &amp; {!myVariable_current.Phone} &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*State/Province:* &apos; &amp; {!myVariable_current.State}</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>&apos;You have been assigned an existing lead based on a new &apos; &amp;
+IF(
+     AND(
+               [Lead].Troops_PTL_return_path_trigger__c = TRUE,
+               [Lead].LOGIC_Open_PTL_task__c &gt; 0
+     ),
+     &apos;Free Trial sign up&apos;, 
+      IF(
+           AND(
+                    [Lead].Troops_HS_return_path_trigger__c  = TRUE,
+                    [Lead].LOGIC_Open_HS_task__c  &gt; 0
+            ), 
+            TEXT([Lead].HS_Last_form_submission_type__c),
+            &apos;&apos;
+       )
+) &amp;
+&apos; inbound activity&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; [Lead].Id  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Lead Source - Detail:* &apos; &amp; [Lead].Lead_Source_Detail__c &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Organization:* &apos; &amp; [Lead].Company &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*First Name:* &apos; &amp; [Lead].FirstName  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Last Name:* &apos; &amp; [Lead].LastName  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Email:* &apos; &amp; [Lead].Email &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Phone:* &apos; &amp; [Lead].Phone &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*State/Province:* &apos; &amp; [Lead].State </stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_7_myRule_6_A1_8713137200</name>
+        <dataType>String</dataType>
+        <expression>&apos;You have been assigned an existing lead based on a new &apos; &amp;
+IF(
+     AND(
+               {!myVariable_current.Troops_PTL_return_path_trigger__c} = TRUE,
+               {!myVariable_current.LOGIC_Open_PTL_task__c} &gt; 0
+     ),
+     &apos;Free Trial sign up&apos;, 
+      IF(
+           AND(
+                    {!myVariable_current.Troops_HS_return_path_trigger__c}  = TRUE,
+                    {!myVariable_current.LOGIC_Open_HS_task__c}  &gt; 0
+            ), 
+            TEXT({!myVariable_current.HS_Last_form_submission_type__c}),
+            &apos;&apos;
+       )
+) &amp;
+&apos; inbound activity&apos; &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!myVariable_current.Id}  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Lead Source - Detail:* &apos; &amp; {!myVariable_current.Lead_Source_Detail__c} &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Organization:* &apos; &amp; {!myVariable_current.Company} &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*First Name:* &apos; &amp; {!myVariable_current.FirstName}  &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Last Name:* &apos; &amp; {!myVariable_current.LastName}  &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Email:* &apos; &amp; {!myVariable_current.Email} &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Phone:* &apos; &amp; {!myVariable_current.Phone} &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*State/Province:* &apos; &amp; {!myVariable_current.State}</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(
+          NOT(ISCHANGED([Lead].Status)),
+          NOT(ISPICKVAL([Lead].Status , &apos;Assigned&apos;) )
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+          NOT(ISCHANGED({!myVariable_current.Status})),
+          NOT(ISPICKVAL({!myVariable_current.Status} , &apos;Assigned&apos;) )
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(
+         ISPICKVAL([Lead].Status , &apos;Assigned&apos;),
+         [Lead].Troops_HS_return_path_trigger__c = FALSE,
+         [Lead].Troops_PTL_return_path_trigger__c  = FALSE,
+         NOT(PRIORVALUE([Lead].OwnerId) = &apos;00G1I000002EeRIUA0&apos;),
+         [Lead].IsConverted = FALSE
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+         ISPICKVAL({!myVariable_current.Status} , &apos;Assigned&apos;),
+         {!myVariable_current.Troops_HS_return_path_trigger__c} = FALSE,
+         {!myVariable_current.Troops_PTL_return_path_trigger__c}  = FALSE,
+         NOT(PRIORVALUE({!myVariable_current.OwnerId}) = &apos;00G1I000002EeRIUA0&apos;),
+         {!myVariable_current.IsConverted} = FALSE
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(
+         ISPICKVAL([Lead].Status , &apos;Assigned&apos;),
+         [Lead].Troops_HS_return_path_trigger__c = FALSE,
+         [Lead].Troops_PTL_return_path_trigger__c  = FALSE,
+         NOT(PRIORVALUE([Lead].OwnerId) = &apos;00G1I000002EeRIUA0&apos;),
+         [Lead].IsConverted = FALSE
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+         ISPICKVAL({!myVariable_old.Status} , &apos;Assigned&apos;),
+         {!myVariable_old.Troops_HS_return_path_trigger__c} = FALSE,
+         {!myVariable_old.Troops_PTL_return_path_trigger__c}  = FALSE,
+         NOT(PRIORVALUE({!myVariable_old.OwnerId}) = &apos;00G1I000002EeRIUA0&apos;),
+         {!myVariable_old.IsConverted} = FALSE
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(
+         ISPICKVAL([Lead].Status , &apos;Assigned&apos;),
+         [Lead].IsConverted = FALSE,
+         OR(
+               AND(
+                        [Lead].Troops_HS_return_path_trigger__c = TRUE,
+                        [Lead].LOGIC_Open_HS_task__c &gt; 0
+               ),
+               OR(
+                     [Lead].Troops_PTL_return_path_trigger__c  = TRUE,
+                     [Lead].LOGIC_Open_PTL_task__c  &gt; 0
+               )
+         ),
+         NOT(PRIORVALUE([Lead].OwnerId ) = &apos;00G1I000002EeRIUA0&apos;)
+) </stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_6</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+         ISPICKVAL({!myVariable_current.Status} , &apos;Assigned&apos;),
+         {!myVariable_current.IsConverted} = FALSE,
+         OR(
+               AND(
+                        {!myVariable_current.Troops_HS_return_path_trigger__c} = TRUE,
+                        {!myVariable_current.LOGIC_Open_HS_task__c} &gt; 0
+               ),
+               OR(
+                     {!myVariable_current.Troops_PTL_return_path_trigger__c}  = TRUE,
+                     {!myVariable_current.LOGIC_Open_PTL_task__c}  &gt; 0
+               )
+         ),
+         NOT(PRIORVALUE({!myVariable_current.OwnerId} ) = &apos;00G1I000002EeRIUA0&apos;)
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(
+         ISPICKVAL([Lead].Status , &apos;Assigned&apos;),
+         [Lead].IsConverted = FALSE,
+         OR(
+               AND(
+                        [Lead].Troops_HS_return_path_trigger__c = TRUE,
+                        [Lead].LOGIC_Open_HS_task__c &gt; 0
+               ),
+               OR(
+                     [Lead].Troops_PTL_return_path_trigger__c  = TRUE,
+                     [Lead].LOGIC_Open_PTL_task__c  &gt; 0
+               )
+         ),
+         NOT(PRIORVALUE([Lead].OwnerId ) = &apos;00G1I000002EeRIUA0&apos;)
+) </stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_6_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+         ISPICKVAL({!myVariable_old.Status} , &apos;Assigned&apos;),
+         {!myVariable_old.IsConverted} = FALSE,
+         OR(
+               AND(
+                        {!myVariable_old.Troops_HS_return_path_trigger__c} = TRUE,
+                        {!myVariable_old.LOGIC_Open_HS_task__c} &gt; 0
+               ),
+               OR(
+                     {!myVariable_old.Troops_PTL_return_path_trigger__c}  = TRUE,
+                     {!myVariable_old.LOGIC_Open_PTL_task__c}  &gt; 0
+               )
+         ),
+         NOT(PRIORVALUE({!myVariable_old.OwnerId} ) = &apos;00G1I000002EeRIUA0&apos;)
+)</expression>
+    </formulas>
+    <interviewLabel>Slack_Lead_assignment-6_InterviewLabel</interviewLabel>
+    <label>Slack - Lead assignment</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Lead</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <startElementReference>myDecision</startElementReference>
+    <status>Draft</status>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Lead</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Lead</objectType>
+    </variables>
+</Flow>

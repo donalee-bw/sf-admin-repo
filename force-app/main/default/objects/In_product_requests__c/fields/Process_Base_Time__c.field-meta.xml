@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Process_Base_Time__c</fullName>
+    <defaultValue>Now()+61/1440</defaultValue>
+    <description>Time delay workaround for Process Builder</description>
+    <label>Process Base Time</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

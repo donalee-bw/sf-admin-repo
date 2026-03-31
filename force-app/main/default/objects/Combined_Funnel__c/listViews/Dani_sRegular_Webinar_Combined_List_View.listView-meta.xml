@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dani_sRegular_Webinar_Combined_List_View</fullName>
+    <columns>NAME</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Device_Setup__c</columns>
+    <columns>Device_Status__c</columns>
+    <columns>FTS_Owner__c</columns>
+    <columns>Add_Staff_By__c</columns>
+    <columns>Train_Teachers_By__c</columns>
+    <columns>Invite_Parents_By__c</columns>
+    <columns>Confirmed_Launch_Date__c</columns>
+    <columns>Initial_Setup_Call_Completed__c</columns>
+    <columns>SaaS_Training_Call_Completed__c</columns>
+    <columns>SaaS_Customer_Comfort_Level__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>Initial_Setup_Call_Scheduled__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Webinar</value>
+    </filters>
+    <filters>
+        <field>Initial_Setup_Call_Scheduled__c</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>DH - Regular Webinar Combined List View</label>
+</ListView>

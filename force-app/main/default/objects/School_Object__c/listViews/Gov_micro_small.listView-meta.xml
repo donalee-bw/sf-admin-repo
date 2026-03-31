@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gov_micro_small</fullName>
+    <columns>NAME</columns>
+    <columns>Absence_Count__c</columns>
+    <columns>Food_Count__c</columns>
+    <columns>Nap_Count__c</columns>
+    <columns>Message_Sent_Count__c</columns>
+    <columns>Photo_Count__c</columns>
+    <columns>Checkin_Count__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Active_Student_Count__c</field>
+        <operation>lessOrEqual</operation>
+        <value>15</value>
+    </filters>
+    <filters>
+        <field>SaaS_Activation_Funnel_Stage__c</field>
+        <operation>equals</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Actions_Per_Student__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>50</value>
+    </filters>
+    <label>[Gov] micro/small</label>
+</ListView>

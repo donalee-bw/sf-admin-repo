@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Captures the most recent data a plan was updated to Premium</description>
+        <name>Capture_Most_Recent_Plan_Change</name>
+        <label>Capture Most Recent Plan Change</label>
+        <locationX>374</locationX>
+        <locationY>984</locationY>
+        <assignmentItems>
+            <assignToReference>varD_MostRecentPlanChange</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>forD_MostRecentPlanChange</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_History</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Checks if both the SaaS Owner and Billing Upsell Owner on the account are active users.</description>
+        <name>Needs_Account_Assignment</name>
+        <label>Needs Account Assignment?</label>
+        <locationX>176</locationX>
+        <locationY>252</locationY>
+        <defaultConnector>
+            <targetReference>Launch_Account_Ownership_Assignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Yes</defaultConnectorLabel>
+        <rules>
+            <name>No_Needs_Account_Assignment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Owner__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Upsell_Owner__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Original_Close_Date_Populated</targetReference>
+            </connector>
+            <label>No</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the field Original Close Date is populated on the account</description>
+        <name>Original_Close_Date_Populated</name>
+        <label>Original Close Date Populated?</label>
+        <locationX>176</locationX>
+        <locationY>552</locationY>
+        <defaultConnector>
+            <targetReference>Get_School_History</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Original_Close_Date_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Original_Close_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>School_History_Found</name>
+        <label>School History Found?</label>
+        <locationX>418</locationX>
+        <locationY>768</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_School_History_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_School_History</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Through_History</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>forD_MostRecentPlanChange</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+AND(
+{!Loop_Through_History.NewValue} = &quot;Premium&quot;,
+ISNULL({!varD_MostRecentPlanChange})
+),
+DATEVALUE({!Loop_Through_History.CreatedDate}),
+IF(
+AND(
+NOT(ISNULL({!varD_MostRecentPlanChange})),
+{!Loop_Through_History.NewValue} = &quot;Premium&quot;,
+DATEVALUE({!Loop_Through_History.CreatedDate}) &gt; {!varD_MostRecentPlanChange}
+),
+DATEVALUE({!Loop_Through_History.CreatedDate}),
+{!varD_MostRecentPlanChange}
+)
+
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Date the field Brightwheel Plan was upgraded, minus one.</description>
+        <name>forD_OriginalCloseDate</name>
+        <dataType>Date</dataType>
+        <expression>{!varD_MostRecentPlanChange} - 1</expression>
+    </formulas>
+    <interviewLabel>Account - Scheduled - Ownership and Original Close Date {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - Scheduled - Ownership and Original Close Date</label>
+    <loops>
+        <name>Loop_Through_History</name>
+        <label>Loop Through History</label>
+        <locationX>286</locationX>
+        <locationY>876</locationY>
+        <collectionReference>Get_School_History</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Capture_Most_Recent_Plan_Change</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Set_Original_Close_Date_on_Account</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>On the related school object, look on the records history when the field Brightwheel Plan was changed from Free to Premium</description>
+        <name>Get_School_History</name>
+        <label>Get School History</label>
+        <locationX>418</locationX>
+        <locationY>660</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>School_History_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ParentId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.School_Object__r.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Field</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Brightwheel_Plan__c</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>School_Object__History</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Set_Original_Close_Date_on_Account</name>
+        <label>Set Original Close Date on Account</label>
+        <locationX>286</locationX>
+        <locationY>1176</locationY>
+        <inputAssignments>
+            <field>Original_Close_Date__c</field>
+            <value>
+                <elementReference>forD_OriginalCloseDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Needs_Account_Assignment</targetReference>
+        </connector>
+        <filterLogic>1 AND (6 AND (2 OR 3)) AND 4 AND 5 AND 6 AND 7 AND 8 AND 9</filterLogic>
+        <filters>
+            <field>Brightwheel_Plan__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Premium</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Owner__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Upsell_Owner__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Customer_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Enterprise</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Customer_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Government Payer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Original_Close_Date__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Customer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>OwnerId</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>0053u00000368pKAAQ</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0013u000016U1upAAC</stringValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <schedule>
+            <frequency>Weekly</frequency>
+            <startDate>2024-04-04</startDate>
+            <startTime>06:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Draft</status>
+    <subflows>
+        <name>Launch_Account_Ownership_Assignment</name>
+        <label>Launch Account Ownership Assignment</label>
+        <locationX>264</locationX>
+        <locationY>360</locationY>
+        <connector>
+            <targetReference>Original_Close_Date_Populated</targetReference>
+        </connector>
+        <flowName>Account_Subflow_Ownership_Assignments</flowName>
+        <inputAssignments>
+            <name>varT_RecordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <variables>
+        <name>currentItem_Filter_Changes_to_Premium</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>School_Object__History</objectType>
+    </variables>
+    <variables>
+        <name>varD_MostRecentPlanChange</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

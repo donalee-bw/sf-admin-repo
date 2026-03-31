@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Upsell_Only_Webinar_3_List_View</fullName>
+    <columns>NAME</columns>
+    <columns>Billing_Primary_Contact__c</columns>
+    <columns>Billing_Primary_Contact_Email__c</columns>
+    <columns>Billing_Call_or_Webinar_Date__c</columns>
+    <columns>Billing_Call_or_Webinar_Status__c</columns>
+    <columns>FTS_Owner__c</columns>
+    <columns>Target_Billing_Activation_Date__c</columns>
+    <columns>Billing_Customer_Comfort_Level__c</columns>
+    <columns>Billing_Next_Steps__c</columns>
+    <columns>Customer_Dynamics__c</columns>
+    <columns>Brightwheel_School_UUID__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Billing_Call_or_Webinar_Date__c</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Webinar</value>
+    </filters>
+    <label>Upsell Only Webinar: TODAY</label>
+</ListView>

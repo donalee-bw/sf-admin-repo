@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Onboarding_Attempted_Call__c</fullName>
+    <formula>IF(
+    AND(
+       NOT(ISBLANK(Account__r.OBS_Last_Attempted_Call__c)),
+       ISBLANK(Account__r.OBC_Last_Attempted_Call__c)
+    ),
+    Account__r.OBS_Last_Attempted_Call__c,
+    IF(
+        AND(
+            ISBLANK(Account__r.OBS_Last_Attempted_Call__c),
+            NOT(ISBLANK(Account__r.OBC_Last_Attempted_Call__c))
+        ), 
+        Account__r.OBC_Last_Attempted_Call__c,
+        IF(
+            Account__r.OBS_Last_Attempted_Call__c &gt; Account__r.OBC_Last_Attempted_Call__c,
+            Account__r.OBS_Last_Attempted_Call__c,
+            Account__r.OBC_Last_Attempted_Call__c
+        )
+    )
+)</formula>
+    <label>Last Onboarding Attempted Call</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

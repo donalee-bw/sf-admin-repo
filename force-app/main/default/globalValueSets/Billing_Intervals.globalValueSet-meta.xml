@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Weekly</fullName>
+        <default>false</default>
+        <label>Weekly</label>
+    </customValue>
+    <customValue>
+        <fullName>Bi-Weekly</fullName>
+        <default>false</default>
+        <label>Bi-Weekly</label>
+    </customValue>
+    <customValue>
+        <fullName>Monthly</fullName>
+        <default>false</default>
+        <label>Monthly</label>
+    </customValue>
+    <customValue>
+        <fullName>Bi-Monthly</fullName>
+        <default>false</default>
+        <label>Bi-Monthly</label>
+    </customValue>
+    <customValue>
+        <fullName>Quarterly</fullName>
+        <default>false</default>
+        <label>Quarterly</label>
+    </customValue>
+    <customValue>
+        <fullName>Annual</fullName>
+        <default>false</default>
+        <label>Annual</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Applicable</fullName>
+        <default>false</default>
+        <label>Not Applicable</label>
+    </customValue>
+    <customValue>
+        <fullName>Combo</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Combo</label>
+    </customValue>
+    <masterLabel>Billing Intervals</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Single_Site_Layout</fullName>
+    <fields>Name</fields>
+    <fields>OwnerId</fields>
+    <fields>Billing_Call_or_Webinar_Status__c</fields>
+    <fields>Billing_Call_or_Webinar_Date__c</fields>
+    <fields>SaaS_Billing_Onboarding_Sequencing__c</fields>
+    <fields>Funnel_Stage__c</fields>
+    <label>Single Site Layout</label>
+</CompactLayout>

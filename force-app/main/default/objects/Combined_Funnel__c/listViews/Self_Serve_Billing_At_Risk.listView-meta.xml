@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Self_Serve_Billing_At_Risk</fullName>
+    <columns>FTS_Owner__c</columns>
+    <columns>NAME</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>Active_Student_Count__c</columns>
+    <columns>Active_Students_with_Billing_Ratio__c</columns>
+    <columns>Active_Students_with_One_Bill_Ratio__c</columns>
+    <columns>Active_Students_with_One_Payment_Ratio__c</columns>
+    <columns>Accepts_Online_Payment_Status__c</columns>
+    <columns>Parents_with_Payment_Method__c</columns>
+    <columns>Billing_Version__c</columns>
+    <columns>Dollars_Processed_Online__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>Billing_Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Self Serve</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Funnel_Stage__c</field>
+        <operation>equals</operation>
+        <value>Billing Setup</value>
+    </filters>
+    <filters>
+        <field>Active_Student_Count__c</field>
+        <operation>greaterThan</operation>
+        <value>20</value>
+    </filters>
+    <filters>
+        <field>Account_Customer_Type__c</field>
+        <operation>equals</operation>
+        <value>Single-Site</value>
+    </filters>
+    <filters>
+        <field>FTS_Owner__c</field>
+        <operation>notContain</operation>
+        <value>Larissa</value>
+    </filters>
+    <label>Self-Serve Billing At Risk</label>
+</ListView>

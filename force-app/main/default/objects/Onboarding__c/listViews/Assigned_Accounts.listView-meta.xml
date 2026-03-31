@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assigned_Accounts</fullName>
+    <columns>NAME</columns>
+    <columns>Next_Steps_Snapshot__c</columns>
+    <columns>Funnel_Stage__c</columns>
+    <columns>Names_and_Roles_of_Implementers__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Onboarding_Call_or_Webinar_Date__c</columns>
+    <columns>Onboarding_Setup_Call_Path__c</columns>
+    <columns>Multi_Site__c</columns>
+    <columns>Original_Close_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Suzanne</value>
+    </filters>
+    <filters>
+        <field>Next_Steps_Snapshot__c</field>
+        <operation>contains</operation>
+        <value>Dave</value>
+    </filters>
+    <label>Assigned Accounts</label>
+</ListView>

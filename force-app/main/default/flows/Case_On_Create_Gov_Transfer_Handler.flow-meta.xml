@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>RR_Engagement_Assignment</name>
+        <label>RR - Engagement Assignment</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <actionName>roundRobinAssigner</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>groupName</name>
+            <value>
+                <stringValue>GovTransferCaseRR</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>roundRobinAssigner</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Case_Values</name>
+        <label>Assign Case Values</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Related_Payer_Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>forTRelatedPayerId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Subject</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Government Account Change</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Case</targetReference>
+        </connector>
+    </assignments>
+    <description>Handle all of the Gov Transfer automation to be triggered on case creation</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forTRelatedPayerId</name>
+        <dataType>String</dataType>
+        <expression>IF( NOT( ISNULL( {!$Record.Account.Related_Payer_Account__c} )), {!$Record.Account.Related_Payer_Account__c}, NULL)</expression>
+    </formulas>
+    <interviewLabel>Case - On Create - Gov Transfer Handler {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - On Create - Gov Transfer Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Case</name>
+        <label>Update Case</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>RR_Engagement_Assignment</targetReference>
+        </connector>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Case_Values</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012Ei000002FUnpIAG</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

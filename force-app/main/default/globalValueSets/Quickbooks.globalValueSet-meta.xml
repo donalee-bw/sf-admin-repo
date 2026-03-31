@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Yes: Desktop - Sales Only</fullName>
+        <default>false</default>
+        <label>Yes: Desktop - Sales Only</label>
+    </customValue>
+    <customValue>
+        <fullName>Yes: Online - Sales Only</fullName>
+        <default>false</default>
+        <label>Yes: Online - Sales Only</label>
+    </customValue>
+    <customValue>
+        <fullName>No</fullName>
+        <default>false</default>
+        <label>No</label>
+    </customValue>
+    <customValue>
+        <fullName>Did Not Cover</fullName>
+        <default>false</default>
+        <label>Did Not Cover</label>
+    </customValue>
+    <customValue>
+        <fullName>BW = Customer in QB</fullName>
+        <default>false</default>
+        <label>BW = Customer in QB</label>
+    </customValue>
+    <customValue>
+        <fullName>Family = Customer in QB</fullName>
+        <default>false</default>
+        <label>Family = Customer in QB</label>
+    </customValue>
+    <customValue>
+        <fullName>Indiv. Students = Customers in QB</fullName>
+        <default>false</default>
+        <label>Indiv. Students = Customers in QB</label>
+    </customValue>
+    <masterLabel>Quickbooks</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,3 @@
+<apex:page >
+    <c:SigmaEmbedComponentOpportunity embedPath="https://app.sigmacomputing.com/embed/1-4g9F38a8ErYwGSLwKi2tt1" embedUser="{!$User.Email}"/>
+</apex:page>

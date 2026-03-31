@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SaaS_Conversation_Notes__c</fullName>
+    <description>Not mapped to SaaS onboarding in flow. Relabeled to &quot;conversation notes&quot; 6.1.22 as this will be the only conversation notes field on cf layout moving forward</description>
+    <label>Conversation Notes</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Checks if the related account has an active user assigned on the field SaaS Owner</description>
+        <name>Account_Has_SaaS_Owner</name>
+        <label>Account Has SaaS Owner?</label>
+        <locationX>930</locationX>
+        <locationY>708</locationY>
+        <defaultConnector>
+            <targetReference>Launch_Account_Assignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Account_Has_SaaS_Owner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.SaaS_Owner__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Ownership_to_SaaS_Owner</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>ACH_Status_Verified</name>
+        <label>ACH Status Verified</label>
+        <locationX>996</locationX>
+        <locationY>276</locationY>
+        <defaultConnector>
+            <targetReference>Get_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Non Verified</defaultConnectorLabel>
+        <rules>
+            <name>Verified</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stripe_ACH_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Verified</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Auto_Close_ACH_Verified</targetReference>
+            </connector>
+            <label>Verified</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Determine_Target_Status</name>
+        <label>Determine Target Status</label>
+        <locationX>1414</locationX>
+        <locationY>492</locationY>
+        <defaultConnector>
+            <targetReference>Auto_Close_Non_Premium_Target</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Non Premium Target</defaultConnectorLabel>
+        <rules>
+            <name>Premium_Target</name>
+            <conditionLogic>2 AND (1 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.Current_Premium_ECE__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Customer_Segment__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Micro</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Ever_Premium_ECE__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>New_Case_Record</targetReference>
+            </connector>
+            <label>Premium Target</label>
+        </rules>
+        <rules>
+            <name>No_Related_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>No Related Account</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Duplicate_ACH_Case</name>
+        <label>Duplicate ACH Case</label>
+        <locationX>182</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>No New Case Exists</defaultConnectorLabel>
+        <rules>
+            <name>Another_New_Case_Exists</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Other_New_ACH_Cases</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Other_New_ACH_Cases.CreatedDate</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Auto_Close_Existing_New_Case</targetReference>
+            </connector>
+            <label>Another New Case Exists</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the case record was just created</description>
+        <name>New_Case_Record</name>
+        <label>New Case Record?</label>
+        <locationX>1106</locationX>
+        <locationY>600</locationY>
+        <defaultConnector>
+            <targetReference>Set_ACH_Distribution_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_NewCaseRecord</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>forB_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Account_Has_SaaS_Owner</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Auto Closes cases that are duplicated on the same day, tied to Non Premium Target customers, or if the ACH status is already verified.  The Auto Close process delays by 72 hours to allow processing of the ACH status
+12/20/23 - Updated record ownership assignment to RR between user on Failed Payment group
+03/20/24 - PE - Updated ownership assignment to account&apos;s SaaS Owner user to to round robin it if no user is found.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forB_IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Auto Close Case - ACH Verification Handler {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Auto Close Case - ACH Verification Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Account</name>
+        <label>Get Account</label>
+        <locationX>1414</locationX>
+        <locationY>384</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Determine_Target_Status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Billing_Upsell_Owner__c</queriedFields>
+        <queriedFields>Premium_Target_Updated_Definition__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Other_New_ACH_Cases</name>
+        <label>Get Other New ACH Cases</label>
+        <locationX>182</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Duplicate_ACH_Case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0123u000000FS4nAAG</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Auto Closed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Assign_Ownership_to_SaaS_Owner</name>
+        <label>Assign Ownership to SaaS Owner</label>
+        <locationX>930</locationX>
+        <locationY>1008</locationY>
+        <connector>
+            <targetReference>Set_ACH_Distribution_Type</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.Account.SaaS_Owner__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Auto_Close_ACH_Verified</name>
+        <label>Auto Close - ACH Verified</label>
+        <locationX>578</locationX>
+        <locationY>384</locationY>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>Case Auto Closed due to Stripe ACH Status currently Verified</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Auto Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Auto_Close_Existing_New_Case</name>
+        <label>Auto Close - Existing New Case</label>
+        <locationX>50</locationX>
+        <locationY>492</locationY>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>Case Auto Closed due to existing new ACH Verification case created today</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Auto Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Auto_Close_Non_Premium_Target</name>
+        <label>Auto Close Non Premium Target</label>
+        <locationX>1722</locationX>
+        <locationY>600</locationY>
+        <inputAssignments>
+            <field>ACH_Verification_Distribution_Type__c</field>
+            <value>
+                <stringValue>Non-Premium Target</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>Case Auto Closed due to being related to a Non Premium Target account</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Auto Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_ACH_Distribution_Type</name>
+        <label>Set ACH Distribution Type</label>
+        <locationX>1106</locationX>
+        <locationY>1200</locationY>
+        <inputAssignments>
+            <field>ACH_Verification_Distribution_Type__c</field>
+            <value>
+                <stringValue>Premium Target</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>463</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Other_New_ACH_Cases</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0123u000000FS4nAAG</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>ACH_Validation_After_72_Hours</name>
+            <connector>
+                <targetReference>ACH_Status_Verified</targetReference>
+            </connector>
+            <label>ACH Validation - After 72 Hours</label>
+            <offsetNumber>72</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Launch_Account_Assignment</name>
+        <label>Launch Account Assignment</label>
+        <locationX>1018</locationX>
+        <locationY>816</locationY>
+        <connector>
+            <targetReference>Assign_Ownership_to_SaaS_Owner</targetReference>
+        </connector>
+        <flowName>Account_Subflow_Ownership_Assignments</flowName>
+        <inputAssignments>
+            <name>varT_RecordId</name>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

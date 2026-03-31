@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_in_Call_Date__c</fullName>
+    <description>This date represents once they’ve had a 1:1 with onboarder
+04/10/23 - Flagged to be deprecated (Sprint 5 - 2023)</description>
+    <inlineHelpText>When the customer has had a 1:1 check in call with onboarder</inlineHelpText>
+    <label>x_Check in Call Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

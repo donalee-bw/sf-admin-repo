@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Staff_Issue</fullName>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>NAME</columns>
+    <columns>SaaS_Activation_Funnel_Stage_Value__c</columns>
+    <columns>SaaS_Onboarding_Status__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>of_Total_Staff__c</columns>
+    <columns>Staff_Added_Count__c</columns>
+    <columns>Staff_Activated_Count__c</columns>
+    <columns>Staff_Profiles_Created_Percentage__c</columns>
+    <columns>Invited_Staff_with_1_Login_Percentage__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Postponed,Unresponsive</value>
+    </filters>
+    <filters>
+        <field>SaaS_Activation_Funnel_Stage_Value__c</field>
+        <operation>notEqual</operation>
+        <value>8 - Activated</value>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Denise,Alison,Joanna,Mallory,Kathleen,Kerry,Willeta,Sam,Vanessa,Rebekah,Jackie,Andrea,Ally,Bradley,Christian,Ciara,Cindy,Jonny,Kim,Leia</value>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>SaaS_Activation_Funnel_Stage_Value__c</field>
+        <operation>equals</operation>
+        <value>3 - Adding Staff</value>
+    </filters>
+    <filters>
+        <field>Tracking_Attendance_Average__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>6</value>
+    </filters>
+    <filters>
+        <field>Logging_Actions_Average__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Current_Enrollment_Active_Percentage__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>90</value>
+    </filters>
+    <label>Total Staff Issue</label>
+</ListView>

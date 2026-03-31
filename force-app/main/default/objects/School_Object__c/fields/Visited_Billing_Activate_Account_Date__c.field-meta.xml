@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Visited_Billing_Activate_Account_Date__c</fullName>
+    <description>Populated by DataEng. Temporary field until DataEng has bandwidth to standup Mixpanel integration with Intercom and Hubspot. Last Date visited billing Activate Account tab</description>
+    <inlineHelpText>Last Date visited billing Activate Account tab</inlineHelpText>
+    <label>Visited Billing Activate Account Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

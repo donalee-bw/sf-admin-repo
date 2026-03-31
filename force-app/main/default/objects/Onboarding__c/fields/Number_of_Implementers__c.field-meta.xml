@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_Implementers__c</fullName>
+    <description>Count number of related Onboarding Contact Roles where role = &quot;Implementer&quot;</description>
+    <inlineHelpText>Number of Implementer contact roles associated to the Onboarding.</inlineHelpText>
+    <label>Number of Implementers</label>
+    <summaryFilterItems>
+        <field>Onboarding_contact__c.Id</field>
+        <operation>equals</operation>
+        <value>a1E1I000004OZiT</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Onboarding_contact__c.Onboarding__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

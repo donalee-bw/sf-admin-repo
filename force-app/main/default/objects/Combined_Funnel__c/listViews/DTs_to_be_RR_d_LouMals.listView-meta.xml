@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DTs_to_be_RR_d_LouMals</fullName>
+    <columns>NAME</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Owner_Last_Transfer_Date__c</columns>
+    <columns>Brand_New_Program__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>Last_Online_Payment_Date__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Customer_Dynamics__c</field>
+        <operation>contains</operation>
+        <value>LouMals</value>
+    </filters>
+    <filters>
+        <field>Combined_Activation_Status__c</field>
+        <operation>notEqual</operation>
+        <value>SaaS and Billing Activated</value>
+    </filters>
+    <label>DTs to be RR&apos;d (LouMals)</label>
+</ListView>

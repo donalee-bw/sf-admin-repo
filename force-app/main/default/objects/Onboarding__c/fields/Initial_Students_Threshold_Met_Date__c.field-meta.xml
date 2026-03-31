@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Initial_Students_Threshold_Met_Date__c</fullName>
+    <description>Initial Student Threshold Met Date from the school object associated to the account.</description>
+    <formula>Account__r.School_Object__r.Initial_Students_Threshold_Met_Date__c</formula>
+    <inlineHelpText>When the school added 5 or more active students to their account, thus the Adding Initial Students criteria was met. Date field must be populated for the onboarding to move to the next funnel stage automatically (Onboarding Training Call).</inlineHelpText>
+    <label>Initial Students Threshold Met Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

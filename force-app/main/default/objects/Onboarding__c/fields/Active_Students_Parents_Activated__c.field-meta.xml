@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Students_Parents_Activated__c</fullName>
+    <description># Active Students Parents Activated field from school object associated to the account.</description>
+    <externalId>false</externalId>
+    <formula>Account__r.School_Object__r.Active_Students_Parents_Activated__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The number of currently active students that have at least one parent activated</inlineHelpText>
+    <label>Active Students Parents Activated</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

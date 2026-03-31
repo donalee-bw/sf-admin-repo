@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Adding Students</fullName>
+        <default>false</default>
+        <label>Adding Students</label>
+    </customValue>
+    <customValue>
+        <fullName>Setting Up Bills</fullName>
+        <default>false</default>
+        <label>Setting Up Bills</label>
+    </customValue>
+    <customValue>
+        <fullName>Submitting Verification</fullName>
+        <default>false</default>
+        <label>Submitting Verification</label>
+    </customValue>
+    <customValue>
+        <fullName>Completing Bill Set-Up</fullName>
+        <default>false</default>
+        <label>Completing Bill Set-Up</label>
+    </customValue>
+    <customValue>
+        <fullName>Finalizing Verification</fullName>
+        <default>false</default>
+        <label>Finalizing Verification</label>
+    </customValue>
+    <customValue>
+        <fullName>Adding Payers</fullName>
+        <default>false</default>
+        <label>Adding Payers</label>
+    </customValue>
+    <customValue>
+        <fullName>Sending Bills</fullName>
+        <default>false</default>
+        <label>Sending Bills</label>
+    </customValue>
+    <customValue>
+        <fullName>Receiving Online Payments</fullName>
+        <default>false</default>
+        <label>Receiving Online Payments</label>
+    </customValue>
+    <customValue>
+        <fullName>Activated</fullName>
+        <default>false</default>
+        <label>Activated</label>
+    </customValue>
+    <masterLabel>NEW Billing Activation Funnel Stage</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

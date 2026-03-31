@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DuplicateRule xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionOnInsert>Allow</actionOnInsert>
+    <actionOnUpdate>Allow</actionOnUpdate>
+    <alertText xsi:nil="true"/>
+    <description>Identify leads with duplicate contacts with matching phone numbers</description>
+    <duplicateRuleFilter>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <duplicateRuleFilterItems>
+            <field>LastModifiedByID</field>
+            <operation>notEqual</operation>
+            <value>0051I000002SioQ</value>
+            <sortOrder>1</sortOrder>
+            <table>Lead</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
+            <field>LastModifiedByID</field>
+            <operation>notEqual</operation>
+            <value>0051I000004HUjO</value>
+            <sortOrder>2</sortOrder>
+            <table>Lead</table>
+        </duplicateRuleFilterItems>
+        <duplicateRuleFilterItems>
+            <field>Profile</field>
+            <operation>notEqual</operation>
+            <value>System Administrator</value>
+            <sortOrder>3</sortOrder>
+            <table>User</table>
+        </duplicateRuleFilterItems>
+    </duplicateRuleFilter>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Account</matchRuleSObjectType>
+        <matchingRule>Matching_Account_Phone_Number</matchingRule>
+        <objectMapping>
+            <inputObject>Lead</inputObject>
+            <mappingFields>
+                <inputField>MobilePhone</inputField>
+                <outputField>Mobile_Phone__c</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>Phone</inputField>
+                <outputField>Phone</outputField>
+            </mappingFields>
+            <outputObject>Account</outputObject>
+        </objectMapping>
+    </duplicateRuleMatchRules>
+    <duplicateRuleMatchRules>
+        <matchRuleSObjectType>Contact</matchRuleSObjectType>
+        <matchingRule>Matching_Phone_Number</matchingRule>
+        <objectMapping>
+            <inputObject>Lead</inputObject>
+            <mappingFields>
+                <inputField>Phone</inputField>
+                <outputField>Phone</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>MobilePhone</inputField>
+                <outputField>MobilePhone</outputField>
+            </mappingFields>
+            <outputObject>Contact</outputObject>
+        </objectMapping>
+    </duplicateRuleMatchRules>
+    <isActive>false</isActive>
+    <masterLabel>Lead to Contact Phone Number Match</masterLabel>
+    <operationsOnInsert>Report</operationsOnInsert>
+    <operationsOnUpdate>Report</operationsOnUpdate>
+    <securityOption>BypassSharingRules</securityOption>
+    <sortOrder>3</sortOrder>
+</DuplicateRule>

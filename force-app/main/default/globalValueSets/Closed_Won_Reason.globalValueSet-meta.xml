@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Cost - Gets better deal with us vs. competitor</fullName>
+        <default>false</default>
+        <label>Cost - Gets better deal with us vs. competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Cost - Processing fees are more affordable</fullName>
+        <default>false</default>
+        <label>Cost - Processing fees are more affordable</label>
+    </customValue>
+    <customValue>
+        <fullName>Cost - More straightforward fee structure</fullName>
+        <default>false</default>
+        <label>Cost - More straightforward fee structure</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Reporting</fullName>
+        <default>false</default>
+        <label>Product - Reporting</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Billing</fullName>
+        <default>false</default>
+        <label>Product - Billing</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Multi-site functionality</fullName>
+        <default>false</default>
+        <label>Product - Multi-site functionality</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Admissions</fullName>
+        <default>false</default>
+        <label>Product - Admissions</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - EEL</fullName>
+        <default>false</default>
+        <label>Product - EEL</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Ease of use</fullName>
+        <default>false</default>
+        <label>Product - Ease of use</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Check-in</fullName>
+        <default>false</default>
+        <label>Product - Check-in</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Staff management</fullName>
+        <default>false</default>
+        <label>Product - Staff management</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Payroll</fullName>
+        <default>false</default>
+        <label>Product - Payroll</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Messaging</fullName>
+        <default>false</default>
+        <label>Product - Messaging</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - All-in-one</fullName>
+        <default>false</default>
+        <label>Product - All-in-one</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Other (Note what feature)</fullName>
+        <default>false</default>
+        <label>Product - Other (Note what feature)</label>
+    </customValue>
+    <customValue>
+        <fullName>CS - customer support</fullName>
+        <default>false</default>
+        <label>CS - customer support</label>
+    </customValue>
+    <customValue>
+        <fullName>CS - training + onboarding</fullName>
+        <default>false</default>
+        <label>CS - training + onboarding</label>
+    </customValue>
+    <customValue>
+        <fullName>CS - product reliability</fullName>
+        <default>false</default>
+        <label>CS - product reliability</label>
+    </customValue>
+    <customValue>
+        <fullName>Other - Site-add</fullName>
+        <default>false</default>
+        <label>Other - Site-add</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <description>Captured on SaaS Opportunities at the time of a CW opp</description>
+    <masterLabel>Closed Won Reason</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

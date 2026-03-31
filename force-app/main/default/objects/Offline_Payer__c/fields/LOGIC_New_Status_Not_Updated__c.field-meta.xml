@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOGIC_New_Status_Not_Updated__c</fullName>
+    <description>Status remains at new though Offline Payer record was created 14 days ago (will mark true on the 14th day only)</description>
+    <formula>AND(
+      ISPICKVAL(Status__c, &quot;New&quot;),
+      DATEVALUE(CreatedDate)= TODAY()-14
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Status remains at new though Offline Payer record was created 14 days ago (will mark true on the 14th day only)</inlineHelpText>
+    <label>LOGIC New Status Not Updated</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

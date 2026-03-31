@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lacey_NEW_GOV_SaaS_Onboarding_Overview1</fullName>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>NAME</columns>
+    <columns>SaaS_Primary_Contact_Email__c</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>SaaS_Activation_Funnel_Stage_Value__c</columns>
+    <columns>Related_Payer_Account__c</columns>
+    <columns>Last_Activity_Date__c</columns>
+    <columns>Current_Enrollment_Active_Percentage__c</columns>
+    <columns>Active_Students_with_1_Guardian_Added__c</columns>
+    <columns>Staff_Profiles_Created_Percentage__c</columns>
+    <columns>Invited_Staff_with_1_Login_Percentage__c</columns>
+    <columns>Invited_Parents_with_1_Login_Percentage__c</columns>
+    <columns>Tracking_Attendance_Average__c</columns>
+    <columns>Logging_Actions_Average__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Postponed,Unresponsive</value>
+    </filters>
+    <filters>
+        <field>Related_Payer_Account__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notContain</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Lacey</value>
+    </filters>
+    <label>Lacey[NEW GOV] SaaS Onboarding Overview</label>
+</ListView>

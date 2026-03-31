@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SaaS_Training_Call_Completed__c</fullName>
+    <description>Manually populated by reps after 2nd webinar or 2nd 1:1 SaaS Onboarding Call. Mapped to Onboarding Training Call Completed on Account and SaaS Onboarding for funnel automation on school object.</description>
+    <label>x_SaaS Training Call Completed</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

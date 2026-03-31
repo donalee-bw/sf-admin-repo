@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Standard_Record_Type</fullName>
+    <active>true</active>
+    <compactLayoutAssignment>Location_Compact_Layout</compactLayoutAssignment>
+    <label>Standard Record Type</label>
+    <picklistValues>
+        <picklist>Center_Type__c</picklist>
+        <values>
+            <fullName>After School</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Camp_2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other_2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Preschool or Child Care</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Customer_Lifecycle_Stage__c</picklist>
+        <values>
+            <fullName>Active Sales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resting</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

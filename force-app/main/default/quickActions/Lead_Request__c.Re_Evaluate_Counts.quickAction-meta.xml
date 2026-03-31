@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Quick action to set &apos;Re-Evaluate&apos; counts which will re-trigger automation.</description>
+    <fieldOverrides>
+        <field>Re_Evaluate_Counts__c</field>
+        <formula>TRUE</formula>
+    </fieldOverrides>
+    <label>Re-Evaluate Counts</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Re_Evaluate_Counts__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <successMessage>Lead pipeline counts have been re-evaluated, you may need to refresh the page to see results.</successMessage>
+    <type>Update</type>
+</QuickAction>

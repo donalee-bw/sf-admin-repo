@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Onboarding_Coordinator_Last_Contacted__c</fullName>
+    <description>Max date between the Onboarding Coordinator Last Contacted fields on the Account and Primary Contact related to the Onboarding.</description>
+    <formula>IF(
+    AND(
+       NOT(ISBLANK(Account__r.Onboarding_Coordinator_Last_Contacted__c)),
+       ISBLANK(Primary_Contact__r.Onboarding_Coordinator_Last_Contacted__c)
+    ),
+    Account__r.Onboarding_Coordinator_Last_Contacted__c,
+    IF(
+        AND(
+            ISBLANK(Account__r.Onboarding_Coordinator_Last_Contacted__c),
+            NOT(ISBLANK(Primary_Contact__r.Onboarding_Coordinator_Last_Contacted__c))
+        ), 
+        Primary_Contact__r.Onboarding_Coordinator_Last_Contacted__c,
+        IF(
+            Account__r.Onboarding_Coordinator_Last_Contacted__c &gt; Primary_Contact__r.Onboarding_Coordinator_Last_Contacted__c,
+            Account__r.Onboarding_Coordinator_Last_Contacted__c,
+            Primary_Contact__r.Onboarding_Coordinator_Last_Contacted__c
+        )
+    )
+)</formula>
+    <inlineHelpText>Max date between the Onboarding Coordinator Last Contacted fields on the Account and Primary Contact related to the Onboarding.</inlineHelpText>
+    <label>Onboarding Coordinator Last Contacted</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

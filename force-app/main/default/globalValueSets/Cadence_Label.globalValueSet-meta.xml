@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Sales - Start Cadence</fullName>
+        <default>false</default>
+        <label>Sales - Start Cadence</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales - Missed Demo</fullName>
+        <default>false</default>
+        <label>Sales - Missed Demo</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales - Post CW</fullName>
+        <default>false</default>
+        <label>Sales - Post CW</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales - Post Demo</fullName>
+        <default>false</default>
+        <label>Sales - Post Demo</label>
+    </customValue>
+    <customValue>
+        <fullName>Core Onboarding - BNP</fullName>
+        <default>false</default>
+        <label>Core Onboarding - BNP</label>
+    </customValue>
+    <customValue>
+        <fullName>Core Onboarding - OBS &amp; GOBS</fullName>
+        <default>false</default>
+        <label>Core Onboarding - OBS &amp; GOBS</label>
+    </customValue>
+    <customValue>
+        <fullName>Core Retention - Proactive &amp; Reactive</fullName>
+        <default>false</default>
+        <label>Core Retention - Proactive &amp; Reactive</label>
+    </customValue>
+    <customValue>
+        <fullName>EC - Sales Starter</fullName>
+        <default>false</default>
+        <label>EC - Sales Starter</label>
+    </customValue>
+    <customValue>
+        <fullName>EC - Sales Missed Demo</fullName>
+        <default>false</default>
+        <label>EC - Sales Missed Demo</label>
+    </customValue>
+    <customValue>
+        <fullName>EC - Sales Post Demo</fullName>
+        <default>false</default>
+        <label>EC - Sales Post Demo</label>
+    </customValue>
+    <customValue>
+        <fullName>EC - OBS Generic</fullName>
+        <default>false</default>
+        <label>EC - OBS Generic</label>
+    </customValue>
+    <customValue>
+        <fullName>EC - OBS Missed Webinar</fullName>
+        <default>false</default>
+        <label>EC - OBS Missed Webinar</label>
+    </customValue>
+    <customValue>
+        <fullName>EC - OBS Post Webinar</fullName>
+        <default>false</default>
+        <label>EC - OBS Post Webinar</label>
+    </customValue>
+    <customValue>
+        <fullName>EC - OBS Starter</fullName>
+        <default>false</default>
+        <label>EC - OBS Starter</label>
+    </customValue>
+    <customValue>
+        <fullName>EC - Retention Starter</fullName>
+        <default>false</default>
+        <label>EC - Retention Starter</label>
+    </customValue>
+    <customValue>
+        <fullName>BU - General</fullName>
+        <default>false</default>
+        <label>BU - General</label>
+    </customValue>
+    <customValue>
+        <fullName>Core Onboarding - ACTIVATED - OBS &amp; GOBS</fullName>
+        <default>false</default>
+        <label>Core Onboarding - ACTIVATED - OBS &amp; GOBS</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales - Keep Warm</fullName>
+        <default>false</default>
+        <label>Sales - Keep Warm</label>
+    </customValue>
+    <masterLabel>Cadence Label</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

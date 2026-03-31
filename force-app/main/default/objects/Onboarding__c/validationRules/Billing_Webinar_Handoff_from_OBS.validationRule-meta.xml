@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Webinar_Handoff_from_OBS</fullName>
+    <active>false</active>
+    <description>Required fields when adding FTS owner that creates a billing onboarding for Webinar</description>
+    <errorConditionFormula>AND(
+    NOT($User.Username =&apos;engineering@mybrightwheel.com&apos;),
+    NOT($User.ProfileId =&apos;00e1I000001rqxt&apos;),
+    NOT(ISBLANK(FTS_Owner__c)),
+    Declined_Billing_Training__c = FALSE,
+    ISPICKVAL(Billing_Setup_Call_Path__c, &apos;Webinar&apos;),
+    OR(
+       ISBLANK(TEXT(Billing_Setup_Call_Path__c)),
+       ISBLANK(Billing_Call_or_Webinar_Date__c),
+       ISBLANK(TEXT(Billing_Timeline__c)),
+       ISBLANK(Billing_Intervals__c),
+       ISBLANK(TEXT(Subsidy_Tracking__c)),
+       ISBLANK(TEXT(Uses_Attendance_or_Variable_Rate_Billing__c)),
+       ISBLANK(Why_BW_Billing__c)
+    )
+)</errorConditionFormula>
+    <errorMessage>Please complete all fields in the &apos;Billing Handoff&apos; section</errorMessage>
+</ValidationRule>

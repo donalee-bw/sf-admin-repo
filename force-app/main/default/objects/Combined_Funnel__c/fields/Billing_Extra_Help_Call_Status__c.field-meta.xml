@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Extra_Help_Call_Status__c</fullName>
+    <description>04/10/23 - Flagged to be deprecated (Sprint 5 - 2023)</description>
+    <label>x_Billing Extra Help Call Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Billing_Call_Status</valueSetName>
+    </valueSet>
+</CustomField>

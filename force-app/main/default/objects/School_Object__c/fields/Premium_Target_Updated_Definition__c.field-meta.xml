@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Premium_Target_Updated_Definition__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Integrated field that advises if school is a Premium Target based upon business criteria</description>
+    <inlineHelpText>Integration field from product that identifies a Premium Target based on the definition of 10+ students</inlineHelpText>
+    <label>Premium Target - Updated Definition</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

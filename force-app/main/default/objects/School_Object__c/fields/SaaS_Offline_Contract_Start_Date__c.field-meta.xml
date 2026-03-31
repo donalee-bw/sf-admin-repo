@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SaaS_Offline_Contract_Start_Date__c</fullName>
+    <description>Indicate contract start date of saas offline payer</description>
+    <inlineHelpText>Indicate contract start date of saas offline payer</inlineHelpText>
+    <label>SaaS Offline Contract Start Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

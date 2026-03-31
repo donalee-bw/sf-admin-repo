@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_Charge_Library_Delayed__c</fullName>
+    <description>Reason the customer is stuck in the Setting Up Charge Library funnel stage.</description>
+    <inlineHelpText>Reason the customer is stuck in the Setting Up Charge Library funnel stage.</inlineHelpText>
+    <label>x_Reason Charge Library Delayed</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Reasons_For_Delayed_Billing_Onboardings</valueSetName>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Re_Evaluate_Counts__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>When selected, usually through quick action on page layout, record triggered flow &apos;LDC - Record Create Update counts&apos; runs to re-evaluate pipeline metrics.</description>
+    <label>Re-Evaluate Counts</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

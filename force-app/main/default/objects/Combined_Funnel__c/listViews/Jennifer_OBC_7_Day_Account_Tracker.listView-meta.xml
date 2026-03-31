@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Jennifer_OBC_7_Day_Account_Tracker</fullName>
+    <booleanFilter>1 AND 5 AND 2 AND 3 AND 4</booleanFilter>
+    <columns>SaaS_Contact_Most_Recent_Sequence__c</columns>
+    <columns>Original_Close_Date__c</columns>
+    <columns>Current_Enrollment__c</columns>
+    <columns>Active_Student_Enrollment_Percent__c</columns>
+    <columns>Active_Students_with_1_Guardian_Added__c</columns>
+    <columns>of_Total_Staff__c</columns>
+    <columns>Staff_Profiles_Created_Percentage__c</columns>
+    <columns>SaaS_Primary_Contact__c</columns>
+    <columns>NAME</columns>
+    <columns>JG_Impersonate_Link__c</columns>
+    <columns>Webinar_1_Scheduled_Date__c</columns>
+    <columns>Webinar_1_Completed_Date__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Onboarding_Coordinator__c</field>
+        <operation>equals</operation>
+        <value>Jennifer Chacon</value>
+    </filters>
+    <filters>
+        <field>Number_of_Open_Cancel_Request_Cases__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Original_Close_Date__c</field>
+        <operation>equals</operation>
+        <value>LAST_N_DAYS:14</value>
+    </filters>
+    <label>Jennifer OBC 14 Day Account Tracker</label>
+</ListView>

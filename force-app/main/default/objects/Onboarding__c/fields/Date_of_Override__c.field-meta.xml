@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Date_of_Override__c</fullName>
+    <description>Used in Process Builder to date stamp when Activation Override is changed (goes from null to populated).</description>
+    <inlineHelpText>Date when Activation Override was filled in.</inlineHelpText>
+    <label>Date of Override</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

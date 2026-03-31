@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gov_last_30_days_25_Billing_Accounts</fullName>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>NAME</columns>
+    <columns>Billing_Activation_Funnel_Stage_Value__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>V3_Number_of_Billing_Plans__c</columns>
+    <columns>Active_Students_with_Billing_Ratio__c</columns>
+    <columns>Active_Students_with_One_Bill_Ratio__c</columns>
+    <columns>Active_Students_with_One_Payment_Ratio__c</columns>
+    <columns>Parents_with_Payment_Method__c</columns>
+    <columns>V3_Next_Invoice_Send_Date__c</columns>
+    <columns>V3_Next_Invoice_Due_Date__c</columns>
+    <columns>Dollars_Processed_Online__c</columns>
+    <columns>Dollars_Processed__c</columns>
+    <columns>Billing_Onboarding_Status__c</columns>
+    <columns>Last_Online_Payment_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Billing_Activation_Funnel_Stage_Value__c</field>
+        <operation>notContain</operation>
+        <value>activated</value>
+    </filters>
+    <filters>
+        <field>Related_Payer_Account__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>equals</operation>
+        <value>LAST_N_DAYS:30</value>
+    </filters>
+    <filters>
+        <field>Brand_New_Program__c</field>
+        <operation>equals</operation>
+        <value>No</value>
+    </filters>
+    <label>Gov last 30 days &apos;25 - Billing Accounts</label>
+</ListView>

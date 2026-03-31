@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attended_Webinar_2_No_Students</fullName>
+    <columns>NAME</columns>
+    <columns>SaaS_Training_Call_Completed__c</columns>
+    <columns>SaaS_Customer_Comfort_Level__c</columns>
+    <columns>Billing_Customer_Comfort_Level__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Customer_Dynamics__c</columns>
+    <columns>Active_Student_Count__c</columns>
+    <columns>Current_Enrollment__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Combined</value>
+    </filters>
+    <filters>
+        <field>SaaS_Training_Call_Completed__c</field>
+        <operation>equals</operation>
+        <value>YESTERDAY,N_DAYS_AGO:2,N_DAYS_AGO:3</value>
+    </filters>
+    <filters>
+        <field>SaaS_Customer_Comfort_Level__c</field>
+        <operation>equals</operation>
+        <value>Comfortable - Low Touch</value>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Active_Student_Enrollment_Percent__c</field>
+        <operation>lessOrEqual</operation>
+        <value>50</value>
+    </filters>
+    <label>Attended Webinar #2/Students &lt;50%</label>
+</ListView>

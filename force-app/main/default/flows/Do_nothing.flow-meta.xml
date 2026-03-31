@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Empty variable</description>
+        <name>Do_nothing</name>
+        <label>Do nothing</label>
+        <locationX>166</locationX>
+        <locationY>50</locationY>
+        <assignmentItems>
+            <assignToReference>VarT_Answer</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Do nothing to try to make multi step process builders that fire on update more efficient for CPU limit errors</description>
+    <interviewLabel>Do nothing {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Do nothing</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Do_nothing</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>VarT_Answer</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

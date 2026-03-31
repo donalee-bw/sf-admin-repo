@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Multi_Site__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Captured by sales on closed-won Opp.</description>
+    <inlineHelpText>Is the center a multi-site?</inlineHelpText>
+    <label>Multi-Site</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

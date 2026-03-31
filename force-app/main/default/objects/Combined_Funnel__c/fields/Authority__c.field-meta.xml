@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Authority__c</fullName>
+    <description>Authority field from the SaaS CW Opportunity related to the CF.</description>
+    <externalId>false</externalId>
+    <formula>SaaS_CW_Opportunity__r.Authority__c</formula>
+    <inlineHelpText>Authority information captured by Sales from the SaaS CW Opportunity related to the CF. Answers to these questions: Are we speaking with a decision maker or an influencer? If we’re speaking with an influencer, can they help us better understand the school/org structure?</inlineHelpText>
+    <label>Authority</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

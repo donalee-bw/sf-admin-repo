@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Busy Bee</fullName>
+        <default>false</default>
+        <label>Busy Bee</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Tech Savvy</fullName>
+        <default>false</default>
+        <label>Not Tech Savvy</label>
+    </customValue>
+    <customValue>
+        <fullName>Skeptical</fullName>
+        <default>false</default>
+        <label>Skeptical</label>
+    </customValue>
+    <customValue>
+        <fullName>Go-Getter</fullName>
+        <default>false</default>
+        <label>Go-Getter</label>
+    </customValue>
+    <masterLabel>Customer Persona</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

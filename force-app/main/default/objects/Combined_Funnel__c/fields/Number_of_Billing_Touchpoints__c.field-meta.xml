@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_Billing_Touchpoints__c</fullName>
+    <description>Sum of the Number of Billing Onboarding Calls, Emails, and Text fields from the Account. (all 3 are populated by rollup helper)</description>
+    <externalId>false</externalId>
+    <formula>Account__r.Number_of_Billing_Onboarding_Calls__c + Account__r.Number_of_Billing_Onboarding_Emails__c + Account__r.Number_of_Billing_Onboarding_Texts__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Sum of the Number of Billing Onboarding Calls, Emails, and Text fields from the Account.</inlineHelpText>
+    <label>Number of Billing Touchpoints</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

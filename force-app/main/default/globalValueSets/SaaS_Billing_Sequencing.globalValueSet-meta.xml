@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>SaaS Only</fullName>
+        <default>false</default>
+        <label>SaaS Only</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Only</fullName>
+        <default>false</default>
+        <label>Billing Only</label>
+    </customValue>
+    <customValue>
+        <fullName>SaaS then Billing</fullName>
+        <default>false</default>
+        <label>SaaS then Billing</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing then SaaS</fullName>
+        <default>false</default>
+        <label>Billing then SaaS</label>
+    </customValue>
+    <customValue>
+        <fullName>SaaS and Billing Simultaneously</fullName>
+        <default>false</default>
+        <label>SaaS and Billing Simultaneously</label>
+    </customValue>
+    <customValue>
+        <fullName>NA - Enterprise</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>NA - Enterprise</label>
+    </customValue>
+    <masterLabel>SaaS Billing Onboarding Sequencing</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_Sites__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ISPICKVAL(Onboarding_Attempt_Status_New__c , &quot;Closed&quot;) || ISPICKVAL(Onboarding_Attempt_Status_New__c , &quot;Canceled&quot;),
+Number_of_Sites_Stamp__c,
+IF(NOT(ISBLANK( Number_of_Sites_Stamp__c )),
+Number_of_Sites_Stamp__c ,
+ Account__r.School_Object__r.Number_of_Sites__c  )
+)</formula>
+    <label>Number of Sites</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

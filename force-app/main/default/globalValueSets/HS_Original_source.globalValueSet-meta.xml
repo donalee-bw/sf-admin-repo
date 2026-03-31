@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>DIRECT_TRAFFIC</fullName>
+        <default>false</default>
+        <label>Direct Traffic</label>
+    </customValue>
+    <customValue>
+        <fullName>EMAIL_MARKETING</fullName>
+        <default>false</default>
+        <label>Email Marketing</label>
+    </customValue>
+    <customValue>
+        <fullName>OFFLINE</fullName>
+        <default>false</default>
+        <label>Offline</label>
+    </customValue>
+    <customValue>
+        <fullName>ORGANIC_SEARCH</fullName>
+        <default>false</default>
+        <label>Organic Search</label>
+    </customValue>
+    <customValue>
+        <fullName>OTHER_CAMPAIGNS</fullName>
+        <default>false</default>
+        <label>Other Campaigns</label>
+    </customValue>
+    <customValue>
+        <fullName>PAID_SEARCH</fullName>
+        <default>false</default>
+        <label>Paid Search</label>
+    </customValue>
+    <customValue>
+        <fullName>PAID_SOCIAL</fullName>
+        <default>false</default>
+        <label>Paid Social</label>
+    </customValue>
+    <customValue>
+        <fullName>REFERRALS</fullName>
+        <default>false</default>
+        <label>Referrals</label>
+    </customValue>
+    <customValue>
+        <fullName>SOCIAL_MEDIA</fullName>
+        <default>false</default>
+        <label>Social Media</label>
+    </customValue>
+    <customValue>
+        <fullName>AI Referrals</fullName>
+        <default>false</default>
+        <label>AI Referrals</label>
+    </customValue>
+    <description>HS Original source</description>
+    <masterLabel>HS Original source</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

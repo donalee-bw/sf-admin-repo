@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Student_Information_Currently_Stored__c</fullName>
+    <description>Mapped from CW Opp in flow.</description>
+    <inlineHelpText>Where their student information live (list of students with room assignments).</inlineHelpText>
+    <label>Student Information Currently Stored</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Student_Information_Currently_Located</valueSetName>
+    </valueSet>
+</CustomField>

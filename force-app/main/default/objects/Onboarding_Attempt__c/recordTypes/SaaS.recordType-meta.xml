@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SaaS</fullName>
+    <active>true</active>
+    <label>SaaS</label>
+    <picklistValues>
+        <picklist>Account_Customer_Type_Stamp__c</picklist>
+        <values>
+            <fullName>Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Government Payer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multi-Site Child</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multi-Site Parent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non-Target</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Single-Site</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Account_Type_Stamp__c</picklist>
+        <values>
+            <fullName>Cancelled Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive Prospect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Activation_Funnel_Stage_Stamp__c</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adding Payers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adding Students</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completing Bill Set-Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finalizing Verification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Receiving Online Payments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sending Bills</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Setting Up Bills</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitting Verification</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Onboarding_Funnel_Stage_Stamp__c</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Canceled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Check-In Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Go-Live</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initial Setup Call Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intake</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low Touch Onboarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Onboarding Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Setup Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarding Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piloting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-Launch Check-in</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self-Assist</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Setting up Account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Soft Launch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unresponsive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsuccessful Check-In</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Working Cancellation</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Onboarding_Status_Stamp__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Billing At Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gone Dark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Opted Out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requesting Postpone - Awaiting Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS At Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unresponsive</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Override_Approved_by_Mgr_Stamp__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Override_Reasoning_Stamp__c</picklist>
+        <values>
+            <fullName>High %25 Subsidized</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High Number of Non-Target Students</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Large Number of Active Students Not Attending Regularly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low SES - Parent Adoption</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other %28Must Provide Context%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Processing Fees - High %25 Offline Payments</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Status_at_CW_Stamp__c</picklist>
+        <values>
+            <fullName>Hard Opt Out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not for Sales - Cancelled SaaS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Opted In</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Soft Opt Out</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Brand_New_Program_Stamp__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Onboarding_Attempt_Status_New__c</picklist>
+        <values>
+            <fullName>Canceled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Onboarding_Path_Stamp__c</picklist>
+        <values>
+            <fullName>1%3A1 Multi-Site</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Single-Site</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP Site-Add</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brand New Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Combined</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gov Group Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self Serve</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Site-Add</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Standard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webinar</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Related_Payer_Account_Type_Stamp__c</picklist>
+        <values>
+            <fullName>Cancelled Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive Prospect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SaaS_Activation_Funnel_Stage_Stamp__c</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adding Parents</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adding Staff</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adding Students</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Logging Activities or Messages</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parents Signing Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staff Logging In</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tracking Attendance</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SaaS_Onboarding_Funnel_Stage_Stamp__c</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Canceled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Check-In Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Go-Live</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initial Setup Call Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intake</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low Touch Onboarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Onboarding Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Setup Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarding Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piloting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-Launch Check-in</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self-Assist</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Setting up Account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Soft Launch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unresponsive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsuccessful Check-In</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Working Cancellation</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SaaS_Onboarding_Status_Stamp__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Billing At Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gone Dark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Opted Out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requesting Postpone - Awaiting Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS At Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unresponsive</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SaaS_Override_Approved_by_Mgr_Stamp__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SaaS_Override_Reasoning_Stamp__c</picklist>
+        <values>
+            <fullName>Backend Management Only %28SaaS%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Not Using Attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Not Using Messaging%2FActivities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gov%3A Attendance %28No Integration%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High Number of Non-Target Students</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Large Number of Active Students Not Attending Regularly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low SES - Parent Adoption</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other %28Must Provide Context%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parents Activated Threshold Met%2C Parents Added Not Met</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

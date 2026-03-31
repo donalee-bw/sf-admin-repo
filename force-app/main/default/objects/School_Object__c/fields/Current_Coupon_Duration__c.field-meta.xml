@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Coupon_Duration__c</fullName>
+    <description>The length of the coupon duration</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The length of the coupon duration</inlineHelpText>
+    <label>Current Coupon Duration</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

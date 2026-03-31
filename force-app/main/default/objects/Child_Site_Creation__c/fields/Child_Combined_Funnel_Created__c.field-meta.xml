@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Child_Combined_Funnel_Created__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Child Combined Funnel Created</label>
+    <referenceTo>Combined_Funnel__c</referenceTo>
+    <relationshipLabel>Child Sites Creation</relationshipLabel>
+    <relationshipName>Child_Sites_Creation</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

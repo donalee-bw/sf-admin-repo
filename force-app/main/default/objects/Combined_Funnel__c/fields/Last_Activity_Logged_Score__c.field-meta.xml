@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Activity_Logged_Score__c</fullName>
+    <description>Priority score for the Last Activity on the school object related to the Combined Funnel.
+04/10/23 - Flagged to be deprecated (Sprint 5 - 2023)</description>
+    <externalId>false</externalId>
+    <formula>IF( 
+   SaaS_Onboarding_Funnel_Stage__c = &apos;Logging Actions&apos;,
+   IF(
+      Last_Activity_Date__c &gt;= TODAY()-2, 
+      -5,
+      IF(
+         AND(
+             Last_Activity_Date__c &lt; TODAY()-2, 
+             Last_Activity_Date__c &gt;= TODAY()-6
+         ),
+         0,
+         IF(
+            OR(
+                Last_Activity_Date__c &lt; TODAY()-6,
+                ISBLANK(Last_Activity_Date__c)
+            ),
+            10,
+             0
+              ))),
+   NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Priority score for the Last Activity on the school object related to the Combined Funnel.</inlineHelpText>
+    <label>x_Last Activity Logged Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

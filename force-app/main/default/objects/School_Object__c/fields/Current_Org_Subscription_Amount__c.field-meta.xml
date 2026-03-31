@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Org_Subscription_Amount__c</fullName>
+    <description>The total subscription amount for the organization the school belongs to</description>
+    <inlineHelpText>The total subscription amount for the organization the school belongs to</inlineHelpText>
+    <label>Current Org Subscription Amount</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

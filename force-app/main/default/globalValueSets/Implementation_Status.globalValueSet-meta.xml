@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Setting Up</fullName>
+        <default>false</default>
+        <label>Setting Up</label>
+    </customValue>
+    <customValue>
+        <fullName>Implementing Actions</fullName>
+        <default>false</default>
+        <label>Implementing Actions</label>
+    </customValue>
+    <customValue>
+        <fullName>Implementing Both</fullName>
+        <default>false</default>
+        <label>Implementing Both</label>
+    </customValue>
+    <customValue>
+        <fullName>Implementing Parents</fullName>
+        <default>false</default>
+        <label>Implementing Parents</label>
+    </customValue>
+    <customValue>
+        <fullName>Activated</fullName>
+        <default>false</default>
+        <label>Activated</label>
+    </customValue>
+    <description>Onboarding status of implementing actions, parents, setting up, and all.</description>
+    <masterLabel>Implementation Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

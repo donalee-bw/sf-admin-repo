@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Was_a_Combined_Funnel_record_found</name>
+        <label>Was a Combined Funnel record found</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>CF Record Does Not Exist</defaultConnectorLabel>
+        <rules>
+            <name>CF_Record_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_Record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Conversation_Record</targetReference>
+            </connector>
+            <label>CF Record Exists</label>
+        </rules>
+    </decisions>
+    <description>Relates Gong calls on Combined Funnel record</description>
+    <interviewLabel>Gong Calls on CF Record {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Gong Calls on CF Record</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Retrieve combined funnel record related to primary account</description>
+        <name>Get_Combined_Funnel_Record</name>
+        <label>Get Combined Funnel Record</label>
+        <locationX>182</locationX>
+        <locationY>311</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_a_Combined_Funnel_record_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Gong__Primary_Account__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <queriedFields>Id</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates conversation record with combined funnel Id</description>
+        <name>Update_Conversation_Record</name>
+        <label>Update Conversation Record</label>
+        <locationX>50</locationX>
+        <locationY>551</locationY>
+        <inputAssignments>
+            <field>Combined_Funnel__c</field>
+            <value>
+                <elementReference>Get_Combined_Funnel_Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Combined_Funnel_Record</targetReference>
+        </connector>
+        <object>Gong__Gong_Call__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

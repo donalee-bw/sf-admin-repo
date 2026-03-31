@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Leads_owned_but_not_called_in_5_days__c</fullName>
+    <description>Leads currently owned were last call is greater then 3 days ago</description>
+    <externalId>false</externalId>
+    <label>Leads owned but not called in 5 days</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

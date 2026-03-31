@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOGIC_Renewal_In_60_Days__c</fullName>
+    <description>Triggers renewal case when renewal date is 60 days from today</description>
+    <formula>AND( 
+Customer_Type__c &lt;&gt; &apos;Enterprise&apos;,   
+NOT(Related_CW_Opportunity__r.RecordTypeId = &apos;0123u000000FT4L&apos;), 
+      Renewal_Date__c  = TODAY()+60
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Triggers renewal case when renewal date is 60 days from today</inlineHelpText>
+    <label>LOGIC Renewal In 60 Days</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

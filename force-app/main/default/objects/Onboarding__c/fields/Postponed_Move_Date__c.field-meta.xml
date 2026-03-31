@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Postponed_Move_Date__c</fullName>
+    <description>Used in process builder to date stamp when Onboarding Stage is moved out of Postponed.</description>
+    <inlineHelpText>When the onboarding was moved out of Postponed stage.</inlineHelpText>
+    <label>Postponed Move Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

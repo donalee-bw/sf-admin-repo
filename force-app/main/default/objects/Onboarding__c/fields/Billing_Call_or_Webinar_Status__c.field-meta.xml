@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Call_or_Webinar_Status__c</fullName>
+    <description>Used by Billing team on Billing Onboarding Record Type only.</description>
+    <inlineHelpText>The status of the Billing Call or Webinar the school was signed up for.</inlineHelpText>
+    <label>Billing Call or Webinar Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Billing_Call_Status</valueSetName>
+    </valueSet>
+</CustomField>

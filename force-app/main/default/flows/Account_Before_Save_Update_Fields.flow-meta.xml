@@ -1,0 +1,1137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Date_of_BNP_Removal</name>
+        <label>Assign Date of BNP Removal</label>
+        <locationX>446</locationX>
+        <locationY>2495</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Date_of_BNP_Removal__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Current_BNP_Decision</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Gov_t_Removal_Date</name>
+        <label>Assign Gov&apos;t Removal Date</label>
+        <locationX>446</locationX>
+        <locationY>1295</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Date_of_Govt_Removal__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Current_Government_Licensee_decision</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assigned_Multisite_Removal_Date</name>
+        <label>Assigned Multisite Removal Date</label>
+        <locationX>446</locationX>
+        <locationY>1895</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Date_of_Multisite_Removal__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Current_Multisite_decision</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Current_BNP_Decision</name>
+        <label>Current BNP Decision</label>
+        <locationX>578</locationX>
+        <locationY>2687</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Acct_moved_to_Cancelled2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Brightwheel_Plan__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Brand_New_Program_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Update_Account_Current_BNP</targetReference>
+            </connector>
+            <label>Acct moved to Cancelled</label>
+        </rules>
+        <rules>
+            <name>Current_BNP</name>
+            <conditionLogic>(1 OR 2) AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Brand New Program</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>BNP Site-Add</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Brand_New_Program_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Current BNP</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Current_BNP</targetReference>
+            </connector>
+            <label>Current BNP</label>
+        </rules>
+        <rules>
+            <name>Graduated_BNP</name>
+            <conditionLogic>1 AND 2 AND (3 OR 4 OR 5 or 7) AND 6</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Brand New Program</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>BNP Site-Add</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Assign_Date_of_BNP_Removal</leftValueReference>
+                <operator>WasVisited</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Brand New Program</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>BNP Site-Add</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Brand_New_Program_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Graduated BNP</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Date_of_BNP_Removal__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Graduated_BNP</targetReference>
+            </connector>
+            <label>Graduated BNP</label>
+        </rules>
+        <rules>
+            <name>Never_BNP</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Brand New Program</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>BNP Site-Add</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Brand_New_Program_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Never BNP</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Never_BNP</targetReference>
+            </connector>
+            <label>Never BNP</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Current_Government_Licensee_decision</name>
+        <label>Current Government Licensee decision</label>
+        <locationX>578</locationX>
+        <locationY>1487</locationY>
+        <defaultConnector>
+            <targetReference>Date_of_Multisite_Removal_decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Action</defaultConnectorLabel>
+        <rules>
+            <name>Acct_moved_to_Cancelled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Brightwheel_Plan__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Government_Licensee_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Current_Government_Blank</targetReference>
+            </connector>
+            <label>Acct moved to Cancelled</label>
+        </rules>
+        <rules>
+            <name>Current_Government</name>
+            <conditionLogic>(1 OR 2) AND 3 AND 4</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Government Payer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Government_Licensee_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Current Government</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Enterprise</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Current_Government</targetReference>
+            </connector>
+            <label>Current Government</label>
+        </rules>
+        <rules>
+            <name>Gov_t_Transfer_to_Core</name>
+            <conditionLogic>1 AND 2 AND (3 OR 4) AND 5</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Government Payer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Date_of_Govt_Removal__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Assign_Gov_t_Removal_Date</leftValueReference>
+                <operator>WasVisited</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Enterprise</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Transferred_Gov_to_Core</targetReference>
+            </connector>
+            <label>Gov&apos;t Transfer to Core</label>
+        </rules>
+        <rules>
+            <name>Never_Government</name>
+            <conditionLogic>(1 AND 2 AND 3) OR (4 AND 5)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Customer_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Government Payer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Assign_Gov_t_Removal_Date</leftValueReference>
+                <operator>WasVisited</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Enterprise</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Account__r.Customer_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Government Payer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Never_Government</targetReference>
+            </connector>
+            <label>Never Government</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Current_Multisite_decision</name>
+        <label>Current Multisite decision</label>
+        <locationX>578</locationX>
+        <locationY>2087</locationY>
+        <defaultConnector>
+            <targetReference>Date_of_BNP_Removal_decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Acct_move_to_Cancelled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Brightwheel_Plan__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Multisite_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Update_Account_Current_Multisite</targetReference>
+            </connector>
+            <label>Acct move to Cancelled</label>
+        </rules>
+        <rules>
+            <name>Current_Multisite</name>
+            <conditionLogic>1 AND ((2 AND 3) OR (4 AND (5 OR 6)))</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Current_Multisite_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Current Multisite</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Number_of_Sites__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Child</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Parent</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Current_Multisite</targetReference>
+            </connector>
+            <label>Current Multisite</label>
+        </rules>
+        <rules>
+            <name>Past_Multisite</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Number_of_Sites__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Multisite_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Past Multisite, Reduced Sites</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Date_of_Multisite_Removal__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Past_Multisite</targetReference>
+            </connector>
+            <label>Past Multisite</label>
+        </rules>
+        <rules>
+            <name>Never_Multisite</name>
+            <conditionLogic>2 AND ((1 AND 3) OR (1 AND 4 AND 5 AND 6))</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Number_of_Sites__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Multisite_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Never Multisite</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Parent</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Child</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Never_Multisite</targetReference>
+            </connector>
+            <label>Never Multisite</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Date_of_BNP_Removal_decision</name>
+        <label>Date of BNP Removal decision</label>
+        <locationX>578</locationX>
+        <locationY>2387</locationY>
+        <defaultConnector>
+            <targetReference>Current_BNP_Decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Move on</defaultConnectorLabel>
+        <rules>
+            <name>BNP_Removed</name>
+            <conditionLogic>(1 OR 4) AND 2 AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Brand New Program</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Brand New Program</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>BNP Site-Add</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>BNP Site-Add</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Date_of_BNP_Removal</targetReference>
+            </connector>
+            <label>BNP Removed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Date_of_Gov_t_Removal_decision</name>
+        <label>Date of Gov&apos;t Removal decision</label>
+        <locationX>578</locationX>
+        <locationY>1187</locationY>
+        <defaultConnector>
+            <targetReference>Current_Government_Licensee_decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Gov_t_Removed_update_date</name>
+            <conditionLogic>(1 AND 2) OR (3 AND 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Government Payer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Government Payer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Related_Payer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Gov_t_Removal_Date</targetReference>
+            </connector>
+            <label>Gov&apos;t Removed - update date</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Date_of_Multisite_Removal_decision</name>
+        <label>Date of Multisite Removal decision</label>
+        <locationX>578</locationX>
+        <locationY>1787</locationY>
+        <defaultConnector>
+            <targetReference>Current_Multisite_decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Multisite_Removed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Number_of_Sites__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Number_of_Sites__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assigned_Multisite_Removal_Date</targetReference>
+            </connector>
+            <label>Multisite Removed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Newly_Auto_Converted_Account</name>
+        <label>Newly Auto Converted Account?</label>
+        <locationX>578</locationX>
+        <locationY>887</locationY>
+        <defaultConnector>
+            <targetReference>Date_of_Gov_t_Removal_decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Single_Site</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>forB_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Prospect</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Brightwheel_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Number_of_Sites__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Account__r.Customer_Type__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Auto_Converted_Account_SingeSite</targetReference>
+            </connector>
+            <label>Yes - Single Site</label>
+        </rules>
+        <rules>
+            <name>Yes_Multi_Site</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Prospect</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Brightwheel_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Number_of_Sites__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Account__r.Customer_Type__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>forB_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Auto_Converted_Account_MultiSite</targetReference>
+            </connector>
+            <label>Yes - Multi-Site</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if an account had its assigned OBS Owner updated to a different user than the Account Owner. If so, then the Account Owner will be updated to match the OBS Owner user</description>
+        <name>OBS_Owner_Different_Than_Account_Owner</name>
+        <label>OBS Owner Different Than Account Owner</label>
+        <locationX>578</locationX>
+        <locationY>587</locationY>
+        <defaultConnector>
+            <targetReference>Newly_Auto_Converted_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_OBS_Owner_Different_Than_Account_Owner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CSM_Owner1__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CSM_Owner1__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CSM_Owner1__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.OwnerId</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>forB_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Owner</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Populate_Onboarding_Activated_Field</name>
+        <label>Populate Onboarding Activated Field</label>
+        <locationX>578</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>OBS_Owner_Different_Than_Account_Owner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Action</defaultConnectorLabel>
+        <rules>
+            <name>Populate_Onboarding_Attendance</name>
+            <conditionLogic>1 AND ((2 AND 3) OR (4 AND 5))</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Billing_Onboarding_Training_Attended__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Webinar_2_Completed_Date__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Webinar_2_Completed_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Training_Call_Completed__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Training_Call_Completed__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Onboarding_Attendance</targetReference>
+            </connector>
+            <label>Populate Onboarding Attendance</label>
+        </rules>
+    </decisions>
+    <description>PE - Before Save flow created to match OBS Owner and Account Owner and to set values to auto-converted accounts.
+BW - Added logic for Current Government Licensee Status, Current Multisite Status, and Current Brand New Program Status
+AC - Removed assignment to Account Status field on newly auto-converted in MultiSite and SingleSite nodes.
+AC - Readding assignment to Current BNP for the Current Brand New Program Status field that was mistakenly removed.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forB_IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Account - Before Save - Update Fields {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - Before Save - Update Fields</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Copy_1_of_Update_Account_Current_BNP</name>
+        <label>Update Account - Current BNP = BLANK</label>
+        <locationX>50</locationX>
+        <locationY>2795</locationY>
+        <inputAssignments>
+            <field>Current_Brand_New_Program_Status__c</field>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Copy_1_of_Update_Account_Current_Multisite</name>
+        <label>Update Account - Current Multisite = BLANK</label>
+        <locationX>50</locationX>
+        <locationY>2195</locationY>
+        <connector>
+            <targetReference>Date_of_BNP_Removal_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Current_Multisite_Status__c</field>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Current_BNP</name>
+        <label>Update Account - Current BNP</label>
+        <locationX>314</locationX>
+        <locationY>2795</locationY>
+        <inputAssignments>
+            <field>Current_Brand_New_Program_Status__c</field>
+            <value>
+                <stringValue>Current BNP</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Current_Government</name>
+        <label>Update Account - Current Government</label>
+        <locationX>314</locationX>
+        <locationY>1595</locationY>
+        <connector>
+            <targetReference>Date_of_Multisite_Removal_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Current_Government_Licensee_Status__c</field>
+            <value>
+                <stringValue>Current Government</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Current_Government_Blank</name>
+        <label>Update Account - Current Government = Blank</label>
+        <locationX>50</locationX>
+        <locationY>1595</locationY>
+        <connector>
+            <targetReference>Date_of_Multisite_Removal_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Current_Government_Licensee_Status__c</field>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Current_Multisite</name>
+        <label>Update Account - Current Multisite</label>
+        <locationX>314</locationX>
+        <locationY>2195</locationY>
+        <connector>
+            <targetReference>Date_of_BNP_Removal_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Current_Multisite_Status__c</field>
+            <value>
+                <stringValue>Current Multisite</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Graduated_BNP</name>
+        <label>Update Account - Graduated BNP</label>
+        <locationX>578</locationX>
+        <locationY>2795</locationY>
+        <inputAssignments>
+            <field>Current_Brand_New_Program_Status__c</field>
+            <value>
+                <stringValue>Graduated BNP</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Never_BNP</name>
+        <label>Update Account - Never BNP</label>
+        <locationX>842</locationX>
+        <locationY>2795</locationY>
+        <inputAssignments>
+            <field>Current_Brand_New_Program_Status__c</field>
+            <value>
+                <stringValue>Never BNP</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Never_Government</name>
+        <label>Update Account - Never Government</label>
+        <locationX>842</locationX>
+        <locationY>1595</locationY>
+        <connector>
+            <targetReference>Date_of_Multisite_Removal_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Current_Government_Licensee_Status__c</field>
+            <value>
+                <stringValue>Never Government</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Never_Multisite</name>
+        <label>Update Account - Never Multisite</label>
+        <locationX>842</locationX>
+        <locationY>2195</locationY>
+        <connector>
+            <targetReference>Date_of_BNP_Removal_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Current_Multisite_Status__c</field>
+            <value>
+                <stringValue>Never Multisite</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Onboarding_Attendance</name>
+        <label>Update Account - Onboarding Attendance</label>
+        <locationX>446</locationX>
+        <locationY>395</locationY>
+        <connector>
+            <targetReference>OBS_Owner_Different_Than_Account_Owner</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Billing_Onboarding_Training_Attended__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates the account owner to match the OBS Owner user.</description>
+        <name>Update_Account_Owner</name>
+        <label>Update Account Owner</label>
+        <locationX>446</locationX>
+        <locationY>695</locationY>
+        <connector>
+            <targetReference>Newly_Auto_Converted_Account</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.CSM_Owner1__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Past_Multisite</name>
+        <label>Update Account - Past Multisite</label>
+        <locationX>578</locationX>
+        <locationY>2195</locationY>
+        <connector>
+            <targetReference>Date_of_BNP_Removal_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Current_Multisite_Status__c</field>
+            <value>
+                <stringValue>Past Multisite, Reduced Sites</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Transferred_Gov_to_Core</name>
+        <label>Update Account - Transferred Gov to Core</label>
+        <locationX>578</locationX>
+        <locationY>1595</locationY>
+        <connector>
+            <targetReference>Date_of_Multisite_Removal_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Current_Government_Licensee_Status__c</field>
+            <value>
+                <stringValue>Transferred Government to Core BW</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates auto converted account</description>
+        <name>Update_Auto_Converted_Account_MultiSite</name>
+        <label>Update Auto Converted Account</label>
+        <locationX>578</locationX>
+        <locationY>995</locationY>
+        <connector>
+            <targetReference>Date_of_Gov_t_Removal_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>LOGIC_Auto_converted__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Customer</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates auto converted account</description>
+        <name>Update_Auto_Converted_Account_SingeSite</name>
+        <label>Update Auto Converted Account</label>
+        <locationX>314</locationX>
+        <locationY>995</locationY>
+        <connector>
+            <targetReference>Date_of_Gov_t_Removal_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Customer_Type__c</field>
+            <value>
+                <stringValue>Single-Site</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LOGIC_Auto_converted__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Customer</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>452</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Populate_Onboarding_Activated_Field</targetReference>
+        </connector>
+        <filterFormula>{!$Permission.Admin_Data_Loader} = FALSE</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

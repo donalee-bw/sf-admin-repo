@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Uses_Attendance_or_Variable_Rate_Billing__c</fullName>
+    <description>Mapped from Opp to Onboardings if captured by Sales. Mapped from SaaS to Billing Onboardings if captured by OBS.</description>
+    <inlineHelpText>Does the school use attendance or variable-rate billing?</inlineHelpText>
+    <label>Uses Attendance or Variable Rate Billing</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Uses_Attendance_or_Variable_Rate_Billing</valueSetName>
+    </valueSet>
+</CustomField>

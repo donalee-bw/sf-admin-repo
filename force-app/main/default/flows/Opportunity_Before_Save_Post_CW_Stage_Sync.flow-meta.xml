@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Was_Account_Found</name>
+        <label>Was Account Found?</label>
+        <locationX>374</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Opportunity_Post_CW_Stage_Sync_Subflow</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>When Opportunity is Closed Won, we wait 10 waits to update and sync the post close won stages on the opportunity based on data cross multiple objects - using the subflow.
+03.28.2025 - Update entry condition for Gov Lic Opp to look at opportunities closed date Greater than 3.28.2025 
+FUTURE UPDATE REQUIRED IN PROD - Change Screendate = or greater than 4/1/2025 and Closed Date = 4/1/2025 or greater
+07.30.2025 - LK - Added Gov Child and also added Logic for Declined training ( Self-Serve and Site Add onboarding Paths)
+3.11.2026 - DM - Added entry criteria to account of OBS assignment for edge cases</description>
+    <environments>Default</environments>
+    <interviewLabel>Opportunity - Before Save - Post CW Stage Sync {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - After Save - Post CW Stage Sync</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Account</name>
+        <label>Get Account</label>
+        <locationX>374</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_Account_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <filterLogic>1 AND ( 13 OR (2 AND 3 AND (4 OR 5)) OR (2 AND 8 AND (6 OR 7)) OR ((9 OR (10 AND 11)) AND 12 AND (4 OR 5 OR 6 OR 7)) )</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Path__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Standard</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Date_Time_Closed_By_Screenflow__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <dateTimeValue>2025-04-02T11:00:00.000Z</dateTimeValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SaaS</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SaaS Child</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Government Licensee</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Gov Child</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CloseDate</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <dateValue>2025-04-02</dateValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Path__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Self Serve</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Path__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Site-Add</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Declined_SaaS_Training__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CloseDate</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <dateValue>2025-08-03</dateValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Path__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Wait_10_Mins_After_Opp_is_CW</name>
+            <connector>
+                <targetReference>Get_Account</targetReference>
+            </connector>
+            <label>Wait 5 Mins After Opp is CW</label>
+            <offsetNumber>5</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>InvalidDraft</status>
+    <subflows>
+        <name>Opportunity_Post_CW_Stage_Sync_Subflow</name>
+        <label>Opportunity Post CW Stage Sync Subflow</label>
+        <locationX>242</locationX>
+        <locationY>492</locationY>
+        <flowName>School_Subflow_Sync_Opportunity_Post_CW_Stages</flowName>
+        <inputAssignments>
+            <name>varR_Accountid</name>
+            <value>
+                <elementReference>Get_Account.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varR_Oppid</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hadley_s_NEW_School_Webinar_Notes</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Funnel_Stage__c</columns>
+    <columns>Next_Steps_Snapshot__c</columns>
+    <columns>Active_Student_Count__c</columns>
+    <columns>Current_Enrollment__c</columns>
+    <columns>Billing_Launch_Date__c</columns>
+    <columns>Billing_Timeline__c</columns>
+    <columns>FTS_Owner__c</columns>
+    <columns>Add_Staff_By__c</columns>
+    <columns>Train_Teachers_By__c</columns>
+    <columns>Invite_Parents_By__c</columns>
+    <columns>Confirmed_Launch_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Onboarding_Setup_Call_Path__c</field>
+        <operation>contains</operation>
+        <value>New Program</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Onboarding__c.Single_site_SaaS</value>
+    </filters>
+    <filters>
+        <field>Initial_Setup_Call_Completed__c</field>
+        <operation>equals</operation>
+        <value>5/11/2021</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Inactive</value>
+    </filters>
+    <label>Hadley&apos;s NEW School Webinar Notes</label>
+</ListView>

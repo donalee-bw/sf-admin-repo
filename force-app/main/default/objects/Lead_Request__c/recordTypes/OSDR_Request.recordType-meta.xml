@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OSDR_Request</fullName>
+    <active>true</active>
+    <description>OSDR Request</description>
+    <label>OSDR Request</label>
+    <picklistValues>
+        <picklist>Declined_Reason__c</picklist>
+        <values>
+            <fullName>Exceeded monthly lead limit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exceeded weekly lead limit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Too many leads in your ownership that need to be engaged</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Request_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>

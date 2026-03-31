@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_Product_Dropout_Reason_Required</fullName>
+    <active>false</active>
+    <description>Other Product Dropout Reason is required if Billing Dropout Reason = &apos;Product - Other&apos;.</description>
+    <errorConditionFormula>AND(
+    ISPICKVAL(Billing_Dropout_Reason__c, &apos;Product - Other&apos;),
+    ISBLANK(Other_Product_Dropout_Reason__c)
+ )</errorConditionFormula>
+    <errorDisplayField>Other_Product_Dropout_Reason__c</errorDisplayField>
+    <errorMessage>Other Product Dropout Reason is required when Billing Dropout Reason = &apos;Product - Other&apos;.</errorMessage>
+</ValidationRule>

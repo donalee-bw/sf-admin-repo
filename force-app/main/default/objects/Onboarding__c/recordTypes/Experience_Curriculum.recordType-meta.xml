@@ -1,0 +1,2185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Experience_Curriculum</fullName>
+    <active>true</active>
+    <compactLayoutAssignment>EC_Onboarding</compactLayoutAssignment>
+    <label>Experience Curriculum</label>
+    <picklistValues>
+        <picklist>Able_to_Add_Students_Today__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>At_Risk_To_Onboard_Indicators__c</picklist>
+        <values>
+            <fullName>COVID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal Business Reasons</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Onboarding or Product Expectations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Needs DM Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Open%2FOperating</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piloting%2FTesting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Roster Issues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slow to Onboard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unresponsive to Communication</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Cadence__c</picklist>
+        <values>
+            <fullName>Bi-Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bi-Weekly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Weekly</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Call_2_Status__c</picklist>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed 2x</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduling</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Call_3_Status__c</picklist>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed 2x</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduling</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Call_4_Status__c</picklist>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed 2x</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduling</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Call_or_Webinar_Status__c</picklist>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed 2x</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduling</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Dropout_Reason__c</picklist>
+        <values>
+            <fullName>Adoption timeline%3A greater than 90 days</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer - Fees Too High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer - In Contract With Another Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer - Security Concern</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EIN Unavailable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Implementation concerns</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No current private payers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not for Sales - Cancelled SaaS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parent adoption concerns</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product - International</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product - Subsidy Payments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product - missing billing functionality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Use Case - All Tuition Paid Offline By Agencies %28No Co-Pay%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Use Case - Billing Done By Larger Org %28e%2Eg%2E%2C YMCA%2C Church%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Initial_Call_Status__c</picklist>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed 2x</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduling</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Intervals__c</picklist>
+        <values>
+            <fullName>Annual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bi-Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bi-Weekly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Applicable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarterly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Weekly</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Onboarding_Delayed_Reason__c</picklist>
+        <values>
+            <fullName>Admin Turnover %2F On Leave</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Board Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brand New Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COVID Delayed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Churn Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Currently Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High %25 Subsidies %2F Offline Payers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Multiple Meetings</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Center %2F Low Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Charges for Next 90 Days</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Fully Sold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS Delayed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Break %2F Not Open</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staff Turnover</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Temporary High %25 Subsidies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unclear Timeline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting for Product Feature</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Secondary_Initial_Call_Status__c</picklist>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed 2x</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduling</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Setup_Call_Path__c</picklist>
+        <values>
+            <fullName>1%3A1 Multi-Site</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Setup Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Single-Site</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP Site-Add</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brand New Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Combined</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gov Group Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OBS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self Serve</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Site-Add</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webinar</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Timeline__c</picklist>
+        <values>
+            <fullName>%3C 1 Month</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>%3E 6 Months</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2-3 Months</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4-6 Months</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Blockers_For_Adding_Students_Today__c</picklist>
+        <values>
+            <fullName>Electronic Version of Information Does Not Exist</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Need to Export From Other System</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Students Currently Enrolled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Planning to Manually Upload</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Time Constraints</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Board_or_Additional_DMs_Not_Demo_d__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Brand_New_Program__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Buying_Mindset__c</picklist>
+        <values>
+            <fullName>Bought-In</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piloting%2FTesting</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Churn_Risk_Level__c</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Contract__c</picklist>
+        <values>
+            <fullName>12 Months</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3 Months</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4 Months</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6 Months</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Month-to-Month</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Current_Tech__c</picklist>
+        <values>
+            <fullName>Blackbaud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bloomz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Child Care CRM %2F LineLeader %28they merged%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Child Pilot</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ChildWatch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Childcare Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Childplus Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ClassDojo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ClassTag</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Close</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CuraCubby</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DailyConnect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Daxco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EZCare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Early Learning Ventures</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FACTS%2FRenWeb %28Facts bought out RenWeb%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Classroom%2FGoogle Docs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GradeLink</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Himama</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jackrabbit Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kangaroo Time</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kaymbu</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KidKare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kids Zone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>KinderConnect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kinderlime</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kindertales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Learning Genie</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LifeCubby</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lillio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MontessoriCompass</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MyKidzDay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parent Square</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pen and Paper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone%2FText%2FEmail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Playgrounds</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PreciouStatus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Preschool2Me</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procare Connect%2FKinderlime</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procare%2FKid Reports</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quickbooks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Remind</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Remini</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sandbox</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Cues</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SchoolSpeak</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SeeSaw</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Skyward</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SmartCare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spreadsheets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tadpoles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tads</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Teaching Strategies Gold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TimeSaver</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transparent Classroom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Undisclosed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Venmo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wonderschool</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zelle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>brightwheel - Free %28limited%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>brightwheel - Premium</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Current_Tool_for_Billing__c</picklist>
+        <values>
+            <fullName>Bank Auto Drafts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cash App</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EZCare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FACTS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HiMama</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kinderlime</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LifeCubby</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None - BNP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OnCare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quickbooks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sandbox</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SmartCare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Square</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Venmo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zelle</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Current_Tool_for_Check_In__c</picklist>
+        <values>
+            <fullName>Pen and Paper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech Competitor</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Current_Tool_for_Parent_Engagement__c</picklist>
+        <values>
+            <fullName>App Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Blog%2FWebsite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pen and Paper</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Customer_Billing_Path__c</picklist>
+        <values>
+            <fullName>Advanced</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Basic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intermediate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webinar</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Customer_Persona__c</picklist>
+        <values>
+            <fullName>Busy Bee</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Go-Getter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Tech Savvy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Skeptical</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Device_Setup__c</picklist>
+        <values>
+            <fullName>Combination</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Personal Devices</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tablets</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Device_Status__c</picklist>
+        <values>
+            <fullName>Bought%2C Waiting For Delivery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Have Some%2C Need to Purchase More</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In-Hand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Planning to Buy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting on Funding</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Device_Type__c</picklist>
+        <values>
+            <fullName>Android</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Both</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>iOS</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>EC_Customer_Path__c</picklist>
+        <values>
+            <fullName>Bronze Onboarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gold Onboarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self Guided Onboarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Silver Onboarding</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Funnel_Stage__c</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completed Onboarding Sequences</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Webinar Attended</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webinar Registered</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Initial_Customer_Mindset__c</picklist>
+        <values>
+            <fullName>Bought-in</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trialing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Location_of_Check_Ins__c</picklist>
+        <values>
+            <fullName>Central Location</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Individual Classrooms</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>NEW_Billing_Activation_Funnel_Stage__c</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adding Payers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adding Students</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completing Bill Set-Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finalizing Verification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Receiving Online Payments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sending Bills</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Setting Up Bills</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitting Verification</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Onboarding_Stage__c</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Canceled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Check-In Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Go-Live</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initial Setup Call Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intake</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low Touch Onboarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Onboarding Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Setup Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarding Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piloting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-Launch Check-in</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self-Assist</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Setting up Account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Soft Launch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unresponsive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsuccessful Check-In</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Working Cancellation</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Onboarding_Status__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Gone Dark</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Opted Out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Postponed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requesting Postpone - Awaiting Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS At Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unresponsive</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Payer_Scenarios__c</picklist>
+        <values>
+            <fullName>Multiple Autopays</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payer Other Than Parent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Separated%2FDivorced Parents</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Payroll_interest_level__c</picklist>
+        <values>
+            <fullName>1%3A Ineligible%3A does not run their own payroll</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%3A Not interested in using brightwheel%E2%80%99s payroll solution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%3A Reactively interested%3A wanted to learn more after learning brightwheel%E2%80%99s capabilities and partnership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4%3A Proactively interested%3A came to brightwheel for payroll or planning to switch payroll providers in the next few months</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Postponed_Reason__c</picklist>
+        <values>
+            <fullName>Brand New Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COVID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Center Not Open and Operating</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal Business Reasons</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multi-Site Rollout</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On School Break</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting On Devices</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting on Board Approval</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Preferred_Contact_Method__c</picklist>
+        <values>
+            <fullName>All%2FAny</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Text</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Preferred_Language__c</picklist>
+        <values>
+            <fullName>English</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>French</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spanish</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Primary_Features__c</picklist>
+        <values>
+            <fullName>Billing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Check-In</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Learning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Messaging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parent Engagement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staff Check-In</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Promotion_Offered__c</picklist>
+        <values>
+            <fullName>12MONTHS90-PROCARE%241</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1MO50OFF-SALES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2MONTHS75OFF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3MO50OFF-SALES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3MOS90-JACKRABBIT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>6MOS90OFF-SALES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ANNUAL15OFF-3MO50OFF-SALES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ANNUAL25OFF-3MO90OFF-SALES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ANNUAL45OFF-6MO90OFF-SALES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ANNUAL5OFF-1MO50OFF-SALES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP - 12MONTHS50</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP - 12MONTHS90</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP - 3MONTHS50</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP - 3MONTHS90</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP - 6MONTHS50</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP - 6MONTHS90</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP - 9MONTHS50</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BNP - 9MONTHS90</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BU-2MOS100</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SALES-3MOS90OFF</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_Billing_Plans_Delayed__c</picklist>
+        <values>
+            <fullName>Admin Turnover %2F On Leave</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Board Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brand New Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COVID Delayed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Churn Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Currently Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High %25 Subsidies %2F Offline Payers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Multiple Meetings</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Center %2F Low Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Charges for Next 90 Days</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Fully Sold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS Delayed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Break %2F Not Open</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staff Turnover</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Temporary High %25 Subsidies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unclear Timeline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting for Product Feature</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_Charge_Library_Delayed__c</picklist>
+        <values>
+            <fullName>Admin Turnover %2F On Leave</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Board Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brand New Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COVID Delayed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Churn Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Currently Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High %25 Subsidies %2F Offline Payers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Multiple Meetings</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Center %2F Low Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Charges for Next 90 Days</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Fully Sold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS Delayed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Break %2F Not Open</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staff Turnover</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Temporary High %25 Subsidies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unclear Timeline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting for Product Feature</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_Completing_Student_Setup_Delayed__c</picklist>
+        <values>
+            <fullName>COVID Student Count</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collecting and Manually Adding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal Program Delays</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Onboarding or Product Expectations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piloting%2FTesting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slow Rollout</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_Logging_Actions_Delayed__c</picklist>
+        <values>
+            <fullName>Board Approval Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COVID-Related</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal Program Delays</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Onboarding or Product Expectations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Need Devices</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piloting%2FTesting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slow Rollout</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staff Turnover</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trained and Starting Soon</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_Parents_Joining_Delayed__c</picklist>
+        <values>
+            <fullName>Board Approval Needed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COVID-Related</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low SES</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Onboarding or Product Expectations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piloting%2FTesting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Slow Rollout</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_Sending_Statements_Delayed__c</picklist>
+        <values>
+            <fullName>Admin Turnover %2F On Leave</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Board Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brand New Program</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COVID Delayed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Churn Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Currently Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High %25 Subsidies %2F Offline Payers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Missed Multiple Meetings</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Center %2F Low Enrollment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Charges for Next 90 Days</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Fully Sold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS Delayed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>School Break %2F Not Open</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staff Turnover</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Temporary High %25 Subsidies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unclear Timeline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waiting for Product Feature</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Responsible_for_Check_Ins__c</picklist>
+        <values>
+            <fullName>Parent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staff</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Roster_Status_Initial_Setup_Call__c</picklist>
+        <values>
+            <fullName>Collecting Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Have it but Not Submitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Needs Help</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uploaded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Working on Manually Adding</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Roster_Status_Training_Call__c</picklist>
+        <values>
+            <fullName>Collecting Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Have it but Not Submitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Needs Help</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uploaded</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Working on Manually Adding</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SaaS_Activation_Funnel_Stage_2024__c</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adding Parents</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adding Staff</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adding Students</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Logging Activities or Messages</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parents Signing Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staff Logging In</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tracking Attendance</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SaaS_Billing_Onboarding_Sequencing__c</picklist>
+        <values>
+            <fullName>Billing Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Billing then SaaS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS and Billing Simultaneously</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SaaS then Billing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Siblings_Billing__c</picklist>
+        <values>
+            <fullName>Billed Separately</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Billed Together</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Staff_Check_In_Tracking__c</picklist>
+        <values>
+            <fullName>Both</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ratios</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Timecards</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status_of_Devices__c</picklist>
+        <values>
+            <fullName>Need to Purchase</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Utilizing Personal Devices</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Utilizing School Devices</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Student_Information_Currently_Stored__c</picklist>
+        <values>
+            <fullName>Blackbaud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Childcare Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Childcare SAGE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ClassDojo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CuraCubby</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dubsado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EZcare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>File on Computer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HiMama</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jackrabbit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LifeCubby</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nowhere</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Paper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procare Connect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procare Staff Export</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sandbox</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seesaw</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SmartCare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tadpoles</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Subsidy_Tracking__c</picklist>
+        <values>
+            <fullName>Co-Pays %26 Subsidy Tool in bw</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Co-Pays Only in bw</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Did Not Cover</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fixed Payments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parents Should NOT See Subsidy Charges</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parents Should See Subsidy Charges</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Variable Payments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Want Subsidy Reporting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Sales Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes%3A Desktop - Sales Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes%3A Online - Sales Only</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Uses_Attendance_or_Variable_Rate_Billing__c</picklist>
+        <values>
+            <fullName>Before%2FAfter Program Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Charges Ahead For Future Attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Complex Rules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Standard Per Hour or Min%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Want Recurring Automated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes - Sales Only</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Why_BW_Billing__c</picklist>
+        <values>
+            <fullName>Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Autopay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Applicable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reporting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Save Money</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Save Time</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subsidy Tracking</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Wifi_Throughout_Center__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

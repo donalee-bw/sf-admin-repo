@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SaaS_Customer_Comfort_Level__c</fullName>
+    <description>Manually populated on the Combined Funnel by Onboarding/Activation reps - mapped to Account in PB called: CF - Update Account Fields From Combined Funnel.
+04/10/23 - Flagged to be deprecated (Sprint 5 - 2023)</description>
+    <inlineHelpText>The customer&apos;s comfort level with SaaS Onboarding needs.</inlineHelpText>
+    <label>x_SaaS Customer Comfort Level</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Customer_Onboarding_Comfort_Level</valueSetName>
+    </valueSet>
+</CustomField>

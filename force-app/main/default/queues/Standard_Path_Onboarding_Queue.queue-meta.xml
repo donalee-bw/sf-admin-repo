@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Queue used as the holding owner for combined funnel and onboarding records after the opportunity is closed but before a OBS 1:1 is scheduled</description>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Standard Path Onboarding Queue</name>
+    <queueSobject>
+        <sobjectType>Combined_Funnel__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Onboarding__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Task</sobjectType>
+    </queueSobject>
+</Queue>

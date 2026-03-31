@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Without a Location</fullName>
+        <default>false</default>
+        <label>Without a Location</label>
+    </customValue>
+    <customValue>
+        <fullName>Under Construction</fullName>
+        <default>false</default>
+        <label>Under Construction</label>
+    </customValue>
+    <customValue>
+        <fullName>Operating - 0 Enrollment</fullName>
+        <default>false</default>
+        <label>Operating - 0 Enrollment</label>
+    </customValue>
+    <customValue>
+        <fullName>Unresponsive</fullName>
+        <default>false</default>
+        <label>Unresponsive</label>
+    </customValue>
+    <masterLabel>BNP Sub Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

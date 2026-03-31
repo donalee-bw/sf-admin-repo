@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Retreive Gong Call Id from Task
+06-04-25 - BW - Added to trigger criteria to not fire on every creation</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forGongID</name>
+        <dataType>String</dataType>
+        <expression>Mid({!$Record.Description},Find(&quot;id=&quot;,{!$Record.Description})+3,19)</expression>
+    </formulas>
+    <formulas>
+        <name>forTrueGongId</name>
+        <dataType>String</dataType>
+        <expression>TRIM({!forGongID})</expression>
+    </formulas>
+    <interviewLabel>Gong Call Id from Task {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Gong Call Id from Task</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Record</name>
+        <label>Update Record</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <inputAssignments>
+            <field>Gong_Call_Id__c</field>
+            <value>
+                <elementReference>forTrueGongId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Subject</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>Zoom</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Gong_Call_Id__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

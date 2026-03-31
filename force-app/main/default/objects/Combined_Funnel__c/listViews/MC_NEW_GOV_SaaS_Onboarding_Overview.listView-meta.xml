@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MC_NEW_GOV_SaaS_Onboarding_Overview</fullName>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>NAME</columns>
+    <columns>SaaS_Onboarding_Status__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>SaaS_Contact_Most_Recent_Sequence__c</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>Last_Activity_Date__c</columns>
+    <columns>Current_Enrollment_Active_Percentage__c</columns>
+    <columns>Active_Students_with_1_Guardian_Added__c</columns>
+    <columns>Staff_Profiles_Created_Percentage__c</columns>
+    <columns>Invited_Staff_with_1_Login_Percentage__c</columns>
+    <columns>Invited_Parents_with_1_Login_Percentage__c</columns>
+    <columns>Tracking_Attendance_Average__c</columns>
+    <columns>Logging_Actions_Average__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Postponed,Unresponsive</value>
+    </filters>
+    <filters>
+        <field>SaaS_Activation_Funnel_Stage_Value__c</field>
+        <operation>notEqual</operation>
+        <value>8 - Activated</value>
+    </filters>
+    <filters>
+        <field>Related_Payer_Account__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>MC [NEW GOV] SaaS Onboarding Overview</label>
+</ListView>

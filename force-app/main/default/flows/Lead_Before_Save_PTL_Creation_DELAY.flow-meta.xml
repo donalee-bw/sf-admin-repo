@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Slack_Error_Msg_to_Brent</name>
+        <label>Slack Error Msg to Brent</label>
+        <locationX>572</locationX>
+        <locationY>384</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Slack_Error_Msg_to_Cassie</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>U02QAQ83E6A</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>txtSlackMsgFailedtoUpdate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Slack_Error_Msg_to_Cassie</name>
+        <label>Slack Error Msg to Cassie</label>
+        <locationX>572</locationX>
+        <locationY>492</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>U03Q7U4Q9J5</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>txtSlackMsgFailedtoUpdate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>Lead - Before Save - PTL Creation - DELAY {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead - Before Save - PTL Creation - DELAY</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_STL_Test_Flag_to_False</name>
+        <label>Update STL Test Flag to FALSE</label>
+        <locationX>308</locationX>
+        <locationY>276</locationY>
+        <faultConnector>
+            <targetReference>Slack_Error_Msg_to_Brent</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>LOGIC_STL_Test__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <filterFormula>AND(DATEVALUE({!$Record.CreatedDate}) = TODAY(),
+ISPICKVAL({!$Record.HS_Last_form_submission_type__c},&apos;Product Trial Lead&apos;),
+{!$Record.LOGIC_STL_Test__c}=TRUE)</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>X5_Min_Delay</name>
+            <connector>
+                <targetReference>Update_STL_Test_Flag_to_False</targetReference>
+            </connector>
+            <label>5 Min Delay</label>
+            <offsetNumber>5</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>txtSlackMsgFailedtoUpdate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;TrueAttention: PTL Lead failed to update back to True (LOGIC STL Test) for LeanData to process&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Lead: &amp;lt;https://brightwheel1.my.salesforce.com/{!$Record.Id}&amp;gt;&lt;/p&gt;&lt;p&gt;Name: {!$Record.FirstName} &lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Record.LastName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;HS Latest Form Submission Type: {!$Record.HS_Last_form_submission_type__c}&lt;/p&gt;&lt;p&gt;Created Time: {!$Record.CreatedDate}&lt;/p&gt;</text>
+    </textTemplates>
+    <triggerOrder>100</triggerOrder>
+</Flow>

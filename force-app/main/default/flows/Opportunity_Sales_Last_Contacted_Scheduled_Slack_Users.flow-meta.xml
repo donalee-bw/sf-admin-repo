@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Sends a reminder to the opportunity owner and their manager about the open opportunity</description>
+        <name>Slack_Owner</name>
+        <label>Slack Owner</label>
+        <locationX>50</locationX>
+        <locationY>468</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Opportunity_Owner_s_Manager_Active</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <elementReference>$Record.Owner.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>textT_SlackOpportunityReminder</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>Sends a reminder to the opportunity owner&apos;s manager about the open opportunity</description>
+        <name>Slack_Owner_s_Manager</name>
+        <label>Slack Owner&apos;s Manager</label>
+        <locationX>50</locationX>
+        <locationY>768</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Slack_Pedro_Eiras_For_Testing</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <elementReference>$Record.Owner.Manager.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>textT_SlackOpportunityReminder</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Slack_Pedro_Eiras_For_Testing</name>
+        <label>Slack Pedro Eiras (For Testing)</label>
+        <locationX>182</locationX>
+        <locationY>960</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>U04SH2XKF0B</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>textT_SlackOpportunityReminder</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Contact_in_Keep_Warm_cadence</name>
+        <label>Contact in Keep Warm cadence?</label>
+        <locationX>336</locationX>
+        <locationY>252</locationY>
+        <defaultConnectorLabel>In keep warm cadence</defaultConnectorLabel>
+        <rules>
+            <name>Copy_2_of_Outcome_1_of_Decision_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Contact__r.Cadence_Label__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales - Keep Warm</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Opportunity_Owner_Active_User</targetReference>
+            </connector>
+            <label>Eligible for slack notification</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the opportunity owner is an active user in Salesforce</description>
+        <name>Opportunity_Owner_Active_User</name>
+        <label>Opportunity Owner Active User?</label>
+        <locationX>182</locationX>
+        <locationY>360</locationY>
+        <defaultConnector>
+            <targetReference>Opportunity_Owner_s_Manager_Active</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Opportunity_Owner_Active_User</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner.Slack_user_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Slack_Owner</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the opportunity owner&apos;s manager is an active user</description>
+        <name>Opportunity_Owner_s_Manager_Active</name>
+        <label>Opportunity Owner&apos;s Manager Active?</label>
+        <locationX>182</locationX>
+        <locationY>660</locationY>
+        <defaultConnector>
+            <targetReference>Slack_Pedro_Eiras_For_Testing</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Opportunity_Owner_s_Manager_Active</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner.Manager.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner.Manager.Slack_user_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Slack_Owner_s_Manager</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Sends a Slack alert to the owner of an opportunity that&apos;s hit 31 days without any sales touchpoint. 
+10/16/23 - Tweak this flow to make 31 days the entry criteria
+3/13/26 - DM- updated flow to 7 day entry criteria with updated sales neglected criteria
+3/19/26 - DM - added in criteria that contact is not in &apos;Sales - Keep Warm&apos; cadence</description>
+    <environments>Default</environments>
+    <interviewLabel>Opportunity - After Save - {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - Sales Last Contacted - Scheduled - Slack Users</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>210</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Contact_in_Keep_Warm_cadence</targetReference>
+        </connector>
+        <filterLogic>1 AND 6 AND (2 OR 5) AND (3 OR 4)</filterLogic>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0123u000000aNBgAAM</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Owner_User_Role__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Account Executive</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Owner_User_Role__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Full Cycle</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0123u000000FT4KAAW</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Days_Since_Last_Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <numberValue>7.0</numberValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <schedule>
+            <dayOfMonthToRun>0</dayOfMonthToRun>
+            <frequency>Daily</frequency>
+            <frequencyNumber>0</frequencyNumber>
+            <startDate>2023-10-14</startDate>
+            <startTime>06:30:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Template of message to be sent via Slack to opportunity owner and their manager</description>
+        <name>textT_SlackOpportunityReminder</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hello {!$Record.Owner.Name}, it has been 7 days since the last touchpoint with the prospect from opportunity &lt;https://brightwheel1.my.salesforce.com/{!$Record.Id}|{!$Record.Name}&gt;. The last sales activity is showing {!$Record.Sales_Last_Contacted__c}. 
+
+Please either reach out to them or mark the opportunity as Lost. If there&apos;s no action in the next 7 days, the opportunity will automatically go &apos;Closed Lost - Neglected.&apos; Thanks!</text>
+    </textTemplates>
+</Flow>

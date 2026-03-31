@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_Billing_CW_to_One_Cycle_Threshold__c</fullName>
+    <description>Number of days between Billing Launch Date and One Billing Cycle Threshold Met Date.</description>
+    <externalId>false</externalId>
+    <formula>One_Billing_Cycle_Threshold_Met_Date__c - Billing_Launch_Date__c</formula>
+    <inlineHelpText>Number of days between Billing Launch Date and One Billing Cycle Threshold Met Date.</inlineHelpText>
+    <label>Days Billing CW to One Cycle Threshold</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

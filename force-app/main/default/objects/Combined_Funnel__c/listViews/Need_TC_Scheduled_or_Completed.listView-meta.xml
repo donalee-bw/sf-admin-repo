@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Need_TC_Scheduled_or_Completed</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 6) AND (7 or 8) AND 9</booleanFilter>
+    <columns>NAME</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>Initial_Setup_Call_Completed__c</columns>
+    <columns>Onboarding_Path__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>SaaS_Customer_Comfort_Level__c</columns>
+    <columns>Billing_Customer_Comfort_Level__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Initial_Setup_Call_Completed__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Unresponsive</value>
+    </filters>
+    <filters>
+        <field>SaaS_Training_Call_Completed__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>SaaS_Training_Call_Scheduled__c</field>
+        <operation>lessThan</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>SaaS_Training_Call_Scheduled__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>SaaS_Customer_Comfort_Level__c</field>
+        <operation>equals</operation>
+        <value>Comfortable - Low Touch</value>
+    </filters>
+    <filters>
+        <field>SaaS_Customer_Comfort_Level__c</field>
+        <operation>notEqual</operation>
+        <value>Uncomfortable - High Touch,Comfortable - Low Touch,No Answer</value>
+    </filters>
+    <filters>
+        <field>Active_Student_Count__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <label>Need TC Scheduled or Completed</label>
+</ListView>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FTS_Owner_Last_Transfer_Date__c</fullName>
+    <description>Updated in CF - Billing Ownership Updates flow. Date stamps any time the FTS Owner is changed on the CF record.</description>
+    <inlineHelpText>Date the FTS Owner was last updated on the CF record.</inlineHelpText>
+    <label>FTS Owner Last Transfer Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

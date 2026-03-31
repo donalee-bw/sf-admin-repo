@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Adding Students</fullName>
+        <default>false</default>
+        <label>Adding Students</label>
+    </customValue>
+    <customValue>
+        <fullName>Adding Parents</fullName>
+        <default>false</default>
+        <label>Adding Parents</label>
+    </customValue>
+    <customValue>
+        <fullName>Adding Staff</fullName>
+        <default>false</default>
+        <label>Adding Staff</label>
+    </customValue>
+    <customValue>
+        <fullName>Staff Logging In</fullName>
+        <default>false</default>
+        <label>Staff Logging In</label>
+    </customValue>
+    <customValue>
+        <fullName>Parents Signing Up</fullName>
+        <default>false</default>
+        <label>Parents Signing Up</label>
+    </customValue>
+    <customValue>
+        <fullName>Tracking Attendance</fullName>
+        <default>false</default>
+        <label>Tracking Attendance</label>
+    </customValue>
+    <customValue>
+        <fullName>Logging Activities or Messages</fullName>
+        <default>false</default>
+        <label>Logging Activities or Messages</label>
+    </customValue>
+    <customValue>
+        <fullName>Activated</fullName>
+        <default>false</default>
+        <label>Activated</label>
+    </customValue>
+    <description>Global Picklist for New SaaS Activation Funnels - 2024</description>
+    <masterLabel>NEW SaaS Activation Funnel Stage</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prioritization__c</fullName>
+    <description>Prioritization field from the SaaS CW Opportunity related to the CF.</description>
+    <externalId>false</externalId>
+    <formula>SaaS_CW_Opportunity__r.Prioritization__c</formula>
+    <inlineHelpText>Prioritization information captured by Sales from the SaaS CW Opportunity related to the CF. Answers these questions: Where does brightwheel rank on their list of priorities for the business? Is this viewed as a must have or a nice to have?</inlineHelpText>
+    <label>Prioritization</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

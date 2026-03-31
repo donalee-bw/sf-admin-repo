@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Handoff_Notes_Required_For_All_Issues</fullName>
+    <active>true</active>
+    <description>Requires Handoff Issue Notes when any value(s) are selected in the OB Handoff Issue field.</description>
+    <errorConditionFormula>AND(
+   ISBLANK(Handoff_Issue_Notes__c),  
+   NOT(ISBLANK(OB_Handoff_Issues__c))
+  )</errorConditionFormula>
+    <errorDisplayField>Handoff_Issue_Notes__c</errorDisplayField>
+    <errorMessage>Notes are required for all Handoff Issues. Please provide additional context about the handoff issue(s) you are flagging.</errorMessage>
+</ValidationRule>

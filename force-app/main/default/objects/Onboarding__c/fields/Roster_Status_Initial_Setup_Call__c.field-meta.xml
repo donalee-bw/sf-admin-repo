@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Roster_Status_Initial_Setup_Call__c</fullName>
+    <description>Referencing global picklist for Roster Status</description>
+    <inlineHelpText>What is the center&apos;s roster status at the time of the Initial Setup Call?</inlineHelpText>
+    <label>Roster Status - Initial Setup Call</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Roster_Status</valueSetName>
+    </valueSet>
+</CustomField>

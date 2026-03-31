@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Pacific</fullName>
+        <default>false</default>
+        <label>Pacific</label>
+    </customValue>
+    <customValue>
+        <fullName>Mountain</fullName>
+        <default>false</default>
+        <label>Mountain</label>
+    </customValue>
+    <customValue>
+        <fullName>Central</fullName>
+        <default>false</default>
+        <label>Central</label>
+    </customValue>
+    <customValue>
+        <fullName>Eastern</fullName>
+        <default>false</default>
+        <label>Eastern</label>
+    </customValue>
+    <customValue>
+        <fullName>Atlantic</fullName>
+        <default>false</default>
+        <label>Atlantic</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Hawaii - Aleutian Standard</fullName>
+        <default>false</default>
+        <label>Hawaii - Aleutian Standard</label>
+    </customValue>
+    <customValue>
+        <fullName>Alaska - Alaska Daylight</fullName>
+        <default>false</default>
+        <label>Alaska - Alaska Daylight</label>
+    </customValue>
+    <masterLabel>US Time Zones</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

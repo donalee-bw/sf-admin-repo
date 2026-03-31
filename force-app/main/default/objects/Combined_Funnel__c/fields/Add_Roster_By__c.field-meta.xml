@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Roster_By__c</fullName>
+    <description>Mapped to SaaS Onboarding in flow.
+04/10/23 - Flagged to be deprecated (Sprint 5 - 2023)</description>
+    <inlineHelpText>When the center should have their roster added.</inlineHelpText>
+    <label>x_Add Roster By</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

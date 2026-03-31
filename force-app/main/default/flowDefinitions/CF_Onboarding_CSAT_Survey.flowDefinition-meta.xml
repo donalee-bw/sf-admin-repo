@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>7</activeVersionNumber>
+    <description>Triggered by updates to the Previous CSAT Survey Send date, typically by the School - Onboarding CSAT Survey flow. Includes similar logic to verify that the School and CF are still eligible to get a survey when this is triggered 48 hours after the update. This flow only handles the redundant eligibility verification and sending the Outbound Message to trigger the survey (NA Sprint 13 &apos;23)</description>
+    <masterLabel>CF - Onboarding CSAT Survey</masterLabel>
+</FlowDefinition>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Flag_JG_Account_ContactMatch</name>
+        <label>Flag JG Account</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <assignmentItems>
+            <assignToReference>var_OpportunityId.Exists_In_JG__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_OpportunityId.JG_Identification_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>for_ContactMatchReason</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Opportunity_Needs_Update</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Flag_JG_Account_WipeValues</name>
+        <label>Flag JG Account</label>
+        <locationX>204</locationX>
+        <locationY>908</locationY>
+        <assignmentItems>
+            <assignToReference>var_OpportunityId.Exists_In_JG__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>var_OpportunityId.JG_Identification_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Opportunity_Needs_Update</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Contact_Match_Found</name>
+        <label>Contact Match Found?</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Wipe_Out_JG_Flag</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Contact_Match_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Contact_Matched_User_in_JG</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Flag_JG_Account_ContactMatch</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Contact_On_Oppty_Has_Email</name>
+        <label>Contact On Oppty Has Email?</label>
+        <locationX>336</locationX>
+        <locationY>134</locationY>
+        <defaultConnector>
+            <targetReference>Wipe_Out_JG_Flag</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Contact_On_Oppty_Has_Email</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>var_OpportunityId.Contact__r.Email</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_OpportunityId.Contact__r.Email_2__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contact_Matched_User_in_JG</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Opportunity_Needs_Update</name>
+        <label>Opportunity Needs Update?</label>
+        <locationX>336</locationX>
+        <locationY>1100</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Opportunity_Needs_Update</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Yes_Contact_Match_Found</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Yes_Wipe_Out_JG_Flag</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>If the fields updated on the opportunity don’t indicate that the account was a customer before, but the flag showing the account existed in JG previously is true, the flow will wipe out that information.</description>
+        <name>Wipe_Out_JG_Flag</name>
+        <label>Wipe Out JG Flag?</label>
+        <locationX>336</locationX>
+        <locationY>800</locationY>
+        <defaultConnector>
+            <targetReference>Opportunity_Needs_Update</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Wipe_Out_JG_Flag</name>
+            <conditionLogic>(1 OR 2) AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>Yes_Contact_On_Oppty_Has_Email</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Yes_Contact_Match_Found</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>var_OpportunityId.Exists_In_JG__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Flag_JG_Account_WipeValues</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>for_ContactMatchReason</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  {!Contact_Matched_User_in_JG.User_Role__c} = &quot;admin&quot;,
+  &quot;Contact already in JG as Admin&quot;,
+  IF(
+   {!Contact_Matched_User_in_JG.User_Role__c} = &quot;admin_no_billing&quot;,
+    &quot;Contact already in JG as Admin (No Billing)&quot;,
+    IF(
+     {!Contact_Matched_User_in_JG.User_Role__c} = &quot;billing_only&quot;,
+      &quot;Contact already in JG as Billing Only&quot;,
+      IF(
+        {!Contact_Matched_User_in_JG.User_Role__c} = &quot;Guardian&quot;,
+        &quot;Contact already in JG as Guardian&quot;,
+        IF(
+          {!Contact_Matched_User_in_JG.User_Role__c}= &quot;lead_teacher&quot;,
+          &quot;Contact already in JG as Lead Teacher&quot;,
+          IF(
+           {!Contact_Matched_User_in_JG.User_Role__c} = &quot;org_reporter&quot;,
+            &quot;Contact already in JG as Org Reporter&quot;,
+            IF(
+             {!Contact_Matched_User_in_JG.User_Role__c} = &quot;super_admin&quot;,
+              &quot;Contact already in JG as Super Admin&quot;,
+              IF(
+                {!Contact_Matched_User_in_JG.User_Role__c} = &quot;teacher&quot;,
+                &quot;Contact already in JG as Teacher&quot;,
+                IF(
+                 {!Contact_Matched_User_in_JG.User_Role__c} = &quot;teacher_no_messaging&quot;,
+                  &quot;Contact already in JG as Teacher (No Messaging)&quot;,
+                  &quot;Contact already in JG with Undefined Role&quot;
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)</expression>
+    </formulas>
+    <interviewLabel>Subflow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - Subflow - JG Account Check</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Contact_Matched_User_in_JG</name>
+        <label>Contact Matched User in JG?</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_Match_Found</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3</filterLogic>
+        <filters>
+            <field>Email__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>var_OpportunityId.Contact__r.Email</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>var_OpportunityId.Contact__r.Email_2__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User_Object__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>User_Role__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Opportunity</name>
+        <label>Update Opportunity</label>
+        <locationX>204</locationX>
+        <locationY>1208</locationY>
+        <inputReference>var_OpportunityId</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>210</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Contact_On_Oppty_Has_Email</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>var_OpportunityId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+</Flow>

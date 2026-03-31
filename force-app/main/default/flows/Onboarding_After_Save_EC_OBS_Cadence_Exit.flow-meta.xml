@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Remove_Contact_from_Cadence</name>
+        <label>Remove Contact from Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>removeTargetFromSalesCadence</actionName>
+        <actionType>removeTargetFromSalesCadence</actionType>
+        <connector>
+            <targetReference>Update_SE_Tag_on_Primary_Contact</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Primary_Contact__r.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>completionReasonCode</name>
+            <value>
+                <stringValue>ManuallyRemoved</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>removeTargetFromSalesCadence</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Was_Active_Cadence_Tracker_Found</name>
+        <label>Was Active Cadence Tracker Found</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Is_Primary_Contact_in_Cadence</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_Contact_from_Cadence</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Onboarding - After Save - EC OBS Cadence Exit {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Onboarding - After Save - EC OBS Cadence Exit</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Is_Primary_Contact_in_Cadence</name>
+        <label>Is Primary Contact in Cadence?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_Active_Cadence_Tracker_Found</targetReference>
+        </connector>
+        <filterLogic>1 AND ( 2 OR 3 )</filterLogic>
+        <filters>
+            <field>TargetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Primary_Contact__r.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Complete</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsTrackerActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionCadenceTracker</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_SE_Tag_on_Primary_Contact</name>
+        <label>Update SE Tag on Primary Contact</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>SE_Tag__c</field>
+            <value>
+                <elementReference>SeTagTemplate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Primary_Contact__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_Primary_Contact_in_Cadence</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>AND ( 
+{!$Record.RecordTypeId} = {!$Label.Experience_Curriculum_Onboarding}, 
+{!$Record.Primary_Contact__c} != null,
+OR ( 
+TEXT({!$Record.EC_Customer_Path__c}) = &quot;Silver Onboarding &quot; , 
+TEXT({!$Record.EC_Customer_Path__c}) = &quot;Declined Training&quot;, 
+TEXT({!$Record.EC_Customer_Path__c}) = &quot;Self Guided Onboarding&quot;, 
+{!$Record.First_Lesson_Start_Date__c} &lt;= TODAY() 
+) 
+)</filterFormula>
+        <object>Onboarding__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <textTemplates>
+        <name>SeTagTemplate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Onboarding - After Save - EC OBS Cadence Exit. {!$Flow.CurrentDateTime}&lt;/p&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

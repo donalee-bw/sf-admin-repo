@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Remove_from_Cadence</name>
+        <label>Remove from Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>removeTargetFromSalesCadence</actionName>
+        <actionType>removeTargetFromSalesCadence</actionType>
+        <connector>
+            <targetReference>Contact</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>completionReasonCode</name>
+            <value>
+                <stringValue>ManuallyRemoved</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>removeTargetFromSalesCadence</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Cadence_Exit_Evaluation</name>
+        <label>Cadence Exit Evaluation</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Eligible_For_Removal_v2</name>
+            <conditionLogic>( ( 1 AND ( 2 OR 3 OR 4 ) ) OR 5 OR 6 OR 7 )</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Billing_Onboarding_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Opted Out</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Billing_Activation_Start_Date__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.CSM_Owner1__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Account_Queue</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Brightwheel_Plan__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.New_Case_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancel Request</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Find_Active_Cadence_Tracker</targetReference>
+            </connector>
+            <label>Eligible For Removal v2</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Contact_in_Active_Cadence</name>
+        <label>Is Contact in Active Cadence?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Active_Cadence_Tracker_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_Active_Cadence_Tracker</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_from_Cadence</targetReference>
+            </connector>
+            <label>Yes, Active Cadence Tracker Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>School_Object_Found</name>
+        <label>School Object Found</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_School_Object</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Cadence_Exit_Evaluation</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>01.12.2026 - LK - Fix Entry Condition to trigger for Activation, remove account fields in entry condition. - https://app.asana.com/1/15878177436323/project/1203697250955484/task/1211939619283944?focus=true
+01.30.2026 - LK - Fix - Added to find the Active Cadence Tracker and Decision if one is found or not. Solving for the Auto Close Case - Failed Payments Handler Flow was failing after 14 days</description>
+    <environments>Default</environments>
+    <interviewLabel>Contact - After Save - OBS &amp; GOBS Cadence Removal {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - After Save - OBS &amp; GOBS Cadence Removal</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Find_Active_Cadence_Tracker</name>
+        <label>Find Active Cadence Tracker</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_Contact_in_Active_Cadence</targetReference>
+        </connector>
+        <filterLogic>1 AND ( 2 OR 3 )</filterLogic>
+        <filters>
+            <field>TargetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Complete</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsTrackerActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionCadenceTracker</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_School_Object</name>
+        <label>Get School Object</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>School_Object_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Account.School_Object__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>School_Object__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Contact</name>
+        <label>Contact</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>SE_Tag__c</field>
+            <value>
+                <elementReference>SeTag</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_School_Object</targetReference>
+        </connector>
+        <filterFormula>AND(
+  TEXT({!$Record.Cadence_Label__c}) = &quot;Core Onboarding - OBS &amp; GOBS&quot;,
+  OR(
+    /* SaaS Activation Funnel Stage changed TO Activated */
+    AND(
+      ISCHANGED({!$Record.SaaS_Activation_Funnel_Stage_2024__c}),
+      TEXT({!$Record.SaaS_Activation_Funnel_Stage_2024__c}) = &quot;Activated&quot;
+    ),
+
+    /* Billing Activation Funnel Stage changed TO Activated */
+    AND(
+      ISCHANGED({!$Record.Billing_Activation_Funnel_Stage_2024__c}),
+      TEXT({!$Record.Billing_Activation_Funnel_Stage_2024__c}) = &quot;Activated&quot;
+    ),
+
+    /* New Case Type changed TO Cancel Request */
+    AND(
+      ISCHANGED({!$Record.New_Case_Type__c}),
+      TEXT({!$Record.New_Case_Type__c}) = &quot;Cancel Request&quot;
+    )
+  )
+)</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>SeTag</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Contact - After Save - OBS &amp; GOBS Cadence Removal {!$Flow.CurrentDateTime}</text>
+    </textTemplates>
+</Flow>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assigns the highest number found on the Capacity field found across all contact records</description>
+        <name>Assign_Max_Capacity</name>
+        <label>Assign Max Capacity</label>
+        <locationX>138</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>VariableHighestCapacity</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>FormulaHighestCapacity</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Through_Contacts</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Checks if the field capacity was updated</description>
+        <name>Capacity_Updated</name>
+        <label>Capacity Updated</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Trigger_Organization_Flow</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_CapacityUpdated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Capacity__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Capacity__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Capacity__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact_Records_with_Capacity</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <description>Formula that captures the highest number on the Capacity field on the lead records.</description>
+        <name>FormulaHighestCapacity</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+{!VariableHighestCapacity} = 0,
+{!Loop_Through_Contacts.Capacity__c},
+IF(
+{!VariableHighestCapacity} != 0
+&amp;&amp;
+{!Loop_Through_Contacts.Capacity__c} &gt; {!VariableHighestCapacity},
+{!Loop_Through_Contacts.Capacity__c},
+{!VariableHighestCapacity}
+)
+)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>TriggerCheckbox</name>
+        <dataType>Boolean</dataType>
+        <expression>IF({!$Record.Organization__r.Sync_Sales_Fields__c} = TRUE, FALSE, TRUE)</expression>
+    </formulas>
+    <interviewLabel>Contact - Trigger Org Sync Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - Trigger Org Sync Flow</label>
+    <loops>
+        <description>Loop through contact records</description>
+        <name>Loop_Through_Contacts</name>
+        <label>Loop Through Contacts</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <collectionReference>Get_Contact_Records_with_Capacity</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Max_Capacity</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Location_Capacity</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets contact records associated with the same organization that has a value in the Capacity field.</description>
+        <name>Get_Contact_Records_with_Capacity</name>
+        <label>Get Contact Records with Capacity</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Through_Contacts</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Organization__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Organization__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Capacity__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Capacity__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Capacity__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Trigger_Organization_Flow</name>
+        <label>Trigger Organization Flow</label>
+        <locationX>182</locationX>
+        <locationY>1031</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Organization__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sync_Sales_Fields__c</field>
+            <value>
+                <elementReference>TriggerCheckbox</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Organization__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates the field capacity on the location</description>
+        <name>Update_Location_Capacity</name>
+        <label>Update Location Capacity</label>
+        <locationX>50</locationX>
+        <locationY>839</locationY>
+        <connector>
+            <targetReference>Trigger_Organization_Flow</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Location__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Capacity__c</field>
+            <value>
+                <elementReference>VariableHighestCapacity</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Location__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Capacity_Updated</targetReference>
+        </connector>
+        <filterFormula>NOT(ISNULL({!$Record.Organization__c}))
+&amp;&amp;
+OR(
+ISCHANGED({!$Record.Capacity__c}),
+ISCHANGED({!$Record.OwnerId})
+)</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Stores value to populate the Capacity field on the Location</description>
+        <name>VariableHighestCapacity</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+</Flow>

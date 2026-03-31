@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Challenges__c</fullName>
+    <description>Challenges field from the SaaS CW Opportunity related to the CF.</description>
+    <externalId>false</externalId>
+    <formula>SaaS_CW_Opportunity__r.Challenges__c</formula>
+    <inlineHelpText>Challenges captured by Sales from the SaaS CW Opportunity related to the CF.</inlineHelpText>
+    <label>Challenges</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

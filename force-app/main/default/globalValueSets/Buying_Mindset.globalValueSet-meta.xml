@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Piloting/Testing</fullName>
+        <default>false</default>
+        <label>Piloting/Testing</label>
+    </customValue>
+    <customValue>
+        <fullName>Bought-In</fullName>
+        <default>false</default>
+        <label>Bought-In</label>
+    </customValue>
+    <description>Used on Opp and Account. What is their buying mindset at the time of closed won Opp.</description>
+    <masterLabel>Buying Mindset</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

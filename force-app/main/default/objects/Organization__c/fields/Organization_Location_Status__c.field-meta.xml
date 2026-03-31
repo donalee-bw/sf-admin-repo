@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Organization_Location_Status__c</fullName>
+    <description>Single Location or Multi Location, depending on # of Locations tied to Organization</description>
+    <externalId>false</externalId>
+    <formula>IF(  LOGIC_associated_locations__c   &lt;= 1,&quot;Single Location&quot;,&quot;Multi Location&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Single Location or Multi Location, depending on # of Locations tied to Organization</inlineHelpText>
+    <label>Organization Location Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_Open_Operating_to_Billing_Activated__c</fullName>
+    <description>Number of days from the Open and Operating Date to the Billing Activation Date Stamp field. (Billing_Activation_Date_Stamp__c - Open_and_Operating_Date__c)</description>
+    <externalId>false</externalId>
+    <formula>Billing_Activation_Date_Stamp__c - Open_and_Operating_Date__c</formula>
+    <inlineHelpText>Number of days from the Open and Operating Date to the Billing Activation Date Stamp field.</inlineHelpText>
+    <label>Days Open Operating to Billing Activated</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

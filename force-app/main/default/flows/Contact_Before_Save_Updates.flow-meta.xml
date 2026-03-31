@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Copy_1_of_Outreach_Stage_Working</name>
+        <label>Outreach Stage - Working</label>
+        <locationX>1370</locationX>
+        <locationY>1295</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Working</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.LeanData_Revenue_Sequence_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Copy_2_of_Update_Outreach_Stage_to_Assigned</name>
+        <label>Update Outreach Stage to Assigned</label>
+        <locationX>1172</locationX>
+        <locationY>803</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Assigned</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Manual_Stage_Update__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Lasted_Call_Dispo_Change_Check</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Outreach_Stage_Connected</name>
+        <label>Outreach Stage - Connected</label>
+        <locationX>314</locationX>
+        <locationY>1295</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Connected</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.LeanData_Revenue_Sequence_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Outreach_Stage_Demo_Confirmed</name>
+        <label>Outreach Stage - Demo Confirmed</label>
+        <locationX>578</locationX>
+        <locationY>1295</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Demo Confirmed</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.LeanData_Revenue_Sequence_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Outreach_Stage_Demo_Missed</name>
+        <label>Outreach Stage - Demo Missed</label>
+        <locationX>1106</locationX>
+        <locationY>1295</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Demo Missed</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.LeanData_Revenue_Sequence_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Outreach_Stage_Demo_Scheduled</name>
+        <label>Outreach Stage - Demo Scheduled</label>
+        <locationX>842</locationX>
+        <locationY>1295</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Demo Scheduled</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.LeanData_Revenue_Sequence_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Outreach_Stage_Recycled</name>
+        <label>Outreach Stage - Recycled</label>
+        <locationX>1634</locationX>
+        <locationY>1295</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>forREC2OutreachStage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.LeanData_Revenue_Sequence_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Outreach_Stage_Unqualified</name>
+        <label>Outreach Stage - Unqualified</label>
+        <locationX>1898</locationX>
+        <locationY>1295</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>forUNQ2OutreachStage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.LeanData_Revenue_Sequence_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Outreach_Stage_Working</name>
+        <label>Outreach Stage - Working</label>
+        <locationX>50</locationX>
+        <locationY>1295</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Working</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.LeanData_Revenue_Sequence_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Update_OR_Stage</name>
+        <label>Update OR Stage</label>
+        <locationX>1634</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Manual_Stage_Update__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Moved_to_Owner_decision</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_OR_to_Added_to_Sequence2</name>
+        <label>Update OR to Added to Sequence</label>
+        <locationX>1964</locationX>
+        <locationY>803</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Added to Sequence</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.LeanData_Revenue_Sequence_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Lasted_Call_Dispo_Change_Check</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Outreach_Stage_to_Added_to_sequence</name>
+        <label>Update Outreach Stage to Added to sequence</label>
+        <locationX>1436</locationX>
+        <locationY>803</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Added to sequence</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Manual_Stage_Update__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Lasted_Call_Dispo_Change_Check</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Outreach_Stage_to_Assigned</name>
+        <label>Update Outreach Stage to Assigned</label>
+        <locationX>1700</locationX>
+        <locationY>803</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Outreach_stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Assigned</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Manual_Stage_Update__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Lasted_Call_Dispo_Change_Check</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Already_Sequenced_decision</name>
+        <label>Already Sequenced decision</label>
+        <locationX>1436</locationX>
+        <locationY>695</locationY>
+        <defaultConnector>
+            <targetReference>Update_Outreach_Stage_to_Assigned</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Sequenced</defaultConnectorLabel>
+        <rules>
+            <name>Most_Recent_Sequence_with_PD</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Cadence_Entered__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Cadence_Entered__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>PD - </stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_2_of_Update_Outreach_Stage_to_Assigned</targetReference>
+            </connector>
+            <label>Most Recent Sequence with PD-</label>
+        </rules>
+        <rules>
+            <name>Most_Recent_Sequence_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Cadence_Entered__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Outreach_Stage_to_Added_to_sequence</targetReference>
+            </connector>
+            <label>Most Recent Sequence Populated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Lasted_Call_Dispo_Change_Check</name>
+        <label>Lasted Call Dispo Change Check</label>
+        <locationX>1766</locationX>
+        <locationY>1079</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Latest_Call_Dispo_Change</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Latest_Call_to_Outreach_Stage</targetReference>
+            </connector>
+            <label>Latest Call Dispo Change</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Latest_Call_to_Outreach_Stage</name>
+        <label>Latest Call to Outreach Stage</label>
+        <locationX>1106</locationX>
+        <locationY>1187</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>NA_To_Working</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>NA -</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_stage__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Connected</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_stage__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Qualified</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Outreach_Stage_Working</targetReference>
+            </connector>
+            <label>NA- To Working</label>
+        </rules>
+        <rules>
+            <name>CC_Pitched_DM_Connected</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CC - Pitched DM (Follow Up Task)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CC - Not Yet Qualified - Qualifying Soon</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Outreach_Stage_Connected</targetReference>
+            </connector>
+            <label>CC - Pitched DM - Connected</label>
+        </rules>
+        <rules>
+            <name>CC_Demo_Confirmed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CC - Demo Confirmed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Outreach_Stage_Demo_Confirmed</targetReference>
+            </connector>
+            <label>CC - Demo Confirmed</label>
+        </rules>
+        <rules>
+            <name>CC_Demo_Scheduled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>CC - Demo</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>CC - Demo Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>CC - Demo Confirmed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Outreach_Stage_Demo_Scheduled</targetReference>
+            </connector>
+            <label>CC - Demo Scheduled</label>
+        </rules>
+        <rules>
+            <name>CC_Demo_Canceled_Demo_Missed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CC - Demo Cancelled</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Outreach_Stage_Demo_Missed</targetReference>
+            </connector>
+            <label>CC- Demo Canceled - Demo Missed</label>
+        </rules>
+        <rules>
+            <name>CC_Other_Connected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>CC -</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Outreach_Stage_Working</targetReference>
+            </connector>
+            <label>CC- Other - Connected</label>
+        </rules>
+        <rules>
+            <name>REC_Recycled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>REC -</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Outreach_Stage_Recycled</targetReference>
+            </connector>
+            <label>REC - Recycled</label>
+        </rules>
+        <rules>
+            <name>UNQ_Unqualified</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>UNQ -</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Outreach_Stage_Unqualified</targetReference>
+            </connector>
+            <label>UNQ - Unqualified</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Moved_to_Owner_decision</name>
+        <label>Moved to Owner decision</label>
+        <locationX>1766</locationX>
+        <locationY>587</locationY>
+        <defaultConnector>
+            <targetReference>Newly_Added_to_Sequence</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_to_Assigned</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>005</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Account_Queue</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner.Profile.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Sales</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Override_OR_Stage</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Already_Sequenced_decision</targetReference>
+            </connector>
+            <label>Update to Assigned</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Newly_Added_to_Sequence</name>
+        <label>Newly Added to Sequence</label>
+        <locationX>2096</locationX>
+        <locationY>695</locationY>
+        <defaultConnector>
+            <targetReference>Lasted_Call_Dispo_Change_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_OR_to_Added_to_Sequence</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Cadence_Entered__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Cadence_Entered__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_OR_to_Added_to_Sequence2</targetReference>
+            </connector>
+            <label>Update OR to Added to Sequence</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Override_OR_Stage_decision</name>
+        <label>Override OR Stage decision</label>
+        <locationX>1766</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Moved_to_Owner_decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Override_OR_Stage</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Manual_Stage_Update__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Manual_Stage_Update__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Manual_Stage_Update__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Update_OR_Stage</targetReference>
+            </connector>
+            <label>Override OR Stage</label>
+        </rules>
+    </decisions>
+    <description>Clone of Contact Updates Before Save Flow ( the old flow should be deactivated)</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forREC2OutreachStage</name>
+        <dataType>String</dataType>
+        <expression>If({!$Record.ringdna100__Latest_Disposition__c} = &quot;REC - Not Interested - Budget Issue&quot;, &quot;Recycled - Not Interested - Budget Issue&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;REC - Not Interested - Feature / Product Limitation&quot;, &quot;Recycled - Features Request&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;REC - Not Interested - In Contract&quot;, &quot;Recycled - In Contract&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;REC - Not Interested - Price Too High&quot;,  &quot;Recycled - No Budget&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;REC - Non Primary&quot;,  &quot;Recycled - Non Primary&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;REC - Not Yet Qualified (Dreamer)&quot;,  &quot;Recycled - Not Yet Qualified&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;REC - Not Interested - Using Competitor&quot;,  &quot;Recycled - Using Competitor&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;REC - Not Interested - Happy w/ P&amp;P&quot;,  &quot;Recycled - Not Interested - Happy w/ P&amp;P&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;REC - Not Interested - Hung Up on Multiple Times&quot;,  &quot;Recycled - Not Interested - Hung Up on Multiple Times&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;REC - Public School (K12 with ECE/Headstart)&quot;,  &quot;Recycled - Public School (K12 with ECE/Headstart)&quot;,
+&quot;Recycled - Not Ready&quot;
+))))))))))</expression>
+    </formulas>
+    <formulas>
+        <name>forUNQ2OutreachStage</name>
+        <dataType>String</dataType>
+        <expression>If({!$Record.ringdna100__Latest_Disposition__c} = &quot;UNQ - Non Target - Not ECE&quot;, &quot;Unqualified - Not ECE&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;UNQ - Prospect Requested Do Not Call&quot;, &quot;Unqualified - Do not Contact&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;UNQ - Existing Customer&quot;, &quot;Unqualified - Existing Customer&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;UNQ - Non Target - International&quot;,  &quot;Unqualified - International&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;UNQ - Non Target - Language Barrier&quot;,  &quot;Unqualified - Language Barrier&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;UNQ - Out of Business&quot;,  &quot;Unqualified - Out of Business&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;UNQ - Non Target - Parent&quot;,  &quot;Unqualified - Parent&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;UNQ - Under Capacity (&lt;10)&quot;,  &quot;Unqualified - Under Capacity&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;UNQ - Enterprise&quot;,  &quot;Unqualified - Enterprise&quot;,
+If({!$Record.ringdna100__Latest_Disposition__c} = &quot;UNQ - Public School - No headstart&quot;,  &quot;Unqualified - Public School - No headstart&quot;,
+&quot;Unqualified - Unknown&quot;
+))))))))))</expression>
+    </formulas>
+    <interviewLabel>Contact - Before Save - Updates {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - Before Save - Updates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>1640</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Override_OR_Stage_decision</targetReference>
+        </connector>
+        <filterLogic>(1 AND 4) OR (2 AND 3) OR 5</filterLogic>
+        <filters>
+            <field>Manual_Stage_Update__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Most_Recent_Disposition__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Most_Recent_Disposition__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Manual_Stage_Update__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>OwnerId</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>500</triggerOrder>
+</Flow>

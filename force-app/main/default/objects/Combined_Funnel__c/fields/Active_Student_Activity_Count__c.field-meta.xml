@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Student_Activity_Count__c</fullName>
+    <description>Reference to School Object field - Active_Student_Action_Count__c</description>
+    <externalId>false</externalId>
+    <formula>Account__r.School_Object__r.Active_Student_Action_Count__c</formula>
+    <inlineHelpText>The total number of activities recorded against currently active students, only counting activities since 14 days prior to closed-won.</inlineHelpText>
+    <label>Active Student Activity Count</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

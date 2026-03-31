@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Used when a user needs to be exempted from 2FA for a time period, but is assigned a profile that requires it.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>2FA Exempt</label>
+</PermissionSet>

@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>New_Assignment_Slack</name>
+        <label>New Assignment Slack</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>New_Slack_Notification_to_Lyndsey</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <elementReference>$Record.Owner:User.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>newlyAssignLeadSlack</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>New_Slack_Notification_to_Lyndsey</name>
+        <label>New Slack Notification to Lyndsey</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>New_Slack_Notification_to_Shannon</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>U025NUBENGP</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>newlyAssignLeadSlackAdditionalNotification</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>New_Slack_Notification_to_Shannon</name>
+        <label>New Slack Notification to Shannon</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>U02N0RJ2UG0</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>newlyAssignLeadSlackAdditionalNotification</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Return_Path_New_Assigned</name>
+        <label>Return Path New Assigned</label>
+        <locationX>314</locationX>
+        <locationY>455</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Return_Path_Notification_to_Lyndsey</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <elementReference>$Record.Owner:User.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>ReturnPathNewAssigned</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Return_Path_Notification_to_Lyndsey</name>
+        <label>Return Path Notification to Lyndsey</label>
+        <locationX>314</locationX>
+        <locationY>575</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Return_Path_Notification_to_Shannon</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>U01K4TYVB19</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>ReturnPathSlackAdditionalNotification</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Return_Path_Notification_to_Shannon</name>
+        <label>Return Path Notification to Shannon</label>
+        <locationX>314</locationX>
+        <locationY>695</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>U02N0RJ2UG0</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>ReturnPathSlackAdditionalNotification</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Newly_Assigned_Inbound_Lead</name>
+        <label>Newly Assigned/Return Path Inbound Lead</label>
+        <locationX>314</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>New_Assignment</name>
+            <conditionLogic>(1 OR 2) AND 3 AND 4 AND 5 AND 6 AND 7</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.UserRole.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Inbound SDR</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.UserRole.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>IB Full Cycle</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.IsConverted</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Troops_HS_return_path_trigger__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Troops_PTL_return_path_trigger__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Assigned</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>New_Assignment_Slack</targetReference>
+            </connector>
+            <label>New Assignment</label>
+        </rules>
+        <rules>
+            <name>Return_Path_New_Assignment</name>
+            <conditionLogic>(1 OR 2) AND 3 AND ((4 AND 5) OR (6 AND 7))</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.UserRole.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Inbound SDR</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.UserRole.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>IB Full Cycle</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.IsConverted</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Troops_HS_return_path_trigger__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LOGIC_Open_HS_task__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Troops_PTL_return_path_trigger__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LOGIC_Open_PTL_task__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Return_Path_New_Assigned</targetReference>
+            </connector>
+            <label>Return Path - New Assignment</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>newlyAssignLeadSlack</name>
+        <dataType>String</dataType>
+        <expression>&apos;You have been assigned a new &apos; &amp;
+IF(
+     ISPICKVAL({!$Record.LeadSource}, &apos;User Outreach&apos;), 
+     &apos;Free Trial sign up&apos;, 
+      TEXT({!$Record.HS_Last_form_submission_type__c})
+ ) &amp;
+&apos; lead&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!$Record.Id}  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Lead Source - Detail:* &apos; &amp; {!$Record.Lead_Source_Detail__c} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Organization:* &apos; &amp; {!$Record.Company} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*First Name:* &apos; &amp; {!$Record.FirstName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Last Name:* &apos; &amp; {!$Record.LastName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Email:* &apos; &amp; {!$Record.Email} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Phone:* &apos; &amp; {!$Record.Phone} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*State/Province:* &apos; &amp; {!$Record.State}</expression>
+    </formulas>
+    <formulas>
+        <name>newlyAssignLeadSlackAdditionalNotification</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Owner:User.FirstName} &amp; &apos; &apos; &amp; {!$Record.Owner:User.LastName} &amp; &apos; has been assigned a new lead &apos;  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!$Record.Id}  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Lead Source - Detail:* &apos; &amp; {!$Record.Lead_Source_Detail__c} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Organization:* &apos; &amp; {!$Record.Company} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Owner First Name:* &apos; &amp; {!$Record.Owner:User.FirstName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Owner Last Name:* &apos; &amp; {!$Record.Owner:User.LastName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*First Name:* &apos; &amp; {!$Record.FirstName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Last Name:* &apos; &amp; {!$Record.LastName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Email:* &apos; &amp; {!$Record.Email} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Phone:* &apos; &amp; {!$Record.Phone} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*State/Province:* &apos; &amp; {!$Record.State}</expression>
+    </formulas>
+    <formulas>
+        <name>ReturnPathNewAssigned</name>
+        <dataType>String</dataType>
+        <expression>&apos;You have been assigned an existing lead based on a new &apos; &amp;
+IF(
+     AND(
+               {!$Record.Troops_PTL_return_path_trigger__c} = TRUE,
+               {!$Record.LOGIC_Open_PTL_task__c} &gt; 0
+     ),
+     &apos;Free Trial sign up&apos;, 
+      IF(
+           AND(
+                    {!$Record.Troops_HS_return_path_trigger__c}  = TRUE,
+                   {!$Record.LOGIC_Open_HS_task__c} &gt; 0
+            ), 
+            TEXT({!$Record.HS_Last_form_submission_type__c}),
+            &apos;&apos;
+       )
+)
+&amp; &apos; inbound activity&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!$Record.Id}  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Lead Source - Detail:* &apos; &amp; {!$Record.Lead_Source_Detail__c} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Organization:* &apos; &amp; {!$Record.Company} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*First Name:* &apos; &amp; {!$Record.FirstName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Last Name:* &apos; &amp; {!$Record.LastName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Email:* &apos; &amp; {!$Record.Email} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Phone:* &apos; &amp; {!$Record.Phone} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*State/Province:* &apos; &amp; {!$Record.State}</expression>
+    </formulas>
+    <formulas>
+        <name>ReturnPathSlackAdditionalNotification</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Owner:User.FirstName} &amp; &apos; &apos; &amp; {!$Record.Owner:User.LastName} &amp; &apos; has been assigned an existing lead &apos;  &amp;
+IF(
+     AND(
+               {!$Record.Troops_PTL_return_path_trigger__c} = TRUE,
+               {!$Record.LOGIC_Open_PTL_task__c} &gt; 0
+     ),
+     &apos;Free Trial sign up&apos;, 
+      IF(
+           AND(
+                    {!$Record.Troops_HS_return_path_trigger__c}  = TRUE,
+                   {!$Record.LOGIC_Open_HS_task__c} &gt; 0
+            ), 
+            TEXT({!$Record.HS_Last_form_submission_type__c}),
+            &apos;&apos;
+       )
+)
+&amp; &apos; inbound activity&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!$Record.Id}  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Lead Source - Detail:* &apos; &amp; {!$Record.Lead_Source_Detail__c} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Organization:* &apos; &amp; {!$Record.Company} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Owner First Name:* &apos; &amp; {!$Record.Owner:User.FirstName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Owner Last Name:* &apos; &amp; {!$Record.Owner:User.LastName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*First Name:* &apos; &amp; {!$Record.FirstName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Last Name:* &apos; &amp; {!$Record.LastName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Email:* &apos; &amp; {!$Record.Email} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Phone:* &apos; &amp; {!$Record.Phone} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*State/Province:* &apos; &amp; {!$Record.State}</expression>
+    </formulas>
+    <interviewLabel>Lead - Slack Notification Trigger {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead - Slack Notification Trigger</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Newly_Assigned_Inbound_Lead</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LOGIC_Owned_by_queue__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Assigned</stringValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <triggerOrder>1600</triggerOrder>
+</Flow>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <name>ErrorMessage</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Error - cannot move to this stage with open events</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <name>Open_Events_Check</name>
+        <label>Open Events Check</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Clear_Error_on_Opp</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Open Events</defaultConnectorLabel>
+        <rules>
+            <name>Found_Open_Events</name>
+            <conditionLogic>1 AND (2 OR 3 OR 4 OR 5 OR 6)</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Open_Events.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rescheduling</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Awaiting Decision</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Verbal Agreement</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Populate_Error_on_Opp</targetReference>
+            </connector>
+            <label>Found Open Events</label>
+        </rules>
+    </decisions>
+    <description>Sets or clears value in EC Validation Error on the opportunity when the opp is moved into specific stages and there are open demos.  Validation rule ECStageErrorOpenDemos is triggered by the population of that error field
+
+10.092025 - LK - Only get events created after 10/06/2025.
+10.09.2025 - LK - Exclude Onboarding Training Events related to the EC Opp.
+03.30.2026 - DM- Only get EC demo events</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forDTomorrowForward</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()+1</expression>
+    </formulas>
+    <interviewLabel>Opportunity - After Save - Experience Curriculum Demo Validation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - After Save - Experience Curriculum Demo Validation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Open_Events</name>
+        <label>Get Open Events</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Open_Events_Check</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>WhatId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Meeting_Completed__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Meeting_Incomplete__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Meeting_Rescheduled_by_ISR__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Canceled_CP__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>No_Show__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ActivityDate</field>
+            <operator>LessThan</operator>
+            <value>
+                <elementReference>forDTomorrowForward</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Canceled__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CreatedDate</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <dateTimeValue>2025-10-06T07:00:00.000Z</dateTimeValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Training_Call__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Experience Curriculum Overview</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Event</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Clear_Error_on_Opp</name>
+        <label>Clear Error on Opp</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>EC_Validation_Error__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Populate_Error_on_Opp</name>
+        <label>Populate Error on Opp</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>EC_Validation_Error__c</field>
+            <value>
+                <elementReference>ErrorMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Open_Events</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Opportunity_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Experience Curriculum</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

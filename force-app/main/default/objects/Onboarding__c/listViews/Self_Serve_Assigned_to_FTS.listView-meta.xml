@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Self_Serve_Assigned_to_FTS</fullName>
+    <columns>NAME</columns>
+    <columns>Owner__c</columns>
+    <columns>Billing_Launch_Date__c</columns>
+    <columns>Dollars_Processed_Online__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Billing_Conversation_Notes__c</columns>
+    <columns>Billing_Initial_Call_Date__c</columns>
+    <columns>Billing_Initial_Call_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATEDBY_USER</field>
+        <operation>equals</operation>
+        <value>Ella Foshay-Rothfeld</value>
+    </filters>
+    <filters>
+        <field>Billing_Initial_Call_Date__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Self-Serve Assigned to FTS</label>
+</ListView>

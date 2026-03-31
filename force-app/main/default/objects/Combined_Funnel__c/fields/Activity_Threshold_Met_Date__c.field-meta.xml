@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activity_Threshold_Met_Date__c</fullName>
+    <description>Activity Threshold Met Date from the school object associated to the account</description>
+    <formula>Account__r.School_Object__r.Activity_Threshold_Met_Date__c</formula>
+    <inlineHelpText>Date when the Activity Threshold was met.</inlineHelpText>
+    <label>Activity Threshold Met Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

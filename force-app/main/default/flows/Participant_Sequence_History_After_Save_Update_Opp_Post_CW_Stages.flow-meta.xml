@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Since the contact is no longer enrolled in the &quot;Sales - Gone Dark&quot; Sequences, we are going null out the Post CW Status of &quot;unresponsive&quot; on the opportunities that the contact is the primary contact.</description>
+        <name>Null_out_the_Post_CW_Status_of_Unresponsive</name>
+        <label>Null out the Post CW Status of Unresponsive</label>
+        <locationX>138</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_Thro_Opp.Post_CW_Status__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varCollection_UpdateOpps</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Thro_Opp</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Thro_Opp</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Opp_Found</name>
+        <label>Opp Found?</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Thro_Opp</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>When participant exits the &quot;Sales - Gone Dark&quot; sequence, we want to re-evaluate the opportunity&apos;s stage to the latest based on the SSPR criteria.</description>
+    <environments>Default</environments>
+    <interviewLabel>Participant Sequence History - After Save - Update Opp Post CW Stages {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Participant Sequence History - After Save - Update Opp Post CW Stages</label>
+    <loops>
+        <name>Loop_Thro_Opp</name>
+        <label>Loop Thro Opp</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <collectionReference>Get_Opportunity</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Null_out_the_Post_CW_Status_of_Unresponsive</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Opportunity</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get all opportunities in the SSPR Stage and where Post CW Stage = &quot;Unresponsive&quot; so that we can update it to the next stage based on the SSPR Criteria, since the contact has exited the Sales - Gone Dark Sequence.</description>
+        <name>Get_Opportunity</name>
+        <label>Get Opportunity</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Opp_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.RDNACadence__Contact_Id__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Post_CW_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Unresponsive</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Opportunity</name>
+        <label>Update Opportunity</label>
+        <locationX>50</locationX>
+        <locationY>839</locationY>
+        <inputReference>varCollection_UpdateOpps</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RDNACadence__Contact_Id__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RDNACadence__Sequence_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue> a1RPB000003Ug052AC</stringValue>
+            </value>
+        </filters>
+        <object>RDNACadence__Participant_Sequence_History__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>varCollection_UpdateOpps</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Handoff</fullName>
+    <columns>Owner__c</columns>
+    <columns>NAME</columns>
+    <columns>Original_Close_Date__c</columns>
+    <columns>Funnel_Stage__c</columns>
+    <columns>FTS_Owner__c</columns>
+    <columns>SaaS_Billing_Onboarding_Sequencing__c</columns>
+    <columns>Billing_Initial_Call_Date__c</columns>
+    <columns>Billing_Initial_Call_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Onboarding__c.Single_site_SaaS</value>
+    </filters>
+    <filters>
+        <field>SaaS_Billing_Onboarding_Sequencing__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Funnel_Stage__c</field>
+        <operation>equals</operation>
+        <value>Activated</value>
+    </filters>
+    <label>Billing Handoff</label>
+</ListView>

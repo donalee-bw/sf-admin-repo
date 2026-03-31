@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Upsell_Owner__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ISPICKVAL(Onboarding_Attempt_Status_New__c , &quot;Closed&quot;) || ISPICKVAL(Onboarding_Attempt_Status_New__c , &quot;Canceled&quot;),
+Billing_Upsell_Owner_Stamp__r.FirstName  &amp; &quot; &quot; &amp;  Billing_Upsell_Owner_Stamp__r.LastName,
+IF(NOT(ISBLANK( Billing_Upsell_Owner_Stamp__c )),
+ Billing_Upsell_Owner_Stamp__r.FirstName  &amp; &quot; &quot; &amp;  Billing_Upsell_Owner_Stamp__r.LastName,
+  Account__r.Billing_Upsell_Owner__r.FirstName  &amp; &quot; &quot; &amp; Account__r.Billing_Upsell_Owner__r.LastName)
+)</formula>
+    <label>Billing Upsell Owner</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

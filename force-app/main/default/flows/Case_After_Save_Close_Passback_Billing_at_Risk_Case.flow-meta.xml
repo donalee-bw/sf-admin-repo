@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Was_Combined_Funnel_Found</name>
+        <label>Was Combined Funnel Found?</label>
+        <locationX>776</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_CF_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>What_is_the_Closed_Status</targetReference>
+            </connector>
+            <label>Yes,CF Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>The closed status of the Passback to Sales - Billing at Risk will determine the updates.</description>
+        <name>What_is_the_Closed_Status</name>
+        <label>What is the Closed Status?</label>
+        <locationX>446</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Closed_Resumed_Onboarding</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed: Customer Resumed OB</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_Onboarding_Status_to_Active_on_CF</targetReference>
+            </connector>
+            <label>Closed : Resumed Onboarding</label>
+        </rules>
+        <rules>
+            <name>Closed_Unresponsive</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed: Customer Unresponsive</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_Onboarding_Status_on_CF</targetReference>
+            </connector>
+            <label>Closed : Unresponsive</label>
+        </rules>
+        <rules>
+            <name>Closed_Opted_Out</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed: Opted Out</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_Onboarding_Status_Billing_Opted_on_CF</targetReference>
+            </connector>
+            <label>Closed: Opted Out</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Billing Upsell Opp does not follow the SSPR Path.</description>
+        <name>What_type_of_Opportunity</name>
+        <label>What type of Opportunity</label>
+        <locationX>446</locationX>
+        <locationY>947</locationY>
+        <defaultConnector>
+            <targetReference>Sub_Flow_to_Update_Opportunity_Post_CW_Status</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Billing_Upsell</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity__r.Opportunity_Record_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Billing Upsell</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Billing Upsell</label>
+        </rules>
+    </decisions>
+    <description>When AE closes out the Billing at Risk case, updates to the Combined Funnel and Opportunity needs to made. 
+Requirement Doc - https://docs.google.com/document/d/19BzaBe7OMEhCqPu3rsbYaOZVQerSgmSXMMvz7CYhwD8/edit?tab=t.0
+06.12.2025 - LK - Decision for Billing Upsell should not trigger subflow for opportortunity SSPR
+08.12.2025 - LK - Changed Billing Onboarding Status logic for unresponsive - so the Billing Onboarding Status = Opted Out now.</description>
+    <environments>Default</environments>
+    <interviewLabel>Case - After Save - {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - After Save - Close Passback Billing at Risk Case</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Combined_Funnel</name>
+        <label>Get Combined Funnel</label>
+        <locationX>776</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_Combined_Funnel_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Combined_Funnel__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Billing_Onboarding_Status_Billing_Opted_on_CF</name>
+        <label>Update Billing Onboarding Status Billing Opted on CF</label>
+        <locationX>578</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Update_Billing_Override_Opt_Out_on_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Combined_Funnel.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Billing_Dropout_Reason__c</field>
+            <value>
+                <elementReference>$Record.Billing_Opt_Out_Reason__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Onboarding_Status__c</field>
+            <value>
+                <stringValue>Requesting Opt Out - Awaiting Approval</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Opted_Out_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Combined_Funnel__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_Onboarding_Status_on_CF</name>
+        <label>Update Billing Onboarding Status on CF</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>What_type_of_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Combined_Funnel.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Billing_Dropout_Reason__c</field>
+            <value>
+                <stringValue>Unable to connect</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Onboarding_Status__c</field>
+            <value>
+                <stringValue>Opted Out</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Opted_Out_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Combined_Funnel__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_Onboarding_Status_to_Active_on_CF</name>
+        <label>Update Billing Onboarding Status to Active on CF</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>What_type_of_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Combined_Funnel.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Billing_Onboarding_Status__c</field>
+            <value>
+                <stringValue>Active</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Combined_Funnel__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_Override_Opt_Out_on_Opportunity</name>
+        <label>Update Billing Override Opt Out on Opportunity</label>
+        <locationX>578</locationX>
+        <locationY>755</locationY>
+        <connector>
+            <targetReference>What_type_of_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Billing_Opt_Out_Override_Reason__c</field>
+            <value>
+                <elementReference>$Record.Billing_Opt_Out_Reason__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Opt_Out_Override__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <start>
+        <locationX>650</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Combined_Funnel</targetReference>
+        </connector>
+        <filterLogic>1 AND 2 AND 3 AND ( 4 OR 5 OR 6 )</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012PB000000LL6HYAW</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Billing At-Risk</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed: Customer Resumed OB</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed: Customer Unresponsive</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed: Opted Out</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Sub_Flow_to_Update_Opportunity_Post_CW_Status</name>
+        <label>Sub Flow to Update Opportunity Post CW Status</label>
+        <locationX>578</locationX>
+        <locationY>1055</locationY>
+        <flowName>School_Subflow_Sync_Opportunity_Post_CW_Stages</flowName>
+        <inputAssignments>
+            <name>varR_Accountid</name>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varR_Oppid</name>
+            <value>
+                <elementReference>$Record.Opportunity__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

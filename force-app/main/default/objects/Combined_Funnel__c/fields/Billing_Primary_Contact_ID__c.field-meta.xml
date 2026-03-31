@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Primary_Contact_ID__c</fullName>
+    <description>ContactID of the related contact in the Billing Primary Contact field on the CF - for admin use only.</description>
+    <externalId>false</externalId>
+    <formula>Billing_Primary_Contact__r.Id</formula>
+    <label>Billing Primary Contact ID</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

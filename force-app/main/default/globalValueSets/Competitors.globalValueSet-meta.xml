@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Procare Connect/Kinderlime</fullName>
+        <default>false</default>
+        <label>Procare Connect/Kinderlime</label>
+    </customValue>
+    <customValue>
+        <fullName>Procare/Kid Reports</fullName>
+        <default>false</default>
+        <label>Procare Select/Kidreports</label>
+    </customValue>
+    <customValue>
+        <fullName>Himama</fullName>
+        <default>false</default>
+        <label>Himama</label>
+    </customValue>
+    <customValue>
+        <fullName>Pen and Paper</fullName>
+        <default>false</default>
+        <label>Pen and Paper</label>
+    </customValue>
+    <customValue>
+        <fullName>Blackbaud</fullName>
+        <default>false</default>
+        <label>Blackbaud</label>
+    </customValue>
+    <customValue>
+        <fullName>Bloomz</fullName>
+        <default>false</default>
+        <label>Bloomz</label>
+    </customValue>
+    <customValue>
+        <fullName>brightwheel - Premium</fullName>
+        <default>false</default>
+        <label>brightwheel - Premium</label>
+    </customValue>
+    <customValue>
+        <fullName>brightwheel - Free (limited)</fullName>
+        <default>false</default>
+        <label>brightwheel - Free (limited)</label>
+    </customValue>
+    <customValue>
+        <fullName>Child Care CRM / LineLeader (they merged)</fullName>
+        <default>false</default>
+        <label>Child Care CRM / LineLeader (they merged)</label>
+    </customValue>
+    <customValue>
+        <fullName>Childcare Manager</fullName>
+        <default>false</default>
+        <label>Childcare Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Child Pilot</fullName>
+        <default>false</default>
+        <label>Child Pilot</label>
+    </customValue>
+    <customValue>
+        <fullName>Childplus Software</fullName>
+        <default>false</default>
+        <label>Childplus Software</label>
+    </customValue>
+    <customValue>
+        <fullName>ChildWatch</fullName>
+        <default>false</default>
+        <label>ChildWatch</label>
+    </customValue>
+    <customValue>
+        <fullName>ClassDojo</fullName>
+        <default>false</default>
+        <label>ClassDojo</label>
+    </customValue>
+    <customValue>
+        <fullName>ClassTag</fullName>
+        <default>false</default>
+        <label>ClassTag</label>
+    </customValue>
+    <customValue>
+        <fullName>Close</fullName>
+        <default>false</default>
+        <label>Close</label>
+    </customValue>
+    <customValue>
+        <fullName>CuraCubby</fullName>
+        <default>false</default>
+        <label>CuraCubby</label>
+    </customValue>
+    <customValue>
+        <fullName>DailyConnect</fullName>
+        <default>false</default>
+        <label>DailyConnect</label>
+    </customValue>
+    <customValue>
+        <fullName>Daxco</fullName>
+        <default>false</default>
+        <label>Daxco</label>
+    </customValue>
+    <customValue>
+        <fullName>Early Learning Ventures</fullName>
+        <default>false</default>
+        <label>Early Learning Ventures</label>
+    </customValue>
+    <customValue>
+        <fullName>EZCare</fullName>
+        <default>false</default>
+        <label>EZCare</label>
+    </customValue>
+    <customValue>
+        <fullName>FACTS/RenWeb (Facts bought out RenWeb)</fullName>
+        <default>false</default>
+        <label>FACTS/RenWeb (Facts bought out RenWeb)</label>
+    </customValue>
+    <customValue>
+        <fullName>Facebook</fullName>
+        <default>false</default>
+        <label>Facebook</label>
+    </customValue>
+    <customValue>
+        <fullName>Google Classroom/Google Docs</fullName>
+        <default>false</default>
+        <label>Google Classroom/Google Docs</label>
+    </customValue>
+    <customValue>
+        <fullName>GradeLink</fullName>
+        <default>false</default>
+        <label>GradeLink</label>
+    </customValue>
+    <customValue>
+        <fullName>Jackrabbit Care</fullName>
+        <default>false</default>
+        <label>Jackrabbit Care</label>
+    </customValue>
+    <customValue>
+        <fullName>Kangaroo Time</fullName>
+        <default>false</default>
+        <label>Kangaroo Time</label>
+    </customValue>
+    <customValue>
+        <fullName>Kaymbu</fullName>
+        <default>false</default>
+        <label>Kaymbu</label>
+    </customValue>
+    <customValue>
+        <fullName>KidKare</fullName>
+        <default>false</default>
+        <label>KidKare</label>
+    </customValue>
+    <customValue>
+        <fullName>Kids Zone</fullName>
+        <default>false</default>
+        <label>Kids Zone</label>
+    </customValue>
+    <customValue>
+        <fullName>KinderConnect</fullName>
+        <default>false</default>
+        <label>KinderConnect</label>
+    </customValue>
+    <customValue>
+        <fullName>Kinderlime</fullName>
+        <default>false</default>
+        <label>Kinderlime</label>
+    </customValue>
+    <customValue>
+        <fullName>Kindertales</fullName>
+        <default>false</default>
+        <label>Kindertales</label>
+    </customValue>
+    <customValue>
+        <fullName>Parent Square</fullName>
+        <default>false</default>
+        <label>Parent Square</label>
+    </customValue>
+    <customValue>
+        <fullName>Lillio</fullName>
+        <default>false</default>
+        <label>Lillio</label>
+    </customValue>
+    <customValue>
+        <fullName>Learning Genie</fullName>
+        <default>false</default>
+        <label>Learning Genie</label>
+    </customValue>
+    <customValue>
+        <fullName>LifeCubby</fullName>
+        <default>false</default>
+        <label>LifeCubby</label>
+    </customValue>
+    <customValue>
+        <fullName>MontessoriCompass</fullName>
+        <default>false</default>
+        <label>MontessoriCompass</label>
+    </customValue>
+    <customValue>
+        <fullName>MyKidzDay</fullName>
+        <default>false</default>
+        <label>MyKidzDay</label>
+    </customValue>
+    <customValue>
+        <fullName>Phone/Text/Email</fullName>
+        <default>false</default>
+        <label>Phone/Text/Email</label>
+    </customValue>
+    <customValue>
+        <fullName>Playgrounds</fullName>
+        <default>false</default>
+        <label>Playgrounds</label>
+    </customValue>
+    <customValue>
+        <fullName>PreciouStatus</fullName>
+        <default>false</default>
+        <label>PreciouStatus</label>
+    </customValue>
+    <customValue>
+        <fullName>Preschool2Me</fullName>
+        <default>false</default>
+        <label>Preschool2Me</label>
+    </customValue>
+    <customValue>
+        <fullName>Quickbooks</fullName>
+        <default>false</default>
+        <label>Quickbooks</label>
+    </customValue>
+    <customValue>
+        <fullName>Remind</fullName>
+        <default>false</default>
+        <label>Remind</label>
+    </customValue>
+    <customValue>
+        <fullName>Remini</fullName>
+        <default>false</default>
+        <label>Remini</label>
+    </customValue>
+    <customValue>
+        <fullName>Sandbox</fullName>
+        <default>false</default>
+        <label>Sandbox</label>
+    </customValue>
+    <customValue>
+        <fullName>School Cues</fullName>
+        <default>false</default>
+        <label>School Cues</label>
+    </customValue>
+    <customValue>
+        <fullName>SchoolSpeak</fullName>
+        <default>false</default>
+        <label>SchoolSpeak</label>
+    </customValue>
+    <customValue>
+        <fullName>Seer</fullName>
+        <default>false</default>
+        <label>Seer</label>
+    </customValue>
+    <customValue>
+        <fullName>SeeSaw</fullName>
+        <default>false</default>
+        <label>SeeSaw</label>
+    </customValue>
+    <customValue>
+        <fullName>Skyward</fullName>
+        <default>false</default>
+        <label>Skyward</label>
+    </customValue>
+    <customValue>
+        <fullName>SmartCare</fullName>
+        <default>false</default>
+        <label>SmartCare</label>
+    </customValue>
+    <customValue>
+        <fullName>Spreadsheets</fullName>
+        <default>false</default>
+        <label>Spreadsheets</label>
+    </customValue>
+    <customValue>
+        <fullName>Tadpoles</fullName>
+        <default>false</default>
+        <label>Tadpoles</label>
+    </customValue>
+    <customValue>
+        <fullName>Tads</fullName>
+        <default>false</default>
+        <label>Tads</label>
+    </customValue>
+    <customValue>
+        <fullName>Teaching Strategies Gold</fullName>
+        <default>false</default>
+        <label>Teaching Strategies Gold</label>
+    </customValue>
+    <customValue>
+        <fullName>TimeSaver</fullName>
+        <default>false</default>
+        <label>TimeSaver</label>
+    </customValue>
+    <customValue>
+        <fullName>Transparent Classroom</fullName>
+        <default>false</default>
+        <label>Transparent Classroom</label>
+    </customValue>
+    <customValue>
+        <fullName>Venmo</fullName>
+        <default>false</default>
+        <label>Venmo</label>
+    </customValue>
+    <customValue>
+        <fullName>Wonderschool</fullName>
+        <default>false</default>
+        <label>Wonderschool</label>
+    </customValue>
+    <customValue>
+        <fullName>Zelle</fullName>
+        <default>false</default>
+        <label>Zelle</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Undisclosed</fullName>
+        <default>false</default>
+        <label>Undisclosed</label>
+    </customValue>
+    <customValue>
+        <fullName>Storypark</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Storypark</label>
+    </customValue>
+    <customValue>
+        <fullName>State Sign-ins</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>State Sign-ins</label>
+    </customValue>
+    <customValue>
+        <fullName>iCare</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>iCare</label>
+    </customValue>
+    <customValue>
+        <fullName>Child Care CRM</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Child Care CRM</label>
+    </customValue>
+    <customValue>
+        <fullName>Lineleader</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Lineleader</label>
+    </customValue>
+    <customValue>
+        <fullName>Brightwheel</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Brightwheel</label>
+    </customValue>
+    <customValue>
+        <fullName>Jovial</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Jovial</label>
+    </customValue>
+    <customValue>
+        <fullName>Zelle/Cashapp</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Zelle/Cashapp</label>
+    </customValue>
+    <customValue>
+        <fullName>Hubbe</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Hubbe</label>
+    </customValue>
+    <description>Competitors</description>
+    <masterLabel>Current Tech</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

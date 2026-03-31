@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Demo/Pricing</fullName>
+        <default>false</default>
+        <label>Demo/Pricing</label>
+    </customValue>
+    <customValue>
+        <fullName>FB</fullName>
+        <default>false</default>
+        <label>FB</label>
+    </customValue>
+    <customValue>
+        <fullName>Referral</fullName>
+        <default>false</default>
+        <label>Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Content Request</fullName>
+        <default>false</default>
+        <label>Content Request</label>
+    </customValue>
+    <customValue>
+        <fullName>PTL</fullName>
+        <default>false</default>
+        <label>PTL</label>
+    </customValue>
+    <customValue>
+        <fullName>Government</fullName>
+        <default>false</default>
+        <label>Government</label>
+    </customValue>
+    <customValue>
+        <fullName>TAM Load</fullName>
+        <default>false</default>
+        <label>TAM Load</label>
+    </customValue>
+    <customValue>
+        <fullName>Webinar</fullName>
+        <default>false</default>
+        <label>Webinar</label>
+    </customValue>
+    <customValue>
+        <fullName>EEL</fullName>
+        <default>false</default>
+        <label>EEL</label>
+    </customValue>
+    <customValue>
+        <fullName>Professional Development</fullName>
+        <default>false</default>
+        <label>Professional Development</label>
+    </customValue>
+    <masterLabel>LeanData Revenue Sequence Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

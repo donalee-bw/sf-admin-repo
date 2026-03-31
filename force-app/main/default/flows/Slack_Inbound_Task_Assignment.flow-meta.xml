@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>apexSelection</name>
+            <value>
+                <stringValue>Post Message to Slack Channel</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>Slack</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Channel ID</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Reference</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>channelId</name>
+            <value>
+                <elementReference>myVariable_current.Owner:User.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Token</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>String</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Post Contents</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>maxOccurs</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>objectType</name>
+                <value>
+                    <stringValue></stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Formula</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>text</name>
+            <value>
+                <elementReference>formula_2_myRule_1_A1_8659353427</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <apiVersion>50.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_pmetdec</targetReference>
+            </connector>
+            <label>Assigned inbound notification</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_1_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_1_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_1_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <description>When a new SFDC task notification is assigned to and ISR</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>&apos;You have been assigned a SFDC Task based on new inbound activity&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; [Task].WhoId &amp; &apos;|SFDC Lead or Contact&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Subject:* &apos; &amp; [Task].Subject &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+IF(NOT(ISBLANK([Task].Description)), [Task].Description , &apos;&apos;) 
+</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_2_myRule_1_A1_8659353427</name>
+        <dataType>String</dataType>
+        <expression>&apos;You have been assigned a SFDC Task based on new inbound activity&apos; &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!myVariable_current.WhoId} &amp; &apos;|SFDC Lead or Contact&gt;&apos; &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Subject:* &apos; &amp; {!myVariable_current.Subject} &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+IF(NOT(ISBLANK({!myVariable_current.Description})), {!myVariable_current.Description} , &apos;&apos;)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(
+          PRIORVALUE([Task].OwnerId) = &apos;0051I000004HUjOQAW&apos;,
+          OR(
+                 CONTAINS([Task].Owner:User.UserRole.RollupDescription  , &apos;ISR&apos;),
+                 CONTAINS([Task].Owner:User.UserRole.RollupDescription  , &apos;ISDR&apos;),
+                 CONTAINS([Task].Owner:User.UserRole.RollupDescription  , &apos;Outbound SDR&apos;),
+                 CONTAINS([Task].Owner:User.UserRole.RollupDescription  , &apos;AE Team&apos;)
+          ),
+          ISPICKVAL([Task].Status , &apos;Open&apos;),
+          ISPICKVAL([Task].Type , &apos;Notification&apos;)
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+          PRIORVALUE({!myVariable_current.OwnerId}) = &apos;0051I000004HUjOQAW&apos;,
+          OR(
+                 CONTAINS({!myVariable_current.Owner:User.UserRole.RollupDescription}  , &apos;ISR&apos;),
+                 CONTAINS({!myVariable_current.Owner:User.UserRole.RollupDescription}  , &apos;ISDR&apos;),
+                 CONTAINS({!myVariable_current.Owner:User.UserRole.RollupDescription}  , &apos;Outbound SDR&apos;),
+                 CONTAINS({!myVariable_current.Owner:User.UserRole.RollupDescription}  , &apos;AE Team&apos;)
+          ),
+          ISPICKVAL({!myVariable_current.Status} , &apos;Open&apos;),
+          ISPICKVAL({!myVariable_current.Type} , &apos;Notification&apos;)
+)</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>AND(
+          PRIORVALUE([Task].OwnerId) = &apos;0051I000004HUjOQAW&apos;,
+          OR(
+                 CONTAINS([Task].Owner:User.UserRole.RollupDescription  , &apos;ISR&apos;),
+                 CONTAINS([Task].Owner:User.UserRole.RollupDescription  , &apos;ISDR&apos;),
+                 CONTAINS([Task].Owner:User.UserRole.RollupDescription  , &apos;Outbound SDR&apos;),
+                 CONTAINS([Task].Owner:User.UserRole.RollupDescription  , &apos;AE Team&apos;)
+          ),
+          ISPICKVAL([Task].Status , &apos;Open&apos;),
+          ISPICKVAL([Task].Type , &apos;Notification&apos;)
+)</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+          PRIORVALUE({!myVariable_old.OwnerId}) = &apos;0051I000004HUjOQAW&apos;,
+          OR(
+                 CONTAINS({!myVariable_old.Owner:User.UserRole.RollupDescription}  , &apos;ISR&apos;),
+                 CONTAINS({!myVariable_old.Owner:User.UserRole.RollupDescription}  , &apos;ISDR&apos;),
+                 CONTAINS({!myVariable_old.Owner:User.UserRole.RollupDescription}  , &apos;Outbound SDR&apos;),
+                 CONTAINS({!myVariable_old.Owner:User.UserRole.RollupDescription}  , &apos;AE Team&apos;)
+          ),
+          ISPICKVAL({!myVariable_old.Status} , &apos;Open&apos;),
+          ISPICKVAL({!myVariable_old.Type} , &apos;Notification&apos;)
+)</expression>
+    </formulas>
+    <interviewLabel>Slack_Inbound_Task_Assignment-4_InterviewLabel</interviewLabel>
+    <label>Slack - Inbound Task Assignment</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Task</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <startElementReference>myDecision</startElementReference>
+    <status>Obsolete</status>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Task</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Task</objectType>
+    </variables>
+</Flow>

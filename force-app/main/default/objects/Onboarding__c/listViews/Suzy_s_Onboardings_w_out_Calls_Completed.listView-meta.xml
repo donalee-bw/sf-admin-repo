@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Suzy_s_Onboardings_w_out_Calls_Completed</fullName>
+    <booleanFilter>1 AND (2 OR 3) AND 4 AND 5</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Funnel_Stage__c</columns>
+    <columns>Brightwheel_School_UUID__c</columns>
+    <columns>Original_Close_Date__c</columns>
+    <columns>Initial_Setup_Call_Completed__c</columns>
+    <columns>Onboarding_Call_Complete__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Owner__c</field>
+        <operation>equals</operation>
+        <value>Suzanne Stanley</value>
+    </filters>
+    <filters>
+        <field>Initial_Setup_Call_Completed__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Onboarding_Call_Complete__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>notEqual</operation>
+        <value>Cancelled Customer</value>
+    </filters>
+    <label>Suzy&apos;s Onboardings w.out Calls Completed</label>
+</ListView>

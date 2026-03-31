@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Promotion_Offered__c</fullName>
+    <description>Captured by sales on closed-won opp.</description>
+    <inlineHelpText>The promotion offered to the new customer</inlineHelpText>
+    <label>Promotion Offered</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Promo_Offered</valueSetName>
+    </valueSet>
+</CustomField>

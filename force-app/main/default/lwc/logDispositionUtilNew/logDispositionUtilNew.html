@@ -1,0 +1,106 @@
+<template>
+
+    <!-- 🔄 FULL SCREEN LOADER -->
+    <template if:true={isLoading}>
+        <div class="loader-backdrop">
+            <div class="loader-card">
+                <lightning-spinner alternative-text="Saving..." size="medium" variant="brand"></lightning-spinner>
+                <template if:true={noActiveCall}>
+                    <p>No Current Active Calls</p>
+                </template>
+            </div>
+        </div>
+    </template>
+
+    <!-- 🔄 INITIAL FORM LOADER -->
+    <template if:true={formLoading}>
+        <div class="loader-container">
+            <lightning-spinner alternative-text="Loading..." size="medium" variant="brand">
+            </lightning-spinner>    
+        </div>
+    </template>
+
+    <!-- 🧾 FORM -->
+    <div class="form container">
+
+        <div class="fields-grid">
+
+            <!-- SUBJECT -->
+            <div class="field">
+                <lightning-input  label="Subject" value={formData.subject} data-field="subject" required onchange={handleChange}>
+                </lightning-input>
+            </div>
+
+            <div class = "field">
+           
+            <lightning-combobox label="Disposition" value={formData.disposition} options={dispositionOptions} 
+                data-field="disposition" placeholder="Select Disposition" onchange={handleChange}>
+            </lightning-combobox>
+            </div>
+
+
+            <!-- <div class = "field">
+           
+            <lightning-input label="Assigned To" value={userId} >
+            </lightning-input>
+            </div> -->
+
+
+            <!-- WHAT ID -->
+            <div class="field">
+                <c-multi-select-combobox
+                    lookup-label="Related To"
+                    onrecordselection={handleWhatSelect}
+                    searchtype="What"
+                    is-required>
+               </c-multi-select-combobox>
+            </div>
+
+            <!-- WHO ID (Contact, Lead) -->
+            <div class="field">
+                 <c-multi-select-combobox
+                    lookup-label="Name"
+                    onrecordselection={handleWhoSelect}
+                    searchtype="Who"
+                    is-required>
+               </c-multi-select-combobox>
+            </div>
+
+            <!-- DESCRIPTION -->
+            <div class="field full-width">
+                <lightning-textarea 
+                    label="Description"
+                    value={formData.description}
+                    data-field="description"
+                    onchange={handleChange}>
+                </lightning-textarea>
+            </div>
+
+            <!-- STATUS -->
+            <div class="field">
+                <lightning-combobox 
+                    label="Status"
+                    options={statusValues}
+                    value={formData.status}
+                    data-field="status"
+                    onchange={handleChange}>
+                </lightning-combobox>
+            </div>
+
+        </div>
+
+        <!-- 🔘 SAVE BUTTON -->
+        <div class="footer">
+            <lightning-button 
+                label={btnLabel}
+                variant="brand"
+                onclick={handleSubmit}>
+            </lightning-button>
+        </div>
+
+    </div>
+
+    <!-- 📞 VOICE TOOLKIT -->
+    <lightning-service-cloud-voice-toolkit-api></lightning-service-cloud-voice-toolkit-api>
+
+</template>

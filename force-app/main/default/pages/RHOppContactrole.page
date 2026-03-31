@@ -1,0 +1,5 @@
+<apex:page standardController="Opportunity">
+    <rh2:PS_Rollup_Runner scope="OpportunityContactRole"/>
+    <rh2:PS_Rollup_Runner scope="Partner"/>
+    <rh2:PS_Rollup_Runner scope="OpportunitySplit"/>
+</apex:page>

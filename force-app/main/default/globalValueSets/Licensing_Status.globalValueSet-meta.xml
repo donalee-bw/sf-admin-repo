@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Has not applied for licensing</fullName>
+        <default>false</default>
+        <label>Has not applied for licensing</label>
+    </customValue>
+    <customValue>
+        <fullName>Has applied for licensing</fullName>
+        <default>false</default>
+        <label>Has applied for licensing</label>
+    </customValue>
+    <customValue>
+        <fullName>Licensed</fullName>
+        <default>false</default>
+        <label>Licensed</label>
+    </customValue>
+    <customValue>
+        <fullName>License-Exempt</fullName>
+        <default>false</default>
+        <label>License-Exempt</label>
+    </customValue>
+    <customValue>
+        <fullName>Licensing-Open With Limited Students</fullName>
+        <default>false</default>
+        <label>Licensing-Open With Limited Students</label>
+    </customValue>
+    <description>Used for BNP Licensing status on combined funnel and account</description>
+    <masterLabel>Licensing Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>12</activeVersionNumber>
+    <description>Evaluates conditions for whether or not an Onboarding CSAT Survey should be sent when SaaS or Billing Activation Funnel Stages are updated to &quot;Activated&quot; on the School object. First Scheduled path sends OB Handoff Email 24 hours after updates are made; second path sends the survey 48 hours after the initial update. Survey send itself occurs in the CF - Onboarding CSAT Survey due to the outbound message needing to come from the Combined Funnel object (NA - Sprint 13 &apos;23)</description>
+    <masterLabel>School - Send CSAT Email</masterLabel>
+</FlowDefinition>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Update_WorkRamp_Academy_Registration</name>
+        <label>Update WorkRamp Academy Registration</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>User_is_admin</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.WorkRampApp__Contact__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.WorkRampApp__Contact__r.User_Object__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.WorkRampApp__Contact__r.User_Object__r.User_Role__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>admin</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_combined_funnel</targetReference>
+            </connector>
+            <label>User is admin</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>WR- CF WR registration update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>WR- CF WR registration update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_combined_funnel</name>
+        <label>Get combined funnel</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_WR_record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WorkRampApp__Account__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_WR_record</name>
+        <label>Update WR record</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>WorkRampApp__Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_combined_funnel.Account__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Combined_Funnel__c</field>
+            <value>
+                <elementReference>Get_combined_funnel.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_WorkRamp_Academy_Registration</targetReference>
+        </connector>
+        <filterFormula>AND(
+ISBLANK({!$Record.Combined_Funnel__c}),
+NOT(ISBLANK({!$Record.WorkRampApp__Contact__r.User_Object__r.Id}))
+)</filterFormula>
+        <object>WorkRampApp__WorkRamp_Academy_Registration__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

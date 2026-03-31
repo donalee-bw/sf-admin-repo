@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOGIC_SaaS_onboarding__c</fullName>
+    <description>Logic for onboarding funnel flows</description>
+    <formula>OR( 
+   RecordTypeId = &apos;0121I000000OGlu&apos;,
+   RecordTypeId = &apos;0121I000000OGlw&apos;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>LOGIC SaaS onboarding</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

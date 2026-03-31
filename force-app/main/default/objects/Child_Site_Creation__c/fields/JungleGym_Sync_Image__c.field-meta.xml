@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>JungleGym_Sync_Image__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(AND(ISPICKVAL(JungleGym_Sync_Status__c, &quot;Failed&quot;), JungleGym_Sync_Error_Resolved__c = false), IMAGE(&quot;/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&amp;versionId=068Em000007Gnbp&amp;operationContext=CHATTER&amp;contentId=05TEm00000AwmUp&quot;, &quot;Sync Failed&quot;, 50, 50),
+
+IF(OR(ISPICKVAL(JungleGym_Sync_Status__c, &quot;Success&quot;), AND(ISPICKVAL(JungleGym_Sync_Status__c, &quot;Failed&quot;) , JungleGym_Sync_Error_Resolved__c = true)), IMAGE(&quot;/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&amp;versionId=068Em000007GpfF&amp;operationContext=CHATTER&amp;contentId=05TEm00000Awjbj&quot;, &quot;Sync Successful&quot;, 50, 50), null))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>JungleGym Sync Image</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

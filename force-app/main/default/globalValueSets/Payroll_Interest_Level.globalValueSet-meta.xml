@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>4: Proactively interested: came to brightwheel for payroll or planning to switch payroll providers in the next few months</fullName>
+        <default>false</default>
+        <label>4: Proactively interested: came to brightwheel for payroll or planning to switch payroll providers in the next few months</label>
+    </customValue>
+    <customValue>
+        <fullName>3: Reactively interested: wanted to learn more after learning brightwheel’s capabilities and partnership</fullName>
+        <default>false</default>
+        <label>3: Reactively interested: wanted to learn more after learning brightwheel’s capabilities and partnership</label>
+    </customValue>
+    <customValue>
+        <fullName>2: Not interested in using brightwheel’s payroll solution</fullName>
+        <default>false</default>
+        <label>2: Not interested in using brightwheel’s payroll solution</label>
+    </customValue>
+    <customValue>
+        <fullName>1: Ineligible: does not run their own payroll</fullName>
+        <default>false</default>
+        <label>1: Ineligible: does not run their own payroll</label>
+    </customValue>
+    <description>Used to guage customers interest level in our new payroll product</description>
+    <masterLabel>Payroll Interest Level</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

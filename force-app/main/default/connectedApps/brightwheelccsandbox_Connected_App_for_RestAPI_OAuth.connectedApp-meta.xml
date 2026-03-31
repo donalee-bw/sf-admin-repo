@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>sfdc+brightwheel@growwithimg.com</contactEmail>
+    <description>The connected app used for REST API OAuth for a Service Cloud Voice contact center</description>
+    <label>brightwheelccsandbox Connected App for RestAPI OAuth</label>
+    <oauthConfig>
+        <callbackUrl>http://localhost:1717/OauthRedirect</callbackUrl>
+        <certificate>MIID+zCCAuOgAwIBAgIUWipcszZl5fzwMm785qJs5hRNZWIwDQYJKoZIhvcNAQELBQAwgaUxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlhMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMRQwEgYDVQQKDAtCcmlnaHR3aGVlbDELMAkGA1UECwwCSVQxDTALBgNVBAMMBENlcnQxNzA1BgkqhkiG9w0BCQEWKGFtYXpvbi1jb25uZWN0LXNhbmRib3hAbXlicmlnaHR3aGVlbC5jb20wHhcNMjUxMjE5MDgwNDMzWhcNMjYxMjE5MDgwNDMzWjCBpTELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xFDASBgNVBAoMC0JyaWdodHdoZWVsMQswCQYDVQQLDAJJVDENMAsGA1UEAwwEQ2VydDE3MDUGCSqGSIb3DQEJARYoYW1hem9uLWNvbm5lY3Qtc2FuZGJveEBteWJyaWdodHdoZWVsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAM7BcK4bnzj8PAxisCmhjRarkguj1HwJw9bAglz/QXmNRaPwx/POwwMV95Hrf8QpIkuXH5351cuvfolhw6fjCO17NXLRHpSYAzcINoChBMxme8tcO1k9TliGDvlbe6dJR8Xz5qtRAThEkxlKZWVsOZQlvafESzh9UoKphQ1ar6C5Prdd/70BW9lCPMvUSBMXyheU0+GO0DVK4gtGj6zo6fstP7C5qq/8GCmy2NGppqOL5ISdCUDMzUirpVx7+cp1VKLUY4wKmcaIqpIBqHxL5Y0tPagqAeT1vxTQPnRueh5YlXNMKfCDTmBUSDWYp1wJyaVx2xVSBxZ3vBUTjphn8qkCAwEAAaMhMB8wHQYDVR0OBBYEFMr4J+SW9CvqmAXkLAM7TEaLmfZAMA0GCSqGSIb3DQEBCwUAA4IBAQAh3iIKi4GlVxTcjUFPXPnboAD0mrkrQW2Lx4/lcuKF3+g5YSaiwOPTqNcMCI3RbhVp02nwDLjtowHbG2iMdEgLzLU4NglsFzEZ0VFrUZXAuxlMqVoGa8cHvItBcqTA4rAw04KFwsPoqPvaT+D8fT9k6Mk6/W+FFiv60rc2ppB0btoxBxUyeYELvuBuWcYOArGwD8aEBPrkEgdL1619/AQ6GTswo6zyEXyOLYPi5S4rsLEdj8O2jG/ofBHhSxb25CH//2FQqemOyhv+Mh3Sijv/zt9/bW4UKXbQMU/gJ1eHDFsdGYzvrs+ecYshyHHwDVaFOo5eGpGbOeX0u3ChUji3</certificate>
+        <consumerKey>3MVG9xfrbKQ6hBysXKwqXxlPvtFyFzUZaZ9jgmfBqn6kOE4_EWlfNBFexCx9KZq4483_uzRqTsXTjDch_.9jr</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>BYPASS</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>Service Cloud Voice Permission Set</permissionSetName>
+</ConnectedApp>

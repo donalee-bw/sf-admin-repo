@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>2</activeVersionNumber>
+    <description>Auto completes open inbound tasks on customer or inactive prospect accounts. Scheduled to run at 5AM daily.</description>
+    <masterLabel>Auto Close Tasks - Open on New Customer Accounts - Scheduled</masterLabel>
+</FlowDefinition>

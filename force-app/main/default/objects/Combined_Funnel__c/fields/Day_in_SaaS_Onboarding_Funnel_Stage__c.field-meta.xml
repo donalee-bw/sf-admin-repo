@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Day_in_SaaS_Onboarding_Funnel_Stage__c</fullName>
+    <externalId>false</externalId>
+    <formula>Account__r.School_Object__r.Day_in_Onboarding_Funnel_Stage__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Number of days since the SaaS Onboarding Funnel Stage was last changed. Calculated from production and populated on the school object related to the Combined Funnel record.</inlineHelpText>
+    <label>Day in SaaS Onboarding Funnel Stage</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Step 3: Standard OBS Sequence (day 60)</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Comments__c</field>
+        <value xsi:type="xsd:string">Day 60 - Email/Text or Call during onboarding</value>
+    </values>
+    <values>
+        <field>Object_Name__c</field>
+        <value xsi:type="xsd:string">Contact</value>
+    </values>
+    <values>
+        <field>Owner__c</field>
+        <value xsi:type="xsd:string">Opportunity_Owner</value>
+    </values>
+    <values>
+        <field>Priority__c</field>
+        <value xsi:type="xsd:string">Normal</value>
+    </values>
+    <values>
+        <field>Record_Type_Id__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Sequence_Identifier__c</field>
+        <value xsi:type="xsd:string">Standard OBS Sequence</value>
+    </values>
+    <values>
+        <field>Sequence_Order__c</field>
+        <value xsi:type="xsd:double">60.0</value>
+    </values>
+    <values>
+        <field>Status__c</field>
+        <value xsi:type="xsd:string">Open</value>
+    </values>
+    <values>
+        <field>Subject__c</field>
+        <value xsi:type="xsd:string">Day 60</value>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Task</value>
+    </values>
+</CustomMetadata>

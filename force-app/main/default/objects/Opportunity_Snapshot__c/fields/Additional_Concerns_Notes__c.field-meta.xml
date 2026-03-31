@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Additional_Concerns_Notes__c</fullName>
+    <inlineHelpText>Notes from Sales Team to Onboarding team at time of closed won opp.</inlineHelpText>
+    <label>Additional Concerns/Notes</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

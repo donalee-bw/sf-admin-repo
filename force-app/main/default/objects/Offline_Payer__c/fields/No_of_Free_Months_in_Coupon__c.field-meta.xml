@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_of_Free_Months_in_Coupon__c</fullName>
+    <description>Based on coupon, how many months does customer have for free? (free only, do not input discounted months)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Based on coupon, how many months does customer have for free? (free only, do not input discounted months)</inlineHelpText>
+    <label>No. of Free Months in Coupon</label>
+    <precision>2</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

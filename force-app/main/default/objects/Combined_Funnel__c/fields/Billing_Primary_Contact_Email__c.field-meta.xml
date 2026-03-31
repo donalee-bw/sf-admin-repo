@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Primary_Contact_Email__c</fullName>
+    <description>Reference to email address on Billing Primary Contact lookup.</description>
+    <externalId>false</externalId>
+    <formula>Billing_Primary_Contact__r.Email</formula>
+    <inlineHelpText>Email address for the Billing Primary Contact. Not on page layout, used in List-views.</inlineHelpText>
+    <label>Billing Primary Contact Email</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

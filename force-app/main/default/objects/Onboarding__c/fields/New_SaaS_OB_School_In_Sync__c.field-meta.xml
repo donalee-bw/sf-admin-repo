@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_SaaS_OB_School_In_Sync__c</fullName>
+    <description>This formula checks if the onboarding was created before 06/26/2024, if the related payer customer type is &quot;Government Payer,&quot; or if the account customer type is &quot;Multi-Site Child.&quot; If any of these are true, it displays &quot;Outside Sync Need Population,&quot; indicating the onboarding and school object shouldn&apos;t match due to other specific scenarios. Otherwise, it compares specific new SaaS-related date fields and returns True if both fields are null or if the date difference is one day or less, and False otherwise.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+  OR(
+    DATEVALUE(CreatedDate) &lt; DATE(2024, 6, 26),
+    Account__r.Related_Payer_Customer_Type__c = &quot;Government Payer&quot;,
+    TEXT( Account__r.Customer_Type__c ) = &quot;Multi-Site Child&quot;
+  ),
+  &quot;Outside Sync Need Population&quot;,
+  IF(
+    AND(
+      OR(
+        AND(
+          ISBLANK(SaaS_Adding_Students_Stage_Met_Date__c),
+          ISBLANK(Account__r.School_Object__r.SaaS_Adding_Students_Stage_Met_Date__c)
+        ),
+        ABS(DATEVALUE(SaaS_Adding_Students_Stage_Met_Date__c) - DATEVALUE(Account__r.School_Object__r.SaaS_Adding_Students_Stage_Met_Date__c)) &lt;= 1
+      ),
+      OR(
+        AND(
+          ISBLANK(SaaS_Adding_Parents_Stage_Met_Date__c),
+          ISBLANK(Account__r.School_Object__r.SaaS_Adding_Parents_Stage_Met_Date__c)
+        ),
+        ABS(DATEVALUE(SaaS_Adding_Parents_Stage_Met_Date__c) - DATEVALUE(Account__r.School_Object__r.SaaS_Adding_Parents_Stage_Met_Date__c)) &lt;= 1
+      ),
+      OR(
+        AND(
+          ISBLANK(SaaS_Adding_Staff_Stage_Met_Date__c),
+          ISBLANK(Account__r.School_Object__r.SaaS_Adding_Staff_Stage_Met_Date__c)
+        ),
+        ABS(DATEVALUE(SaaS_Adding_Staff_Stage_Met_Date__c) - DATEVALUE(Account__r.School_Object__r.SaaS_Adding_Staff_Stage_Met_Date__c)) &lt;= 1
+      ),
+      OR(
+        AND(
+          ISBLANK(SaaS_Staff_Logging_In_Stage_Met_Date__c),
+          ISBLANK(Account__r.School_Object__r.SaaS_Staff_Logging_In_Stage_Met_Date__c)
+        ),
+        ABS(DATEVALUE(SaaS_Staff_Logging_In_Stage_Met_Date__c) - DATEVALUE(Account__r.School_Object__r.SaaS_Staff_Logging_In_Stage_Met_Date__c)) &lt;= 1
+      ),
+      OR(
+        AND(
+          ISBLANK(SaaS_Parents_Signing_Up_Stage_Met_Date__c),
+          ISBLANK(Account__r.School_Object__r.SaaS_Parents_Signing_Up_Stage_Met_Date__c)
+        ),
+        ABS(DATEVALUE(SaaS_Parents_Signing_Up_Stage_Met_Date__c) - DATEVALUE(Account__r.School_Object__r.SaaS_Parents_Signing_Up_Stage_Met_Date__c)) &lt;= 1
+      ),
+      OR(
+        AND(
+          ISBLANK(SaaS_Tracking_Attendance_Stage_Met_Date__c),
+          ISBLANK(Account__r.School_Object__r.SaaS_Tracking_Attendance_Stage_Met_Date__c)
+        ),
+        ABS(DATEVALUE(SaaS_Tracking_Attendance_Stage_Met_Date__c) - DATEVALUE(Account__r.School_Object__r.SaaS_Tracking_Attendance_Stage_Met_Date__c)) &lt;= 1
+      ),
+      OR(
+        AND(
+          ISBLANK(SaaS_Logging_Activities_Stage_Met_Date__c),
+          ISBLANK(Account__r.School_Object__r.SaaS_Logging_Activities_Stage_Met_Date__c)
+        ),
+        ABS(DATEVALUE(SaaS_Logging_Activities_Stage_Met_Date__c) - DATEVALUE(Account__r.School_Object__r.SaaS_Logging_Activities_Stage_Met_Date__c)) &lt;= 1
+      ),
+      OR(
+        AND(
+          ISBLANK(SaaS_Activation_Date_Stamp__c),
+          ISBLANK(Account__r.School_Object__r.SaaS_Activation_Date_2024__c)
+        ),
+        ABS(SaaS_Activation_Date_Stamp__c - DATEVALUE(Account__r.School_Object__r.SaaS_Activation_Date_2024__c)) &lt;= 1
+      )
+    ),
+    &quot;True&quot;,
+    &quot;False&quot;
+  )
+)</formula>
+    <inlineHelpText>Compares SaaS dates between onboarding and the school object. If onboarding was created before 06/26/2024, or certain account conditions apply, it shows &quot;Outside Sync Need Population.&quot; Otherwise, it checks if dates match or differ by one day or less.</inlineHelpText>
+    <label>New SaaS OB/School In Sync?</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

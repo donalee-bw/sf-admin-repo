@@ -1,0 +1,2433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>CF_Owner_Update_Through_OBS_Upsell_Event</name>
+        <label>CF Owner Update Through OBS Upsell Event</label>
+        <locationX>7346</locationX>
+        <locationY>1403</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <connector>
+            <targetReference>Get_Billing_Onboarding_Record</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>BUCFOwnerChatterPost</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>Get_BU_Combined_Funnel_OBSUpdate.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>chatterPost</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Add_Child_Acct_ID_to_VarColl_to_Get_CF</name>
+        <label>Add Child Acct ID to VarColl to Get CF</label>
+        <locationX>4842</locationX>
+        <locationY>1919</locationY>
+        <assignmentItems>
+            <assignToReference>ChildAcct_ids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Thru_Related_Child_Acct.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Thru_Related_Child_Acct</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Adding all the child Account IDs to the collection to be used later to get all the related combined funnel that need to have the OBS owner updated</description>
+        <name>Add_ID_to_Collection_to_Get_CF</name>
+        <label>Add ID to Collection to Get CF</label>
+        <locationX>4274</locationX>
+        <locationY>1919</locationY>
+        <assignmentItems>
+            <assignToReference>ChildAcct_ids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_thru_Child_Accts.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_thru_Child_Accts</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_OBS_Call_Scheduled_Date</name>
+        <label>Assign OBS Call Scheduled Date</label>
+        <locationX>4468</locationX>
+        <locationY>863</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Open_Opportunities.OBS_Call_Scheduled_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Open_Opportunities.OBS_Owner__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Open_Opp_OBS_Date</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_OBS_Owner_Child_CF</name>
+        <label>Assign OBS Owner Child CF</label>
+        <locationX>4720</locationX>
+        <locationY>2603</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_Thru_Combined_Funnels.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>VarCol_CombinedFunnelsOwner</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Thru_Combined_Funnels</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Thru_Combined_Funnels</targetReference>
+        </connector>
+    </assignments>
+    <constants>
+        <name>StandardOnboardingPathQueue</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>00GEi000006ASkLMAW</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <name>Account_Found_for_OBS</name>
+        <label>Account Found for OBS ?</label>
+        <locationX>4600</locationX>
+        <locationY>1271</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Acct_found</name>
+            <conditionLogic>1 AND ( 2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_for_OBS_Owner_Change</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Account_for_OBS_Owner_Change.Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Single-Site</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Type_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PILOT: OBS Single-Site: Brightwheel Setup - 45 Min</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Combined_Funnel</targetReference>
+            </connector>
+            <label>Yes, Acct found</label>
+        </rules>
+        <rules>
+            <name>Yes_Acct_Found_Multi_Site</name>
+            <conditionLogic>1 AND ( 2 OR 3 )</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_for_OBS_Owner_Change</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Account_for_OBS_Owner_Change.Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Parent</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Account_for_OBS_Owner_Change.Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Child</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Multi_Site_Accounts</targetReference>
+            </connector>
+            <label>Yes, Acct Found Multi-Site</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check to see for the Chili Piper meeting type - Billing Sales Follow-up, if the whatid is opportunity or account.</description>
+        <name>Billing_SFU_Whatid_is_Opp_or_Acct</name>
+        <label>Billing SFU Whatid is Opp or Acct</label>
+        <locationX>6158</locationX>
+        <locationY>863</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Billing_SFU_Whatid_is_Oppty</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.WhatId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>006</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.WhatId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_the_Oppty_Billing_Sales_Followup</targetReference>
+            </connector>
+            <label>Billing SFU Whatid is Oppty</label>
+        </rules>
+        <rules>
+            <name>Billing_SFU_Whatid_is_Acct</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.WhatId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>001</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.WhatId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Open_Billing_Upsell_Oppty</targetReference>
+            </connector>
+            <label>Billing SFU Whatid is Acct</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>When to see when the Biiling Upsell Sales follow-up call is scheduled - to update the contact and opportunity, when it&apos;s completed - update the contact Biiling Upsell Sales follow-up call is completed date.</description>
+        <name>Billing_Upsell_Sales_Follow_up_Scheduled_or_Completed</name>
+        <label>Billing Upsell Sales Follow-up Scheduled or Completed?</label>
+        <locationX>6620</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Billing_Upsell_Sales_FU_Scheduled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Completed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_Billing_Upsell_Sales_FU_Scheduled_date</targetReference>
+            </connector>
+            <label>Billing Upsell Sales FU Scheduled</label>
+        </rules>
+        <rules>
+            <name>Billing_Upsell_Sales_FU_Completed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ActivityDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LOGIC_event_past_end_time__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.No_Show_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Canceled_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_Billing_Upsell_Sales_FU_Completed_Date</targetReference>
+            </connector>
+            <label>Billing Upsell Sales FU Completed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>BU_Combined_Funnel_Found_OBSUpdate</name>
+        <label>BU Combined Funnel Found OBSUpdate?</label>
+        <locationX>7478</locationX>
+        <locationY>1187</locationY>
+        <defaultConnector>
+            <targetReference>Get_Billing_Onboarding_Record</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>yes_Combined_Funnel_Found_BU</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_BU_Combined_Funnel_OBSUpdate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_CF_Owner_BU_OBS</targetReference>
+            </connector>
+            <label>yes, Combined Funnel Found BU</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>BU_Oppty_Found_when_OBS_Call_Scheduled</name>
+        <label>BU Oppty Found when OBS Call Scheduled?</label>
+        <locationX>7797</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Get_Billing_Onboarding_Record</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>yes_BU_Oppty_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Billing_Upsell_Opportunity</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_OBS_Owner_on_BU_Oppty</targetReference>
+            </connector>
+            <label>yes, BU Oppty Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Combined_Funnels_Found</name>
+        <label>Combined Funnels Found?</label>
+        <locationX>4764</locationX>
+        <locationY>2387</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_CF_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Child_Combined_Funnels</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Thru_Combined_Funnels</targetReference>
+            </connector>
+            <label>Yes, CF Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Found_all_Multi_site_Child_Accounts</name>
+        <label>Found all Multi-site Child Accounts?</label>
+        <locationX>4294</locationX>
+        <locationY>1703</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Found_MS_Child</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_All_Child_Accounts_Multi_site</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_thru_Child_Accts</targetReference>
+            </connector>
+            <label>Yes, Found MS Child</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Found_Child_With_Same_Parent_Acct_ID</name>
+        <label>Found Child With Same Parent Acct ID</label>
+        <locationX>4862</locationX>
+        <locationY>1703</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Found_Related_Child_Accts</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Accounts_with_the_Same_Parent_ID</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Thru_Related_Child_Acct</targetReference>
+            </connector>
+            <label>Yes, Found Related Child Accts</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Found_Open_Opp_decision</name>
+        <label>Found Open Opp decision</label>
+        <locationX>4600</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Get_Account_for_OBS_Owner_Change</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Open_Opp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Open_Opportunities.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_OBS_Call_Scheduled_Date</targetReference>
+            </connector>
+            <label>Found Open Opp</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if the Gov sales follow-up call was scheduled or completed</description>
+        <name>Gov_Scheduled_or_Completed</name>
+        <label>Gov Scheduled or Completed</label>
+        <locationX>2052</locationX>
+        <locationY>1655</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Gov_Scheduled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ActivityDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Completed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Gov_Lic_Oppty_s_Sales_Follow_up_Fields</targetReference>
+            </connector>
+            <label>Gov Scheduled</label>
+        </rules>
+        <rules>
+            <name>Gov_Completed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ActivityDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LOGIC_event_past_end_time__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.No_Show_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Canceled_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Gov_Sales_Followup_Completed</targetReference>
+            </connector>
+            <label>Gov Completed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_this_BU_Oppty_Closed_Won</name>
+        <label>Is this BU Oppty Closed Won ?</label>
+        <locationX>7632</locationX>
+        <locationY>971</locationY>
+        <defaultConnector>
+            <targetReference>Get_Billing_Onboarding_Record</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>yes_BU_Oppty_CW</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Billing_Upsell_Opportunity.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_BU_Combined_Funnel_OBSUpdate</targetReference>
+            </connector>
+            <label>yes, BU Oppty CW</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if account is the Multi-Site Parent or Multi-site child</description>
+        <name>Multi_Site_Accounts</name>
+        <label>Multi-Site Accounts</label>
+        <locationX>4764</locationX>
+        <locationY>1379</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Parent_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_for_OBS_Owner_Change.Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Parent</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Parent_Owner_OBS</targetReference>
+            </connector>
+            <label>Parent Account</label>
+        </rules>
+        <rules>
+            <name>Child_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Account_for_OBS_Owner_Change.Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Child</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Account_for_OBS_Owner_Change.ParentId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_the_Child_s_Parent_with_OBS</targetReference>
+            </connector>
+            <label>Child Account</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Was there a Opportunity Follow</description>
+        <name>Opportunity_Found_Based_on_Acct_Cont</name>
+        <label>Opportunity Found Based on Acct &amp; Cont</label>
+        <locationX>2282</locationX>
+        <locationY>863</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Opportunity_Found_Based_on_Acct_Cont</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Based_on_Acct_Contact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Type_of_Opportunity_Found_Acct_Cont</targetReference>
+            </connector>
+            <label>Yes,Opportunity Found Based on Acct &amp; Cont</label>
+        </rules>
+        <rules>
+            <name>No_Update_Gov_Contact_Sales_Followup_Completed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Assigned_User_Role__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Government</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ActivityDate</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Contact.Gov_Sales_Follow_up_Call_Completed_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Completed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Based_on_Acct_Contact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Gov_Sales_Followup_Completed</targetReference>
+            </connector>
+            <label>No, Update Gov Contact Sales Followup Completed</label>
+        </rules>
+        <rules>
+            <name>No_Update_Contact_Saas_Sales_Followup_Completed</name>
+            <conditionLogic>(NOT(1)) AND 2 AND 3 AND 4</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Assigned_User_Role__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Government</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ActivityDate</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Contact.Billing_Sales_Follow_up_Completed_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Completed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Based_on_Acct_Contact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Update_Contact_Sales_Followup_Completed_Field</targetReference>
+            </connector>
+            <label>No, Update Contact Saas Sales Followup Completed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This node is to see if we want to update the scheduled date fields or the completed date fields.</description>
+        <name>Scheduled_or_Completed</name>
+        <label>Scheduled or Completed?</label>
+        <locationX>314</locationX>
+        <locationY>971</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Scheduled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ActivityDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Completed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity_Sales_Followup_Field</targetReference>
+            </connector>
+            <label>Scheduled</label>
+        </rules>
+        <rules>
+            <name>Completed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ActivityDate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.LOGIC_event_past_end_time__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.No_Show_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Canceled_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_Sales_Followup_Completed_Field</targetReference>
+            </connector>
+            <label>Completed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>checking to see if we want to populate the AE Post-CW Check-In Scheduled Date or Completed Date</description>
+        <name>Scheduled_or_Completed_AE_Post_Sales_15</name>
+        <label>Scheduled or Completed AE Post Sales 15</label>
+        <locationX>8457</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Scheduled_AE_Post_Sales</name>
+            <conditionLogic>1 AND ( 2 OR 3 )</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Completed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contact.AE_Post_CW_Check_In_Scheduled_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contact.AE_Post_CW_Check_In_Scheduled_Date__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.ActivityDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_AE_Post_Sales_FU_Scheduled_Date</targetReference>
+            </connector>
+            <label>Scheduled AE Post Sales</label>
+        </rules>
+        <rules>
+            <name>Completed_AE_Post_Sales</name>
+            <conditionLogic>1 AND ( 2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Completed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contact.AE_Post_CW_Check_In_Completed_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contact.AE_Post_CW_Check_In_Completed_Date__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.ActivityDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_AE_Post_Sales_FU_Completed_Date</targetReference>
+            </connector>
+            <label>Completed AE Post Sales</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>checking to see if we need to populate the Billing Upsell AE Post-CW Scheduled Date or Completed Date</description>
+        <name>Scheduled_or_completed_Billing_UP_AE_Post_Sales</name>
+        <label>Scheduled or completed Billing UP AE Post Sales</label>
+        <locationX>9249</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Billing_AE_Post_CW_Sales_Scheduled</name>
+            <conditionLogic>1 AND ( 2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Completed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contact.Billing_AE_Post_CW_Check_In_Scheduled_Da__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contact.Billing_AE_Post_CW_Check_In_Scheduled_Da__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.ActivityDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_AE_Post_CW_Scheduled_Date</targetReference>
+            </connector>
+            <label>Billing AE Post-CW Sales Scheduled</label>
+        </rules>
+        <rules>
+            <name>Billing_AE_Post_CW_Sales_Completed</name>
+            <conditionLogic>1 AND ( 2 OR 3 )</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Completed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contact.Billing_AE_Post_CW_Check_In_Completed_DT__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contact.Billing_AE_Post_CW_Check_In_Completed_DT__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.ActivityDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_AE_Post_CW_Completed_Date</targetReference>
+            </connector>
+            <label>Billing AE Post-CW Sales Completed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check what Chili Piper Meeting Type was Scheduled or Completed - For the Standard Onboarding Path - checking if it is &quot;PILOT: OBS Single-Site: Brightwheel Setup - 45 Min&quot;, &quot;PILOT: OBS Mutli-Site: Brightwheel Setup - 45 Min&quot;, or &quot;Sales - BW Setup Followup&quot;</description>
+        <name>Type_of_CP_Meeting</name>
+        <label>Type of CP Meeting</label>
+        <locationX>5914</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Sales_Follow_up_Meeting_Type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Type_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales - BW Setup Followup</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Whatid_is_Account_or_Opportunity</targetReference>
+            </connector>
+            <label>Sales Follow-up Meeting Type</label>
+        </rules>
+        <rules>
+            <name>Standard_OB_Path_PILOT_Meeting_Types</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LOGIC_OBS_Call__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Open_Opportunities</targetReference>
+            </connector>
+            <label>Standard OB Path PILOT Meeting Types</label>
+        </rules>
+        <rules>
+            <name>Billing_Upsell_CP_Meeting_Type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Type_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Billing Upsell - Billing Setup Follow Up</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Billing_Upsell_Sales_Follow_up_Scheduled_or_Completed</targetReference>
+            </connector>
+            <label>Billing Upsell CP Meeting Type</label>
+        </rules>
+        <rules>
+            <name>Billing_Upsell_CP_OBS_Meeting_Type</name>
+            <conditionLogic>(1 OR 2) AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Type_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>OBS Single Site and Eng - Brightwheel Billing Training - 30 Min</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Type_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>OBS Multi-Site and Eng - Brightwheel Billing Training - 30 Min</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Completed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Billing_Upsell_Opportunity</targetReference>
+            </connector>
+            <label>Billing Upsell CP OBS Meeting Type</label>
+        </rules>
+        <rules>
+            <name>AE_Post_Sale_15_Day_Follow_up</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Type_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sales - BW Post Sale 15 Day Followup</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Scheduled_or_Completed_AE_Post_Sales_15</targetReference>
+            </connector>
+            <label>AE Post Sale 15 Day Follow-up</label>
+        </rules>
+        <rules>
+            <name>Billing_AE_Post_Sales_Followup</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Meeting_Type_CP__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Billing Upsell - BW Post Sale 15 Day Followup</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Scheduled_or_completed_Billing_UP_AE_Post_Sales</targetReference>
+            </connector>
+            <label>Billing AE Post Sales Followup</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Type_of_Opportunity_Found_Acct_Cont</name>
+        <label>Type of Opportunity Found Acct Cont</label>
+        <locationX>1766</locationX>
+        <locationY>971</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Saas_Oppt_Acct_Cont</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Based_on_Acct_Contact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Based_on_Acct_Contact.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Saas</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Scheduled_or_Completed</targetReference>
+            </connector>
+            <label>Saas Oppt Acct Cont</label>
+        </rules>
+        <rules>
+            <name>Gov_Oppt_Acc_Cont</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Based_on_Acct_Contact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity_Based_on_Acct_Contact.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Government Licensee</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Gov_Scheduled_or_Completed</targetReference>
+            </connector>
+            <label>Gov Oppt Acc Cont</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Was there an open Billing Upsell Opportunity Found so we can update the Sales Follow-up Meeting Scheduled Date on the Oppty.</description>
+        <name>Was_an_Billing_Upsell_Opportunity_Found</name>
+        <label>Was an Billing Upsell Opportunity Found?</label>
+        <locationX>6158</locationX>
+        <locationY>1079</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Billing_Upsell_Oppty_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Open_Billing_Upsell_Oppty</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_Upsell_Oppty_Sales_Follow_up_Scheduled_Date</targetReference>
+            </connector>
+            <label>Yes, Billing Upsell Oppty Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>The goal is to find Billing Onboarding Record that is owned by Standard Onboarding Path Queue, that is not opted out ( avoid updating older Billing onboarding record).</description>
+        <name>Was_Billing_Onboarding_Record_Found</name>
+        <label>Was Billing Onboarding Record Found?</label>
+        <locationX>7797</locationX>
+        <locationY>1871</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Billing_Onboarding_Record_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Billing_Onboarding_Record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_owner_of_billing_onboarding</targetReference>
+            </connector>
+            <label>Billing Onboarding Record Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check to see if we found any Combined Funnel Records</description>
+        <name>Was_Combined_Funnel_Found</name>
+        <label>Was Combined Funnel Found?</label>
+        <locationX>3702</locationX>
+        <locationY>1487</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_CombinedFunnel_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_CF_Owner_with_OBS</targetReference>
+            </connector>
+            <label>Yes CombinedFunnel Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checking to make sure we found a contact record</description>
+        <name>Was_Contact_Found</name>
+        <label>Was Contact Found?</label>
+        <locationX>7977</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Type_of_CP_Meeting</targetReference>
+            </connector>
+            <label>Yes, Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>What_type_of_Opportunity</name>
+        <label>What type of Opportunity</label>
+        <locationX>798</locationX>
+        <locationY>863</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Saas</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Saas</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Scheduled_or_Completed</targetReference>
+            </connector>
+            <label>Saas</label>
+        </rules>
+        <rules>
+            <name>Gov_Lic</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Government_Licensee</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Gov_Scheduled_or_Completed</targetReference>
+            </connector>
+            <label>Gov Lic</label>
+        </rules>
+        <rules>
+            <name>Billing_Upsell</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Opportunity</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Opportunity.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Billing Upsell</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Billing Upsell</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check to see if there is Whatid on the Event and if that Whatid is an Opportunity or Account.</description>
+        <name>Whatid_is_Account_or_Opportunity</name>
+        <label>Whatid is Account or Opportunity</label>
+        <locationX>2052</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Whatid_is_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.WhatId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.WhatId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>006</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Opportunity</targetReference>
+            </connector>
+            <label>Whatid is Opportunity</label>
+        </rules>
+        <rules>
+            <name>Whatid_is_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.WhatId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.WhatId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>001</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Opportunity_Based_on_Acct_Contact</targetReference>
+            </connector>
+            <label>Whatid is Account</label>
+        </rules>
+        <rules>
+            <name>Whatid_is_null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.WhatId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Default_Update_Contact_on_Sales_Follow_up_Call</targetReference>
+            </connector>
+            <label>Whatid is null</label>
+        </rules>
+    </decisions>
+    <description>Record Trigger Flow for every time a chili Piper &quot;Sales - BW Setup Followup&quot; Meeting Type created to automatically populate the (1) Sales Follow-up Call Scheduled Date / (2) Sales Follow-up Call Completed Date on the related Contact record
+04-01-25 - BW - Added population of OBS Call Scheduled Date for specific CP Meeting Types
+
+LK - 01/3/25 - Added OBS 1:1 Meeting Schedule Path - to update the OBS Owner on the Contact, Account, Combined Funnel.
+LK 1/7/25 - Added Filter on the OBS Decision node, so OBS is only updated if the Contact has a Sales Follow-up Call Scheduled. For standard onboarding path - if SSP and Ratecard was added then the OBS is updated at the CW process.
+LK - 1/24/2025 - Update the different Gov/Billing Upsell Sales followup Fields on Contact based the open opportunity.
+LK - 1/31/2025 - Added Billing Upsell Meeting Type and Logic to update sales follow-up for Upsell.
+LK - 2/6/2025 - Update the Sales Follow-up Meeting Completed Date, - Accountid is the whatid, the opportunity is closed, then look at the assigned role.
+LK - 2/11/2025 - Added &quot;Sales - BW Post Sales 15 Day Follow&quot; CP meeting type - to update the contact&apos;s [ AE Post-CW Check-In Scheduled Date &amp; AE Post-CW Check-In Completed Date] 
+LK - 2/11/2025 - Added Billing BW Post Sales 15 Day Follow CP Meeting Type
+LK- 2/12/2025 - Updated the Decision node to include multi-site meeting which was missing to update the OBS
+LK- 02/18/2025 - Updated Account Logic, to determine OBS Call set for Single Site or Multi-Site.
+BW - 04/01/2025 - Added population of OBS Call Scheduled date based on CP Meeting Types
+JS - 05/27/2025 - Updated Entry Criteria to check if LOGIC Trigger Counter is updated to enable field updates if the meeting is marked as complete prior to Event End Time
+LK - 06/13/2025 - Fix - Update to make sure we are also updating Opportunity that isclosed and in one of the Post CW Stages for Sales Follow-up Calls ( SSPR OR OBE ) .
+LK - 09.18.2025 - Adding Logic for Billing Upsell OBS Branch - Get Opportunity and Combined Funnel to update the OBS owner.</description>
+    <environments>Default</environments>
+    <interviewLabel>Event - After Save - Standard Onboarding Path {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Event - After Save - Standard Onboarding Path</label>
+    <loops>
+        <name>Loop_thru_Child_Accts</name>
+        <label>Loop thru Child Accts</label>
+        <locationX>4186</locationX>
+        <locationY>1811</locationY>
+        <collectionReference>Get_All_Child_Accounts_Multi_site</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_ID_to_Collection_to_Get_CF</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_Child_Combined_Funnels</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Loop_Thru_Combined_Funnels</name>
+        <label>Loop Thru Combined Funnels</label>
+        <locationX>4632</locationX>
+        <locationY>2495</locationY>
+        <collectionReference>Get_Child_Combined_Funnels</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_OBS_Owner_Child_CF</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Mult_Site_Combined_Funnel_Owner</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>If Event was related to multi-site child Account, then we are using the parent account Id from the child to find all the child accounts to update the OBS Owner</description>
+        <name>Loop_Thru_Related_Child_Acct</name>
+        <label>Loop Thru Related Child Acct</label>
+        <locationX>4754</locationX>
+        <locationY>1811</locationY>
+        <collectionReference>Get_Accounts_with_the_Same_Parent_ID</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Child_Acct_ID_to_VarColl_to_Get_CF</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_Child_Combined_Funnels</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>get the account related to the contact that is related to the triggered Event, to get to the combined funnel.</description>
+        <name>Get_Account_for_OBS_Owner_Change</name>
+        <label>Get Account for OBS Owner Change</label>
+        <locationX>4600</locationX>
+        <locationY>1163</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Account_Found_for_OBS</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>The Event was related to a Multi-Site Child Account, so we need to use the child&apos;s parent account id to find all other child accounts</description>
+        <name>Get_Accounts_with_the_Same_Parent_ID</name>
+        <label>Get Accounts with the Same Parent ID</label>
+        <locationX>4862</locationX>
+        <locationY>1595</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_Child_With_Same_Parent_Acct_ID</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ParentId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Account_for_OBS_Owner_Change.ParentId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_All_Child_Accounts_Multi_site</name>
+        <label>Get All Child Accounts Multi-site</label>
+        <locationX>4294</locationX>
+        <locationY>1595</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_all_Multi_site_Child_Accounts</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ParentId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Account_for_OBS_Owner_Change.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Billing_Onboarding_Record</name>
+        <label>Get Billing Onboarding Record</label>
+        <locationX>7797</locationX>
+        <locationY>1763</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_Billing_Onboarding_Record_Found</targetReference>
+        </connector>
+        <filterLogic>1 AND ( 2 OR 3 ) AND 4 AND 5 AND 6</filterLogic>
+        <filters>
+            <field>Primary_Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhoId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>OwnerId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>StandardOnboardingPathQueue</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Label.Billing_Onboarding_Record_Type</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Opted Out</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Onboarding__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get the Billing Upsell Opportunity that is not Close Lost. Using the related id to the event. If it&apos;s related to BU opp, then go grab that exactly BU opp. If it&apos;s related to an account, then find the right BU opp with the most recently closedate.</description>
+        <name>Get_Billing_Upsell_Opportunity</name>
+        <label>Get Billing Upsell Opportunity OBS</label>
+        <locationX>7797</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>BU_Oppty_Found_when_OBS_Call_Scheduled</targetReference>
+        </connector>
+        <filterLogic>1 OR ( 2 AND 3 AND 4 )</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Label.Billing_Upsell_Opportunity</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed Lost</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <sortField>CloseDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>If Billing Upsell is Closed Won when the OBS Event was scheduled, then go grab the Combined Funnel and update the CF Ownership to the assigne id of the OBS Billing Upsell event. The OBS was selected by Chili Piper.</description>
+        <name>Get_BU_Combined_Funnel_OBSUpdate</name>
+        <label>Get BU Combined Funnel OBSUpdate</label>
+        <locationX>7478</locationX>
+        <locationY>1079</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>BU_Combined_Funnel_Found_OBSUpdate</targetReference>
+        </connector>
+        <filterLogic>1 OR 2</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Billing_Upsell_Opportunity.Combined_Funnel__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_CW_Opportunity__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Billing_Upsell_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Getting all Combined Funnels for the multi-site account hierarchy to update the Owner to the OBS that was selected by Chili Piper Round Robin.</description>
+        <name>Get_Child_Combined_Funnels</name>
+        <label>Get Child Combined Funnels</label>
+        <locationX>4764</locationX>
+        <locationY>2279</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Combined_Funnels_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>ChildAcct_ids</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get the related Combined Funnel to the account we found. Sometimes Combined Funnel might not have been created so to prevent this flow from failing we are going check if there is a combined funnel to change the ownership to the OBS owner that Chili Piper assigned on the PILOT Standard Onboarding Path Meetings.</description>
+        <name>Get_Combined_Funnel</name>
+        <label>Get Combined Funnel</label>
+        <locationX>3702</locationX>
+        <locationY>1379</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_Combined_Funnel_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Account_for_OBS_Owner_Change.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get the Contact related to the Chili Piper Event created to update the (1) Sales Follow-up Call Scheduled Date at creation (2) Sales Follow-up Call Completed Date at completion of the event.</description>
+        <name>Get_Contact</name>
+        <label>Get Contact</label>
+        <locationX>7977</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_Contact_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhoId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get the open billing upsell oppty related to the Event with the Whoid and Whatid ( Acct)</description>
+        <name>Get_Open_Billing_Upsell_Oppty</name>
+        <label>Get Open Billing Upsell Oppty</label>
+        <locationX>6158</locationX>
+        <locationY>971</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_an_Billing_Upsell_Opportunity_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhoId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Label.Billing_Upsell_Opportunity</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Open_Opportunities</name>
+        <label>Get Open Opportunities</label>
+        <locationX>4600</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_Open_Opp_decision</targetReference>
+        </connector>
+        <filterLogic>1 AND ((8 OR 9 OR 10) AND (2 OR (3 AND 4) OR 5 OR 6 OR 7))</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CloseDate</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <dateValue>2025-03-31</dateValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SSPR Collection</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>OB Eligible</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Onboarding In Progress</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Label.SaaS_Opportunity_Record_Type</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Label.Government_Licensee_Record_Type</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Label.SaaS_Child_Oppprtunity</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get the opportunity that is related to the Event and then check which record type that opportunity is so that we can update the correct contact field for &quot;sales follow-up calls&quot;</description>
+        <name>Get_Opportunity</name>
+        <label>Get Opportunity</label>
+        <locationX>798</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>What_type_of_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>I am using the Whatid(account) and Whoid to get the correct Opportunity when the event is only related to Account and contact. This also solves for when a contact is related to multiple accounts, we want to get the right opportunity.</description>
+        <name>Get_Opportunity_Based_on_Acct_Contact</name>
+        <label>Get Opportunity Based on Acct &amp; Contact</label>
+        <locationX>2282</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Opportunity_Found_Based_on_Acct_Cont</targetReference>
+        </connector>
+        <filterLogic>1 AND 2 AND ( 3 OR 4 OR 5 )</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhoId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SSPR Collection</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>OB Eligible</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>When the &quot;Sales bw Followup&quot; meeting type is scheduled in CP and no account or opportunity is related, then we will just update the Sales Follow-up Scheduled Date on the Contact.</description>
+        <name>Default_Update_Contact_on_Sales_Follow_up_Call</name>
+        <label>Default Update Contact on Sales Follow-up Call</label>
+        <locationX>3042</locationX>
+        <locationY>755</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sales_Follow_up_Call_Scheduled_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Gov_Sales_Followup_Completed</name>
+        <label>Gov Sales Followup  Completed</label>
+        <locationX>2052</locationX>
+        <locationY>1763</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Gov_Sales_Follow_up_Call_Completed_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_AE_Post_CW_Completed_Date</name>
+        <label>Update Billing AE Post CW Completed Date</label>
+        <locationX>9249</locationX>
+        <locationY>755</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Billing_AE_Post_CW_Check_In_Completed_DT__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_AE_Post_CW_Scheduled_Date</name>
+        <label>Update Billing AE Post CW Scheduled Date</label>
+        <locationX>8985</locationX>
+        <locationY>755</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Billing_AE_Post_CW_Check_In_Completed_DT__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_AE_Post_CW_Check_In_Scheduled_Da__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_Upsell_Oppty_Sales_Follow_up_Scheduled_Date</name>
+        <label>Update Billing Upsell Oppty Sales Follow up Scheduled Date</label>
+        <locationX>6026</locationX>
+        <locationY>1187</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Open_Billing_Upsell_Oppty.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sales_Follow_up_Call_Scheduled_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the Combined Funnel owner when OBS Billing Upsell Call is Scheduled ( OBS round-robined through Chili Piper).</description>
+        <name>Update_CF_Owner_BU_OBS</name>
+        <label>Update CF Owner BU OBS</label>
+        <locationX>7346</locationX>
+        <locationY>1295</locationY>
+        <connector>
+            <targetReference>CF_Owner_Update_Through_OBS_Upsell_Event</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_BU_Combined_Funnel_OBSUpdate.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Combined_Funnel__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_CF_Owner_with_OBS</name>
+        <label>Update CF Owner with OBS</label>
+        <locationX>3570</locationX>
+        <locationY>1595</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Combined_Funnel.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Combined_Funnel__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Checks to see if the AE Post Sales Follow up completed and then update the event</description>
+        <name>Update_Contact_AE_Post_Sales_FU_Completed_Date</name>
+        <label>Update Contact AE Post Sales FU Completed Date</label>
+        <locationX>8457</locationX>
+        <locationY>755</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>AE_Post_CW_Check_In_Completed_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Checks to see if the AE Post Sales Follow up scheduled date is null or if rescheduled - then update the date field</description>
+        <name>Update_Contact_AE_Post_Sales_FU_Scheduled_Date</name>
+        <label>Update Contact AE Post Sales FU Scheduled Date</label>
+        <locationX>8193</locationX>
+        <locationY>755</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>AE_Post_CW_Check_In_Completed_Date__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>AE_Post_CW_Check_In_Scheduled_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the contact&apos;s Billing Upsell Sales Follow-up Completed Date.</description>
+        <name>Update_Contact_Billing_Upsell_Sales_FU_Completed_Date</name>
+        <label>Update Contact Billing Upsell Sales FU Completed Date</label>
+        <locationX>6818</locationX>
+        <locationY>755</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Billing_Sales_Follow_up_Completed_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Contact_Billing_Upsell_Sales_FU_Scheduled_date</name>
+        <label>Update Contact Billing Upsell Sales FU Scheduled date</label>
+        <locationX>6158</locationX>
+        <locationY>755</locationY>
+        <connector>
+            <targetReference>Billing_SFU_Whatid_is_Opp_or_Acct</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Billing_Sales_Follow_up_Scheduled_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Contact_Gov_Sales_Followup_Fields</name>
+        <label>Update Contact Gov Sales Followup Fields</label>
+        <locationX>1788</locationX>
+        <locationY>1871</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Gov_Sales_Follow_up_Call_Scheduled_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>When a Sales Followup call is completed, only the contact is updated, not the opportunity.</description>
+        <name>Update_Contact_Sales_Followup_Completed_Field</name>
+        <label>Update Contact Sales Followup Completed Field</label>
+        <locationX>314</locationX>
+        <locationY>1079</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sales_Follow_up_Call_Completed_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the same field on the Contact to make sure the data matches</description>
+        <name>Update_Contact_Sales_Followup_Fields</name>
+        <label>Update Contact Sales Followup Fields</label>
+        <locationX>50</locationX>
+        <locationY>1187</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sales_Follow_up_Call_Scheduled_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Gov_Lic_Oppty_s_Sales_Follow_up_Fields</name>
+        <label>Update Gov Lic Oppty&apos;s Sales Follow-up Fields</label>
+        <locationX>1788</locationX>
+        <locationY>1763</locationY>
+        <connector>
+            <targetReference>Update_Contact_Gov_Sales_Followup_Fields</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sales_Follow_up_Call_Scheduled_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Mult_Site_Combined_Funnel_Owner</name>
+        <label>Update Mult-Site Combined Funnel Owner</label>
+        <locationX>4632</locationX>
+        <locationY>2795</locationY>
+        <connector>
+            <targetReference>Update_Parent_Combined_Funnel</targetReference>
+        </connector>
+        <inputReference>VarCol_CombinedFunnelsOwner</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_OBS_Owner_on_BU_Oppty</name>
+        <label>Update OBS Owner on BU Oppty</label>
+        <locationX>7632</locationX>
+        <locationY>863</locationY>
+        <connector>
+            <targetReference>Is_this_BU_Oppty_Closed_Won</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Billing_Upsell_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OBS_Call_Scheduled_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OBS_Owner__c</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Open_Opp_OBS_Date</name>
+        <label>Update Open Opp - OBS Date</label>
+        <locationX>4468</locationX>
+        <locationY>971</locationY>
+        <connector>
+            <targetReference>Get_Account_for_OBS_Owner_Change</targetReference>
+        </connector>
+        <inputReference>Get_Open_Opportunities</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the Opportunity that is related to the Event - Sales Follow up Scheduled Date</description>
+        <name>Update_Opportunity_Sales_Followup_Field</name>
+        <label>Update Opportunity Sales Followup Field</label>
+        <locationX>50</locationX>
+        <locationY>1079</locationY>
+        <connector>
+            <targetReference>Update_Contact_Sales_Followup_Fields</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sales_Follow_up_Call_Scheduled_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_owner_of_billing_onboarding</name>
+        <label>Update owner of billing onboarding</label>
+        <locationX>7665</locationX>
+        <locationY>1979</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Billing_Onboarding_Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Onboarding__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Parent_Combined_Funnel</name>
+        <label>Update Parent Combined Funnel</label>
+        <locationX>4632</locationX>
+        <locationY>2903</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Account_for_OBS_Owner_Change.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Combined_Funnel__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Parent_Owner_OBS</name>
+        <label>Update Parent Owner &amp; OBS</label>
+        <locationX>4294</locationX>
+        <locationY>1487</locationY>
+        <connector>
+            <targetReference>Get_All_Child_Accounts_Multi_site</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Account_for_OBS_Owner_Change.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CSM_Owner1__c</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_the_Child_s_Parent_with_OBS</name>
+        <label>Update the Child&apos;s Parent with OBS</label>
+        <locationX>4862</locationX>
+        <locationY>1487</locationY>
+        <connector>
+            <targetReference>Get_Accounts_with_the_Same_Parent_ID</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Account_for_OBS_Owner_Change.ParentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CSM_Owner1__c</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update the related Oppty&apos;s Sales Follow-up Call Scheduled Date on the Billing Upsell Oppty</description>
+        <name>Update_the_Oppty_Billing_Sales_Followup</name>
+        <label>Update the Oppty Billing Sales Followup</label>
+        <locationX>5762</locationX>
+        <locationY>971</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Label.Billing_Upsell_Opportunity</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sales_Follow_up_Call_Scheduled_Date__c</field>
+            <value>
+                <elementReference>$Record.ActivityDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <start>
+        <locationX>7851</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Contact</targetReference>
+        </connector>
+        <filterFormula>(
+OR(
+{!$Record.Meeting_Type_CP__c} = &apos;Sales - BW Setup Followup&apos;,
+{!$Record.Meeting_Type_CP__c} = &apos;Billing Upsell - Billing Setup Follow Up&apos;,
+{!$Record.Meeting_Type_CP__c} = &apos;Sales - BW Post Sale 15 Day Followup&apos;,
+{!$Record.Meeting_Type_CP__c} = &apos;Billing Upsell - BW Post Sale 15 Day Followup&apos;
+  )
+  ||
+  (
+ OR({!$Record.LOGIC_OBS_Call__c} = true,
+  {!$Record.Meeting_Type_CP__c} = &apos;OBS Multi-Site and Eng - Brightwheel Billing Training - 30 Min&apos;,
+  {!$Record.Meeting_Type_CP__c} = &apos;OBS Single Site and Eng - Brightwheel Billing Training - 30 Min&apos;)
+    &amp;&amp;
+    NOT( {!$Record.Meeting_Completed__c} )
+  )
+)
+&amp;&amp;
+NOT( ISBLANK( {!$Record.WhoId} ) )
+&amp;&amp;
+(
+  ISCHANGED( {!$Record.LOGIC_trigger_counter__c} )
+  ||
+  ISBLANK( {!$Record.LOGIC_trigger_counter__c} )
+  ||
+  ISCHANGED( {!$Record.WhatId} )
+)</filterFormula>
+        <object>Event</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>BUCFOwnerChatterPost</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Combined Funnel {!Get_BU_Combined_Funnel_OBSUpdate.Name} 
+Owner updated from - {!$Record.Id} , {!$Record.Subject}  
+Owner Changed to - {!$Record.OwnerId}
+Billing Upsell Opportunity/Account - {!$Record.WhatId}
+On {!$Flow.CurrentDateTime}</text>
+    </textTemplates>
+    <triggerOrder>1500</triggerOrder>
+    <variables>
+        <description>text collection of child account ids for multi-site, where the event is the parent account and we have to get all the child accounts.</description>
+        <name>ChildAcct_ids</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>NumberofOpps</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <description>Collection Variable to add all the combined funnels that need to have the owner updated</description>
+        <name>VarCol_CombinedFunnelsOwner</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Combined_Funnel__c</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OB_Handoff_Issues__c</fullName>
+    <description>Stores a list of handoff issue categories that can be entered by the onboarding team to be communicated with sales (NA Sprint 15 &apos;23). 02/23/24 - PE - Added new picklist value.</description>
+    <label>OB Handoff Issues</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Contact Handoff Issues</fullName>
+                <default>false</default>
+                <label>Contact Handoff Issues</label>
+            </value>
+            <value>
+                <fullName>Declined Training</fullName>
+                <default>false</default>
+                <label>Declined Training</label>
+            </value>
+            <value>
+                <fullName>Handoff Email Issue</fullName>
+                <default>false</default>
+                <label>Handoff Email Issue</label>
+            </value>
+            <value>
+                <fullName>Missed Expectations</fullName>
+                <default>false</default>
+                <label>Missed Expectations</label>
+            </value>
+            <value>
+                <fullName>Missing Payment Method</fullName>
+                <default>false</default>
+                <label>Missing Payment Method</label>
+            </value>
+            <value>
+                <fullName>Missing Relevant Notes</fullName>
+                <default>false</default>
+                <label>Missing Relevant Notes</label>
+            </value>
+            <value>
+                <fullName>No CW Opp before training</fullName>
+                <default>false</default>
+                <label>No CW Opp before training</label>
+            </value>
+            <value>
+                <fullName>Not Fully Sold</fullName>
+                <default>false</default>
+                <label>Not Fully Sold</label>
+            </value>
+            <value>
+                <fullName>Not OB Ready</fullName>
+                <default>false</default>
+                <label>Not OB Ready</label>
+            </value>
+            <value>
+                <fullName>No Training Scheduled</fullName>
+                <default>false</default>
+                <label>No Training Scheduled</label>
+            </value>
+            <value>
+                <fullName>Training Scheduled &gt; 7 Days</fullName>
+                <default>false</default>
+                <label>Training Scheduled &gt; 7 Days</label>
+            </value>
+            <value>
+                <fullName>Wrong Call Path Scheduled</fullName>
+                <default>false</default>
+                <label>Wrong Call Path Scheduled</label>
+            </value>
+            <value>
+                <fullName>Too Short of a Booking Window</fullName>
+                <default>false</default>
+                <label>Too Short of a Booking Window</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

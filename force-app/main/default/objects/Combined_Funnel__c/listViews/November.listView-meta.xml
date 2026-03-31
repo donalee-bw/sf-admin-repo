@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>November</fullName>
+    <columns>NAME</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>Active_Student_Count__c</columns>
+    <columns>Active_Students_with_Billing_Ratio__c</columns>
+    <columns>Parents_with_Payment_Method__c</columns>
+    <columns>Billing_Call_or_Webinar_Date__c</columns>
+    <columns>Billing_Call_or_Webinar_Status__c</columns>
+    <columns>Billing_Intervals__c</columns>
+    <columns>Number_of_Billing_Plans__c</columns>
+    <columns>Target_Billing_Activation_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>FTS_Owner__c</field>
+        <operation>contains</operation>
+        <value>Anna Mlynski</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>11/1/2021</value>
+    </filters>
+    <filters>
+        <field>Billing_Activated_Date__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Billing_Intervals__c</field>
+        <operation>includes</operation>
+        <value>Monthly</value>
+    </filters>
+    <label>November</label>
+</ListView>

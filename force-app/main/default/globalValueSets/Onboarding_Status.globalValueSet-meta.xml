@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Active</fullName>
+        <default>true</default>
+        <label>Active</label>
+    </customValue>
+    <customValue>
+        <fullName>Postponed</fullName>
+        <default>false</default>
+        <label>Postponed</label>
+    </customValue>
+    <customValue>
+        <fullName>Inactive</fullName>
+        <default>false</default>
+        <label>Inactive</label>
+    </customValue>
+    <customValue>
+        <fullName>Unresponsive</fullName>
+        <default>false</default>
+        <label>Unresponsive</label>
+    </customValue>
+    <customValue>
+        <fullName>Opted Out</fullName>
+        <default>false</default>
+        <label>Opted Out</label>
+    </customValue>
+    <customValue>
+        <fullName>SaaS At Risk</fullName>
+        <default>false</default>
+        <label>SaaS At Risk</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing At Risk</fullName>
+        <default>false</default>
+        <label>Billing At Risk</label>
+    </customValue>
+    <customValue>
+        <fullName>Gone Dark</fullName>
+        <default>false</default>
+        <label>Gone Dark</label>
+    </customValue>
+    <customValue>
+        <fullName>Requesting Postpone - Awaiting Approval</fullName>
+        <default>false</default>
+        <label>Requesting Postpone - Awaiting Approval</label>
+    </customValue>
+    <customValue>
+        <fullName>Recruiting</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Recruiting</label>
+    </customValue>
+    <customValue>
+        <fullName>Requesting Opt Out - Awaiting Approval</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Requesting Opt Out - Awaiting Approval</label>
+    </customValue>
+    <customValue>
+        <fullName>Passback</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Passback</label>
+    </customValue>
+    <customValue>
+        <fullName>Passed to Upsell</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Passed to Upsell</label>
+    </customValue>
+    <masterLabel>Onboarding Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

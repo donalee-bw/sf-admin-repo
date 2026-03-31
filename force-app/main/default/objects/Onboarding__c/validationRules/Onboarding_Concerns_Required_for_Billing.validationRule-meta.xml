@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Onboarding_Concerns_Required_for_Billing</fullName>
+    <active>false</active>
+    <description>Onboarding Concerns are required for delayed billing onboardings.</description>
+    <errorConditionFormula>AND(
+    NOT($User.ProfileId = &apos;00e1I000001rqxt&apos;),
+    RecordTypeId = &apos;0121I000000OGls&apos;,
+    NOT(ISBLANK(Billing_Onboarding_Delayed_Reason__c)),
+    ISBLANK(Onboarding_Concerns__c)
+ )</errorConditionFormula>
+    <errorDisplayField>Onboarding_Concerns__c</errorDisplayField>
+    <errorMessage>Onboarding Concerns is required when a billing onboarding is delayed.</errorMessage>
+</ValidationRule>

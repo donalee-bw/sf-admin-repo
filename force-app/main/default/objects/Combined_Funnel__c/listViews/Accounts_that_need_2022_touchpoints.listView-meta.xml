@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Accounts_that_need_2022_touchpoints</fullName>
+    <columns>NAME</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>Active_Students_Parents_Activated__c</columns>
+    <columns>Active_Student_Enrollment_Percent__c</columns>
+    <columns>Activities_Per_Student__c</columns>
+    <columns>Staff_Added_Count__c</columns>
+    <columns>Last_Activity_Date__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>SaaS_Next_Steps__c</field>
+        <operation>notContain</operation>
+        <value>1/29,1/30,1/31,2/1,2/2,2/3,2/4,2/5,2/6,2/7</value>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Gloria</value>
+    </filters>
+    <label>Accounts that need 2022 touchpoints</label>
+</ListView>

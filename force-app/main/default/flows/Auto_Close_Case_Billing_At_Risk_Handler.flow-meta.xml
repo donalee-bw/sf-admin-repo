@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_CF_Fields</name>
+        <label>Assign CF Fields</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.Billing_Onboarding_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Opted Out</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.Billing_Dropout_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formBillingOptOutReason</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.Billing_Opted_Out_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>today</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_CF</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Billing_Onboarding_Status_decision</name>
+        <label>Billing Onboarding Status decision</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_CF_Fields</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>BOS &lt;&gt; Active</defaultConnectorLabel>
+        <rules>
+            <name>Billing_Onboarding_Status_Active</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Billing_Onboarding_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Active</stringValue>
+                </rightValue>
+            </conditions>
+            <label>BOS = Active</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_da_Case_still_open</name>
+        <label>Is da Case still open?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Still_Open</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsClosed</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Close_da_Case</targetReference>
+            </connector>
+            <label>Still Open</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>formBillingOptOutReason</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK(TEXT({!Get_Combined_Funnel.Billing_Dropout_Reason__c})),
+  &apos;Neglected&apos;,
+  TEXT({!Get_Combined_Funnel.Billing_Dropout_Reason__c})
+)</expression>
+    </formulas>
+    <formulas>
+        <name>today</name>
+        <dataType>Date</dataType>
+        <expression>today()</expression>
+    </formulas>
+    <interviewLabel>Auto Close Case - Billing At-Risk Handler {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Auto Close Case - Billing At-Risk Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Combined_Funnel</name>
+        <label>Get Combined Funnel</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Billing_Onboarding_Status_decision</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Close_da_Case</name>
+        <label>Close da Case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Combined_Funnel</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>texT_AutoCloseDescription</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Auto Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_CF</name>
+        <label>Update CF</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>Get_Combined_Funnel</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012PB000000LL6HYAW</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>X15_Day_Delay</name>
+            <connector>
+                <targetReference>Is_da_Case_still_open</targetReference>
+            </connector>
+            <label>15 Day Delay</label>
+            <offsetNumber>15</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>texT_AutoCloseDescription</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Flow.CurrentDate} - Billing At-Risk case auto closed after 15 Days from creation</text>
+    </textTemplates>
+</Flow>

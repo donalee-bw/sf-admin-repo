@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOGIC_is_matched__c</fullName>
+    <description>LOGIC driven by flow - User record to SFDC lead or contact matching</description>
+    <label>LOGIC is matched</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Matched</fullName>
+                <default>true</default>
+                <label>Not Matched</label>
+            </value>
+            <value>
+                <fullName>Matched</fullName>
+                <default>false</default>
+                <label>Matched</label>
+            </value>
+            <value>
+                <fullName>Associated</fullName>
+                <default>false</default>
+                <label>Associated</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

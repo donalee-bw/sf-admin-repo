@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>Stores Account Queue user id</description>
+        <name>con_AccountQueueUserId</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>0053u0000035xeBAAQ</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Evaluates if the contact&apos;s account is linked to either a &apos;Free Plan&apos; school or lacks any school association.</description>
+        <name>Eligible_Account_Matching</name>
+        <label>Eligible Account Matching?</label>
+        <locationX>182</locationX>
+        <locationY>792</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_New_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Account Not Eligible</defaultConnectorLabel>
+        <rules>
+            <name>Eligible_Account_2</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contacts.Account.School_Object__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contacts.Account.Brightwheel_Plan__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_School_2</targetReference>
+            </connector>
+            <label>Eligible Account</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the email address provided on the school object matches an existing contact</description>
+        <name>Email_Address_Matches_Contact</name>
+        <label>Email Address Matches Contact</label>
+        <locationX>809</locationX>
+        <locationY>576</locationY>
+        <defaultConnector>
+            <targetReference>Get_Leads</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Contact Match</defaultConnectorLabel>
+        <rules>
+            <name>Matches_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contacts</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Number_of_Sites_2</targetReference>
+            </connector>
+            <label>Matches Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks the value on the &quot;Number of Sites&quot; field</description>
+        <name>Number_of_Sites_2</name>
+        <label>Number of Sites</label>
+        <locationX>512</locationX>
+        <locationY>684</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Look_For_a_Parent_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>More Than Two Site</defaultConnectorLabel>
+        <rules>
+            <name>One_Site_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Number_of_Sites__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Eligible_Account_Matching</targetReference>
+            </connector>
+            <label>One Site</label>
+        </rules>
+        <rules>
+            <name>Two_Sites_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Number_of_Sites__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>2.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Get_Parent_Account</targetReference>
+            </connector>
+            <label>Two Sites</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the field &quot;Owner email&quot; is filled in.</description>
+        <name>Owner_Email_Provided</name>
+        <label>Owner Email Provided?</label>
+        <locationX>1089</locationX>
+        <locationY>360</locationY>
+        <defaultConnector>
+            <targetReference>School_Number_of_Sites</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Owner Email</defaultConnectorLabel>
+        <rules>
+            <name>Owner_Email_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner_Email__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contacts</targetReference>
+            </connector>
+            <label>Owner Email Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks the value on the &quot;Number of Sites&quot; field</description>
+        <name>School_Number_of_Sites</name>
+        <label>School Number of Sites</label>
+        <locationX>1089</locationX>
+        <locationY>1452</locationY>
+        <defaultConnector>
+            <targetReference>Look_For_a_Parent_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>More Than Two Sites</defaultConnectorLabel>
+        <rules>
+            <name>One_Site</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Number_of_Sites__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_New_Account</targetReference>
+            </connector>
+            <label>One Site</label>
+        </rules>
+        <rules>
+            <name>Two_Sites</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Number_of_Sites__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>2.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Parent_Account</targetReference>
+            </connector>
+            <label>Two Sites</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks how many days ago the school object was created</description>
+        <name>School_Object_Created_Date</name>
+        <label>School Object Created Date</label>
+        <locationX>1331</locationX>
+        <locationY>252</locationY>
+        <defaultConnectorLabel>&lt; 3 Days Ago</defaultConnectorLabel>
+        <rules>
+            <name>More_Than_3_Days_Ago</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>forB_SchoolCreatedLessThreeDays</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Owner_Email_Provided</targetReference>
+            </connector>
+            <label>&gt; 3 Days Ago</label>
+        </rules>
+    </decisions>
+    <description>Matches unlinked premium school objects to existing or new accounts
+10/09/23 - Update flow to only run on school object records created more than three days ago. (Sprint 18)
+03/14/24 - PE - Updated entry criteria to only run on schools where Number of Sites = 1
+07/17/24 - PE - Updated entry criteria to not pull schools without name as this causes errors when creating accounts. 
+05/19/25 - AC - Update create new account node removing reference to Account Status
+
+Diagram: https://drive.google.com/file/d/12vtMO5Tx16CzpZ6zRlZGCAttfaUPLgWV/view?usp=sharing</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>This formula checks if a record was created more than three days ago, returning true if so, and false otherwise.</description>
+        <name>forB_SchoolCreatedLessThreeDays</name>
+        <dataType>Boolean</dataType>
+        <expression>DATEVALUE({!$Record.CreatedDate}) &lt; TODAY() - 3</expression>
+    </formulas>
+    <formulas>
+        <description>When the flow identifies a parent account for the new account record being created, it sets the Parent Account field with that account ID. If no parent account is found, the Parent Account field remains unassigned.</description>
+        <name>forT_AssignParentAccount</name>
+        <dataType>String</dataType>
+        <expression>IF(
+{!$Record.Number_of_Sites__c} = 2
+&amp;&amp;
+NOT(ISNULL({!Get_Parent_Account.Id})),
+{!Get_Parent_Account.Id},
+IF(
+{!$Record.Number_of_Sites__c} &gt; 2
+&amp;&amp;
+NOT(ISNULL({!Look_For_a_Parent_Account.ParentId})) ,
+{!Look_For_a_Parent_Account.ParentId},
+&quot;&quot;
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Returns &apos;Single-Site&apos; if the &apos;Number of Sites&apos; on the school object field is set to 1. Otherwise, if the value is greater than 1, returns &apos;Multi-Site Child&apos;.</description>
+        <name>forT_CustomerType</name>
+        <dataType>String</dataType>
+        <expression>If(
+{!$Record.Number_of_Sites__c} &lt;= 1, &quot;Single-Site&quot;,
+&quot;Multi-Site Child&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Evaluates if any lead was located in the &apos;Get Leads&apos; element and determines if the lead is linked to an organization. If so, it outputs the organization&apos;s ID; otherwise, it returns null.</description>
+        <name>forT_LeadOrganization</name>
+        <dataType>String</dataType>
+        <expression>IF(
+AND(
+NOT(ISNULL({!Get_Leads.Id})),
+NOT(ISNULL({!Get_Leads.Organization__c}))
+),
+{!Get_Leads.Organization__c},
+&quot;&quot;
+)</expression>
+    </formulas>
+    <interviewLabel>School Object - Scheduled - Orphaned Premium - Create Account {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>School Object - Scheduled - Orphaned Premium - Create Account</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates a new account record and links it to the associated school object.</description>
+        <name>Create_New_Account</name>
+        <label>Create New Account</label>
+        <locationX>1089</locationX>
+        <locationY>1752</locationY>
+        <inputAssignments>
+            <field>BillingCity</field>
+            <value>
+                <elementReference>$Record.City__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BillingCountry</field>
+            <value>
+                <elementReference>$Record.Country__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BillingPostalCode</field>
+            <value>
+                <elementReference>$Record.Postal_Code__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BillingState</field>
+            <value>
+                <elementReference>$Record.State__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Brightwheel_School_UUID__c</field>
+            <value>
+                <elementReference>$Record.Brightwheel_School_UUID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Type__c</field>
+            <value>
+                <elementReference>forT_CustomerType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LOGIC_created_by_flow__c</field>
+            <value>
+                <stringValue>School Object - Scheduled - Orphaned Premium - Create Account</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>$Record.Account_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Number_of_Sites__c</field>
+            <value>
+                <elementReference>$Record.Number_of_Sites__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Organization__c</field>
+            <value>
+                <elementReference>forT_LeadOrganization</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>con_AccountQueueUserId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ParentId</field>
+            <value>
+                <elementReference>forT_AssignParentAccount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>$Record.School_Phone__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>School_Object__c</field>
+            <value>
+                <elementReference>$Record.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Looks for contact records where the email in the &apos;Email&apos; field corresponds with the email in the &apos;Owner email&apos; field on the school object record.</description>
+        <name>Get_Contacts</name>
+        <label>Get Contacts</label>
+        <locationX>809</locationX>
+        <locationY>468</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Email_Address_Matches_Contact</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Owner_Email__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>No contacts were found that are associated with the Owner email. The flow will search for a lead tied to that email address. If a lead is located, it will be converted as the final step in this flow.</description>
+        <name>Get_Leads</name>
+        <label>Get Leads</label>
+        <locationX>1106</locationX>
+        <locationY>684</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>School_Number_of_Sites</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsConverted</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Owner_Email__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Organization__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Searches for an existing account record with a matching organization UUID if the school has only two sites. Captures this account&apos;s ID to set it as the parent account for the new account being created. Validates that the located account doesn&apos;t already have a parent account.</description>
+        <name>Get_Parent_Account</name>
+        <label>Look for The Parent Account</label>
+        <locationX>1045</locationX>
+        <locationY>1560</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_New_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>bw_Organization_UUID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Brightwheel_Org_UUID__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>ParentId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Searches for any account records sharing the same Organization UUID that also have a parent account. The parent account ID is then stored, to be set as the parent account for the new account being created.</description>
+        <name>Look_For_a_Parent_Account</name>
+        <label>Look For a Parent Account</label>
+        <locationX>1309</locationX>
+        <locationY>1560</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_New_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>bw_Organization_UUID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Brightwheel_Org_UUID__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>ParentId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>ParentId</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates the school object associated with the contact&apos;s account.</description>
+        <name>Update_Account_School_2</name>
+        <label>Update Account School</label>
+        <locationX>50</locationX>
+        <locationY>900</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contacts.Account.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Brightwheel_School_UUID__c</field>
+            <value>
+                <elementReference>$Record.Brightwheel_School_UUID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Customer_Type__c</field>
+            <value>
+                <stringValue>Single-Site</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LOGIC_created_by_flow__c</field>
+            <value>
+                <stringValue>School Updated by: School Object - Scheduled - Orphaned Premium - Create Account</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>School_Object__c</field>
+            <value>
+                <elementReference>$Record.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Customer</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <start>
+        <locationX>1205</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>School_Object_Created_Date</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3 AND 4 AND 5 AND 6</filterLogic>
+        <filters>
+            <field>LOGIC_associated_accounts__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LOGIC_associated_accounts__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Brightwheel_Plan__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Premium</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Premium_ECE__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Number_of_Sites__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Account_Name__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>School_Object__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2023-09-28</startDate>
+            <startTime>02:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>currentItem_parent_account</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <description>Stores the ID of the newly created account</description>
+        <name>varT_NewAccountId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

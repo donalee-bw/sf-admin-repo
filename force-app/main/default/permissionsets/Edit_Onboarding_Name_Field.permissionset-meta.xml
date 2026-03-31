@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Grants edit access to Onboarding object Name field for coordinators who are manually creating onboarding records for multi-sites.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Edit Onboarding Name Field</label>
+</PermissionSet>

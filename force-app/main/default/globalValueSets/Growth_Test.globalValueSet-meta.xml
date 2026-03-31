@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Instant Demo</fullName>
+        <default>false</default>
+        <label>Instant Demo</label>
+    </customValue>
+    <customValue>
+        <fullName>AI SDR</fullName>
+        <default>false</default>
+        <label>AI SDR</label>
+    </customValue>
+    <description>Values for Growth Tests where lead needs to be excluded from routing through Chili Piper and LeanData. Examples: Instant Demo, AI SDR.</description>
+    <masterLabel>Growth Test</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

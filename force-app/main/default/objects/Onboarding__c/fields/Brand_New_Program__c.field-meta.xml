@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Brand_New_Program__c</fullName>
+    <description>Mapped from Combined Funnel in SaaS and Billing onboarding update flow. Used to flag Brand New Programs for historical reporting.</description>
+    <inlineHelpText>Used to flag Brand New Programs for historical reporting. Updated from the Combined Funnel the onboarding is related to.</inlineHelpText>
+    <label>Brand New Program</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Brand_New_Program_Flag</valueSetName>
+    </valueSet>
+</CustomField>

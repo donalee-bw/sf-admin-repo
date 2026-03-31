@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>BypassPostSaveCaseStatusRules</name>
+    </customPermissions>
+    <description>assigned to users who need to bypass validation rule on case that restricts users from updating post save cases to &apos;Closed&apos;</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>BypassPostSaveCaseStatusRules</label>
+    <license>Salesforce</license>
+</PermissionSet>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Payload_to_JG</name>
+        <label>Send Payload to JG</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>JGCaseCallout.sendCancelationInformation</actionName>
+        <actionType>externalService</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>body</name>
+            <value>
+                <elementReference>jsonBody</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>JGCaseCallout.sendCancelationInformation</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Sends json payload to subscription cancellation api endpoint</description>
+    <environments>Default</environments>
+    <interviewLabel>Case - Subflow - Send JSON to JG {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Subflow - Send JSON to JG</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Send_Payload_to_JG</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>jsonBody</name>
+        <apexClass>ExternalService__JGCaseCallout_sendCancelationInformation_IN_body</apexClass>
+        <dataType>Apex</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

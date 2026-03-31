@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sophie_Accounts_45_Days</fullName>
+    <columns>NAME</columns>
+    <columns>SaaS_Onboarding_Status__c</columns>
+    <columns>FTS_Owner__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>Onboarding_Path__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <label>Sophie Accounts Less Than 45 Days</label>
+</ListView>

@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Evaluate_Disposition</name>
+        <label>Evaluate Disposition</label>
+        <locationX>314</locationX>
+        <locationY>492</locationY>
+        <defaultConnectorLabel>No Update</defaultConnectorLabel>
+        <rules>
+            <name>Spoke_to_DM</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NA - Spoke to DM (Did Not Pitch)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EDU - Spoke to DM did not pitch</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancel - Spoke to DM / Did Not Pitch</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Proactive - Spoke to DM / Did Not Pitch</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Billing - Spoke to DM / Did Not Pitch</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Lead_DM_Update</targetReference>
+            </connector>
+            <label>Spoke to DM</label>
+        </rules>
+        <rules>
+            <name>Spoke_to_Non_DM</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NA - Spoke to Non-DM (GK Navigation)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>OBS - Spoke to Non-DM / Sent Info</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EN - Spoke to Non-DM / Sent Info</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EDU - Y, Spoke to non DM</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancel - Spoke to Non DM</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Proactive - Spoke to Non DM</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Billing - Spoke to Non DM</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Lead_Non_DM_Update</targetReference>
+            </connector>
+            <label>Spoke to Non-DM</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Evaluate_Disposition_0</name>
+        <label>Evaluate Disposition</label>
+        <locationX>1106</locationX>
+        <locationY>708</locationY>
+        <defaultConnectorLabel>No Update</defaultConnectorLabel>
+        <rules>
+            <name>Spoke_to_DM_0</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NA - Spoke to DM (Did Not Pitch)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EDU - Spoke to DM did not pitch</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancel - Spoke to DM / Did Not Pitch</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Proactive - Spoke to DM / Did Not Pitch</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Billing - Spoke to DM / Did Not Pitch</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contact_DM_Update</targetReference>
+            </connector>
+            <label>Spoke to DM</label>
+        </rules>
+        <rules>
+            <name>Spoke_to_Non_DM_0</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NA - Spoke to Non-DM (GK Navigation)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>OBS - Spoke to Non-DM / Sent Info</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EN - Spoke to Non-DM / Sent Info</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EDU - Y, Spoke to non DM</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancel - Spoke to Non DM</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Proactive - Spoke to Non DM</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Disposition__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Billing - Spoke to Non DM</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contact_Non_DM_Update</targetReference>
+            </connector>
+            <label>Spoke to Non-DM</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Task_Assigned_Object</name>
+        <label>Task Assigned Object</label>
+        <locationX>842</locationX>
+        <locationY>384</locationY>
+        <defaultConnector>
+            <targetReference>Get_Task_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Task is Not Assigned to Lead</defaultConnectorLabel>
+        <rules>
+            <name>Task_is_Assigned_to_Lead</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Lead.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Evaluate_Disposition</targetReference>
+            </connector>
+            <label>Task is Assigned to Lead</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Task_Contact_Relation</name>
+        <label>Task Contact Relation</label>
+        <locationX>1370</locationX>
+        <locationY>600</locationY>
+        <defaultConnectorLabel>Task not Associated</defaultConnectorLabel>
+        <rules>
+            <name>Task_Associated_with_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Task_Contact.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Evaluate_Disposition_0</targetReference>
+            </connector>
+            <label>Task Associated with Contact</label>
+        </rules>
+    </decisions>
+    <description>Updates Latest Sequence and Latest Call Disposition on the Contact or Lead when a task is logged from Outreach
+11/21/23 - Following Rev.io migration, updated Call Disposition values for &quot;Spoke to DM&quot; and &quot;Spoke to Non DM&quot;. (Revenue.io Implementation Project)
+06-04-25 - BW - Updated to async to reduce record lock issues
+10-30-25 - AC - Updating to remove references to Call Disposition</description>
+    <environments>Default</environments>
+    <interviewLabel>RLA - Task Lead/Contact Updates {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>RLA - Task Lead/Contact Updates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Lead</name>
+        <label>Get Lead</label>
+        <locationX>842</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Task_Assigned_Object</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhoId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Task_Contact</name>
+        <label>Get Task Contact</label>
+        <locationX>1370</locationX>
+        <locationY>492</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Task_Contact_Relation</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhoId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Contact_DM_Update</name>
+        <label>Contact DM Update</label>
+        <locationX>842</locationX>
+        <locationY>816</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Task_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Spoke_to_DM_Did_Not_Pitch__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Contact_Non_DM_Update</name>
+        <label>Contact Non-DM Update</label>
+        <locationX>1106</locationX>
+        <locationY>816</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Task_Contact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Spoke_to_Non_DM__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Lead_DM_Update</name>
+        <label>Lead DM Update</label>
+        <locationX>50</locationX>
+        <locationY>600</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Lead.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Spoke_to_DM_Did_Not_Pitch__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Lead_Non_DM_Update</name>
+        <label>Lead Non-DM Update</label>
+        <locationX>314</locationX>
+        <locationY>600</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Lead.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Spoke_to_Non_DM__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>1 AND 4 AND (2 OR 3 OR 5)</filterLogic>
+        <filters>
+            <field>LOGIC_Is_Sales_Call__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Disposition__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Did Not Pitch</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Disposition__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Spoke to Non-DM</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>WhoId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Disposition__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Spoke to Non DM</stringValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>Get_Lead</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

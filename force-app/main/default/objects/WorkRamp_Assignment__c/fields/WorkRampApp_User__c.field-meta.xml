@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WorkRampApp_User__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Field that establishes a lookup relationship between a WorkRamp Assignment object and a Salesforce User object. This field is managed by WorkRamp.</description>
+    <inlineHelpText>Salesforce User associated with this Assignment</inlineHelpText>
+    <label>User</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>WorkRamp_Assignments</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

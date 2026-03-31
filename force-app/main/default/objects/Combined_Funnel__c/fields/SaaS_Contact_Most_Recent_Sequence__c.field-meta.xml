@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SaaS_Contact_Most_Recent_Sequence__c</fullName>
+    <description>Displays the Most Recent Sequence Entered value from the SaaS Primary Contact associated with the Combined Funnel.</description>
+    <externalId>false</externalId>
+    <formula>SaaS_Primary_Contact__r.Most_Recent_Cadence_Entered__c</formula>
+    <inlineHelpText>Displays the Most Recent Sequence Entered value from the SaaS Primary Contact associated with the Combined Funnel.</inlineHelpText>
+    <label>SaaS Contact - Most Recent Sequence</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Brightwheel</fullName>
+        <default>false</default>
+        <label>Brightwheel</label>
+    </customValue>
+    <customValue>
+        <fullName>Experience Curriculum</fullName>
+        <default>false</default>
+        <label>Experience Curriculum</label>
+    </customValue>
+    <masterLabel>BW Product Interest</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Creates gov payer renewal or expansion opp</description>
+    <fieldOverrides>
+        <field>AccountId</field>
+        <formula>Opportunity.AccountId</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>CloseDate</field>
+        <formula>IF(
+AND(
+NOT(ISBLANK(Opportunity.In_Contract_Until__c)),
+ISBLANK(Opportunity.SaaS_Offline_Contract_End_Date__c)
+),
+Opportunity.In_Contract_Until__c,
+IF(
+AND(
+ISBLANK(Opportunity.In_Contract_Until__c),
+NOT(ISBLANK(Opportunity.SaaS_Offline_Contract_End_Date__c))
+),
+Opportunity.SaaS_Offline_Contract_End_Date__c,
+IF(
+Opportunity.In_Contract_Until__c&gt; Opportunity.SaaS_Offline_Contract_End_Date__c,
+Opportunity.In_Contract_Until__c,
+Opportunity.SaaS_Offline_Contract_End_Date__c
+)
+)
+) +1</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Contract_Start_Date__c</field>
+        <formula>IF(
+    AND(
+       NOT(ISBLANK(Opportunity.In_Contract_Until__c)),
+       ISBLANK(Opportunity.SaaS_Offline_Contract_End_Date__c)
+    ),
+   Opportunity.In_Contract_Until__c,
+    IF(
+        AND(
+            ISBLANK(Opportunity.In_Contract_Until__c),
+            NOT(ISBLANK(Opportunity.SaaS_Offline_Contract_End_Date__c))
+        ), 
+        Opportunity.SaaS_Offline_Contract_End_Date__c,
+        IF(
+           Opportunity.In_Contract_Until__c&gt; Opportunity.SaaS_Offline_Contract_End_Date__c,
+          Opportunity.In_Contract_Until__c,
+            Opportunity.SaaS_Offline_Contract_End_Date__c
+        )
+    )
+) +1</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Parent_Opportunity__c</field>
+        <formula>Opportunity.Id</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>StageName</field>
+        <literalValue>New</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Type</field>
+        <literalValue>Renewal</literalValue>
+    </fieldOverrides>
+    <label>New Gov Payer Opportunity</label>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Name</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>AccountId</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Parent_Opportunity__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>CloseDate</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Launch_Date__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Contact__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>License_Type__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Deal_Structure__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>SaaS_Offline_Payer__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Amount</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Number_of_Licenses__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>StageName</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Contract_Start_Date__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>In_Contract_Until__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Term_Length_Months__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Type</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Competitors__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Providing_Devices_for_Schools__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>State_or_Government_Subsidized_Sponsored__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+    </quickActionLayout>
+    <targetObject>Opportunity</targetObject>
+    <targetParentField>Parent_Opportunity__c</targetParentField>
+    <targetRecordType>Opportunity.Government_Payer</targetRecordType>
+    <type>Create</type>
+</QuickAction>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payer_Scenarios__c</fullName>
+    <description>Scenarios the school deals with for payers - each could be handled differently depending on the school&apos;s preferences</description>
+    <inlineHelpText>Scenarios the school deals with for payers - each could be handled differently depending on the school&apos;s preferences</inlineHelpText>
+    <label>Payer Scenarios</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Separated/Divorced Parents</fullName>
+                <default>false</default>
+                <label>Separated/Divorced Parents</label>
+            </value>
+            <value>
+                <fullName>Payer Other Than Parent</fullName>
+                <default>false</default>
+                <label>Payer Other Than Parent</label>
+            </value>
+            <value>
+                <fullName>Multiple Autopays</fullName>
+                <default>false</default>
+                <label>Multiple Autopays</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

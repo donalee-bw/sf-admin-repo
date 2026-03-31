@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_Willeta_70_90_Day_List_View</fullName>
+    <booleanFilter>1 AND 2 AND ((3 AND 4 AND 7 AND 8) OR (5 AND 6 AND 9 AND 10))</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>Days_Since_Billing_Launch_Date__c</columns>
+    <columns>Original_Onboarding_Path__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Current_Enrollment__c</columns>
+    <columns>Active_Student_Enrollment_Percent__c</columns>
+    <columns>Ratio_Students_with_Activated_Parent__c</columns>
+    <columns>Activities_Per_Student__c</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>Billing_Onboarding_Status__c</columns>
+    <columns>Active_Students_with_Billing_Ratio__c</columns>
+    <columns>Active_Students_with_One_Bill_Ratio__c</columns>
+    <columns>Active_Students_with_One_Payment_Ratio__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>OWNER.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>Van Raden</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Inactive,Opted Out</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Inactive,Opted Out</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Original_Close_Date__c</field>
+        <operation>equals</operation>
+        <value>LAST_90_DAYS</value>
+    </filters>
+    <filters>
+        <field>Original_Close_Date__c</field>
+        <operation>lessThan</operation>
+        <value>N_DAYS_AGO:70</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>equals</operation>
+        <value>LAST_90_DAYS</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>lessThan</operation>
+        <value>N_DAYS_AGO:70</value>
+    </filters>
+    <label>Joanna 70-90 Day List View</label>
+</ListView>

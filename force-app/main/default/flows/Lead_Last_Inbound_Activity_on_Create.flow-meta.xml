@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Free_Trial_or_HS_Conversion</name>
+        <label>Free Trial or HS Conversion</label>
+        <locationX>446</locationX>
+        <locationY>311</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Free_Trial</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lead_Source_Detail__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Proactive Trial</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Inbound_to_PTL</targetReference>
+            </connector>
+            <label>Free Trial</label>
+        </rules>
+        <rules>
+            <name>HS_Activity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.HS_Recent_conversion__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_HS_Conversion_Record</targetReference>
+            </connector>
+            <label>HS Activity</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>HS_Conversion_Record</name>
+        <label>HS Conversion Record</label>
+        <locationX>446</locationX>
+        <locationY>551</locationY>
+        <defaultConnectorLabel>Not Found</defaultConnectorLabel>
+        <rules>
+            <name>Record_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_HS_Conversion_Record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Last_Inbound_with_HS</targetReference>
+            </connector>
+            <label>Record Found</label>
+        </rules>
+    </decisions>
+    <description>Adds last inbound activity value on lead creation</description>
+    <interviewLabel>Lead - Last Inbound Activity on Create {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead - Last Inbound Activity on Create</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_HS_Conversion_Record</name>
+        <label>Get HS Conversion Record</label>
+        <locationX>446</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>HS_Conversion_Record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>HS_Recent_Convers__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.HS_Recent_conversion__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>HS_Conversion_Mapping__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Sales_Conversion_Type__c</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Inbound_to_PTL</name>
+        <label>Update Inbound to PTL</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Last_Inbound_Activity__c</field>
+            <value>
+                <stringValue>PTL</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Last_Inbound_with_HS</name>
+        <label>Update Last Inbound with HS</label>
+        <locationX>314</locationX>
+        <locationY>671</locationY>
+        <inputAssignments>
+            <field>Last_Inbound_Activity__c</field>
+            <value>
+                <elementReference>Get_HS_Conversion_Record.Sales_Conversion_Type__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Free_Trial_or_HS_Conversion</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>HS_Recent_conversion__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Lead_Source_Detail__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Proactive Trial</stringValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

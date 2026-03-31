@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Launch_Eligible__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used when evaluating if a customer&apos;s Billing Launch Date is no less than 60 days ago</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Billing Launch Eligible</label>
+    <type>Checkbox</type>
+</CustomField>

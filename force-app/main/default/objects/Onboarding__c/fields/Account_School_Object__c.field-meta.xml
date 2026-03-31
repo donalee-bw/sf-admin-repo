@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_School_Object__c</fullName>
+    <description>Looks up the school object associated to the account in the Account lookup field and hyperlinks it to the school object record.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+   NOT(ISBLANK(Account__r.School_Object__r.Name)),
+   HYPERLINK(Account__r.School_Object__c, Account__r.School_Object__r.Name),
+   &apos;&apos;
+)</formula>
+    <inlineHelpText>School Object associated to the Account.</inlineHelpText>
+    <label>Account School Object</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

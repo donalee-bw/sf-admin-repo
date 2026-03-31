@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Onboarding_Delayed_Reason__c</fullName>
+    <description>Manually populated by reps when a billing onboarding is delayed.</description>
+    <inlineHelpText>Why is the billing onboarding delayed?</inlineHelpText>
+    <label>Billing Onboarding Delayed Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Reasons_For_Delayed_Billing_Onboardings</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

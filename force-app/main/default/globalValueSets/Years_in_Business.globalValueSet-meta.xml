@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>0-2 Years</fullName>
+        <default>false</default>
+        <label>0-2 Years</label>
+    </customValue>
+    <customValue>
+        <fullName>3-5 Years</fullName>
+        <default>false</default>
+        <label>3-5 Years</label>
+    </customValue>
+    <customValue>
+        <fullName>6+ Years</fullName>
+        <default>false</default>
+        <label>6+ Years</label>
+    </customValue>
+    <customValue>
+        <fullName>I’m opening in the next 3 months</fullName>
+        <default>false</default>
+        <label>I’m opening in the next 3 months</label>
+    </customValue>
+    <customValue>
+        <fullName>I&apos;m opening in the next 3 months</fullName>
+        <default>false</default>
+        <label>I&apos;m opening in the next 3 months</label>
+    </customValue>
+    <customValue>
+        <fullName>I’m opening in more than 3 months</fullName>
+        <default>false</default>
+        <label>I’m opening in more than 3 months</label>
+    </customValue>
+    <customValue>
+        <fullName>I&apos;m opening in more than 3 months</fullName>
+        <default>false</default>
+        <label>I&apos;m opening in more than 3 months</label>
+    </customValue>
+    <customValue>
+        <fullName>Opening in the Next 4 Months</fullName>
+        <default>false</default>
+        <label>Opening in the Next 4 Months</label>
+    </customValue>
+    <customValue>
+        <fullName>Opening in 4+ Months</fullName>
+        <default>false</default>
+        <label>Opening in 4+ Months</label>
+    </customValue>
+    <customValue>
+        <fullName>Less than 1 year</fullName>
+        <default>false</default>
+        <label>Less than 1 year</label>
+    </customValue>
+    <customValue>
+        <fullName>1 year or more</fullName>
+        <default>false</default>
+        <label>1 year or more</label>
+    </customValue>
+    <customValue>
+        <fullName>Unsure of Opening Date</fullName>
+        <default>false</default>
+        <label>Unsure of Opening Date</label>
+    </customValue>
+    <customValue>
+        <fullName>Not open yet</fullName>
+        <default>false</default>
+        <label>Not open yet</label>
+    </customValue>
+    <description>Used in Lead/Contacts from Hubspot answering the question &quot;How long has your center been in business?&quot;</description>
+    <masterLabel>Years in Business</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

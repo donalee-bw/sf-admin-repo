@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Is_Event_Related_To_Opp</name>
+        <label>Is Event Related To Opp</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Update_Logic_No_Opp</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Related to Opp</defaultConnectorLabel>
+        <rules>
+            <name>Related_to_Opp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.WhatId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>006</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Related to Opp</label>
+        </rules>
+    </decisions>
+    <description>Evaluates if event is related to a valid opportunity. If not, trigger Related To Opportunity Sales validation rule in event
+DJ 6.11.24 - Updated to remove Sales Discovery Calls from entry logic and only trigger for demo calls that did not become a demo from a disco call
+3.06.26 - Updated the start filter criteria to exclude chilimeeting type = Autodial Event or EC Autodial Event</description>
+    <environments>Default</environments>
+    <interviewLabel>Event Validation Trigger for Sales {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Event Validation Trigger for Sales</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Logic_No_Opp</name>
+        <label>Update Logic No Opp</label>
+        <locationX>308</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>LOGIC_Related_To_Opportunity_Trigger__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_Event_Related_To_Opp</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2 OR 3) AND (4 OR (5 AND 7)) AND 6 AND 8 AND 9</filterLogic>
+        <filters>
+            <field>Meeting_Completed__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Meeting_Rescheduled_by_ISR__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Meeting_Incomplete__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LOGIC_Sales_Decision_Call__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LOGIC_Sales_Demo_Call__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Meeting_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>ISR - Decision Call</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Became_Demo__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Meeting_Type_CP__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>EC Autodial Event</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Meeting_Type_CP__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Autodial Event</stringValue>
+            </value>
+        </filters>
+        <object>Event</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

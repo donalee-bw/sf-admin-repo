@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Created_at__c</columns>
+    <columns>NAME</columns>
+    <columns>Account_Name__c</columns>
+    <columns>Owner_Email__c</columns>
+    <columns>Program_type__c</columns>
+    <columns>Stated_student_count__c</columns>
+    <columns>School_Phone__c</columns>
+    <columns>State__c</columns>
+    <columns>Brightwheel_School_UUID__c</columns>
+    <columns>School_created_at__c</columns>
+    <columns>Owner_First_Name__c</columns>
+    <columns>Owner_Last_Name__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Brightwheel_Plan__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

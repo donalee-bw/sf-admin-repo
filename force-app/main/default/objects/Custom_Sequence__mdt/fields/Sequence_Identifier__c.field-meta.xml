@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sequence_Identifier__c</fullName>
+    <description>Identifier to group the custom metadata into sequence groups</description>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Sequence Identifier</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sequence 1 - Outreach Sequence</fullName>
+                <default>false</default>
+                <label>Sequence 1 - Outreach Sequence</label>
+            </value>
+            <value>
+                <fullName>Sequence 2 - Placeholder</fullName>
+                <default>false</default>
+                <label>Sequence 2 - Placeholder</label>
+            </value>
+            <value>
+                <fullName>Sequence 3 - Placeholder</fullName>
+                <default>false</default>
+                <label>Sequence 3 - Placeholder</label>
+            </value>
+            <value>
+                <fullName>EC OBS (BW Attach): Pre-Curriculum Start Sequence</fullName>
+                <default>false</default>
+                <label>EC OBS (BW Attach): Pre-Curriculum Start Sequence</label>
+            </value>
+            <value>
+                <fullName>EC OBS (BW Attach): Lessons Started Sequence</fullName>
+                <default>false</default>
+                <label>EC OBS (BW Attach): Lessons Started Sequence</label>
+            </value>
+            <value>
+                <fullName>EC OBS (EC Only): Pre-Curriculum Start Sequence</fullName>
+                <default>false</default>
+                <label>EC OBS (EC Only): Pre-Curriculum Start Sequence</label>
+            </value>
+            <value>
+                <fullName>EC OBS (EC Only): Lessons Started Sequence</fullName>
+                <default>false</default>
+                <label>EC OBS (EC Only): Lessons Started Sequence</label>
+            </value>
+            <value>
+                <fullName>Standard OBS Sequence</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Standard OBS Sequence</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

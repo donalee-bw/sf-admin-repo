@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_school</name>
+        <label>Assign school</label>
+        <locationX>274</locationX>
+        <locationY>228</locationY>
+        <assignmentItems>
+            <assignToReference>User_record.School_Object__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Find_School.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_User_record</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>School_record_match</name>
+        <label>School record match</label>
+        <locationX>266</locationX>
+        <locationY>52</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>school_record_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_School</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_school</targetReference>
+            </connector>
+            <label>school record found</label>
+        </rules>
+    </decisions>
+    <description>Match a production User record to the corresponding school</description>
+    <interviewLabel>User record school lookup {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>User record school lookup</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Find_School</name>
+        <label>Find School</label>
+        <locationX>146</locationX>
+        <locationY>50</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>School_record_match</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Brightwheel_School_UUID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>User_record.Brightwheel_School_UUID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>School_Object__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_User_record</name>
+        <label>Update User record</label>
+        <locationX>274</locationX>
+        <locationY>360</locationY>
+        <inputReference>User_record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Find_School</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>User_record</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>User_Object__c</objectType>
+    </variables>
+</Flow>

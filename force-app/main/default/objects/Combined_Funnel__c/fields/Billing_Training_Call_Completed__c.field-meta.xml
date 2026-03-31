@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Training_Call_Completed__c</fullName>
+    <description>Reference to the date captured on the Account which is populated by flow called Completed Onboarding Events - Update Corresponding Account Date Fields</description>
+    <formula>Account__r.Billing_Training_Call_Completed__c</formula>
+    <inlineHelpText>Date of the first completed Billing Training Call (Outreach Meeting Type = OBS/Eng Single-Site Brightwheel Billing Training (RR) or OBS/Eng Multi-Site Brightwheel Billing Training (RR))</inlineHelpText>
+    <label>Billing Training Call Completed</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

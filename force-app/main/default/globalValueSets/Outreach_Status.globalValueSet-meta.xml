@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>New</fullName>
+        <default>false</default>
+        <label>New</label>
+    </customValue>
+    <customValue>
+        <fullName>Added to Sequence</fullName>
+        <default>false</default>
+        <label>Added to Sequence</label>
+    </customValue>
+    <customValue>
+        <fullName>Working</fullName>
+        <default>false</default>
+        <label>Working</label>
+    </customValue>
+    <customValue>
+        <fullName>Connected - GK</fullName>
+        <default>false</default>
+        <label>Connected - GK</label>
+    </customValue>
+    <customValue>
+        <fullName>Connected - DM</fullName>
+        <default>false</default>
+        <label>Connected - DM</label>
+    </customValue>
+    <customValue>
+        <fullName>Replied</fullName>
+        <default>false</default>
+        <label>Replied</label>
+    </customValue>
+    <customValue>
+        <fullName>Bounced</fullName>
+        <default>false</default>
+        <label>Bounced</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled</fullName>
+        <default>false</default>
+        <label>Recycled</label>
+    </customValue>
+    <customValue>
+        <fullName>Opted Out</fullName>
+        <default>false</default>
+        <label>Opted Out</label>
+    </customValue>
+    <customValue>
+        <fullName>Unresponsive</fullName>
+        <default>false</default>
+        <label>Unresponsive</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified</fullName>
+        <default>false</default>
+        <label>Unqualified</label>
+    </customValue>
+    <customValue>
+        <fullName>Qualified</fullName>
+        <default>false</default>
+        <label>Qualified</label>
+    </customValue>
+    <customValue>
+        <fullName>No Connect</fullName>
+        <default>false</default>
+        <label>No Connect</label>
+    </customValue>
+    <customValue>
+        <fullName>Connected</fullName>
+        <default>false</default>
+        <label>Connected</label>
+    </customValue>
+    <customValue>
+        <fullName>Send to Yesware</fullName>
+        <default>false</default>
+        <label>Send to Yesware</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Chose Competitor</fullName>
+        <default>false</default>
+        <label>Recycled - Chose Competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Chose Free Version</fullName>
+        <default>false</default>
+        <label>Recycled - Chose Free Version</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Features Request</fullName>
+        <default>false</default>
+        <label>Recycled - Features Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - No Budget</fullName>
+        <default>false</default>
+        <label>Recycled - No Budget</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Not Ready</fullName>
+        <default>false</default>
+        <label>Recycled - Not Ready</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Not Responding</fullName>
+        <default>false</default>
+        <label>Recycled - Not Responding</label>
+    </customValue>
+    <customValue>
+        <fullName>Recycled - Public School District</fullName>
+        <default>false</default>
+        <label>Recycled - Public School District</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Invalid Contact Info</fullName>
+        <default>false</default>
+        <label>Unqualified - Invalid Contact Info</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Not Interested</fullName>
+        <default>false</default>
+        <label>Unqualified - Not Interested</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Not Sales Related</fullName>
+        <default>false</default>
+        <label>Unqualified - Not Sales Related</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Too Small</fullName>
+        <default>false</default>
+        <label>Unqualified - Too Small</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Unknown</fullName>
+        <default>false</default>
+        <label>Unqualified - Unknown</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Non-Target Market</fullName>
+        <default>false</default>
+        <label>Unqualified - Non-Target Market</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - International</fullName>
+        <default>false</default>
+        <label>Unqualified - International</label>
+    </customValue>
+    <customValue>
+        <fullName>Converted</fullName>
+        <default>false</default>
+        <label>Converted</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo Scheduled</fullName>
+        <default>false</default>
+        <label>Demo Scheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo Missed</fullName>
+        <default>false</default>
+        <label>Demo Missed</label>
+    </customValue>
+    <masterLabel>Outreach Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

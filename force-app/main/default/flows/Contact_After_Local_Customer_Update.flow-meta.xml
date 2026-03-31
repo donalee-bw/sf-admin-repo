@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Local_Customer_Found</name>
+        <label>Local Customer Found?</label>
+        <locationX>374</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Update_Contact_Clear_Fields</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Local_Customer.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact</targetReference>
+            </connector>
+            <label>Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Zip</name>
+        <label>Zip Blank?</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Get_Local_Customer</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Zip_Blank_Delete_Local_Data</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.MailingPostalCode</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Update_Contact_Clear_Fields</targetReference>
+            </connector>
+            <label>Zip Blank - Delete Local Data</label>
+        </rules>
+    </decisions>
+    <description>when a contact is created and zip isn&apos;t null, or when a contact&apos;s zip is updated, populate the local customer names and url fields on the contact</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>formNormalizedZip</name>
+        <dataType>String</dataType>
+        <expression>left( {!$Record.MailingPostalCode} , 5)</expression>
+    </formulas>
+    <formulas>
+        <name>formulaAccount1NameAndSegment</name>
+        <dataType>String</dataType>
+        <expression>{!Get_Local_Customer.Account_1_Name__c} + &quot; &quot; + {!formulaAccount1Segment}</expression>
+    </formulas>
+    <formulas>
+        <name>formulaAccount1Segment</name>
+        <dataType>String</dataType>
+        <expression>IF( {!Get_Local_Customer.Account_1_ID__r.Customer_Segment__c} = &quot;Small&quot;, &quot;(S)&quot;,
+IF( {!Get_Local_Customer.Account_1_ID__r.Customer_Segment__c} = &quot;Medium&quot;, &quot;(M)&quot;,
+IF( {!Get_Local_Customer.Account_1_ID__r.Customer_Segment__c} = &quot;Large&quot;, &quot;(L)&quot;,
+IF( {!Get_Local_Customer.Account_1_ID__r.Customer_Segment__c} = &quot;Multisite&quot;, &quot;(MS)&quot;, &quot;&quot;))))</expression>
+    </formulas>
+    <formulas>
+        <name>formulaAccount2NameAndSegment</name>
+        <dataType>String</dataType>
+        <expression>{!Get_Local_Customer.Account_2_Name__c} + &quot; &quot; + {!formulaAccount2Segment}</expression>
+    </formulas>
+    <formulas>
+        <name>formulaAccount2Segment</name>
+        <dataType>String</dataType>
+        <expression>IF( {!Get_Local_Customer.Account_2_ID__r.Customer_Segment__c} = &quot;Small&quot;, &quot;(S)&quot;,
+IF( {!Get_Local_Customer.Account_2_ID__r.Customer_Segment__c} = &quot;Medium&quot;, &quot;(M)&quot;,
+IF( {!Get_Local_Customer.Account_2_ID__r.Customer_Segment__c} = &quot;Large&quot;, &quot;(L)&quot;,
+IF( {!Get_Local_Customer.Account_2_ID__r.Customer_Segment__c} = &quot;Multisite&quot;, &quot;(MS)&quot;, &quot;&quot;))))</expression>
+    </formulas>
+    <formulas>
+        <name>formulaAccount3NameAndSegment</name>
+        <dataType>String</dataType>
+        <expression>{!Get_Local_Customer.Account_3_Name__c} + &quot; &quot; + {!formulaAccount3Segment}</expression>
+    </formulas>
+    <formulas>
+        <name>formulaAccount3Segment</name>
+        <dataType>String</dataType>
+        <expression>IF( {!Get_Local_Customer.Account_3_ID__r.Customer_Segment__c} = &quot;Small&quot;, &quot;(S)&quot;,
+IF( {!Get_Local_Customer.Account_3_ID__r.Customer_Segment__c} = &quot;Medium&quot;, &quot;(M)&quot;,
+IF( {!Get_Local_Customer.Account_3_ID__r.Customer_Segment__c} = &quot;Large&quot;, &quot;(L)&quot;,
+IF( {!Get_Local_Customer.Account_3_ID__r.Customer_Segment__c} = &quot;Multisite&quot;, &quot;(MS)&quot;, &quot;&quot;))))</expression>
+    </formulas>
+    <interviewLabel>Contact - After - Local Customer Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - After - Local Customer Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>matched on zip code</description>
+        <name>Get_Local_Customer</name>
+        <label>Get Local Customer</label>
+        <locationX>374</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Local_Customer_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Zip_Code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>formNormalizedZip</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Local_Customer__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Contact</name>
+        <label>Update Contact</label>
+        <locationX>242</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Local_Customer_1_Name__c</field>
+            <value>
+                <elementReference>formulaAccount1NameAndSegment</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Local_Customer_1_URL__c</field>
+            <value>
+                <elementReference>Get_Local_Customer.Account_1_URL__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Local_Customer_2_Name__c</field>
+            <value>
+                <elementReference>formulaAccount2NameAndSegment</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Local_Customer_2_URL__c</field>
+            <value>
+                <elementReference>Get_Local_Customer.Account_2_URL__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Local_Customer_3_Name__c</field>
+            <value>
+                <elementReference>formulaAccount3NameAndSegment</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Local_Customer_3_URL__c</field>
+            <value>
+                <elementReference>Get_Local_Customer.Account_3_URL__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Contact_Clear_Fields</name>
+        <label>Update Contact - Clear Fields</label>
+        <locationX>506</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Local_Customer_1_Name__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Local_Customer_1_URL__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Local_Customer_2_Name__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Local_Customer_2_URL__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Local_Customer_3_Name__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Local_Customer_3_URL__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Zip</targetReference>
+        </connector>
+        <filterFormula>OR(
+  AND(
+    ISNEW(),
+    NOT(ISBLANK( {!$Record.MailingPostalCode} ))
+  ),
+  AND(
+    NOT( ISBLANK( {!$Record.MailingPostalCode} )),
+    ISCHANGED( {!$Record.MailingPostalCode} )
+  ),
+  AND(
+    ISBLANK( {!$Record.MailingPostalCode} ),
+    ISCHANGED( {!$Record.MailingPostalCode} )
+  )
+)</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

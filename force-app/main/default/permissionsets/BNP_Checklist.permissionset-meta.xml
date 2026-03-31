@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>checkman__ChecklistManagerController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>checkman__ChecklistManagerController_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>BNP_Checklist_Tab</name>
+    </customPermissions>
+    <description>access to bnp checklist tab on CF through custom perm and apex class access for checklist manager app</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>BNP Checklist</label>
+    <license>Salesforce</license>
+</PermissionSet>

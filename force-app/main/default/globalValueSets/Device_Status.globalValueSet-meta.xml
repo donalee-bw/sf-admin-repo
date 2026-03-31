@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>In-Hand</fullName>
+        <default>false</default>
+        <label>In-Hand</label>
+    </customValue>
+    <customValue>
+        <fullName>Bought, Waiting For Delivery</fullName>
+        <default>false</default>
+        <label>Bought, Waiting For Delivery</label>
+    </customValue>
+    <customValue>
+        <fullName>Planning to Buy</fullName>
+        <default>false</default>
+        <label>Planning to Buy</label>
+    </customValue>
+    <customValue>
+        <fullName>Waiting on Funding</fullName>
+        <default>false</default>
+        <label>Waiting on Funding</label>
+    </customValue>
+    <customValue>
+        <fullName>Have Some, Need to Purchase More</fullName>
+        <default>false</default>
+        <label>Have Some, Need to Purchase More</label>
+    </customValue>
+    <masterLabel>Device Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

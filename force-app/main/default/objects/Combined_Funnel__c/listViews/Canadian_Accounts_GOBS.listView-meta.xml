@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canadian_Accounts_GOBS</fullName>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>NAME</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>Country_School_Object__c</columns>
+    <columns>Onboarding_Path__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>Active_Student_Count__c</columns>
+    <columns>Current_Enrollment__c</columns>
+    <columns>Active_Student_Enrollment_Percent__c</columns>
+    <columns>Ratio_Students_with_Activated_Parent__c</columns>
+    <columns>Activities_Per_Student__c</columns>
+    <columns>Tracking_Attendance_Average__c</columns>
+    <columns>Last_Activity_Date__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Country_School_Object__c</field>
+        <operation>contains</operation>
+        <value>canad</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notContain</operation>
+        <value>activated</value>
+    </filters>
+    <filters>
+        <field>OWNER.LAST_NAME</field>
+        <operation>contains</operation>
+        <value>kerr,cribeiro,pucci,galligan,landa,cummings,may,mata</value>
+    </filters>
+    <label>Canadian Accounts - GOBS</label>
+</ListView>

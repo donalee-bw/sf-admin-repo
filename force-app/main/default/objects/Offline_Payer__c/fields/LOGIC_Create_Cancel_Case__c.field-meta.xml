@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOGIC_Create_Cancel_Case__c</fullName>
+    <description>Triggers creation of case if check was not received 80 days after invoice is sent</description>
+    <formula>Date_Invoice_Sent__c = TODAY()-80</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Triggers creation of case if check was not received 80 days after invoice is sent</inlineHelpText>
+    <label>LOGIC Create Cancel Case</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

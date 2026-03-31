@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Original_Onboarding_Path__c</fullName>
+    <description>Shows the Onboarding Path field from the SaaS CW Opportunity related to the CF record.</description>
+    <externalId>false</externalId>
+    <formula>TEXT(SaaS_CW_Opportunity__r.Onboarding_Path__c)</formula>
+    <inlineHelpText>Shows the Onboarding Path field captured by Sales on the SaaS CW Opportunity related to the CF record.</inlineHelpText>
+    <label>Original Onboarding Path</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Onboarding__c</entityName>
+    <fieldName>Funnel_Stage__c</fieldName>
+    <masterLabel>EC Onboarding</masterLabel>
+    <recordTypeName>Experience_Curriculum</recordTypeName>
+</PathAssistant>

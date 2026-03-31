@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Permissions for the Heads of the Customer Engagement Org</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Head of CS</label>
+    <permissionSets>Case_Management</permissionSets>
+    <permissionSets>Delete_Opportunities</permissionSets>
+    <permissionSets>Experience_Curriculum_Permission_Set</permissionSets>
+    <permissionSets>Opportunity_Validation_Override</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

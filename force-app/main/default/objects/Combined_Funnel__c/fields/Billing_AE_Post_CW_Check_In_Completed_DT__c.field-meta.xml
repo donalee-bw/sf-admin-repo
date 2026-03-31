@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_AE_Post_CW_Check_In_Completed_DT__c</fullName>
+    <description>Mapped from the Billing Primary Contact&apos;s record - Billing AE Post-CW Check-In Completed Date</description>
+    <formula>Billing_Primary_Contact__r.Billing_AE_Post_CW_Check_In_Completed_DT__c</formula>
+    <inlineHelpText>Mapped from the Billing Primary Contact&apos;s record - Billing AE Post-CW Check-In Completed Date</inlineHelpText>
+    <label>Billing AE Post-CW Check-In Completed DT</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

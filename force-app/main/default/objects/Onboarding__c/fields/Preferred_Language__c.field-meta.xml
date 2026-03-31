@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Preferred_Language__c</fullName>
+    <description>Displays the preferred language selected on the government licensee opportunity when moved to the won stage. The default value is English. (Sprint 10)</description>
+    <inlineHelpText>Displays the &apos;Preferred Language&apos; specified on the Government Licensee Opportunity at the &apos;Won&apos; stage. Default value is &apos;English&apos;.</inlineHelpText>
+    <label>Preferred Language</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Preferred_Language</valueSetName>
+    </valueSet>
+</CustomField>

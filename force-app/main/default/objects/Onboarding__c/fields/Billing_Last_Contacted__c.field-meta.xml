@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Last_Contacted__c</fullName>
+    <description>Formula to look at Billing Last Contacted on the associated Account and Billing Last Contacted on the Primary Contact and populate with the MAX date between the two on the Onboarding record.</description>
+    <formula>IF(
+    AND(
+       NOT(ISBLANK(Account__r.Billing_Last_Contacted__c)),
+       ISBLANK(Primary_Contact__r.Billing_Last_Contacted__c)
+    ),
+    Account__r.Billing_Last_Contacted__c,
+    IF(
+        AND(
+            ISBLANK(Account__r.Billing_Last_Contacted__c),
+            NOT(ISBLANK(Primary_Contact__r.Billing_Last_Contacted__c))
+        ), 
+        Primary_Contact__r.Billing_Last_Contacted__c,
+        IF(
+            Account__r.Billing_Last_Contacted__c &gt; Primary_Contact__r.Billing_Last_Contacted__c,
+            Account__r.Billing_Last_Contacted__c,
+            Primary_Contact__r.Billing_Last_Contacted__c
+        )
+    )
+)</formula>
+    <inlineHelpText>The most recent task or event logged by the Billing team on the Account or Primary Contact&apos;s record that are associated to the Onboarding.</inlineHelpText>
+    <label>Billing Last Contacted</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

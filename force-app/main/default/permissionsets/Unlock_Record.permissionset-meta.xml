@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Can run flows to access unlock record action - Run flows checkbox on profile settings</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Unlock Record</label>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>RunFlow</name>
+    </userPermissions>
+</PermissionSet>

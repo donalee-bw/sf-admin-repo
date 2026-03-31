@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Need to Purchase</fullName>
+        <default>false</default>
+        <label>Need to Purchase</label>
+    </customValue>
+    <customValue>
+        <fullName>Utilizing Personal Devices</fullName>
+        <default>false</default>
+        <label>Utilizing Personal Devices</label>
+    </customValue>
+    <customValue>
+        <fullName>Utilizing School Devices</fullName>
+        <default>false</default>
+        <label>Utilizing School Devices</label>
+    </customValue>
+    <description>Used on Opp and Account. Shows if and what kind of devices the center has at the time of closed won opp.</description>
+    <masterLabel>Status of Devices</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

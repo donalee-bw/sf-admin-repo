@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bry_Billing_List_View</fullName>
+    <booleanFilter>1 AND 2 AND (3 AND (4 AND 5)) AND 6 AND 7</booleanFilter>
+    <columns>NAME</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Onboarding_Path__c</columns>
+    <columns>Days_Since_Billing_Launch_Date__c</columns>
+    <columns>Onboarding_Last_Connected__c</columns>
+    <columns>Webinar_2_Scheduled_Date__c</columns>
+    <columns>Billing_Onboarding_Status__c</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>Active_Students_with_Billing_Ratio__c</columns>
+    <columns>Active_Students_with_One_Bill_Ratio__c</columns>
+    <columns>Active_Students_with_One_Payment_Ratio__c</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>Active_Student_Enrollment_Percent__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>OWNER.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>Charles</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>equals</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Number_of_Open_Cancel_Request_Cases__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Customer_Segment__c</field>
+        <operation>equals</operation>
+        <value>Small</value>
+    </filters>
+    <label>OBS Billing List View - SML</label>
+</ListView>

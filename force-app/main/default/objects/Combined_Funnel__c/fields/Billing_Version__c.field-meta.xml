@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Version__c</fullName>
+    <description>Indicates if the school is on billing V1 or V2 or V3. From the School Object related to the Account.</description>
+    <externalId>false</externalId>
+    <formula>Account__r.School_Object__r.Billing_Version__c</formula>
+    <inlineHelpText>Indicates if the school is on billing V1 or V2 or V3. From the School Object related to the Account.</inlineHelpText>
+    <label>Billing Version</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Assess_Outreach_stage</name>
+        <label>Assess Outreach stage</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Outcome_1_of_Decision_1</name>
+            <conditionLogic>1 OR 2 OR 3</conditionLogic>
+            <conditions>
+                <leftValueReference>Lead.Outreach_stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Assigned</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Lead.Outreach_stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Working</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Lead.Outreach_stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Added to sequence</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lead</targetReference>
+            </connector>
+            <label>Lead Outreach stage</label>
+        </rules>
+        <rules>
+            <name>Contact_Outreach_stage</name>
+            <conditionLogic>1 OR 2 OR 3</conditionLogic>
+            <conditions>
+                <leftValueReference>Contact.Outreach_stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Assigned</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Contact.Outreach_stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Working</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Contact.Outreach_stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Added to sequence</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Contact Outreach stage</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Recycle Lead/Contact at Cadence completion {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Recycle Lead/Contact at Cadence completion</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Lead</name>
+        <label>Update Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>Lead</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assess_Outreach_stage</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Contact</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <name>Lead</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Lead</objectType>
+    </variables>
+</Flow>

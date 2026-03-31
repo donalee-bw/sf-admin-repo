@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Handoff_from_OBS</fullName>
+    <active>false</active>
+    <description>Required fields when adding FTS owner that creates a billing onboarding for 1:1</description>
+    <errorConditionFormula>AND(
+    NOT($User.ProfileId = &apos;00e1I000001rqxt&apos;),
+    NOT($User.ProfileId = &apos;00e1I000000qsnN&apos;),
+    NOT(ISBLANK(FTS_Owner__c)),
+    Declined_Billing_Training__c = FALSE,
+    DATEVALUE(CreatedDate) &gt; DATE(2020,09,21),
+    OR(
+       ISBLANK(TEXT(Billing_Setup_Call_Path__c)),
+       ISBLANK(Billing_Call_or_Webinar_Date__c)
+   ) 
+)</errorConditionFormula>
+    <errorDisplayField>FTS_Owner__c</errorDisplayField>
+    <errorMessage>Please complete &apos;Billing Setup Call Path&apos; and &apos;Billing Call or Webinar Date&apos; fields below</errorMessage>
+</ValidationRule>

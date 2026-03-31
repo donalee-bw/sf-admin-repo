@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Postponed_but_No_Reason</fullName>
+    <columns>FTS_Owner__c</columns>
+    <columns>NAME</columns>
+    <columns>Billing_Onboarding_Status__c</columns>
+    <columns>Billing_Postponed_Reason__c</columns>
+    <columns>Billing_Postponed_Check_In_Date__c</columns>
+    <columns>Billing_Conversation_Notes__c</columns>
+    <columns>Billing_Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Postponed</value>
+    </filters>
+    <filters>
+        <field>Billing_Postponed_Reason__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Billing Postponed but No Reason</label>
+</ListView>

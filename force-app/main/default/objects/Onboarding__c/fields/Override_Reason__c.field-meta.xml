@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Override_Reason__c</fullName>
+    <description>Reason for overriding Activation data captured on the record. Used in approval process for managers to mark something as activated despite the school object data.</description>
+    <inlineHelpText>Reason for overriding activation.</inlineHelpText>
+    <label>Override Reason</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

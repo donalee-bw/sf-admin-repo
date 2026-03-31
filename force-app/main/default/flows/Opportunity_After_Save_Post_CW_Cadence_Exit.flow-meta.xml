@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Remove_Contact_from_Post_Demo_Cadence</name>
+        <label>Remove Contact from Post Demo Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>removeTargetFromSalesCadence</actionName>
+        <actionType>removeTargetFromSalesCadence</actionType>
+        <connector>
+            <targetReference>Update_SE_Tag_on_Contact</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>Get_Contact_If_in_Cadence_Only.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>completionReasonCode</name>
+            <value>
+                <stringValue>ManuallyRemoved</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>removeTargetFromSalesCadence</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Cadence_Tracker_Found</name>
+        <label>Cadence Tracker Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Active_Cadence_Tracker</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_Contact_from_Post_Demo_Cadence</targetReference>
+            </connector>
+            <label>yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Contact_in_Cadence_Found</name>
+        <label>Contact in Cadence Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Contact_in_Cadence</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact_If_in_Cadence_Only</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Active_Cadence_Tracker</targetReference>
+            </connector>
+            <label>Yes - Contact in Cadence</label>
+        </rules>
+    </decisions>
+    <description>12.11.2025 - LK - Added Government Licensee and Gov Chil Opportunity Record types to also run through this exit logic</description>
+    <environments>Default</environments>
+    <interviewLabel>Opportunity - After Save - Post CW Cadence Exit {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - After Save - Post CW Cadence Exit</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Active_Cadence_Tracker</name>
+        <label>Get Active Cadence Tracker</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Cadence_Tracker_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>TargetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact_If_in_Cadence_Only.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Complete</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionCadenceTracker</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get the Contact if it&apos;s in a cadence that is part of the Sales Post Demo Group.</description>
+        <name>Get_Contact_If_in_Cadence_Only</name>
+        <label>Get Contact If in Cadence Only</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_in_Cadence_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Contact__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Cadence_Label__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Sales - Post Demo</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_SE_Tag_on_Contact</name>
+        <label>Update SE Tag on Contact</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact_If_in_Cadence_Only.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>SE_Tag__c</field>
+            <value>
+                <stringValue>Opportunity - After Save - Post CW Cadence Exit</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Contact_If_in_Cadence_Only</targetReference>
+        </connector>
+        <filterFormula>AND(
+    OR(
+{!$Record.RecordTypeId} = {!$Label.SaaS_Child_Oppprtunity},
+{!$Record.RecordTypeId} = {!$Label.SaaS_Opportunity_Record_Type},
+{!$Record.RecordTypeId} = {!$Label.Government_Licensee_Record_Type},
+{!$Record.RecordTypeId} = {!$Label.Gov_Child_Opportunity}    
+    ),
+
+    NOT(
+        ISBLANK({!$Record.ContactId}) 
+    ),
+    {!$Record.IsClosed} = TRUE,
+    ISCHANGED({!$Record.StageName}),
+    OR(
+        AND(
+            TEXT({!$Record__Prior.StageName}) = &quot;SSPR Collection&quot;,
+            OR(
+                TEXT({!$Record.StageName}) = &quot;Onboarding In Progress&quot;,
+                TEXT({!$Record.StageName}) = &quot;Completed&quot;
+            )
+        ),
+        AND(
+            TEXT({!$Record__Prior.StageName}) = &quot;OB Eligible&quot;,
+            OR(
+                TEXT({!$Record.StageName}) = &quot;Onboarding In Progress&quot;,
+                TEXT({!$Record.StageName}) = &quot;Completed&quot;
+            )
+        )
+    )
+)</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

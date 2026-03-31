@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>Edit</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Delete</value>
+                            <visibilityRule>
+                                <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!$User.Profile.Name}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>System Administrator</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$User.Profile.Name}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>General User</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$User.UserRole.Name}</leftValue>
+                                    <operator>CONTAINS</operator>
+                                    <rightValue>Inbound SDR Manager</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$User.UserRole.Name}</leftValue>
+                                    <operator>CONTAINS</operator>
+                                    <rightValue>Inside Sales Manager</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$User.UserRole.Name}</leftValue>
+                                    <operator>CONTAINS</operator>
+                                    <rightValue>Outbound SDR Manager</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Event.Disposition_the_Event</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>collapsed</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableActionsConfiguration</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableActionsInNative</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideChatterActions</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>numVisibleActions</name>
+                    <value>3</value>
+                </componentInstanceProperties>
+                <componentName>force:highlightsPanel</componentName>
+                <identifier>force_highlightsPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>force:detailPanel</componentName>
+                <identifier>force_detailPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>runtime_sales_activities:activityRecordFieldHistory</componentName>
+                <identifier>runtime_sales_activities_activityRecordFieldHistory</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Live Transfer</masterLabel>
+    <sobjectType>Event</sobjectType>
+    <template>
+        <name>flexipage:recordHomeSingleColNoHeaderTemplateDesktop</name>
+    </template>
+    <type>RecordPage</type>
+</FlexiPage>

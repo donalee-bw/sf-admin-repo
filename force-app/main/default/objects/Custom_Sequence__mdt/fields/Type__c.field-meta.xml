@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <description>A required Picklist field to hold the newly created Task Type</description>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Type</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>First Call - Qualifying</fullName>
+                <default>true</default>
+                <label>First Call - Qualifying</label>
+            </value>
+            <value>
+                <fullName>Check-In Call</fullName>
+                <default>false</default>
+                <label>Check-In Call</label>
+            </value>
+            <value>
+                <fullName>Email</fullName>
+                <default>false</default>
+                <label>Email</label>
+            </value>
+            <value>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+                <label>Meeting</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Demo</fullName>
+                <default>false</default>
+                <label>Demo</label>
+            </value>
+            <value>
+                <fullName>Closing Call</fullName>
+                <default>false</default>
+                <label>Closing Call</label>
+            </value>
+            <value>
+                <fullName>Onboarding Call</fullName>
+                <default>false</default>
+                <label>Onboarding Call</label>
+            </value>
+            <value>
+                <fullName>Activation Call</fullName>
+                <default>false</default>
+                <label>Activation Call</label>
+            </value>
+            <value>
+                <fullName>Cancellation Call</fullName>
+                <default>false</default>
+                <label>Cancellation Call</label>
+            </value>
+            <value>
+                <fullName>Cancellation Follow-up (eFlex)</fullName>
+                <default>false</default>
+                <label>Cancellation Follow-up (eFlex)</label>
+            </value>
+            <value>
+                <fullName>Hubspot Form</fullName>
+                <default>false</default>
+                <label>Hubspot Form</label>
+            </value>
+            <value>
+                <fullName>Marketing Email</fullName>
+                <default>false</default>
+                <label>Marketing Email</label>
+            </value>
+            <value>
+                <fullName>Yesware Email</fullName>
+                <default>false</default>
+                <label>Yesware Email</label>
+            </value>
+            <value>
+                <fullName>Outreach Activity</fullName>
+                <default>false</default>
+                <label>Outreach Activity</label>
+            </value>
+            <value>
+                <fullName>Call</fullName>
+                <default>false</default>
+                <label>Call</label>
+            </value>
+            <value>
+                <fullName>Intercom Chat</fullName>
+                <default>false</default>
+                <label>Intercom Chat</label>
+            </value>
+            <value>
+                <fullName>sequence_step_call</fullName>
+                <default>false</default>
+                <label>sequence_step_call</label>
+            </value>
+            <value>
+                <fullName>Mobile Form</fullName>
+                <default>false</default>
+                <label>Mobile Form</label>
+            </value>
+            <value>
+                <fullName>Web Product Form</fullName>
+                <default>false</default>
+                <label>Web Product Form</label>
+            </value>
+            <value>
+                <fullName>Notification</fullName>
+                <default>false</default>
+                <label>Notification</label>
+            </value>
+            <value>
+                <fullName>Outbound Email</fullName>
+                <default>false</default>
+                <label>Outbound Email</label>
+            </value>
+            <value>
+                <fullName>Message</fullName>
+                <default>false</default>
+                <label>Message</label>
+            </value>
+            <value>
+                <fullName>Task</fullName>
+                <default>false</default>
+                <label>Task</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

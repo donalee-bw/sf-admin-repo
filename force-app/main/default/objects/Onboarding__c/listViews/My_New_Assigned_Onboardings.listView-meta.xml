@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_New_Assigned_Onboardings</fullName>
+    <columns>Funnel_Stage__c</columns>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Onboarding_Setup_Call_Path__c</columns>
+    <columns>Account_Customer_Type__c</columns>
+    <columns>Onboarding_Status__c</columns>
+    <columns>Created_at__c</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Account_Customer_Type__c</field>
+        <operation>notEqual</operation>
+        <value>Non-Target</value>
+    </filters>
+    <filters>
+        <field>Funnel_Stage__c</field>
+        <operation>equals</operation>
+        <value>Assigned,New</value>
+    </filters>
+    <label>My New Assigned Onboardings</label>
+</ListView>

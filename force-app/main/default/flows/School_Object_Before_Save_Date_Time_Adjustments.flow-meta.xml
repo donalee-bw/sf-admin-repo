@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_updated_SaaS_Activation_Date</name>
+        <label>Assign updated SaaS Activation Date</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.SaaS_Activation_Date_2024__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formSaaSActivationDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Billing_Activation_Date_2024__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formBillingActivationDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SaaS_Adding_Parents_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formSaaSAddingParentsStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SaaS_Adding_Staff_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formSaaSAddingStaffStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SaaS_Adding_Students_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formSaaSAddingStudentsStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SaaS_Logging_Activities_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formSaaSLoggingActivitesStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SaaS_Parents_Signing_Up_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formSaaSParentsSigningUpStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SaaS_Staff_Logging_In_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formSaaSStaffLoggingInStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SaaS_Tracking_Attendance_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formSaaSTrackingAttendanceStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Billing_Adding_Payers_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formBillingAddingPayersStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Billing_Adding_Students_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formBillingAddingStudentsStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Billing_Complete_Set_Up_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formBillingCompleteSetUpStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Billing_FinalVerification_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formBillingVerifyCompleteStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Billing_Online_Payments_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formBillingOnlinePaymentsStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Billing_Sending_Bills_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formBillingSendingBillsStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Billing_Setting_Up_Bills_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formBillingSettingUpBillsStageMeDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Billing_Submit_Verify_Stage_Met_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formBillingSubmitVerityStageMetDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.SaaS_Backdated_Activation_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>FormSaasBackdatesActivationDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Billing_Backdated_Activation_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>FormBillingBackdatedActivationDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Process to update the date/time stamps on School Object from default of midnight UTC to add 12 hours for SF UI and Reporting Conversion.
+
+05/28/25 - PE - Updated flow entry criteria to run whenever any of the fields mapped to have their date formatted is changed.
+07/16/2025 - LK - Added logic to also update the Backdated Activation Dates
+8/20/25 - JH - Updated formulas to set Backdated Activation Date = Stamp/Ingestion Date − 1 day so it reflects the actual trigger day (the prior day).
+12.22.25 - LK - Added logic to look at the Funnel stage, to stamp the backdate when the stage = activated</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>formBillingActivationDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.Billing_Activation_Date_2024__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.Billing_Activation_Date_2024__c} + (12 / 24),
+  {!$Record.Billing_Activation_Date_2024__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formBillingAddingPayersStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.Billing_Adding_Payers_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.Billing_Adding_Payers_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.Billing_Adding_Payers_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formBillingAddingStudentsStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.Billing_Adding_Students_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.Billing_Adding_Students_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.Billing_Adding_Students_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Sets the Billing Backdated Activation Date only when the Billing Activation Funnel Stage transitions to “Activated” and the activation date is in the past (with a 1-day buffer). This prevents repeated warehouse sync updates from incorrectly marking billing activations as backdated.</description>
+        <name>FormBillingBackdatedActivationDate</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+  AND(
+    NOT(ISBLANK({!formBillingActivationDate})),
+
+    /* Only evaluate when the Billing funnel stage transitions into Activated */
+    TEXT({!$Record.Billing_Activation_Funnel_Stage_2024__c}) = &quot;Activated&quot;,
+    TEXT({!$Record__Prior.Billing_Activation_Funnel_Stage_2024__c}) != &quot;Activated&quot;,
+
+    /* Activation date is truly backdated (1-day buffer) */
+    DATEVALUE({!formBillingActivationDate}) &lt; (TODAY() - 1)
+  ),
+  TODAY() - 1,
+ {!$Record.Billing_Backdated_Activation_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formBillingCompleteSetUpStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.Billing_Complete_Set_Up_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.Billing_Complete_Set_Up_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.Billing_Complete_Set_Up_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formBillingOnlinePaymentsStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.Billing_Online_Payments_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.Billing_Online_Payments_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.Billing_Online_Payments_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formBillingSendingBillsStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.Billing_Sending_Bills_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.Billing_Sending_Bills_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.Billing_Sending_Bills_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formBillingSettingUpBillsStageMeDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.Billing_Setting_Up_Bills_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.Billing_Setting_Up_Bills_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.Billing_Setting_Up_Bills_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formBillingSubmitVerityStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.Billing_Submit_Verify_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.Billing_Submit_Verify_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.Billing_Submit_Verify_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formBillingVerifyCompleteStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.Billing_FinalVerification_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.Billing_FinalVerification_Stage_Met_Date__c}+ (12 / 24),
+  {!$Record.Billing_FinalVerification_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formSaaSActivationDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.SaaS_Activation_Date_2024__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.SaaS_Activation_Date_2024__c} + (12 / 24),
+  {!$Record.SaaS_Activation_Date_2024__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formSaaSAddingParentsStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.SaaS_Adding_Parents_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.SaaS_Adding_Parents_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.SaaS_Adding_Parents_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formSaaSAddingStaffStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.SaaS_Adding_Staff_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.SaaS_Adding_Staff_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.SaaS_Adding_Staff_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formSaaSAddingStudentsStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.SaaS_Adding_Students_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.SaaS_Adding_Students_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.SaaS_Adding_Students_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Sets the SaaS Backdated Activation Date only when the SaaS Activation Funnel Stage transitions to “Activated” and the activation date is in the past (with a 1-day buffer). This prevents duplicate nightly sync updates from incorrectly flagging activations as backdated.</description>
+        <name>FormSaasBackdatesActivationDate</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+  AND(
+    NOT(ISBLANK({!formSaaSActivationDate})),
+    TEXT({!$Record.SaaS_Activation_Funnel_Stage_2024__c}) = &quot;Activated&quot;,
+    TEXT({!$Record__Prior.SaaS_Activation_Funnel_Stage_2024__c}) &lt;&gt; &quot;Activated&quot;,
+    DATEVALUE({!formSaaSActivationDate}) &lt; (TODAY() - 1)
+  ),
+  TODAY() - 1,
+ {!$Record.SaaS_Backdated_Activation_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formSaaSLoggingActivitesStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.SaaS_Logging_Activities_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.SaaS_Logging_Activities_Stage_Met_Date__c}+ (12 / 24),
+  {!$Record.SaaS_Logging_Activities_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formSaaSParentsSigningUpStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.SaaS_Parents_Signing_Up_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.SaaS_Parents_Signing_Up_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.SaaS_Parents_Signing_Up_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formSaaSStaffLoggingInStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.SaaS_Staff_Logging_In_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.SaaS_Staff_Logging_In_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.SaaS_Staff_Logging_In_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>formSaaSTrackingAttendanceStageMetDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(
+  RIGHT(TEXT({!$Record.SaaS_Tracking_Attendance_Stage_Met_Date__c}), 9) = &apos;00:00:00Z&apos;,
+  {!$Record.SaaS_Tracking_Attendance_Stage_Met_Date__c} + (12 / 24),
+  {!$Record.SaaS_Tracking_Attendance_Stage_Met_Date__c}
+)</expression>
+    </formulas>
+    <interviewLabel>School Object - Before Save - Date Time Adjustments {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>School Object - Before Save - Date Time Adjustments</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_updated_SaaS_Activation_Date</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>SaaS_Activation_Date_2024__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Activation_Date_2024__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Adding_Parents_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Adding_Staff_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Adding_Students_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Logging_Activities_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Parents_Signing_Up_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Staff_Logging_In_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Tracking_Attendance_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Adding_Payers_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Adding_Students_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Complete_Set_Up_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_FinalVerification_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Online_Payments_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Sending_Bills_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Setting_Up_Bills_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Submit_Verify_Stage_Met_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>School_Object__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

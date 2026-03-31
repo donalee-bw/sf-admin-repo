@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOGIC_CW_Opp_89_Days__c</fullName>
+    <description>Related CW Opportunity was 89 days ago</description>
+    <formula>Related_CW_Opportunity__r.CloseDate = TODAY()-89</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Related CW Opportunity was 89 days ago</inlineHelpText>
+    <label>LOGIC CW Opp 89 Days</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

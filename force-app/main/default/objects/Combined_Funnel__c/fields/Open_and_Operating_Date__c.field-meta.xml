@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_and_Operating_Date__c</fullName>
+    <description>Mapped from CW Opp in flow.</description>
+    <inlineHelpText>When the center will be open and operating, if Current Capacity Operating Status is not &quot;Open and Operating&quot;.</inlineHelpText>
+    <label>Open and Operating Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

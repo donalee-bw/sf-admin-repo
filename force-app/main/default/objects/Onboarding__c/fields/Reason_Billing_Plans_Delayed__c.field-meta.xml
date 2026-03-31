@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_Billing_Plans_Delayed__c</fullName>
+    <description>Reason the customer is stuck in the Creating Billing Plans funnel stage.</description>
+    <inlineHelpText>Reason the customer is stuck in the Creating Billing Plans funnel stage.</inlineHelpText>
+    <label>x_Reason Billing Plans Delayed</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Reasons_For_Delayed_Billing_Onboardings</valueSetName>
+    </valueSet>
+</CustomField>

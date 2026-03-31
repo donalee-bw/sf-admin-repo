@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Self_Serve_Onboarding_Queue_Combined_Funnel</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Self Serve Onboarding Queue</label>
+    <queue>Self_Serve_Onboarding_Queue</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

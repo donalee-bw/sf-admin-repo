@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Considering a Competitor</fullName>
+        <default>false</default>
+        <label>Considering a Competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>Considering Canceling</fullName>
+        <default>false</default>
+        <label>Considering Canceling</label>
+    </customValue>
+    <customValue>
+        <fullName>Failed Payments</fullName>
+        <default>false</default>
+        <label>Failed Payments</label>
+    </customValue>
+    <customValue>
+        <fullName>Devices Needed</fullName>
+        <default>false</default>
+        <label>Internal Technology Issues</label>
+    </customValue>
+    <customValue>
+        <fullName>School Ownership Change</fullName>
+        <default>false</default>
+        <label>Leadership/Staff/Owner Change</label>
+    </customValue>
+    <customValue>
+        <fullName>Legacy Account</fullName>
+        <default>false</default>
+        <label>Legacy Account</label>
+    </customValue>
+    <customValue>
+        <fullName>Limited Feature Adoption</fullName>
+        <default>false</default>
+        <label>Limited Feature Adoption</label>
+    </customValue>
+    <customValue>
+        <fullName>Missed Onboarding Expectations</fullName>
+        <default>false</default>
+        <label>Missed Onboarding Expectations</label>
+    </customValue>
+    <customValue>
+        <fullName>Missed Product or Feature Expectations</fullName>
+        <default>false</default>
+        <label>Missed Product or Feature Expectations</label>
+    </customValue>
+    <customValue>
+        <fullName>No Internal Driver</fullName>
+        <default>false</default>
+        <label>No Internal Driver</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-Target Customer Type</fullName>
+        <default>false</default>
+        <label>Non-Target Customer Type</label>
+    </customValue>
+    <customValue>
+        <fullName>No Onboarding Call Scheduled by AE</fullName>
+        <default>false</default>
+        <label>No Onboarding Call Scheduled by AE</label>
+    </customValue>
+    <customValue>
+        <fullName>No Show to Onboarding Call</fullName>
+        <default>false</default>
+        <label>No Show to Onboarding Call</label>
+    </customValue>
+    <customValue>
+        <fullName>No Follow Through/Not Engaged</fullName>
+        <default>false</default>
+        <label>Not Bought In</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Tech Savvy</fullName>
+        <default>false</default>
+        <label>Not Tech Savvy</label>
+    </customValue>
+    <customValue>
+        <fullName>Pilot/Trialing Mindset</fullName>
+        <default>false</default>
+        <label>Pilot/Trialing Mindset</label>
+    </customValue>
+    <customValue>
+        <fullName>New School - Growing</fullName>
+        <default>false</default>
+        <label>Pricing Risk - New School - Growing</label>
+    </customValue>
+    <customValue>
+        <fullName>Roster Collection Delayed</fullName>
+        <default>false</default>
+        <label>Roster Challenges</label>
+    </customValue>
+    <customValue>
+        <fullName>New Building or Building Under Construction</fullName>
+        <default>false</default>
+        <label>Slow to open/licensing/under construction</label>
+    </customValue>
+    <customValue>
+        <fullName>Solo Implementer</fullName>
+        <default>false</default>
+        <label>Solo Implementer</label>
+    </customValue>
+    <customValue>
+        <fullName>Unresponsive to Communication</fullName>
+        <default>false</default>
+        <label>Unresponsive to Communication</label>
+    </customValue>
+    <customValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <label>None</label>
+    </customValue>
+    <masterLabel>At Risk To Onboard Indicators</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

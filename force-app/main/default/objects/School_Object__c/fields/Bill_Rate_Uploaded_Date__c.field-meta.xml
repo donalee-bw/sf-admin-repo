@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bill_Rate_Uploaded_Date__c</fullName>
+    <description>Date that the Bill Rate was uploaded/created by onboarding team using the internal tool that went live in December 2024. This data will come directly from product in nightly job. Matt Ong point person on eng for tracking of this and will work with DataEnd on it getting populated</description>
+    <inlineHelpText>Date that the customers bill rate was uploaded/created by bw onboarding team using the internal tool that went live in December 2024. Populated from product data on school object</inlineHelpText>
+    <label>Bill Rate Uploaded Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

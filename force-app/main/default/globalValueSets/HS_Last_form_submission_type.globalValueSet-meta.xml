@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Demo Request</fullName>
+        <default>false</default>
+        <label>Demo Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Pricing Inquiry</fullName>
+        <default>false</default>
+        <label>Pricing Inquiry</label>
+    </customValue>
+    <customValue>
+        <fullName>Content Request</fullName>
+        <default>false</default>
+        <label>Content Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Webinar</fullName>
+        <default>false</default>
+        <label>Webinar</label>
+    </customValue>
+    <customValue>
+        <fullName>Contact Us</fullName>
+        <default>false</default>
+        <label>Contact Us</label>
+    </customValue>
+    <customValue>
+        <fullName>Direct Mail</fullName>
+        <default>false</default>
+        <label>Direct Mail</label>
+    </customValue>
+    <customValue>
+        <fullName>Referral</fullName>
+        <default>false</default>
+        <label>Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Parent Referral</fullName>
+        <default>false</default>
+        <label>Parent Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Blog</fullName>
+        <default>false</default>
+        <label>Blog</label>
+    </customValue>
+    <customValue>
+        <fullName>Online Booking</fullName>
+        <default>false</default>
+        <label>Online Booking</label>
+    </customValue>
+    <customValue>
+        <fullName>Event</fullName>
+        <default>false</default>
+        <label>Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Product Trial Lead</fullName>
+        <default>false</default>
+        <label>Product Trial Lead</label>
+    </customValue>
+    <customValue>
+        <fullName>Government Request</fullName>
+        <default>false</default>
+        <label>Government Request</label>
+    </customValue>
+    <customValue>
+        <fullName>EEL Demo Request</fullName>
+        <default>false</default>
+        <label>EEL Demo Request</label>
+    </customValue>
+    <customValue>
+        <fullName>EEL Content Request</fullName>
+        <default>false</default>
+        <label>EEL Content Request</label>
+    </customValue>
+    <customValue>
+        <fullName>EEL Blog</fullName>
+        <default>false</default>
+        <label>EEL Blog</label>
+    </customValue>
+    <customValue>
+        <fullName>EEL Webinar</fullName>
+        <default>false</default>
+        <label>EEL Webinar</label>
+    </customValue>
+    <customValue>
+        <fullName>EEL Event</fullName>
+        <default>false</default>
+        <label>EEL Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Government Partnership Request</fullName>
+        <default>false</default>
+        <label>Government Partnership Request</label>
+    </customValue>
+    <customValue>
+        <fullName>EEL Product Trial</fullName>
+        <default>false</default>
+        <label>EEL Product Trial</label>
+    </customValue>
+    <customValue>
+        <fullName>Professional Development Trial</fullName>
+        <default>false</default>
+        <label>Professional Development Trial</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing Demo Request</fullName>
+        <default>false</default>
+        <label>Billing Demo Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Guide</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Guide</label>
+    </customValue>
+    <description>Last HS form submission type</description>
+    <masterLabel>HS Last form submission type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

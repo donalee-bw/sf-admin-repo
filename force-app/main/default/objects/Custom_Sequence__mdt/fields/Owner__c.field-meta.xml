@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Owner__c</fullName>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Picklist values need to be the API name of the Contact field to reference for created task&apos;s ownership</inlineHelpText>
+    <label>Owner</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>OwnerId</fullName>
+                <default>false</default>
+                <label>OwnerId</label>
+            </value>
+            <value>
+                <fullName>EC_Upsell_Opportunity_Owner__c</fullName>
+                <default>true</default>
+                <label>EC_Upsell_Opportunity_Owner__c</label>
+            </value>
+            <value>
+                <fullName>Opportunity_Owner</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Opportunity_Owner</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

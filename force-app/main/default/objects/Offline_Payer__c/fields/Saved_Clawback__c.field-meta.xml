@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Saved_Clawback__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>If retention team was able to save the case prior to day 89, no clawback slack for the rep</description>
+    <inlineHelpText>If retention team was able to save the case prior to day 89, no clawback slack for the rep</inlineHelpText>
+    <label>Saved Clawback</label>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

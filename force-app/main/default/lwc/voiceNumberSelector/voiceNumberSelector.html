@@ -1,0 +1,25 @@
+<template>
+     <div class="component-wrapper">
+     <template if:true={isLoading}>
+        <div class="spinner-backdrop">
+            <lightning-spinner
+                alternative-text="Loading"
+                size="medium">
+            </lightning-spinner>
+        </div>
+    </template>
+    <div class="slds-p-around_small">
+            <div class="slds-m-top_small">
+                <lightning-combobox
+                    name="numberSelector"
+                    label="Choose a number"
+                    value={selectedNumber}
+                    placeholder="Select a number..."
+                    options={lstOfOptions}
+                    onchange={handleNumberChange}>
+                </lightning-combobox>
+            </div>
+    </div>
+    </div>
+   
+</template>

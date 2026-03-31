@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Launch_Date_Stamp__c</fullName>
+    <description>Stamped on billing onboardings in CF flow when school object billing launch date is changed.</description>
+    <inlineHelpText>Stamped with Billing Launch Date from School Object.</inlineHelpText>
+    <label>Billing Launch Date Stamp</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

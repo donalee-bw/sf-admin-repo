@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>of_Students_at_Billing_Activation__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ISPICKVAL(Onboarding_Attempt_Status_New__c , &quot;Closed&quot;) || ISPICKVAL(Onboarding_Attempt_Status_New__c , &quot;Canceled&quot;),
+of_Students_at_Bill_Activation_Stamp__c,
+IF(RecordType.Name = &apos;Billing&apos;,
+IF(NOT(ISBLANK(of_Students_at_Bill_Activation_Stamp__c)),
+of_Students_at_Bill_Activation_Stamp__c,
+Account__r.School_Object__r.of_Students_at_Billing_Activation__c ),NULL)
+)</formula>
+    <label># of Students at Billing Activation</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

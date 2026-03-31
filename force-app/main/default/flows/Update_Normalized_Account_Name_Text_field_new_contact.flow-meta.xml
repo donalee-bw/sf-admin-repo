@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Update Normalized Account Name Text field for TAM to Org matching flow on contact create (indexed)</description>
+    <formulas>
+        <name>Formula_Normalized_Account_Name</name>
+        <dataType>String</dataType>
+        <expression>SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE({!Account.Name} ,&quot;&apos;&quot;,&quot;&quot;) ,&quot;’&quot;,&quot;&quot;) ,&quot;‘&quot;,&quot;&quot;) ,&quot;/&quot;,&quot;&quot;) ,&quot;.&quot;,&quot;&quot;) ,&quot;-&quot;,&quot;&quot;) ,&quot;,&quot;,&quot;&quot;) ,&quot;#&quot;,&quot;&quot;) ,&quot;&amp;&quot;,&quot;&quot;) ,&quot;)&quot;,&quot;&quot;) ,&quot;(&quot;,&quot;&quot;) ,&quot;)&quot;,&quot;&quot;) ,&quot;!&quot;,&quot;&quot;) ,&quot;[&quot;,&quot;&quot;) ,&quot;]&quot;,&quot;&quot;) ,&quot;\&quot;&quot;,&quot;&quot;) ,&quot;“&quot;,&quot;&quot;) ,&quot;”&quot;,&quot;&quot;) ,&quot;=&quot;,&quot;&quot;)</expression>
+    </formulas>
+    <interviewLabel>Update Normalized Account Name Text field - new contact {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Normalized Account Name Text field - new contact</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Account</name>
+        <label>Account</label>
+        <locationX>176</locationX>
+        <locationY>349</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Normalize_account_name</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Name</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Normalize_account_name</name>
+        <label>Normalize account name</label>
+        <locationX>301</locationX>
+        <locationY>349</locationY>
+        <inputAssignments>
+            <field>Normalized_Account_Name_Text__c</field>
+            <value>
+                <elementReference>Formula_Normalized_Account_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>49</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Statement_Send_Date__c</fullName>
+    <description>When the last statement was sent. Used in risk management for billing churn.</description>
+    <inlineHelpText>When the last statement was sent. Used in risk management for billing churn.</inlineHelpText>
+    <label>Last Statement Send Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

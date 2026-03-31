@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_SaaS_OA__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Temporary field. Created to flag combined funnel records that we need to create SaaS Onboarding Attempt for at launch day.</description>
+    <label>Temp - Create SaaS OA</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

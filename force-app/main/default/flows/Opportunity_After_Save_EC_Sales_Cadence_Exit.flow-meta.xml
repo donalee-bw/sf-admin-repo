@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Remove_the_Contact_from_the_Active_Cadence</name>
+        <label>Remove the Contact from the Active Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>removeTargetFromSalesCadence</actionName>
+        <actionType>removeTargetFromSalesCadence</actionType>
+        <connector>
+            <targetReference>Update_Contact_s_SE_tage</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>completionReasonCode</name>
+            <value>
+                <stringValue>ManuallyRemoved</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>removeTargetFromSalesCadence</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Active_Cadence_Tracker_Found</name>
+        <label>Active Cadence Tracker Found</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Found</name>
+            <conditionLogic>1 AND( 2 OR 3 OR 4 )</conditionLogic>
+            <conditions>
+                <leftValueReference>Is_Contact_in_Active_Cadence_Tracker</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Is_Contact_in_Active_Cadence_Tracker.ActionCadence.Cadence_Label__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EC - Sales Starter</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Is_Contact_in_Active_Cadence_Tracker.ActionCadence.Cadence_Label__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EC - Sales Missed Demo</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Is_Contact_in_Active_Cadence_Tracker.ActionCadence.Cadence_Label__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EC - Sales Post Demo</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Which_EC_Cadence</targetReference>
+            </connector>
+            <label>Yes,Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>*** For Future Scoping - When Target can be enrolled in multiple Cadences ****</description>
+        <name>Which_EC_Cadence</name>
+        <label>Which EC Cadence ?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>EC_Sales_Starter_Cadence</name>
+            <conditionLogic>1 AND ( 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8  OR  9 )</conditionLogic>
+            <conditions>
+                <leftValueReference>Is_Contact_in_Active_Cadence_Tracker.ActionCadence.Cadence_Label__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EC - Sales Starter</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Demo Scheduled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rescheduling</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Awaiting Decision</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Verbal Agreement</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Delayed Start</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Experience_Curriculum_Demo_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Scheduled</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_the_Contact_from_the_Active_Cadence</targetReference>
+            </connector>
+            <label>EC Sales Starter Cadence</label>
+        </rules>
+        <rules>
+            <name>EC_Sales_Missed_Demo_Cadence</name>
+            <conditionLogic>1  AND ( 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 )</conditionLogic>
+            <conditions>
+                <leftValueReference>Is_Contact_in_Active_Cadence_Tracker.ActionCadence.Cadence_Label__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EC - Sales Missed Demo</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Experience_Curriculum_Demo_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rescheduled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Demo Scheduled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Awaiting Decision</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Verbal Agreement</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Delayed Start</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_the_Contact_from_the_Active_Cadence</targetReference>
+            </connector>
+            <label>EC Sales Missed Demo Cadence</label>
+        </rules>
+        <rules>
+            <name>EC_Sales_Post_Demo_Cadence</name>
+            <conditionLogic>1 AND ( 2 OR 3 OR 4 )</conditionLogic>
+            <conditions>
+                <leftValueReference>Is_Contact_in_Active_Cadence_Tracker.ActionCadence.Cadence_Label__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EC - Sales Post Demo</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Delayed Start</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Won</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Lost</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_the_Contact_from_the_Active_Cadence</targetReference>
+            </connector>
+            <label>EC Sales Post Demo Cadence</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Opportunity - After Save - EC Sales/ {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - After Save - EC Sales Cadence Exit</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Is_Contact_in_Active_Cadence_Tracker</name>
+        <label>Is Contact in Active Cadence Tracker?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Active_Cadence_Tracker_Found</targetReference>
+        </connector>
+        <filterLogic>1 AND ( 2 OR 3 )</filterLogic>
+        <filters>
+            <field>TargetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Complete</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsTrackerActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionCadenceTracker</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Contact_s_SE_tage</name>
+        <label>Update Contact&apos;s SE tage</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>SE_Tag__c</field>
+            <value>
+                <elementReference>SETag</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Contact__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_Contact_in_Active_Cadence_Tracker</targetReference>
+        </connector>
+        <filterFormula>AND(
+{!$Record.RecordTypeId} = {!$Label.Experience_Curriculum_Opportunity},
+{!$Record.ContactId} != null, 
+  OR ( 
+  TEXT({!$Record.Contact__r.Cadence_Label__c}) = &quot;EC - Sales Starter&quot; ,
+  TEXT({!$Record.Contact__r.Cadence_Label__c}) = &quot;EC - Sales Missed Demo&quot; ,
+  TEXT({!$Record.Contact__r.Cadence_Label__c}) = &quot;EC - Sales Post Demo&quot;
+
+    ),
+
+OR ( 
+TEXT({!$Record.StageName}) = &quot;Demo Scheduled&quot;,
+TEXT({!$Record.StageName}) = &quot;Rescheduling&quot;,
+TEXT({!$Record.StageName}) = &quot;Verbal Agreement&quot;,
+TEXT({!$Record.StageName}) = &quot;Delayed Start&quot;,
+TEXT({!$Record.StageName}) = &quot;Demo Scheduled&quot;,
+TEXT({!$Record.StageName}) = &quot;Closed Won&quot;,
+TEXT({!$Record.StageName}) = &quot;Closed Lost&quot;,
+TEXT({!$Record.Experience_Curriculum_Demo_Status__c}) = &quot;Scheduled&quot;,
+TEXT({!$Record.Experience_Curriculum_Demo_Status__c}) = &quot;Rescheduled&quot;
+) 
+)</filterFormula>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>SETag</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Opportunity - After Save - EC Sales Cadence Exit {!$Flow.CurrentDateTime}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <triggerOrder>1050</triggerOrder>
+</Flow>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Center_Operating_Status__c</fullName>
+    <description>The Current Center Operating Status value from this field on the Account associated to the Onboarding.</description>
+    <externalId>false</externalId>
+    <formula>TEXT(Account__r.Current_Center_Operating_Status__c)</formula>
+    <inlineHelpText>The Current Center Operating Status value from this field on the Account associated to the Onboarding.</inlineHelpText>
+    <label>Current Center Operating Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

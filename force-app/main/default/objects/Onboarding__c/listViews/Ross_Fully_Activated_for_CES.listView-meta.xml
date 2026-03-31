@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ross_Fully_Activated_for_CES</fullName>
+    <columns>Combined_Funnel__c</columns>
+    <columns>Onboarding_Setup_Call_Path__c</columns>
+    <columns>Owner__c</columns>
+    <columns>Next_Steps_Snapshot__c</columns>
+    <columns>Pulse_Check__c</columns>
+    <columns>Original_Close_Date__c</columns>
+    <columns>CF_SaaS_Postponed_Reason__c</columns>
+    <columns>Postponed_Reason__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Onboarding__c.Single_site_SaaS</value>
+    </filters>
+    <filters>
+        <field>Postponed_Reason__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>CF_SaaS_Postponed_Reason__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <label>Postponed Cleanup</label>
+</ListView>

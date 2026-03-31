@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <description>Current status of offline payer sign up</description>
+    <inlineHelpText>Current status of offline payer sign up</inlineHelpText>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>true</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Invoice Created and Sent</fullName>
+                <default>false</default>
+                <label>Invoice Created and Sent</label>
+            </value>
+            <value>
+                <fullName>Check Received</fullName>
+                <default>false</default>
+                <label>Check Received</label>
+            </value>
+            <value>
+                <fullName>Complete</fullName>
+                <default>false</default>
+                <label>Complete</label>
+            </value>
+            <value>
+                <fullName>Customer Moved Online</fullName>
+                <default>false</default>
+                <label>Customer Moved Online</label>
+            </value>
+            <value>
+                <fullName>Customer Cancelled</fullName>
+                <default>false</default>
+                <label>Customer Cancelled</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

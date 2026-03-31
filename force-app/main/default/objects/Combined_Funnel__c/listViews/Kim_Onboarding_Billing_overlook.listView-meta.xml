@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Kim_Onboarding_Billing_overlook</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Onboarding_Path__c</columns>
+    <columns>Billing_Activation_Funnel_Stage_Value__c</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>Days_Since_Billing_Activation_Start_Date__c</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>Billing_Activated_Date__c</columns>
+    <columns>Last_Online_Payment_Date__c</columns>
+    <columns>Dollars_Processed_Online__c</columns>
+    <columns>Target_Billing_Activation_Date__c</columns>
+    <columns>Send_Bills_Threshold_Met__c</columns>
+    <columns>Two_Bill_Sent_Threshold_Met_Date__c</columns>
+    <columns>Active_Students_with_Billing_Ratio__c</columns>
+    <columns>Active_Students_with_One_Bill_Ratio__c</columns>
+    <columns>Active_Students_with_One_Payment_Ratio__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Postponed,Unresponsive</value>
+    </filters>
+    <filters>
+        <field>OWNER.LAST_NAME</field>
+        <operation>contains</operation>
+        <value>Jeanos</value>
+    </filters>
+    <filters>
+        <field>Billing_Activation_Funnel_Stage_Value__c</field>
+        <operation>notEqual</operation>
+        <value>9 - Activated</value>
+    </filters>
+    <filters>
+        <field>Billing_Activation_Start_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>[Kim] Onboarding Billing overlook</label>
+</ListView>

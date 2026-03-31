@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Dropout_Reason__c</fullName>
+    <description>Manually populated by reps when a billing onboarding drops out of the activation funnel. Re-labeled 9/11/23</description>
+    <inlineHelpText>Reason the customer has decided not to activate on billing.</inlineHelpText>
+    <label>Billing Opt Out Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Billing_Closed_Lost_Reason</valueSetName>
+    </valueSet>
+</CustomField>

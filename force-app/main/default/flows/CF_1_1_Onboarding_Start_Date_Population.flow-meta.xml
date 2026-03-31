@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Is_1_1_Onboarding_Start_Date_populated</name>
+        <label>Is 1:1 Onboarding Start Date populated</label>
+        <locationX>182</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Earlier 1:1 Date</defaultConnectorLabel>
+        <rules>
+            <name>Need_to_Update_1_1_Date</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.X1_1_Onboarding_Path_Start_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.X1_1_Onboarding_Path_Start_Date__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_CF_1_1_OB_Start_Date</targetReference>
+            </connector>
+            <label>Need to Update 1:1 Date</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>CF - 1:1 Onboarding Start Date Population {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CF - 1:1 Onboarding Start Date Population</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_CF_1_1_OB_Start_Date</name>
+        <label>Update CF 1:1 OB Start Date</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <inputAssignments>
+            <field>X1_1_Onboarding_Path_Start_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_1_1_Onboarding_Start_Date_populated</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Onboarding_Path__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1:1 Single-Site</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Path__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1:1 Multi-Site</stringValue>
+            </value>
+        </filters>
+        <object>Combined_Funnel__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

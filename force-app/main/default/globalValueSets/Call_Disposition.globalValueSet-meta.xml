@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Billing - CL</fullName>
+        <default>false</default>
+        <label>Billing - CL</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing - CW</fullName>
+        <default>false</default>
+        <label>Billing - CW</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing - Left Voicemail</fullName>
+        <default>false</default>
+        <label>Billing - Left Voicemail</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing - No Answer</fullName>
+        <default>false</default>
+        <label>Billing - No Answer</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing - Reminder Call</fullName>
+        <default>false</default>
+        <label>Billing - Reminder Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing - Scheduled Meeting</fullName>
+        <default>false</default>
+        <label>Billing - Scheduled Meeting</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing - Spoke to DM / Did Not Pitch</fullName>
+        <default>false</default>
+        <label>Billing - Spoke to DM / Did Not Pitch</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing - Spoke to Non DM</fullName>
+        <default>false</default>
+        <label>Billing - Spoke to Non DM</label>
+    </customValue>
+    <customValue>
+        <fullName>Cancel - Bad/Wrong Number</fullName>
+        <default>false</default>
+        <label>Cancel - Bad/Wrong Number</label>
+    </customValue>
+    <customValue>
+        <fullName>Cancel - Cancelled</fullName>
+        <default>false</default>
+        <label>Cancel - Cancelled</label>
+    </customValue>
+    <customValue>
+        <fullName>Cancel - Left Voicemail</fullName>
+        <default>false</default>
+        <label>Cancel - Left Voicemail</label>
+    </customValue>
+    <customValue>
+        <fullName>Cancel - No Answer</fullName>
+        <default>false</default>
+        <label>Cancel - No Answer</label>
+    </customValue>
+    <customValue>
+        <fullName>Cancel - Saved</fullName>
+        <default>false</default>
+        <label>Cancel - Saved</label>
+    </customValue>
+    <customValue>
+        <fullName>Cancel - Spoke to DM / Did Not Pitch</fullName>
+        <default>false</default>
+        <label>Cancel - Spoke to DM / Did Not Pitch</label>
+    </customValue>
+    <customValue>
+        <fullName>Cancel - Spoke to Non DM</fullName>
+        <default>false</default>
+        <label>Cancel - Spoke to Non DM</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - After School - Demo Confirmed</fullName>
+        <default>false</default>
+        <label>CC - After School - Demo Confirmed</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - After School - Pitched DM</fullName>
+        <default>false</default>
+        <label>CC - After School - Pitched DM</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - After School- Demo Scheduled</fullName>
+        <default>false</default>
+        <label>CC - After School- Demo Scheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - Demo Cancelled</fullName>
+        <default>false</default>
+        <label>CC - Demo Cancelled</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - Demo Confirmed</fullName>
+        <default>false</default>
+        <label>CC - Demo Confirmed</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - Demo Incomplete</fullName>
+        <default>false</default>
+        <label>CC - Demo Incomplete</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - Demo Rescheduled</fullName>
+        <default>false</default>
+        <label>CC - Demo Rescheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - Demo Scheduled</fullName>
+        <default>false</default>
+        <label>CC - Demo Scheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - Initial Call Scheduled</fullName>
+        <default>false</default>
+        <label>CC - Initial Call Scheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - Not Yet Qualified - Qualifying Soon</fullName>
+        <default>false</default>
+        <label>CC - Not Yet Qualified - Qualifying Soon</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - Pitched DM</fullName>
+        <default>false</default>
+        <label>CC - Pitched DM</label>
+    </customValue>
+    <customValue>
+        <fullName>CC - Pitched DM (Follow Up Task)</fullName>
+        <default>false</default>
+        <label>CC - Pitched DM (Follow Up Task)</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - Demo Conf - DM confirmed</fullName>
+        <default>false</default>
+        <label>EDU - Demo Conf - DM confirmed</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - Demo Conf - LVM</fullName>
+        <default>false</default>
+        <label>EDU - Demo Conf - LVM</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - N, Bad / Wrong Number</fullName>
+        <default>false</default>
+        <label>EDU - N, Bad / Wrong Number</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - N, Left VM</fullName>
+        <default>false</default>
+        <label>EDU - N, Left VM</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - N, Mailbox Full</fullName>
+        <default>false</default>
+        <label>EDU - N, Mailbox Full</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - N, Missed Call</fullName>
+        <default>false</default>
+        <label>EDU - N, Missed Call</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - Reminder Call</fullName>
+        <default>false</default>
+        <label>EDU - Reminder Call</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - Spoke to DM did not pitch</fullName>
+        <default>false</default>
+        <label>EDU - Spoke to DM did not pitch</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - Y, Spoke to DM</fullName>
+        <default>false</default>
+        <label>EDU - Y, Spoke to DM</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - Y, Spoke to non DM</fullName>
+        <default>false</default>
+        <label>EDU - Y, Spoke to non DM</label>
+    </customValue>
+    <customValue>
+        <fullName>EN - Bad / Wrong Number</fullName>
+        <default>false</default>
+        <label>EN - Bad / Wrong Number</label>
+    </customValue>
+    <customValue>
+        <fullName>EN - Completed</fullName>
+        <default>false</default>
+        <label>EN - Completed</label>
+    </customValue>
+    <customValue>
+        <fullName>EN - Mailbox Full</fullName>
+        <default>false</default>
+        <label>EN - Mailbox Full</label>
+    </customValue>
+    <customValue>
+        <fullName>EN - No Answer</fullName>
+        <default>false</default>
+        <label>EN - No Answer</label>
+    </customValue>
+    <customValue>
+        <fullName>EN - Spoke to DM / Sent Info</fullName>
+        <default>false</default>
+        <label>EN - Spoke to DM / Sent Info</label>
+    </customValue>
+    <customValue>
+        <fullName>EN - Spoke to Non-DM / Sent Info</fullName>
+        <default>false</default>
+        <label>EN - Spoke to Non-DM / Sent Info</label>
+    </customValue>
+    <customValue>
+        <fullName>EN - Voicemail</fullName>
+        <default>false</default>
+        <label>EN - Voicemail</label>
+    </customValue>
+    <customValue>
+        <fullName>GOV - Reminder Call</fullName>
+        <default>false</default>
+        <label>GOV - Reminder Call</label>
+    </customValue>
+    <customValue>
+        <fullName>NA - After School - Spoke to DM (did not pitch)</fullName>
+        <default>false</default>
+        <label>NA - After School - Spoke to DM (did not pitch)</label>
+    </customValue>
+    <customValue>
+        <fullName>NA - After School - Spoke to non DM</fullName>
+        <default>false</default>
+        <label>NA - After School - Spoke to non DM</label>
+    </customValue>
+    <customValue>
+        <fullName>NA - Disconnected Phone Number - Searching for New</fullName>
+        <default>false</default>
+        <label>NA - Disconnected Phone Number - Searching for New</label>
+    </customValue>
+    <customValue>
+        <fullName>NA - Generic VM</fullName>
+        <default>false</default>
+        <label>NA - Generic VM</label>
+    </customValue>
+    <customValue>
+        <fullName>NA - Left Voicemail</fullName>
+        <default>false</default>
+        <label>NA - Left Voicemail</label>
+    </customValue>
+    <customValue>
+        <fullName>NA - Nobody Answered</fullName>
+        <default>false</default>
+        <label>NA - Nobody Answered</label>
+    </customValue>
+    <customValue>
+        <fullName>NA - Spoke to DM (Did Not Pitch)</fullName>
+        <default>false</default>
+        <label>NA - Spoke to DM (Did Not Pitch)</label>
+    </customValue>
+    <customValue>
+        <fullName>NA - Spoke to Non-DM (GK Navigation)</fullName>
+        <default>false</default>
+        <label>NA - Spoke to Non-DM (GK Navigation)</label>
+    </customValue>
+    <customValue>
+        <fullName>NA - Spoke to Non-DM (Hung Up Pre-Pitch)</fullName>
+        <default>false</default>
+        <label>NA - Spoke to Non-DM (Hung Up Pre-Pitch)</label>
+    </customValue>
+    <customValue>
+        <fullName>OBS - Bad / Wrong Number</fullName>
+        <default>false</default>
+        <label>OBS - Bad / Wrong Number</label>
+    </customValue>
+    <customValue>
+        <fullName>OBS - Completed</fullName>
+        <default>false</default>
+        <label>OBS - Completed</label>
+    </customValue>
+    <customValue>
+        <fullName>OBS - No Answer</fullName>
+        <default>false</default>
+        <label>OBS - No Answer</label>
+    </customValue>
+    <customValue>
+        <fullName>OBS - Rescheduled</fullName>
+        <default>false</default>
+        <label>OBS - Rescheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>OBS - Spoke to DM / Sent Info</fullName>
+        <default>false</default>
+        <label>OBS - Spoke to DM / Sent Info</label>
+    </customValue>
+    <customValue>
+        <fullName>OBS - Spoke to Non-DM / Sent Info</fullName>
+        <default>false</default>
+        <label>OBS - Spoke to Non-DM / Sent Info</label>
+    </customValue>
+    <customValue>
+        <fullName>OBS - Training Call Completed</fullName>
+        <default>false</default>
+        <label>OBS - Training Call Completed</label>
+    </customValue>
+    <customValue>
+        <fullName>OBS - Voicemail</fullName>
+        <default>false</default>
+        <label>OBS - Voicemail</label>
+    </customValue>
+    <customValue>
+        <fullName>PD - Closed Lost</fullName>
+        <default>false</default>
+        <label>PD - Closed Lost</label>
+    </customValue>
+    <customValue>
+        <fullName>PD - Closed Won</fullName>
+        <default>false</default>
+        <label>PD - Closed Won</label>
+    </customValue>
+    <customValue>
+        <fullName>PD - Demo Followup / Delayed Decision</fullName>
+        <default>false</default>
+        <label>PD - Demo Followup / Delayed Decision</label>
+    </customValue>
+    <customValue>
+        <fullName>Proactive - Bad/Wrong Number</fullName>
+        <default>false</default>
+        <label>Proactive - Bad/Wrong Number</label>
+    </customValue>
+    <customValue>
+        <fullName>Proactive - Call Completed</fullName>
+        <default>false</default>
+        <label>Proactive - Call Completed</label>
+    </customValue>
+    <customValue>
+        <fullName>Proactive - Left Voicemail</fullName>
+        <default>false</default>
+        <label>Proactive - Left Voicemail</label>
+    </customValue>
+    <customValue>
+        <fullName>Proactive - No Answer</fullName>
+        <default>false</default>
+        <label>Proactive - No Answer</label>
+    </customValue>
+    <customValue>
+        <fullName>Proactive - Spoke to DM / Did Not Pitch</fullName>
+        <default>false</default>
+        <label>Proactive - Spoke to DM / Did Not Pitch</label>
+    </customValue>
+    <customValue>
+        <fullName>Proactive - Spoke to Non DM</fullName>
+        <default>false</default>
+        <label>Proactive - Spoke to Non DM</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Enterprise</fullName>
+        <default>false</default>
+        <label>REC - Enterprise</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Non Primary</fullName>
+        <default>false</default>
+        <label>REC - Non Primary</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Not Interested  - Budget Issue</fullName>
+        <default>false</default>
+        <label>REC - Not Interested  - Budget Issue</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Not Interested - Feature / Product Limitation</fullName>
+        <default>false</default>
+        <label>REC - Not Interested - Feature / Product Limitation</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Not Interested - Happy w/ Manual System or P&amp;P</fullName>
+        <default>false</default>
+        <label>REC - Not Interested - Happy w/ Manual System or P&amp;P</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Not Interested - Happy w/ P&amp;P</fullName>
+        <default>false</default>
+        <label>REC - Not Interested - Happy w/ P&amp;P</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Not Interested - Hung Up on Multiple Times</fullName>
+        <default>false</default>
+        <label>REC - Not Interested - Hung Up on Multiple Times</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Not Interested - Time of Year</fullName>
+        <default>false</default>
+        <label>REC - Not Interested - Time of Year</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Not Interested - Using Competitor</fullName>
+        <default>false</default>
+        <label>REC - Not Interested - Using Competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Not Yet Qualified (Dreamer)</fullName>
+        <default>false</default>
+        <label>REC - Not Yet Qualified (Dreamer)</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Public School (K12 with ECE/Headstart)</fullName>
+        <default>false</default>
+        <label>REC - Public School (K12 with ECE/Headstart)</label>
+    </customValue>
+    <customValue>
+        <fullName>UNQ - Enterprise</fullName>
+        <default>false</default>
+        <label>UNQ - Enterprise</label>
+    </customValue>
+    <customValue>
+        <fullName>UNQ - Existing Customer</fullName>
+        <default>false</default>
+        <label>UNQ - Existing Customer</label>
+    </customValue>
+    <customValue>
+        <fullName>UNQ - Invalid Data</fullName>
+        <default>false</default>
+        <label>UNQ - Invalid Data</label>
+    </customValue>
+    <customValue>
+        <fullName>UNQ - Non Target - International</fullName>
+        <default>false</default>
+        <label>UNQ - Non Target - International</label>
+    </customValue>
+    <customValue>
+        <fullName>UNQ - Non Target - Language Barrier</fullName>
+        <default>false</default>
+        <label>UNQ - Non Target - Language Barrier</label>
+    </customValue>
+    <customValue>
+        <fullName>UNQ - Non Target - Not ECE</fullName>
+        <default>false</default>
+        <label>UNQ - Non Target - Not ECE</label>
+    </customValue>
+    <customValue>
+        <fullName>UNQ - Non Target - Parent</fullName>
+        <default>false</default>
+        <label>UNQ - Non Target - Parent</label>
+    </customValue>
+    <customValue>
+        <fullName>UNQ - Out of Business</fullName>
+        <default>false</default>
+        <label>UNQ - Out of Business</label>
+    </customValue>
+    <customValue>
+        <fullName>UNQ - Prospect Requested Do Not Call</fullName>
+        <default>false</default>
+        <label>UNQ - Prospect Requested Do Not Call</label>
+    </customValue>
+    <customValue>
+        <fullName>UNQ - Public School - No headstart</fullName>
+        <default>false</default>
+        <label>UNQ - Public School - No headstart</label>
+    </customValue>
+    <customValue>
+        <fullName>UNQ - Under Capacity (&lt;10)</fullName>
+        <default>false</default>
+        <label>UNQ - Under Capacity (&lt;10)</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing - Bad/Wrong Number</fullName>
+        <default>false</default>
+        <label>Billing - Bad/Wrong Number</label>
+    </customValue>
+    <customValue>
+        <fullName>Call Completed - OB Offramp</fullName>
+        <default>false</default>
+        <label>Call Completed - OB Offramp</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - Demo Conf - Bad Number</fullName>
+        <default>false</default>
+        <label>EDU - Demo Conf - Bad Number</label>
+    </customValue>
+    <customValue>
+        <fullName>EDU - Demo Conf - Gatekeeper</fullName>
+        <default>false</default>
+        <label>EDU - Demo Conf - Gatekeeper</label>
+    </customValue>
+    <customValue>
+        <fullName>EN - Missed</fullName>
+        <default>false</default>
+        <label>EN - Missed</label>
+    </customValue>
+    <customValue>
+        <fullName>EN - Rescheduled</fullName>
+        <default>false</default>
+        <label>EN - Rescheduled</label>
+    </customValue>
+    <customValue>
+        <fullName>OB - Test</fullName>
+        <default>false</default>
+        <label>OB - Test</label>
+    </customValue>
+    <customValue>
+        <fullName>OBS - Missed</fullName>
+        <default>false</default>
+        <label>OBS - Missed</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - Demo Conf - Bad Number</fullName>
+        <default>false</default>
+        <label>PFD - Demo Conf - Bad Number</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - Demo Conf - DM confirmed</fullName>
+        <default>false</default>
+        <label>PFD - Demo Conf - DM confirmed</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - Demo Conf - Gatekeeper</fullName>
+        <default>false</default>
+        <label>PFD - Demo Conf - Gatekeeper</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - Demo Conf - LVM</fullName>
+        <default>false</default>
+        <label>PFD - Demo Conf - LVM</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - N, Bad / Wrong Number</fullName>
+        <default>false</default>
+        <label>PFD - N, Bad / Wrong Number</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - N, Left VM</fullName>
+        <default>false</default>
+        <label>PFD - N, Left VM</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - N, Mailbox Full</fullName>
+        <default>false</default>
+        <label>PFD - N, Mailbox Full</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - N, Missed Call</fullName>
+        <default>false</default>
+        <label>PFD - N, Missed Call</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - Reminder Call</fullName>
+        <default>false</default>
+        <label>PFD - Reminder Call</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - Spoke to DM did not pitch</fullName>
+        <default>false</default>
+        <label>PFD - Spoke to DM did not pitch</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - Y, Spoke to DM</fullName>
+        <default>false</default>
+        <label>PFD - Y, Spoke to DM</label>
+    </customValue>
+    <customValue>
+        <fullName>PFD - Y, Spoke to non DM</fullName>
+        <default>false</default>
+        <label>PFD - Y, Spoke to non DM</label>
+    </customValue>
+    <customValue>
+        <fullName>REC - Not Interested - Budget Issue</fullName>
+        <default>false</default>
+        <label>REC - Not Interested - Budget Issue</label>
+    </customValue>
+    <masterLabel>Call Disposition</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

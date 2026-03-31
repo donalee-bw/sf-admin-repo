@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="MultipleSobjectSearchLookup">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+			<target>lightning__UtilityBar</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="lookupLabel" type="String" label="Label" role="inputOnly"></property>
+            <property name="isRequired" type="Boolean" label="Required ?" role="inputOnly" default="False" required="True"></property>
+            <property name="selectedRecordId" type="String" label="Selected Record Id" role="outputOnly"></property>
+            <property name="selectedRecordObjectName" type="String" label="Selected Record Object Name" role="outputOnly"></property>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

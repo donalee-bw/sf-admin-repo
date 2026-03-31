@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_Promo_Offered__c</fullName>
+    <description>Mapped from CW Opp in flow.
+04/10/23 - Flagged to be deprecated (Sprint 5 - 2023)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Shows if there was a different promotion offered than the current Promo Offered picklist values</inlineHelpText>
+    <label>x_&quot;Other&quot; Promo Offered</label>
+    <length>40</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

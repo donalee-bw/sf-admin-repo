@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gov_School_Objects</fullName>
+    <columns>NAME</columns>
+    <columns>SaaS_Activation_Date__c</columns>
+    <columns>Active_Student_Enrollment_Percent__c</columns>
+    <columns>Ratio_Students_with_Activated_Parent__c</columns>
+    <columns>Actions_Per_Student__c</columns>
+    <columns>Last_Action_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Brightwheel_Org_UUID__c</field>
+        <operation>equals</operation>
+        <value>a77644bd-d7c1-4fdc-b25b-43e84f78c043</value>
+    </filters>
+    <label>[Gov] School Objects</label>
+</ListView>

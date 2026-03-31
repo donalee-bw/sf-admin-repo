@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AE_Owner_Role__c</fullName>
+    <description>AE Owner Role is mapped from the AE Owner on the Account. Used for reports and Dashboards based on teams</description>
+    <externalId>false</externalId>
+    <formula>Account__r.AE_Owner__r.UserRole.Name</formula>
+    <inlineHelpText>AE Owner Role is mapped from the AE Owner on the Account.</inlineHelpText>
+    <label>AE Owner Role</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SaaS_Onboarding_Funnel_Stage__c</fullName>
+    <description>SaaS Onboarding Funnel Stage from the School Object associated to the Account.</description>
+    <externalId>false</externalId>
+    <formula>TEXT(Account__r.School_Object__r.Onboarding_Funnel_Stage__c)</formula>
+    <inlineHelpText>SaaS Onboarding Funnel Stage from the School Object associated to the Account.</inlineHelpText>
+    <label>SaaS Onboarding Funnel Stage</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

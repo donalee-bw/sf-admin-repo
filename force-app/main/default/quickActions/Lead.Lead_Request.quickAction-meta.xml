@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldOverrides>
+        <field>Name</field>
+        <formula>LEFT(&apos;New Lead Request - &apos; + $User.FirstName + &apos; &apos; + 
+        $User.LastName +
+        &apos; - &apos; + $UserRole.Name + &apos; - &apos; +
+        TEXT(MONTH(DATEVALUE(NOW())))+&quot;/&quot; + 
+        TEXT(DAY(DATEVALUE(NOW())))+&quot;/&quot; + 
+        TEXT(YEAR(DATEVALUE(NOW()))), 80
+   )</formula>
+    </fieldOverrides>
+    <label>Lead Request</label>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Name</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <successMessage>You have successfully submitted a request</successMessage>
+    <targetObject>Lead_Request__c</targetObject>
+    <targetParentField>Lead__c</targetParentField>
+    <targetRecordType>Lead_Request__c.OSDR_Request</targetRecordType>
+    <type>Create</type>
+</QuickAction>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Found_Case_decision</name>
+        <label>Found Case decision</label>
+        <locationX>182</locationX>
+        <locationY>468</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Case_by_Invoice_ID</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Linked_Case_on_FP_Audit</targetReference>
+            </connector>
+            <label>Found Case by Invoice ID</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Stripe_Invoice_ID_decision</name>
+        <label>Stripe Invoice ID decision</label>
+        <locationX>380</locationX>
+        <locationY>252</locationY>
+        <defaultConnectorLabel>No Stripe Invoice ID</defaultConnectorLabel>
+        <rules>
+            <name>Stripe_Invoice_ID_populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stripe_Invoice_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Case</targetReference>
+            </connector>
+            <label>Stripe Invoice ID populated</label>
+        </rules>
+    </decisions>
+    <description>Process pulls all Stripe FP Audit records to find the Case created in SF.  If a case is found, the Linked Case on the Stripe FP Audit record is populated.</description>
+    <environments>Default</environments>
+    <interviewLabel>Stripe FP Audit - Scheduled - Linked Case Process {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Stripe FP Audit - Scheduled - Linked Case Process</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Case</name>
+        <label>Get Case</label>
+        <locationX>182</locationX>
+        <locationY>360</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_Case_decision</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Stripe_invoice_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Stripe_Invoice_ID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Linked_Case_on_FP_Audit</name>
+        <label>Update Linked Case on FP Audit</label>
+        <locationX>50</locationX>
+        <locationY>576</locationY>
+        <inputAssignments>
+            <field>Linked_Case__c</field>
+            <value>
+                <elementReference>Get_Case.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Stripe_Invoice_ID_decision</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Linked_Case__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </filters>
+        <object>Stripe_FP_Audit__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2024-04-25</startDate>
+            <startTime>10:45:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

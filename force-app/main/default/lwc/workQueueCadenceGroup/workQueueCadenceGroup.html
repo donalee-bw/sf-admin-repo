@@ -1,0 +1,49 @@
+<template>
+    <!-- Cadence header (collapsible) -->
+    <div class="cadence-header" onclick={toggleExpand}>
+        <lightning-icon
+            icon-name={chevronIcon}
+            size="x-small"
+            class="chevron-icon"
+        ></lightning-icon>
+        <span class="cadence-name">{cadenceGroup.cadenceName}</span>
+        <span class="cadence-count">({cadenceGroup.totalCount})</span>
+    </div>
+
+    <!-- Expanded content: step groups -->
+    <template if:true={isExpanded}>
+        <div class="cadence-body">
+            <template for:each={cadenceGroup.stepGroups} for:item="stepGroup">
+                <div key={stepGroup.stepName} class="step-group">
+                    <div class="step-group-header">
+                        <div class="step-group-info">
+                            <lightning-icon
+                                icon-name={stepGroup.iconName}
+                                size="xx-small"
+                                class="step-type-icon"
+                            ></lightning-icon>
+                            <span class="step-group-name">{stepGroup.stepName}</span>
+                            <span class="step-group-count">({stepGroup.count})</span>
+                        </div>
+                        <template if:true={stepGroup.isCallStep}>
+                            <lightning-button
+                                label="Start Calling"
+                                variant="neutral"
+                                onclick={handleStartCalling}
+                                data-step-name={stepGroup.stepName}
+                                class="start-calling-btn"
+                            ></lightning-button>
+                        </template>
+                    </div>
+                    <!-- Individual targets -->
+                    <template for:each={stepGroup.targets} for:item="target">
+                        <c-work-queue-step-item
+                            key={target.taskId}
+                            target={target}
+                        ></c-work-queue-step-item>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

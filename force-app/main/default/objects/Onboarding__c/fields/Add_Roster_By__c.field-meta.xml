@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Roster_By__c</fullName>
+    <description>Date field to show when the center should have their roster added.</description>
+    <inlineHelpText>When the center should have their roster added.</inlineHelpText>
+    <label>Add Roster By</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

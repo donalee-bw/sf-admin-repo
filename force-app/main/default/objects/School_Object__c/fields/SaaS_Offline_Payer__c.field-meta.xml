@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SaaS_Offline_Payer__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicate if a school is paying saas subscription offline</description>
+    <inlineHelpText>Indicate if a school is paying saas subscription offline</inlineHelpText>
+    <label>SaaS Offline Payer</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

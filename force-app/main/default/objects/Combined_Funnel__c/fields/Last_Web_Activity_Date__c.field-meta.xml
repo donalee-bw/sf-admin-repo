@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Web_Activity_Date__c</fullName>
+    <description>Date of last tracked web activity on a non student (teacher/admin). From the School Object related to the Account.</description>
+    <formula>Account__r.School_Object__r.Last_Web_Activity_Date__c</formula>
+    <inlineHelpText>Date of last tracked web activity on a non student (teacher/admin). From the School Object related to the Account.</inlineHelpText>
+    <label>Last Web Activity Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Catherine_R_Billing_Overlook</fullName>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>NAME</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Billing_Onboarding_Status__c</columns>
+    <columns>Target_Billing_Activation_Date__c</columns>
+    <columns>Billing_Activation_Start_Date__c</columns>
+    <columns>Billing_Activation_Funnel_Stage_Value__c</columns>
+    <columns>Days_Since_Billing_Onboarding_Start_Date__c</columns>
+    <columns>Active_Students_with_Charges_Set_Up__c</columns>
+    <columns>Billing_Verification_Submitted__c</columns>
+    <columns>Active_Students_with_Payment_Method__c</columns>
+    <columns>Active_Students_with_Bills_Sent__c</columns>
+    <columns>Days_Since_Billing_Activation_Start_Date__c</columns>
+    <columns>Dollars_Processed_Online__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Active,Postponed</value>
+    </filters>
+    <filters>
+        <field>Billing_Activation_Funnel_Stage_Value__c</field>
+        <operation>notEqual</operation>
+        <value>,9 - Activated</value>
+    </filters>
+    <filters>
+        <field>OWNER.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>Rosen</value>
+    </filters>
+    <filters>
+        <field>Billing_Status_at_CW__c</field>
+        <operation>notEqual</operation>
+        <value>Hard Opt Out,Not for Sales - Cancelled SaaS</value>
+    </filters>
+    <label>Catherine R Billing Overlook</label>
+</ListView>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FTS_Last_Contacted__c</fullName>
+    <description>Formula to look at Billing Last Contacted on the associated Account and Billing Last Contacted on the Primary Contact and populate with the MAX date between the two on the Onboarding record.
+04/10/23 - Flagged to be deprecated (Sprint 5 - 2023)</description>
+    <formula>IF(
+    AND(
+       NOT(ISBLANK(Account__r.Billing_Last_Contacted__c)),
+       ISBLANK(Billing_Primary_Contact__r.Billing_Last_Contacted__c)
+    ),
+    Account__r.Billing_Last_Contacted__c,
+    IF(
+        AND(
+            ISBLANK(Account__r.Billing_Last_Contacted__c),
+            NOT(ISBLANK(Billing_Primary_Contact__r.Billing_Last_Contacted__c))
+        ), 
+        Billing_Primary_Contact__r.Billing_Last_Contacted__c,
+        IF(
+            Account__r.Billing_Last_Contacted__c &gt; Billing_Primary_Contact__r.Billing_Last_Contacted__c,
+            Account__r.Billing_Last_Contacted__c,
+            Billing_Primary_Contact__r.Billing_Last_Contacted__c
+        )
+    )
+)</formula>
+    <inlineHelpText>The most recent task or event logged by the Billing team on the Account or Billing Primary Contact&apos;s record that are associated to the Combined Funnel.</inlineHelpText>
+    <label>x_FTS Last Contacted</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

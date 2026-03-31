@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Calculated_SaaS_Activation_Funnel_Stage__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISNULL(SaaS_Adding_Students_Stage_Met_Date__c),
+  &quot;Adding Students&quot;,
+  IF(
+    AND(
+      ISNULL(SaaS_Adding_Parents_Stage_Met_Date__c),
+      NOT(ISNULL(SaaS_Adding_Students_Stage_Met_Date__c))
+    ),
+    &quot;Adding Parents&quot;,
+    IF(
+      AND(
+        ISNULL(SaaS_Adding_Staff_Stage_Met_Date__c),
+        NOT(ISNULL(SaaS_Adding_Parents_Stage_Met_Date__c)),
+        NOT(ISNULL(SaaS_Adding_Students_Stage_Met_Date__c))
+      ),
+      &quot;Adding Staff&quot;,
+      IF(
+        AND(
+          ISNULL(SaaS_Staff_Logging_In_Stage_Met_Date__c),
+          NOT(ISNULL(SaaS_Adding_Staff_Stage_Met_Date__c)),
+          NOT(ISNULL(SaaS_Adding_Parents_Stage_Met_Date__c)),
+          NOT(ISNULL(SaaS_Adding_Students_Stage_Met_Date__c))
+        ),
+        &quot;Staff Logging In&quot;,
+        IF(
+          AND(
+            ISNULL(SaaS_Parents_Signing_Up_Stage_Met_Date__c),
+            NOT(ISNULL(SaaS_Staff_Logging_In_Stage_Met_Date__c)),
+            NOT(ISNULL(SaaS_Adding_Staff_Stage_Met_Date__c)),
+            NOT(ISNULL(SaaS_Adding_Parents_Stage_Met_Date__c)),
+            NOT(ISNULL(SaaS_Adding_Students_Stage_Met_Date__c))
+          ),
+          &quot;Parents Signing Up&quot;,
+          IF(
+            AND(
+              ISNULL(SaaS_Tracking_Attendance_Stage_Met_Date__c),
+              NOT(ISNULL(SaaS_Parents_Signing_Up_Stage_Met_Date__c)),
+              NOT(ISNULL(SaaS_Staff_Logging_In_Stage_Met_Date__c)),
+              NOT(ISNULL(SaaS_Adding_Staff_Stage_Met_Date__c)),
+              NOT(ISNULL(SaaS_Adding_Parents_Stage_Met_Date__c)),
+              NOT(ISNULL(SaaS_Adding_Students_Stage_Met_Date__c))
+            ),
+            &quot;Tracking Attendance&quot;,
+            IF(
+              AND(
+                ISNULL(SaaS_Logging_Activities_Stage_Met_Date__c),
+                NOT(ISNULL(SaaS_Tracking_Attendance_Stage_Met_Date__c)),
+                NOT(ISNULL(SaaS_Parents_Signing_Up_Stage_Met_Date__c)),
+                NOT(ISNULL(SaaS_Staff_Logging_In_Stage_Met_Date__c)),
+                NOT(ISNULL(SaaS_Adding_Staff_Stage_Met_Date__c)),
+                NOT(ISNULL(SaaS_Adding_Parents_Stage_Met_Date__c)),
+                NOT(ISNULL(SaaS_Adding_Students_Stage_Met_Date__c))
+              ),
+              &quot;Logging Activities or Messages&quot;,
+              IF(
+                AND(
+                  NOT(ISNULL(SaaS_Logging_Activities_Stage_Met_Date__c)),
+                  NOT(ISNULL(SaaS_Tracking_Attendance_Stage_Met_Date__c)),
+                  NOT(ISNULL(SaaS_Parents_Signing_Up_Stage_Met_Date__c)),
+                  NOT(ISNULL(SaaS_Staff_Logging_In_Stage_Met_Date__c)),
+                  NOT(ISNULL(SaaS_Adding_Staff_Stage_Met_Date__c)),
+                  NOT(ISNULL(SaaS_Adding_Parents_Stage_Met_Date__c)),
+                  NOT(ISNULL(SaaS_Adding_Students_Stage_Met_Date__c))
+                ),
+                &quot;Activated&quot;,
+                &quot;Not Available&quot;
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Calculated SaaS Activation Funnel Stage</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

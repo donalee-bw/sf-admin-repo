@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Update_Account_Type_to_Customer</name>
+        <label>Update Account Type to Customer</label>
+        <locationX>116</locationX>
+        <locationY>1476</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Type</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Customer</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Account_Fields</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Original_Close_Date_on_Account</name>
+        <label>Update Original Close Date on Account</label>
+        <locationX>72</locationX>
+        <locationY>876</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Original_Close_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.School_Object__r.Premium_Customer_Start_Date__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Latest_Opened_Case</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Checks if both the SaaS Owner and Billing Upsell Owner on the account are active users.</description>
+        <name>Needs_Account_Assignment</name>
+        <label>Needs Account Assignment?</label>
+        <locationX>50</locationX>
+        <locationY>360</locationY>
+        <defaultConnector>
+            <targetReference>Launch_Account_Ownership_Assignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Yes</defaultConnectorLabel>
+        <rules>
+            <name>No_Needs_Account_Assignment</name>
+            <conditionLogic>(1 AND 3) OR (2 AND 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Owner__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Upsell_Owner__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Owner__r.Name</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Account Queue</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Upsell_Owner__r.Name</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Account Queue</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Original_Close_Date_Populated</targetReference>
+            </connector>
+            <label>No</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the number of sites on the school object related to the account is &lt; 10</description>
+        <name>Number_of_Sites_10</name>
+        <label>Number of Sites &lt; 10 ?</label>
+        <locationX>303</locationX>
+        <locationY>252</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Number_of_Sites_10</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Number_of_Sites__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>10.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Needs_Account_Assignment</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the field Original Close Date is populated on the account</description>
+        <name>Original_Close_Date_Populated</name>
+        <label>Original Close Date Populated?</label>
+        <locationX>50</locationX>
+        <locationY>660</locationY>
+        <defaultConnector>
+            <targetReference>School_Object_With_Premium_Start_Date</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Original_Close_Date_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Original_Close_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Latest_Opened_Case</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Pending_JG_Cancelation_Status</name>
+        <label>Pending JG Cancelation Status?</label>
+        <locationX>50</locationX>
+        <locationY>1260</locationY>
+        <defaultConnector>
+            <targetReference>Premium_Plan_on_Cancelled_Customer</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Pending_JG_Cancelation_Status</name>
+            <conditionLogic>(1 OR 2) AND 3 AND 4</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Latest_Opened_Case.JG_Cancelation_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending - Waiting on Site Removal</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Latest_Opened_Case.JG_Cancelation_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending- Waiting on Refund</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Latest_Opened_Case.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelation Request</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Latest_Opened_Case</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the plan associated with the account is Premium and the account type is Cancelled Customer.  If it is, update it back to Current Customer.</description>
+        <name>Premium_Plan_on_Cancelled_Customer</name>
+        <label>Premium Plan on Cancelled Customer?</label>
+        <locationX>248</locationX>
+        <locationY>1368</locationY>
+        <defaultConnector>
+            <targetReference>Update_Account_Fields</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>1 AND 2 AND 3 AND 4 AND (5 OR 6) AND (7 OR 8)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Brightwheel_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Related_Payer_Customer_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Government Payer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Offline_Payer__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Latest_Opened_Case</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Latest_Opened_Case.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelation Request</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Latest_Opened_Case.Delayed_Subscription_Change_Date__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Latest_Opened_Case.Delayed_Subscription_Change_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Type_to_Customer</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if a school object was found and the Premium Customer Start Date field is populated</description>
+        <name>School_Object_With_Premium_Start_Date</name>
+        <label>School Object With Premium Start Date?</label>
+        <locationX>204</locationX>
+        <locationY>768</locationY>
+        <defaultConnector>
+            <targetReference>Get_Latest_Opened_Case</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_School_Object_With_Premium_Start_Date</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.School_Object__r.Premium_Customer_Start_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Original_Close_Date_on_Account</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>This flow assigns SaaS Owner and Billing Upsell Owner roles to accounts linked with premium schools. Additionally, it fills in the Original Close Date for accounts where this field is null, based on specified criteria, and confirms that accounts associated with premium schools are correctly classified as &quot;Customer.&quot;
+06/10 - PE - Updated entry criteria to remove looking at Number of Sites on the account and moved the criteria as a decision node to look at that field on the related school object.
+06/12/24 - PE - Updated entry criteria
+09/05/24 - PE - Added inactive prospects to the entrance criteria.
+09/17/24 - PE - Removed SaaS Ofline Payer from entrance criteria
+09/25/24 - PE - Added logic to exclude SaaS Ofline Payer when checking if an account has to be flipped back to customer
+11/25/24 - PE - Added logic not to update accounts that have a cancelation request case where JG Cancelation Status is pending.
+05/27/25 - PE - Added logic to skip updates to Customer Status if related case has a future date in the field Delayed Subscription Change Date</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Date the field Brightwheel Plan was upgraded, minus one.</description>
+        <name>forD_OriginalCloseDate</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE({!currentItem_Filter_Changes_to_Premium.CreatedDate}) - 1</expression>
+    </formulas>
+    <interviewLabel>Account - Scheduled - Ownership and Original Close Date {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - Scheduled - Premium Account Updates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Some customers are delayed in being canceled in JG until they are removed from the larger Org or refunded. During this waiting period, they do not have a future cancellation date, which can trigger the automation to incorrectly switch their type back to Customer. To prevent this, if the latest case is a cancellation request with a JG Cancellation Status of &apos;Pending - Waiting on Site Removal&apos; or &apos;Pending - Waiting on Refund,&apos; the account type should not be changed back to Customer.</description>
+        <name>Get_Latest_Opened_Case</name>
+        <label>Get Latest Opened Case</label>
+        <locationX>50</locationX>
+        <locationY>1152</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Pending_JG_Cancelation_Status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates the triggering account with the assignments made throughout the fow</description>
+        <name>Update_Account_Fields</name>
+        <label>Update Account Fields</label>
+        <locationX>248</locationX>
+        <locationY>1668</locationY>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>177</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Number_of_Sites_10</targetReference>
+        </connector>
+        <filterLogic>((1 AND 2 AND 3) OR (1 AND (4 OR 10 OR 11))) AND 5 AND 6 AND 7 AND 8 AND 9</filterLogic>
+        <filters>
+            <field>Brightwheel_Plan__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Premium</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Original_Close_Date__c</field>
+            <operator>EqualTo</operator>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Customer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cancelled Customer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Related_Payer_Customer_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Government Payer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Related_Payer_Customer_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Enterprise</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Customer_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Enterprise</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Customer_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Government Payer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Customer_Segment__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Enterprise</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Canceled Customer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Inactive Prospect</stringValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2024-04-04</startDate>
+            <startTime>06:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Launch_Account_Ownership_Assignment</name>
+        <label>Launch Account Ownership Assignment</label>
+        <locationX>138</locationX>
+        <locationY>468</locationY>
+        <connector>
+            <targetReference>Original_Close_Date_Populated</targetReference>
+        </connector>
+        <flowName>Account_Subflow_Ownership_Assignments</flowName>
+        <inputAssignments>
+            <name>varT_RecordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <variables>
+        <name>currentItem_Filter_Changes_to_Premium</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>School_Object__History</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Adds the current Combined Funnel from loop iterator to the Combined Funnel Collection</description>
+        <name>Add_Combined_Funnel_to_Collection</name>
+        <label>Add Combined Funnel to Collection</label>
+        <locationX>138</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>varR_CombinedFunnelsToUpdate</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_on_Combined_Funnels</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_on_Combined_Funnels</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Combined_Funnel_Values</name>
+        <label>Assign Combined Funnel Values</label>
+        <locationX>138</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>Loop_on_Combined_Funnels.Declined_SaaS_Training__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>forB_CombinedFunnel_DeclinedSaaSTraining</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Loop_on_Combined_Funnels.Declined_Billing_Training__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>forB_CombinedFunnel_DeclinedBillingTrainig</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_Combined_Funnel_to_Collection</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>Flow_Error</name>
+        <label>Flow Error</label>
+        <locationX>314</locationX>
+        <locationY>1055</locationY>
+        <customErrorMessages>
+            <errorMessage>Oops! The updates you made didn&apos;t sync with the related Combined Funnel. Could you manually update them there as well? Also, please drop us a Zendesk ticket to report this error. Thank you!</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Update_Combined_Funnel_1</name>
+        <label>Update Combined Funnel</label>
+        <locationX>314</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_UpdateCombinedFunnel</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Declined_Billing_Training__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Declined_SaaS_Training__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Combined_Funnel</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>PE - Flow created to keep fields on the Contact in sync with their counterpart on other objects. (Revenue.io Implementation Project)</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forB_CombinedFunnel_DeclinedBillingTrainig</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Declined_Billing_Training__c}),
+{!$Record.Declined_Billing_Training__c},
+{!Loop_on_Combined_Funnels.Declined_Billing_Training__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forB_CombinedFunnel_DeclinedSaaSTraining</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+ISCHANGED({!$Record.Declined_SaaS_Training__c}),
+{!$Record.Declined_SaaS_Training__c},
+{!Loop_on_Combined_Funnels.Declined_SaaS_Training__c}
+)</expression>
+    </formulas>
+    <interviewLabel>Contact - After Save - UpdateORCreate - Fields Sync {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - After Save - Fields Sync</label>
+    <loops>
+        <name>Loop_on_Combined_Funnels</name>
+        <label>Loop on Combined Funnels</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <collectionReference>Get_Combined_Funnel</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Combined_Funnel_Values</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Combined_Funnels</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Combined Funnels where the triggering record is either the SaaS or Billing Primary Contact.</description>
+        <name>Get_Combined_Funnel</name>
+        <label>Get Combined Funnel</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_on_Combined_Funnels</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>SaaS_Primary_Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Primary_Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Declined_Billing_Training__c</queriedFields>
+        <queriedFields>Declined_SaaS_Training__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates the Combined Funnel records in the Collecition after the loop finishes.</description>
+        <name>Update_Combined_Funnels</name>
+        <label>Update Combined Funnels</label>
+        <locationX>50</locationX>
+        <locationY>947</locationY>
+        <faultConnector>
+            <targetReference>Flow_Error</targetReference>
+        </faultConnector>
+        <inputReference>varR_CombinedFunnelsToUpdate</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Combined_Funnel_1</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND (5 OR 6) AND (3 OR 4)</filterLogic>
+        <filters>
+            <field>Declined_SaaS_Training__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Declined_Billing_Training__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_SaaS_Primary_Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Onboarding_Billing_Primary_Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CF_SaaS_Primary_Contact_Count__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CF_Billing_Primary_Contact_Count__c</field>
+            <operator>GreaterThan</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <triggerOrder>1500</triggerOrder>
+    <variables>
+        <description>Collection variable to store all Combined Funnel records to update at once.</description>
+        <name>varR_CombinedFunnelsToUpdate</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Combined_Funnel__c</objectType>
+    </variables>
+</Flow>

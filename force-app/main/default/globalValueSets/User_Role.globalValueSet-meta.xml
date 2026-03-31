@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>admin</fullName>
+        <default>false</default>
+        <label>admin</label>
+    </customValue>
+    <customValue>
+        <fullName>lead_teacher</fullName>
+        <default>false</default>
+        <label>lead_teacher</label>
+    </customValue>
+    <customValue>
+        <fullName>super_admin</fullName>
+        <default>false</default>
+        <label>super_admin</label>
+    </customValue>
+    <customValue>
+        <fullName>teacher</fullName>
+        <default>false</default>
+        <label>teacher</label>
+    </customValue>
+    <description>User role for teachers</description>
+    <masterLabel>User Role</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

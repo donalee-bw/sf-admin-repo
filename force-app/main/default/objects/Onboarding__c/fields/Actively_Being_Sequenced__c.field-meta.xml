@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actively_Being_Sequenced__c</fullName>
+    <description>Shows if the Primary Contact associated to the onboarding is Actively Being Sequenced in Outreach.</description>
+    <formula>Primary_Contact__r.Actively_being_Sequenced__c</formula>
+    <inlineHelpText>Shows if the Primary Contact associated to the onboarding is Actively Being Sequenced in Outreach.</inlineHelpText>
+    <label>Actively Being Sequenced</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

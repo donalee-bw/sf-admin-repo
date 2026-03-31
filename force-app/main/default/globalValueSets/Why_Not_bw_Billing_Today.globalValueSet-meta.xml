@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Happy with current solution</fullName>
+        <default>false</default>
+        <label>Happy with current solution</label>
+    </customValue>
+    <customValue>
+        <fullName>Missing key features</fullName>
+        <default>false</default>
+        <label>Missing key features</label>
+    </customValue>
+    <customValue>
+        <fullName>Fees are too high</fullName>
+        <default>false</default>
+        <label>Fees are too high</label>
+    </customValue>
+    <customValue>
+        <fullName>Parents won’t adopt</fullName>
+        <default>false</default>
+        <label>Parents won’t adopt</label>
+    </customValue>
+    <customValue>
+        <fullName>Need more training</fullName>
+        <default>false</default>
+        <label>Need more training</label>
+    </customValue>
+    <customValue>
+        <fullName>In a contract</fullName>
+        <default>false</default>
+        <label>In a contract</label>
+    </customValue>
+    <customValue>
+        <fullName>Transition would be too much work</fullName>
+        <default>false</default>
+        <label>Transition would be too much work</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Other Higher Priorities</fullName>
+        <default>false</default>
+        <label>Other Higher Priorities</label>
+    </customValue>
+    <customValue>
+        <fullName>Previously Poor BW Experience</fullName>
+        <default>false</default>
+        <label>Previously Poor BW Experience</label>
+    </customValue>
+    <masterLabel>Why Not bw Billing Today</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Settings_Confirmed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>If billing settings have been confirmed with customer, checkbox should be checked.</inlineHelpText>
+    <label>Billing Settings Confirmed</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

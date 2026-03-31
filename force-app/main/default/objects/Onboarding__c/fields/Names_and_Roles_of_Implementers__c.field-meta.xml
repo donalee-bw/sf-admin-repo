@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Names_and_Roles_of_Implementers__c</fullName>
+    <description>Captured by sales when closed-won.</description>
+    <inlineHelpText>Who will be implementing brightwheel? Please list a minimum of two contacts.</inlineHelpText>
+    <label>Names and Roles of Implementers</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

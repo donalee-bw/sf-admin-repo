@@ -1,0 +1,1091 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Checks if the case&apos;s account has an active user set on the fields SaaS Owner and Billing Upsell Owner.</description>
+        <name>Account_Has_Valid_SaaS_BU_Owners</name>
+        <label>Account Has Valid SaaS/BU Owners?</label>
+        <locationX>391</locationX>
+        <locationY>1608</locationY>
+        <defaultConnector>
+            <targetReference>Launch_Account_Assignments_NewCase</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Account_Has_Valid_SaaS_BU_Owners</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.SaaS_Owner__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Billing_Upsell_Owner__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_SaaS_Owner_as_Case_Owner</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the failed payment case was created due to a failed ACH</description>
+        <name>ACH_Failed_Payment</name>
+        <label>ACH Failed Payment?</label>
+        <locationX>886</locationX>
+        <locationY>384</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Launch_Account_Ownership_Assignments</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_ACH_Failed_Payment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stripe_funding__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>ACH Account</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>forB_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Close_Failed_ACH_Case</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Auto_Close_or_Remain_Open</name>
+        <label>Auto Close or Remain Open</label>
+        <locationX>798</locationX>
+        <locationY>276</locationY>
+        <defaultConnector>
+            <targetReference>Has_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Auto_Close</name>
+            <conditionLogic>4  AND ((1 AND 2) OR ((3) OR (3 AND (8 OR 9)) AND 5 AND 6 AND 7))</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stripe_attempt_count__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>3.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Last_Stripe_Attempt_Over_10_Days__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Customer_Segment__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Micro</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Manual_Override__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>00G3u000002C69nEAC</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>forB_RecentlyMovedtoFree</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Current_Premium_ECE__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Ever_Premium_ECE__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Auto_Close_Case_Last_Stripe_Attempt_over_10_Days</targetReference>
+            </connector>
+            <label>Auto Close</label>
+        </rules>
+        <rules>
+            <name>ACH_Failure</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Stripe_attempt_count__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Brightwheel_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Free</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Premium_Target_to_Non_Target_Date_Stamp__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Number_of_Open_Cancel_Request_Cases__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Type</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelled Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Number_of_Open_Failed_Payment_Cases__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>forB_RecentlyMovedtoFree</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Account</targetReference>
+            </connector>
+            <label>ACH Failure</label>
+        </rules>
+        <rules>
+            <name>Create_Cancel_Case</name>
+            <conditionLogic>5 AND 6 AND ((1 OR 2) OR (3 AND 4))</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not Resolved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed - No Contact</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Stripe_funding__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>ACH Account</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>forB_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Created_Cancel_Request_Case__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Description</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>textT_CaseNotResolvedDescription</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ACH_Failed_Payment</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Create Cancel Case</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Case_Owner_Assignment</name>
+        <label>Case Owner Assignment</label>
+        <locationX>798</locationX>
+        <locationY>1392</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Assign_Owner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Case_Owner_Override__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Open_Case</targetReference>
+            </connector>
+            <label>Assign Owner</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Contact_Check</name>
+        <label>Contact Check</label>
+        <locationX>567</locationX>
+        <locationY>2208</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact_from_Case.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_on_Closed_Failed_Payment</targetReference>
+            </connector>
+            <label>Contact Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Contact_Check2</name>
+        <label>Contact Check</label>
+        <locationX>1854</locationX>
+        <locationY>1224</locationY>
+        <defaultConnectorLabel>Nothing to See Here</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Found2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact_For_new_Cancel_Request.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_New_Case_field_Cancel_Request</targetReference>
+            </connector>
+            <label>Contact Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Does_a_Cancel_Request_Case_exist_already</name>
+        <label>Does a Cancel Request Case exist already</label>
+        <locationX>2052</locationX>
+        <locationY>792</locationY>
+        <defaultConnectorLabel>Cancel Request Does Exist</defaultConnectorLabel>
+        <rules>
+            <name>Cancel_Request_does_not_Exist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Created_Cancel_Request_Case__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Cancel_Request_Case</targetReference>
+            </connector>
+            <label>Cancel Request does not Exist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Failed Payment is considered not resolved if it is still open after 14 days and the related account segment is not Micro.</description>
+        <name>Failed_Payment_Closed</name>
+        <label>Failed Payment Resolved?</label>
+        <locationX>2294</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Yes</defaultConnectorLabel>
+        <rules>
+            <name>No_Failed_Payment_Closed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsClosed</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Customer_Segment__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Micro</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mark_FP_Case_as_Not_Resolved</targetReference>
+            </connector>
+            <label>No</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Has_Account</name>
+        <label>Has Account</label>
+        <locationX>1370</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Current_Premium_ECE__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Ever_Premium_ECE__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Account</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Evaluates whether the account linked to the case has a corresponding School Object record</description>
+        <name>Has_Associated_School_Object</name>
+        <label>Has Associated School Object</label>
+        <locationX>226</locationX>
+        <locationY>492</locationY>
+        <defaultConnector>
+            <targetReference>Auto_Close_Non_Target_Retention</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No School Object</defaultConnectorLabel>
+        <rules>
+            <name>School_Object_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.School_Object__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Recently_Moved_to_Free</targetReference>
+            </connector>
+            <label>School Object Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the related account has a SaaS Owner user assigned to it, as that user will be used later on. 
+12.6.2024 - LK - Check to make sure the case has an account id or not.</description>
+        <name>Launch_Account_Ownership_Assignments</name>
+        <label>Launch Account Ownership Assignments?</label>
+        <locationX>2052</locationX>
+        <locationY>492</locationY>
+        <defaultConnector>
+            <targetReference>Launch_Account_Assignments</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Yes</defaultConnectorLabel>
+        <rules>
+            <name>No_Account_ID_or_Contact_ID</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>No Account ID or Contact ID</label>
+        </rules>
+        <rules>
+            <name>No_Launch_Account_Ownership_Assignments</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.SaaS_Owner__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Billing_Upsell_Owner__r.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Does_a_Cancel_Request_Case_exist_already</targetReference>
+            </connector>
+            <label>No</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if this is a new case. If it is, its ownership will be RR within users of a group.</description>
+        <name>Open_Case</name>
+        <label>Open Case?</label>
+        <locationX>567</locationX>
+        <locationY>1500</locationY>
+        <defaultConnector>
+            <targetReference>Get_Contact_from_Case</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_NewCase</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsClosed</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Account_Has_Valid_SaaS_BU_Owners</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the shcool object was just moved to Free recently</description>
+        <name>Recently_Moved_to_Free</name>
+        <label>Recently Moved to Free?</label>
+        <locationX>50</locationX>
+        <locationY>600</locationY>
+        <defaultConnectorLabel>Moved Recently</defaultConnectorLabel>
+        <rules>
+            <name>Not_Moved_Recently</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>forB_RecentlyMovedtoFree</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Auto_Close_Non_Target_Retention</targetReference>
+            </connector>
+            <label>Not Moved Recently</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the flow was triggered by an update from Stripe to update the &apos;Stripe Attempt Count&apos; on a closed case. If this is the case, we avoid pushing the &apos;Failed Payment&apos; value to the &apos;New Case Type&apos;.&quot;</description>
+        <name>Update_on_Closed_Failed_Payment</name>
+        <label>Update on Closed Failed Payment?</label>
+        <locationX>369</locationX>
+        <locationY>2316</locationY>
+        <defaultConnector>
+            <targetReference>Update_Contact_New_Case_field</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Update_on_Closed_Failed_Payment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Description</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>A new Cancelation Request case was also just created under this account.</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Auto closes cases that are non-target or are in the new status, assigned to a queue, and has had no stripe attempt count updates in over 10 days. Routes ACH failures into queue.
+08/22/23 - PE - Updated flow to prevent auto-closing of cases when the school object was just moved to Free recently. (Sprint15 - 2023)
+09/15/23 - PE - Added decision node to confirm the case&apos;s account has a school object (Sprint 17)
+12/07/23 - PE - Updated Failed Payment case ownership to be RR between users inside the group Failed Payment Case Owners (Revenue.io Implementation)
+04/11/24 - PE - Updated Premium Target Field. Added scheduled path to create Cancel Request cases.
+04/18/24 - PE - Update flow to assign ownership of new case to account&apos;s SaaS Owner
+05/02/24 - BW - Updated flow to populate Created Cancel Request Case lookup and not create a second Cancel Request Case on the immediate path
+05/30/24 - PE - Added decision node to check if Stripe triggered the flow to update &apos;Stripe Attempt Count&apos; on a closed case/
+07/15/24 - PE - Updated flow to not update case is it&apos;s closed
+12/06/24 - LK - Before launching Account Assignment Subflow, the flow checks to see if the case created has an Account Id. Fixing flow errors where id var was null for the subflow.
+01/10/25 - removing reference to Target Designation at Cancellation as a part of Project Ren / School Object field cleanup
+06/12/25 - PE - Mapped Engagement Notes from FP case to new Cancel case using formula
+
+Diagram: https://drive.google.com/file/d/17aUeL8xfcB_9vk2KnsBo3UeoBcZ5PW50/view?usp=sharing
+3/11/25 JH: launch account ownership assignments decision node to also end if no contact id related to case</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>for_EngagementNotes</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK( {!$Record.Engagement_Notes__c}),
+  &quot;No Engagement Notes from original FP case &quot; 
+    &amp; {!$Record.CaseNumber} 
+    &amp; &quot; on &quot; 
+    &amp; TEXT( TODAY() ),
+  &quot;Engagement Notes from original FP case &quot; 
+    &amp; {!$Record.CaseNumber} 
+    &amp; &quot; on &quot; 
+    &amp; TEXT( TODAY() ) 
+    &amp; &quot;:&quot;
+    &amp; BR()
+    &amp; MID(
+        {!$Record.Engagement_Notes__c},
+        1,
+        32768 
+          - LEN(
+              &quot;Engagement Notes from original FP case &quot; 
+                &amp; {!$Record.CaseNumber} 
+                &amp; &quot; on &quot; 
+                &amp; TEXT( TODAY() ) 
+                &amp; BR()
+            )
+      )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>forB_IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <description>Checks whether the school object linked to the case&apos;s account has been recently switched to Free status.</description>
+        <name>forB_RecentlyMovedtoFree</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(
+    OR({!$Record.Account.Ever_Premium_ECE__c}= TRUE, 
+          {!$Record.Account.Current_Premium_ECE__c} = TRUE ),
+{!$Record.Account.School_Object__r.Cancellation_Date__c} &gt;= TODAY() - 2)</expression>
+    </formulas>
+    <formulas>
+        <name>forT_CancelCaseDescription</name>
+        <dataType>String</dataType>
+        <expression>IF(
+{!$Flow.CurrentDate} - 7 &gt;= DATEVALUE({!$Record.CreatedDate}), {!texT_CancelCaseAutoCloseDescription}, 
+IF(
+{!$Record.Stripe_funding__c} = &quot;ACH Account&quot;,
+{!texT_CancelCaseACHFailureDescription},
+{!texT_CancelCaseManualCloseDescription}
+)
+)</expression>
+    </formulas>
+    <interviewLabel>Auto Close Case - Failed Payments Handler {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Auto Close Case - Failed Payments Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates a Cancelation Request case</description>
+        <name>Create_Cancel_Request_Case</name>
+        <label>Create Cancel Request Case</label>
+        <locationX>1854</locationX>
+        <locationY>900</locationY>
+        <connector>
+            <targetReference>Update_FP_Case_with_Cancel_Request_Case_Id</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Date_of_Cancellation_Request__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>forT_CancelCaseDescription</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Engagement_Notes__c</field>
+            <value>
+                <elementReference>for_EngagementNotes</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <stringValue>Failed Payment</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.Account.SaaS_Owner__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <stringValue>0123u000000aN7yAAE</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Assigned</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Failed Payment Case Not Resolved</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Cancel Request</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Account</name>
+        <label>Get Account</label>
+        <locationX>798</locationX>
+        <locationY>1284</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Case_Owner_Assignment</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Account.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Billing_Upsell_Owner__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact_For_new_Cancel_Request</name>
+        <label>Get Contact For new Cancel Request</label>
+        <locationX>1854</locationX>
+        <locationY>1116</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_Check2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact_from_Case</name>
+        <label>Get Contact from Case</label>
+        <locationX>567</locationX>
+        <locationY>2100</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_Check</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Assigns the related account&apos;s SaaS Owner as the owner of the new case</description>
+        <name>Assign_SaaS_Owner_as_Case_Owner</name>
+        <label>Assign SaaS Owner as Case Owner</label>
+        <locationX>391</locationX>
+        <locationY>1908</locationY>
+        <connector>
+            <targetReference>Get_Contact_from_Case</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.Account.SaaS_Owner__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Auto_Close_Case_Last_Stripe_Attempt_over_10_Days</name>
+        <label>Auto Close Case - Last Stripe Attempt over 10 Days</label>
+        <locationX>226</locationX>
+        <locationY>384</locationY>
+        <connector>
+            <targetReference>Has_Associated_School_Object</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Stripe_attempt_count__c</field>
+            <operator>LessThan</operator>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Last_Stripe_Attempt_Over_10_Days__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>Case Auto Closed due to no Stripe attempt over 10 days</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Auto Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Auto_Close_Non_Target_Retention</name>
+        <label>Auto Close - Non Target Retention</label>
+        <locationX>226</locationX>
+        <locationY>984</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Premium_Target_Updated_Definition__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>OwnerId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>00G3u000002C69nEAC</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>Case Auto Closed due to account falling into Non Target Retention definition</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Auto Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Closes out the failed ACH case, as a new Cancel Request case will be created right away.</description>
+        <name>Close_Failed_ACH_Case</name>
+        <label>Close Failed ACH Case</label>
+        <locationX>754</locationX>
+        <locationY>492</locationY>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Launch_Account_Ownership_Assignments</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>texT_FailedACHDescription</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Auto Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Mark the Failed Payment case as not resolved, since it&apos;s been open for 14 days.</description>
+        <name>Mark_FP_Case_as_Not_Resolved</name>
+        <label>Mark FP Case as Not Resolved</label>
+        <locationX>2052</locationX>
+        <locationY>384</locationY>
+        <connector>
+            <targetReference>Launch_Account_Ownership_Assignments</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>textT_CaseNotResolvedDescription</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Not Resolved</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Contact_New_Case_field</name>
+        <label>Update Contact - New Case field</label>
+        <locationX>501</locationX>
+        <locationY>2424</locationY>
+        <inputAssignments>
+            <field>New_Case_Type__c</field>
+            <value>
+                <stringValue>Failed Payment</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Contact</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Contact_New_Case_field_Cancel_Request</name>
+        <label>Update Contact - New Case field - Cancel Request</label>
+        <locationX>1722</locationX>
+        <locationY>1332</locationY>
+        <inputAssignments>
+            <field>Most_Recent_Case_Status__c</field>
+            <value>
+                <stringValue>Assigned</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>New_Case_Type__c</field>
+            <value>
+                <stringValue>Cancel Request</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Contact</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_FP_Case_with_Cancel_Request_Case_Id</name>
+        <label>Update FP Case with Cancel Request Case Id</label>
+        <locationX>1854</locationX>
+        <locationY>1008</locationY>
+        <connector>
+            <targetReference>Get_Contact_For_new_Cancel_Request</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Created_Cancel_Request_Case__c</field>
+            <value>
+                <elementReference>Create_Cancel_Request_Case</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1420</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Auto_Close_or_Remain_Open</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0121I000000ODmUQAW</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>X14_Days_After_Created_Date</name>
+            <connector>
+                <targetReference>Failed_Payment_Closed</targetReference>
+            </connector>
+            <label>14D After Created Date</label>
+            <offsetNumber>14</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>CreatedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Launch_Account_Assignments</name>
+        <label>Launch Account Assignments</label>
+        <locationX>2272</locationX>
+        <locationY>600</locationY>
+        <connector>
+            <targetReference>Does_a_Cancel_Request_Case_exist_already</targetReference>
+        </connector>
+        <flowName>Account_Subflow_Ownership_Assignments</flowName>
+        <inputAssignments>
+            <name>varT_RecordId</name>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <subflows>
+        <name>Launch_Account_Assignments_NewCase</name>
+        <label>Launch Account Assignments</label>
+        <locationX>479</locationX>
+        <locationY>1716</locationY>
+        <connector>
+            <targetReference>Assign_SaaS_Owner_as_Case_Owner</targetReference>
+        </connector>
+        <flowName>Account_Subflow_Ownership_Assignments</flowName>
+        <inputAssignments>
+            <name>varT_RecordId</name>
+            <value>
+                <elementReference>$Record.Account.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>texT_CancelCaseACHFailureDescription</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Flow.CurrentDate} - Cancelation Request case auto created after auto closing the Failed ACH Payment case number {!$Record.CaseNumber}, created on {!$Record.CreatedDate}.</text>
+    </textTemplates>
+    <textTemplates>
+        <name>texT_CancelCaseAutoCloseDescription</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Flow.CurrentDate} - Cancelation Request case auto created because the Failed Payment case number {!$Record.CaseNumber}, created on {!$Record.CreatedDate}, was still open 14 days after its creation date.</text>
+    </textTemplates>
+    <textTemplates>
+        <name>texT_CancelCaseManualCloseDescription</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Flow.CurrentDate} - Cancelation Request case auto created because the Failed Payment case number {!$Record.CaseNumber} was marked as {!$Record.Status}.</text>
+    </textTemplates>
+    <textTemplates>
+        <name>texT_FailedACHDescription</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Case auto closed on {!$Flow.CurrentDate} as any new cases tagged with ACH Account in the Stripe Funding field are set to close immediately and have a Cancelation Request case created right away.</text>
+    </textTemplates>
+    <textTemplates>
+        <name>textT_CaseNotResolvedDescription</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Flow.CurrentDate} - Case auto-updated to Not Resolved as it has been open for 14 days. A new Cancelation Request case was also just created under this account.</text>
+    </textTemplates>
+</Flow>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Found_School_Object_decision</name>
+        <label>Found School Object decision</label>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_School_Object</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_School_Object.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Premium_ECE_Logic_decision</targetReference>
+            </connector>
+            <label>Found School Object</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Premium_ECE_Logic_decision</name>
+        <label>Premium ECE Logic decision</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>No Action</defaultConnectorLabel>
+        <rules>
+            <name>Premium_ECE_is_TRUE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_School_Object.Premium_ECE__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_ECE_Values</targetReference>
+            </connector>
+            <label>Premium ECE is TRUE</label>
+        </rules>
+        <rules>
+            <name>Premium_ECE_is_FALSE</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_School_Object.Premium_ECE__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Premium_ECE__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_ECE_Value</targetReference>
+            </connector>
+            <label>Premium ECE is FALSE</label>
+        </rules>
+    </decisions>
+    <description>This process runs when the School Object id on the Account is updated.  It will update the corresponding Account fields for Premium ECE
+08/12/24 - BW - Updated to trigger off creation of Account as well</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>formAccountSources</name>
+        <dataType>String</dataType>
+        <expression>IF(TEXT({!$Record.AccountSource})&lt;&gt;Null, TEXT({!$Record.AccountSource}), &apos;Web&apos;)</expression>
+    </formulas>
+    <interviewLabel>Account - After Save - Premium ECE with New School Object {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - After Save - Premium ECE with New School Object</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_School_Object</name>
+        <label>Get School Object</label>
+        <locationX>578</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_School_Object_decision</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.School_Object__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>School_Object__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Account_ECE_Value</name>
+        <label>Update Account - ECE Value</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>AccountSource</field>
+            <value>
+                <elementReference>formAccountSources</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Current_Premium_ECE__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_ECE_Values</name>
+        <label>Update Account - ECE Values</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>AccountSource</field>
+            <value>
+                <elementReference>formAccountSources</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Current_Premium_ECE__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ever_Premium_ECE__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>452</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_School_Object</targetReference>
+        </connector>
+        <filterFormula>OR(
+     ISNEW(),
+     ISCHANGED({!$Record.School_Object__c})
+)</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

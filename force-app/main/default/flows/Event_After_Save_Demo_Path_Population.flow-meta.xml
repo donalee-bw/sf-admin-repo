@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Contact_Demo_Path</name>
+        <label>Assign Contact Demo Path</label>
+        <locationX>578</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Contact.Demo_Path__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formDemoPath</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Contact</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Lead_Demo_Path</name>
+        <label>Assign Lead Demo Path</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Lead.Demo_Path__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formDemoPath</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Contact_decision</name>
+        <label>Contact decision</label>
+        <locationX>710</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Contact_Demo_Path</targetReference>
+            </connector>
+            <label>Found Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Lead_decision</name>
+        <label>Lead decision</label>
+        <locationX>380</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Get_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not a Lead</defaultConnectorLabel>
+        <rules>
+            <name>Found_Lead_Non_Converted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Lead.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Lead.IsConverted</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Lead_Demo_Path</targetReference>
+            </connector>
+            <label>Found Lead - Non Converted</label>
+        </rules>
+        <rules>
+            <name>Found_Lead_Converted</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Lead.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Lead.IsConverted</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Found Lead - Converted</label>
+        </rules>
+    </decisions>
+    <description>Automation to populate Demo Path on Lead or Contact after the creation of a CP Event
+
+8/13/24 - Updated logic to only run off of events created by CP Queue User or Integration User as Sales Users were causing unintended updates to Demo Path</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>formDemoPath</name>
+        <dataType>String</dataType>
+        <expression>IF(CONTAINS({!$Record.Queue_Name_CP__c},&apos;Call Me Now&apos;),&apos;Call Me Now&apos;,
+    IF(CONTAINS({!$Record.Queue_Name_CP__c},&apos;Schedule&apos;),&apos;Schedule&apos;,&apos;Chase Me: Chili Piper&apos;))</expression>
+    </formulas>
+    <interviewLabel>Event - After Save - Demo Path Population {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Event - After Save - Demo Path Population</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Contact</name>
+        <label>Get Contact</label>
+        <locationX>710</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_decision</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhoId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Lead</name>
+        <label>Get Lead</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Lead_decision</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhoId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Contact</name>
+        <label>Update Contact</label>
+        <locationX>578</locationX>
+        <locationY>863</locationY>
+        <inputReference>Get_Contact</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead</name>
+        <label>Update Lead</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <inputReference>Get_Lead</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Lead</targetReference>
+        </connector>
+        <filterLogic>(1 AND 2 AND (3 OR 4))</filterLogic>
+        <filters>
+            <field>Queue_Name_CP__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>WhoId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CreatedById</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0053u000004ATDeAAO</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CreatedById</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0051I000004HUjOQAW</stringValue>
+            </value>
+        </filters>
+        <object>Event</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

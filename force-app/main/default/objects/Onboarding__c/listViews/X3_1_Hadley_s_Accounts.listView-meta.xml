@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X3_1_Hadley_s_Accounts</fullName>
+    <columns>Account__c</columns>
+    <columns>NAME</columns>
+    <columns>Initial_Setup_Call_Scheduled__c</columns>
+    <columns>Initial_Setup_Call_Completed__c</columns>
+    <columns>Funnel_Stage__c</columns>
+    <columns>Add_Staff_By__c</columns>
+    <columns>Train_Teachers_By__c</columns>
+    <columns>Invite_Parents_By__c</columns>
+    <columns>Confirmed_Launch_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Onboarding_Setup_Call_Path__c</field>
+        <operation>equals</operation>
+        <value>combined</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Onboarding__c.Single_site_SaaS</value>
+    </filters>
+    <filters>
+        <field>Initial_Setup_Call_Completed__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>[3/1] Hadley&apos;s Accounts</label>
+</ListView>

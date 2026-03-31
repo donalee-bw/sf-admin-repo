@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AE_Post_CW_Check_In_Scheduled_Date_c__c</fullName>
+    <description>Mapped from the Saas Primary Contact&apos;s AE Post CW Check in scheduled</description>
+    <formula>SaaS_Primary_Contact__r.AE_Post_CW_Check_In_Scheduled_Date__c</formula>
+    <inlineHelpText>Mapped from the Saas Primary Contact&apos;s AE Post CW Check in scheduled</inlineHelpText>
+    <label>AE_Post_CW_Check_In_Scheduled_Date__c</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CES_Survey_First_Sent_Date__c</fullName>
+    <description>Min date between CES Survey Send Date on the Account and the Primary Contact related to the onboarding (which are populated by rollup helper when CES Survey email tasks are logged)</description>
+    <formula>IF(
+    AND(
+       NOT(ISBLANK(Account__r.CES_Survey_Send_Date__c)),
+       ISBLANK(Primary_Contact__r.CES_Survey_Send_Date__c)
+    ),
+    Account__r.CES_Survey_Send_Date__c,
+    IF(
+        AND(
+            ISBLANK(Account__r.CES_Survey_Send_Date__c),
+            NOT(ISBLANK(Primary_Contact__r.CES_Survey_Send_Date__c))
+        ),
+        Primary_Contact__r.CES_Survey_Send_Date__c,
+        IF(
+            Account__r.CES_Survey_Send_Date__c &lt; Primary_Contact__r.CES_Survey_Send_Date__c,
+            Account__r.CES_Survey_Send_Date__c,
+            Primary_Contact__r.CES_Survey_Send_Date__c
+        )
+    )
+)</formula>
+    <inlineHelpText>Min date between CES Survey Send Date on the Account and the Primary Contact related to the onboarding</inlineHelpText>
+    <label>CES Survey First Sent Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

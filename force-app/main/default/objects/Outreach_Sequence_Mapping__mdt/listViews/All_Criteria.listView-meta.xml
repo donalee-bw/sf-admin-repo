@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Criteria</fullName>
+    <columns>MasterLabel</columns>
+    <columns>Outreach_Sequence_Name__c</columns>
+    <columns>Number_of_Sites__c</columns>
+    <columns>Add_Parents_Threshold_Met__c</columns>
+    <columns>Upload_Students_Threshold_Met__c</columns>
+    <columns>Initiate_Parent_Signups_Threshold_Met__c</columns>
+    <columns>Log_First_Activity_Threshold_Met__c</columns>
+    <columns>Billing_Closed_Won__c</columns>
+    <columns>Customer_Segment__c</columns>
+    <columns>Billing_Launch_Eligible__c</columns>
+    <columns>Billing_Verified_Date__c</columns>
+    <columns>SaaS_Activation_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Criteria</label>
+</ListView>

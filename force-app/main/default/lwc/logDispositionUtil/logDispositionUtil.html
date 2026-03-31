@@ -1,0 +1,72 @@
+<template>
+    <template if:true={isLoading}>
+        <div class="loader-backdrop">
+            <div class="loader-card">
+                <lightning-spinner alternative-text="Saving..." size="medium" variant="brand"></lightning-spinner>
+                <!-- <p class="loader-text">…</p> -->
+            </div>
+        </div>
+    </template>
+
+    <!-- <template if:false={isLoading}> -->
+
+
+        <template if:true={formLoading}>
+        <div class="loader-container">
+            <lightning-spinner alternative-text="Loading..." size="medium" variant="brand">
+            </lightning-spinner>
+        </div>
+    </template>
+
+    
+        <div class="container">
+            <lightning-record-edit-form object-api-name="Task" onsubmit={handleSubmit}  class="form" onload={handleFormLoad}
+            >
+                <div class="fields-grid">
+
+                    <div class="field">
+                        <lightning-input-field field-name="Subject" value={defaultSubject} required></lightning-input-field>
+                    </div>
+
+                    <div class="field">
+                        <lightning-input-field field-name="Disposition__c" required></lightning-input-field>
+                    </div>
+
+                    <div class="field">
+                        <lightning-input-field field-name="OwnerId"></lightning-input-field>
+                    </div>
+
+                    <!-- <template if:true={relatedToWhatId}> -->
+                    <div class="field">
+                        <lightning-input-field field-name="WhatId" value={defaultWhatId}></lightning-input-field>
+                    </div>
+                    <!-- </template> -->
+                    
+                    <!-- <template if:true={relatedToWhoId}> -->
+                    <div class="field">
+                        <lightning-input-field field-name="WhoId" value={defaultWhoId}></lightning-input-field>
+                    </div>
+                    <!-- </template> -->
+
+                    <div class="field">
+                        <lightning-input-field field-name="Description"></lightning-input-field>
+                    </div>
+
+                    <div class="field">
+                        <lightning-input-field field-name="Status" ></lightning-input-field>
+                    </div>
+
+                </div>
+
+                <div class="footer">
+                    <lightning-button onsubmit={handleSubmit} label={btnLabel} variant="brand" type="submit" class="save-btn"></lightning-button>
+                </div>
+
+            </lightning-record-edit-form>
+
+        </div>
+    <!-- </template> -->
+
+    <lightning-service-cloud-voice-toolkit-api></lightning-service-cloud-voice-toolkit-api>
+
+</template>

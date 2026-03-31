@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Sends Slack Messages to new owners and managers when a contact is reassigned.  Also reassigns the Organization Owner</description>
+    <masterLabel>Contact - Org Reassignment and Send Slack Message on Reassign</masterLabel>
+</FlowDefinition>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BNP_Graduation_Date__c</fullName>
+    <description>Date that the account moved from a BNP onboarding path to a non BNP onboarding path. 
+(Previously Populated via flow: CF - Open and Operating Date Tracking)
+6/4/25 DJ - Populated via flow: School Object - After Save - Updates. Updated to Read-Only</description>
+    <inlineHelpText>Date that the account moved from a BNP onboarding path to a non BNP onboarding path</inlineHelpText>
+    <label>BNP Graduation Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

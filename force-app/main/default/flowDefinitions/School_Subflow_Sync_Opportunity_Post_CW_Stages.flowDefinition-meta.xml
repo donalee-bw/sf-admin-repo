@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>9</activeVersionNumber>
+    <description>Based on the School Object, Sync Opportunity Post CW Stages
+03.19.2025 - LK - Added new logic to take into account for new fields - Opp.Billing Opt Out Override (CB) and to check Opp.OBS Scheduled Call Date instead of Account.initial Account Setup Scheduled date. 
+Requirements - https://docs.google.com/document/d/1LR9XoL8cfYVM9uoB6Jd_ZbCWYfxT85qXjB5J81m1Sjg/edit?tab=t.0
+03.20.2025 -LK - Remove the requirement for Billing Training Schedueld date if billing at cw = opted in for the OB Eligible Stage.
+03.21.2025 -LK - Added Additional CF Onboarding Funnel Stages for on the Onboarding in progress stage
+03.24.2025 - LK -Update the partial SSPR logic , and Added Skip to Churn decision node.
+04.10.2025 - LK - Updates the new checkbox field - Post CW Set by Automation to allow the flow to bypass the validation rule that prevents users from updating the Post CW Stages
+04.14.25 - BW - Updated logic to populate the AE Owned at Risk vs OBS Owned at Risk during Onboarding In Progress stage
+04.14.25 - BW - Updated the SSPR Collection to compare to Close Date on Opp
+04.17.2025 - LK - Updated to eveluate for Open Cancel Case at any of the Post CW Stages. Added logic to the Standard path.
+04.28.2025 - LK - Unresponsive Logic added, so if Post CW Status = Unresponsive, then don&apos;t evaluate the post cw stages.
+05.05.2025 - LK - Added OBE Override Logic to the -SSPR Adding Stage Met Decision Node - to update the Opportunity Stage when Approved_Accelerated_Onboarding_Date__c or Approved_OBE_Override_Date__c is populated to OBE or Onboarding In Progress.
+06.04.2025 - LK - Update Winback Logic for the SSPR Stage ( Update logic to treat the deal as a true winback only if the SSPR dates are more than 30 days before the Close Date.)
+06.10.2025 - LK - Update logic to treat the deal as a true winback only if the SSPR dates are more than 4 days before the Close Date</description>
+    <masterLabel>Subflow - Sync Opportunity Post CW Stages</masterLabel>
+</FlowDefinition>

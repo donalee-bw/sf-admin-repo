@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Site Add-On</fullName>
+        <default>false</default>
+        <label>Site Add-On</label>
+    </customValue>
+    <customValue>
+        <fullName>bw Billing Admin at Previous Center</fullName>
+        <default>false</default>
+        <label>bw Billing Admin at Previous Center</label>
+    </customValue>
+    <customValue>
+        <fullName>Already Attended Training</fullName>
+        <default>false</default>
+        <label>Already Attended Training</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Applicable</fullName>
+        <default>false</default>
+        <label>Not Applicable</label>
+    </customValue>
+    <masterLabel>Declined Billing Training Reason</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

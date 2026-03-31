@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Copy_1_of_Remove_Contact_from_EC_OBS_Cadence</name>
+        <label>Copy 1 of Remove Contact from EC OBS Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>removeTargetFromSalesCadence</actionName>
+        <actionType>removeTargetFromSalesCadence</actionType>
+        <connector>
+            <targetReference>MissedWebinar_Se_Tag</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>completionReasonCode</name>
+            <value>
+                <stringValue>ManuallyRemoved</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>removeTargetFromSalesCadence</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>DNC_Remove_Contact_from_EC_OBS_Cadence</name>
+        <label>DNC Remove Contact from EC OBS Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>removeTargetFromSalesCadence</actionName>
+        <actionType>removeTargetFromSalesCadence</actionType>
+        <connector>
+            <targetReference>SE_TAG_DNC</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>completionReasonCode</name>
+            <value>
+                <stringValue>ManuallyRemoved</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>removeTargetFromSalesCadence</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Remove_Contact_from_EC_OBS_Cadence</name>
+        <label>Remove Contact from EC OBS Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>removeTargetFromSalesCadence</actionName>
+        <actionType>removeTargetFromSalesCadence</actionType>
+        <connector>
+            <targetReference>EC_OBS_Starter_SE_Tag</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>completionReasonCode</name>
+            <value>
+                <stringValue>ManuallyRemoved</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>removeTargetFromSalesCadence</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Active_Cadence_Found</name>
+        <label>Active Cadence Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Is_Contact_in_Active_Cadence_Tracker</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Which_EC_OBS_Cadence_to_Exit</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Future Scope: When multi-cadence is enabled, we need to remove the contact from the right cadence.</description>
+        <name>Which_EC_OBS_Cadence_to_Exit</name>
+        <label>Which EC OBS Cadence to Exit?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Do_Not_Contact_All</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Do_Not_Contact__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>DNC_Remove_Contact_from_EC_OBS_Cadence</targetReference>
+            </connector>
+            <label>Do Not Contact - All</label>
+        </rules>
+        <rules>
+            <name>EC_OBS_Starter</name>
+            <conditionLogic>1 AND 2 AND ( 3 OR 4 )</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Cadence_Label__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EC - OBS Starter</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>fWebinarScheduledFuture</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>fWebinarCompleted</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>fWebinarMissed</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_Contact_from_EC_OBS_Cadence</targetReference>
+            </connector>
+            <label>EC OBS Starter</label>
+        </rules>
+        <rules>
+            <name>EC_OBS_Missed_Webinar</name>
+            <conditionLogic>1 AND ( 2 OR 3 )</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Cadence_Label__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EC - OBS Missed Webinar</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>fWebinarScheduledFuture</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>fWebinarCompleted</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Remove_Contact_from_EC_OBS_Cadence</targetReference>
+            </connector>
+            <label>EC OBS Missed Webinar</label>
+        </rules>
+    </decisions>
+    <description>01.07.2025 - LK -Separated SE Tags for better troubleshooting
+01.12.2025 - LK -  EC Missed OBS Logic fix</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>True if the Contact has a completed date for any Baby, Toddler, or Preschool webinar and that completed date is on or before today</description>
+        <name>fWebinarCompleted</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+  NOT(ISBLANK({!$Record.Baby_Webinar_Completed_Date__c})),
+  NOT(ISBLANK({!$Record.Toddler_Webinar_Completed_Date__c})),
+  NOT(ISBLANK({!$Record.Preschool_Webinar_Completed_Date__c}))
+)</expression>
+    </formulas>
+    <formulas>
+        <description>True if any Baby/Toddler/Preschool webinar scheduled date/time is ON or BEFORE today AND the completed date is blank.</description>
+        <name>fWebinarMissed</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+  AND(
+    NOT(ISBLANK({!$Record.Baby_Webinar_Scheduled_Date_Time__c})),
+    DATEVALUE({!$Record.Baby_Webinar_Scheduled_Date_Time__c}) &lt;= TODAY(),
+    ISBLANK({!$Record.Baby_Webinar_Completed_Date__c})
+  ),
+  AND(
+    NOT(ISBLANK({!$Record.Toddler_Webinar_Scheduled_Date_Time__c})),
+    DATEVALUE({!$Record.Toddler_Webinar_Scheduled_Date_Time__c}) &lt;= TODAY(),
+    ISBLANK({!$Record.Toddler_Webinar_Completed_Date__c})
+  ),
+  AND(
+    NOT(ISBLANK({!$Record.Preschool_Webinar_Scheduled_Date_Time__c})),
+    DATEVALUE({!$Record.Preschool_Webinar_Scheduled_Date_Time__c}) &lt;= TODAY(),
+    ISBLANK({!$Record.Preschool_Webinar_Completed_Date__c})
+  )
+)</expression>
+    </formulas>
+    <formulas>
+        <description>True if any Baby, Toddler, or Preschool webinar has a scheduled date/time on or before today. ( Past)</description>
+        <name>fWebinarScheduledDue</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+  AND(
+    NOT(ISBLANK({!$Record.Baby_Webinar_Scheduled_Date_Time__c})),
+    DATEVALUE({!$Record.Baby_Webinar_Scheduled_Date_Time__c}) &lt;= TODAY()
+  ),
+  AND(
+    NOT(ISBLANK({!$Record.Toddler_Webinar_Scheduled_Date_Time__c})),
+    DATEVALUE({!$Record.Toddler_Webinar_Scheduled_Date_Time__c}) &lt;= TODAY()
+  ),
+  AND(
+    NOT(ISBLANK({!$Record.Preschool_Webinar_Scheduled_Date_Time__c})),
+    DATEVALUE({!$Record.Preschool_Webinar_Scheduled_Date_Time__c}) &lt;= TODAY()
+  )
+)</expression>
+    </formulas>
+    <formulas>
+        <description>True if any Baby, Toddler, or Preschool webinar has a scheduled date/time after today.</description>
+        <name>fWebinarScheduledFuture</name>
+        <dataType>Boolean</dataType>
+        <expression>OR(
+  AND(
+    NOT(ISBLANK({!$Record.Baby_Webinar_Scheduled_Date_Time__c})),
+    DATEVALUE({!$Record.Baby_Webinar_Scheduled_Date_Time__c}) &gt; TODAY(),
+    ISBLANK({!$Record.Baby_Webinar_Completed_Date__c})
+  ),
+  AND(
+    NOT(ISBLANK({!$Record.Toddler_Webinar_Scheduled_Date_Time__c})),
+    DATEVALUE({!$Record.Toddler_Webinar_Scheduled_Date_Time__c}) &gt; TODAY(),
+    ISBLANK({!$Record.Toddler_Webinar_Completed_Date__c})
+  ),
+  AND(
+    NOT(ISBLANK({!$Record.Preschool_Webinar_Scheduled_Date_Time__c})),
+    DATEVALUE({!$Record.Preschool_Webinar_Scheduled_Date_Time__c}) &gt; TODAY(),
+    ISBLANK({!$Record.Preschool_Webinar_Completed_Date__c})
+  )
+)</expression>
+    </formulas>
+    <interviewLabel>Contact - After Save - EC OBS Cadence Exit {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - After Save - EC OBS Cadence Exit</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Is_Contact_in_Active_Cadence_Tracker</name>
+        <label>Is Contact in Active Cadence Tracker?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Active_Cadence_Found</targetReference>
+        </connector>
+        <filterLogic>1 AND ( 2 OR 3 )</filterLogic>
+        <filters>
+            <field>TargetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Complete</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsTrackerActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionCadenceTracker</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>EC_OBS_Starter_SE_Tag</name>
+        <label>EC OBS Starter SE Tag</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>SE_Tag__c</field>
+            <value>
+                <elementReference>ECOBSStarterSETag</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>MissedWebinar_Se_Tag</name>
+        <label>MissedWebinar Se Tag</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>SE_Tag__c</field>
+            <value>
+                <elementReference>ECOBSMissedWebinarSETag</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>SE_TAG_DNC</name>
+        <label>SE TAG DNC</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>SE_Tag__c</field>
+            <value>
+                <elementReference>DNCSETAGText</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_Contact_in_Active_Cadence_Tracker</targetReference>
+        </connector>
+        <filterFormula>AND ( 
+OR ( 
+TEXT({!$Record.Cadence_Label__c}) = &quot;EC - OBS Generic&quot;,
+TEXT({!$Record.Cadence_Label__c}) = &quot;EC - OBS Missed Webinar&quot;,
+TEXT({!$Record.Cadence_Label__c}) = &quot;EC - OBS Post Webinar&quot;,
+TEXT({!$Record.Cadence_Label__c}) = &quot;EC - OBS Starter&quot; ) ,
+OR(
+    {!$Record.Do_Not_Contact__c} = TRUE,
+
+    NOT(ISBLANK({!$Record.Baby_Webinar_Scheduled_Date_Time__c})),
+    NOT(ISBLANK({!$Record.Toddler_Webinar_Scheduled_Date_Time__c})),
+    NOT(ISBLANK({!$Record.Preschool_Webinar_Scheduled_Date_Time__c})),
+
+    NOT(ISBLANK({!$Record.Baby_Webinar_Completed_Date__c})),
+    NOT(ISBLANK({!$Record.Toddler_Webinar_Completed_Date__c})),
+    NOT(ISBLANK({!$Record.Preschool_Webinar_Completed_Date__c}))
+  )
+)</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>DNCSETAGText</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>DNC Contact - After Save - EC OBS Cadence Exit {!$Flow.CurrentDateTime}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>ECOBSMissedWebinarSETag</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>EC OBS Missed Webinar - After Save - EC OBS Cadence Exit {!$Flow.CurrentDateTime} BSc- {!$Record.Baby_Webinar_Scheduled_Date__c}, PreSc-{!$Record.Preschool_Webinar_Scheduled_Date__c}, TodSc-{!$Record.Toddler_Webinar_Scheduled_Date__c}.</text>
+    </textTemplates>
+    <textTemplates>
+        <name>ECOBSStarterSETag</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>EC OBS Starter - After Save - EC OBS Cadence Exit {!$Flow.CurrentDateTime}</text>
+    </textTemplates>
+</Flow>

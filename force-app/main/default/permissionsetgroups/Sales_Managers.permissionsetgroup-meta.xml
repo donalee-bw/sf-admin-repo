@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Permission Sets that all Sales Managers need.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Sales Managers</label>
+    <permissionSets>Qualified_By_Edit_Access_on_Opps</permissionSets>
+    <permissionSets>Reporting_Dashboard_and_List_Access</permissionSets>
+    <permissionSets>Tasks_and_Events</permissionSets>
+    <permissionSets>Unlock_Record</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

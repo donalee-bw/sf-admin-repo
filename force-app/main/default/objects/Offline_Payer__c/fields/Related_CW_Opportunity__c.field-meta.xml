@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_CW_Opportunity__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>SaaS Closed Won Opportunity that triggered offline payer case</description>
+    <inlineHelpText>SaaS Closed Won Opportunity that triggered offline payer case</inlineHelpText>
+    <label>Related CW Opportunity</label>
+    <referenceTo>Opportunity</referenceTo>
+    <relationshipLabel>Offline Payers</relationshipLabel>
+    <relationshipName>Offline_Payer</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

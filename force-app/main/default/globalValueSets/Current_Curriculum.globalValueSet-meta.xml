@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Manual</fullName>
+        <default>false</default>
+        <label>Manual</label>
+    </customValue>
+    <customValue>
+        <fullName>Abeka</fullName>
+        <default>false</default>
+        <label>Abeka</label>
+    </customValue>
+    <customValue>
+        <fullName>EEL / Mother Goose Time</fullName>
+        <default>false</default>
+        <label>EEL / Mother Goose Time</label>
+    </customValue>
+    <customValue>
+        <fullName>Frog Street</fullName>
+        <default>false</default>
+        <label>Frog Street</label>
+    </customValue>
+    <customValue>
+        <fullName>Funshine Express</fullName>
+        <default>false</default>
+        <label>Funshine Express</label>
+    </customValue>
+    <customValue>
+        <fullName>HighScope</fullName>
+        <default>false</default>
+        <label>HighScope</label>
+    </customValue>
+    <customValue>
+        <fullName>Montessori</fullName>
+        <default>false</default>
+        <label>Montessori</label>
+    </customValue>
+    <customValue>
+        <fullName>Pinnacle</fullName>
+        <default>false</default>
+        <label>Pinnacle</label>
+    </customValue>
+    <customValue>
+        <fullName>Reggio</fullName>
+        <default>false</default>
+        <label>Reggio</label>
+    </customValue>
+    <customValue>
+        <fullName>TSG/Creative Curriculum</fullName>
+        <default>false</default>
+        <label>TSG/Creative Curriculum</label>
+    </customValue>
+    <customValue>
+        <fullName>Other/Combination of different options</fullName>
+        <default>false</default>
+        <label>Other/Combination of different options</label>
+    </customValue>
+    <customValue>
+        <fullName>Not sure</fullName>
+        <default>false</default>
+        <label>Not sure</label>
+    </customValue>
+    <masterLabel>Current Curriculum</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_Billing_Call_1_to__c</fullName>
+    <description>If Billing Call or Webinar Status is Complete, shows the number of days from the Billing Call or Webinar Date to the Billing Setup Threshold Met Stamp date. (Billing_Setup_Threshold_Met_Stamp__c  -  Billing_Call_or_Webinar_Date__c)</description>
+    <externalId>false</externalId>
+    <formula>IF(
+   ISPICKVAL(Billing_Call_or_Webinar_Status__c, &apos;Complete&apos;),
+   Billing_Setup_Threshold_Met_Stamp__c  -  Billing_Call_or_Webinar_Date__c,
+   NULL)</formula>
+    <inlineHelpText>If Billing Call or Webinar Status is Complete, shows the number of days from the Billing Call or Webinar Date to the Billing Setup Threshold Met Stamp date.</inlineHelpText>
+    <label>Days Billing Call 1 to Setup Stamp</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OB_Handoff_Issue_Required_With_Notes</fullName>
+    <active>true</active>
+    <description>Requires at least one value to be selected in the OB Handoff Issues field if the Handoff Issues Notes field is populated</description>
+    <errorConditionFormula>AND(
+   ISNULL(OB_Handoff_Issues__c), 
+   NOT(ISBLANK( Handoff_Issue_Notes__c))
+ )</errorConditionFormula>
+    <errorDisplayField>OB_Handoff_Issues__c</errorDisplayField>
+    <errorMessage>At least one OB Handoff Issue must be selected if Handoff Issue Notes are present</errorMessage>
+</ValidationRule>

@@ -1,0 +1,162 @@
+<template>
+    <div class="split-view">
+        <!-- LEFT PANEL: Work Queue -->
+        <div class="left-panel">
+            <div class="work-queue-container">
+                <!-- Header -->
+                <div class="wq-header">
+                    <div class="wq-title-row">
+                        <lightning-icon icon-name="standard:task2" size="small"></lightning-icon>
+                        <h2 class="wq-title">Work Queue</h2>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="wq-tabs">
+                    <button class={cadencesTabClass} onclick={handleTabClick} data-tab="cadences">Cadences</button>
+                    <button class={feedTabClass} onclick={handleTabClick} data-tab="feed">My Feed</button>
+                    <button class={listTabClass} onclick={handleTabClick} data-tab="list">My List</button>
+                </div>
+
+                <!-- Sort & filter bar -->
+                <template if:true={isCadencesTab}>
+                    <div class="wq-sort-bar">
+                        <span class="sort-label">Sorted by:</span>
+                        <lightning-combobox
+                            value={sortField}
+                            options={sortOptions}
+                            onchange={handleSortChange}
+                            variant="label-hidden"
+                            class="sort-combobox"
+                        ></lightning-combobox>
+                        <div class="sort-actions">
+                            <lightning-button-icon
+                                icon-name="utility:filterList"
+                                alternative-text="Filter"
+                                variant="border-filled"
+                                size="small"
+                            ></lightning-button-icon>
+                            <lightning-button-icon
+                                icon-name="utility:refresh"
+                                alternative-text="Refresh"
+                                variant="border-filled"
+                                size="small"
+                                onclick={handleRefresh}
+                            ></lightning-button-icon>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Content area -->
+                <div class="wq-content">
+                    <!-- Loading -->
+                    <template if:true={isLoading}>
+                        <div class="spinner-container">
+                            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                        </div>
+                    </template>
+
+                    <!-- Error -->
+                    <template if:true={error}>
+                        <div class="error-container">
+                            <p class="error-text">{error}</p>
+                            <lightning-button label="Retry" variant="brand" onclick={handleRefresh}></lightning-button>
+                        </div>
+                    </template>
+
+                    <!-- Cadences tab content -->
+                    <template if:true={showCadenceList}>
+                        <template if:true={hasCadenceGroups}>
+                            <div class="cadence-list">
+                                <template for:each={cadenceGroups} for:item="group">
+                                    <c-work-queue-cadence-group
+                                        key={group.cadenceName}
+                                        cadence-group={group}
+                                    ></c-work-queue-cadence-group>
+                                </template>
+                            </div>
+                        </template>
+
+                        <template if:false={hasCadenceGroups}>
+                            <template if:false={isLoading}>
+                                <template if:false={error}>
+                                    <div class="empty-state">
+                                        <lightning-icon icon-name="custom:custom18" size="large"></lightning-icon>
+                                        <h3 class="empty-title">All caught up!</h3>
+                                        <p class="empty-subtitle">No pending cadence steps</p>
+                                    </div>
+                                </template>
+                            </template>
+                        </template>
+                    </template>
+
+                    <!-- My Feed tab (placeholder) -->
+                    <template if:true={isFeedTab}>
+                        <div class="empty-state">
+                            <lightning-icon icon-name="standard:feed" size="large"></lightning-icon>
+                            <h3 class="empty-title">My Feed</h3>
+                            <p class="empty-subtitle">Activity feed coming soon</p>
+                        </div>
+                    </template>
+
+                    <!-- My List tab (placeholder) -->
+                    <template if:true={isListTab}>
+                        <div class="empty-state">
+                            <lightning-icon icon-name="standard:list_email" size="large"></lightning-icon>
+                            <h3 class="empty-title">My List</h3>
+                            <p class="empty-subtitle">Custom list coming soon</p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL: Record Detail -->
+        <div class="right-panel">
+            <template if:true={selectedRecordId}>
+                <!-- Record header bar -->
+                <div class="record-header">
+                    <div class="record-header-info">
+                        <lightning-icon icon-name={selectedRecordIcon} size="small"></lightning-icon>
+                        <span class="record-header-name">{selectedRecordName}</span>
+                        <lightning-badge label={selectedRecordType}></lightning-badge>
+                    </div>
+                    <lightning-button-icon
+                        icon-name="utility:close"
+                        alternative-text="Close"
+                        variant="bare"
+                        onclick={handleCloseRecord}
+                    ></lightning-button-icon>
+                </div>
+                <!-- Record form -->
+                <div class="record-detail">
+                    <lightning-record-form
+                        record-id={selectedRecordId}
+                        object-api-name={selectedObjectApiName}
+                        layout-type="Compact"
+                        columns="2"
+                        mode="view"
+                        onload={handleRecordLoad}
+                    ></lightning-record-form>
+
+                    <lightning-record-form
+                        record-id={selectedRecordId}
+                        object-api-name={selectedObjectApiName}
+                        layout-type="Full"
+                        columns="2"
+                        mode="view"
+                        density="comfy"
+                    ></lightning-record-form>
+                </div>
+            </template>
+
+            <template if:false={selectedRecordId}>
+                <div class="no-record-selected">
+                    <lightning-icon icon-name="utility:preview" size="large" class="no-record-icon"></lightning-icon>
+                    <h3 class="no-record-title">Select a record</h3>
+                    <p class="no-record-subtitle">Click a name in the Work Queue to view details here</p>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

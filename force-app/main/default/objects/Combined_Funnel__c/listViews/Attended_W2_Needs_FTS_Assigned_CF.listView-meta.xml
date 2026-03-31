@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attended_W2_Needs_FTS_Assigned_CF</fullName>
+    <columns>Account_Customer_Type__c</columns>
+    <columns>NAME</columns>
+    <columns>Webinar_2_Scheduled_Date__c</columns>
+    <columns>FTS_Owner__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <columns>Billing_Onboarding_Funnel_Stage__c</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Webinar_1_Completed_Date__c</field>
+        <operation>lessThan</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>FTS_Owner__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <label>Attended W2_Needs FTS Assigned _ CF</label>
+</ListView>

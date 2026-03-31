@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Call_or_Webinar_Date_Required</fullName>
+    <active>true</active>
+    <description>Billing Call or Webinar Date is required when Billing Call or Webinar Status is set to any value except &apos;Scheduling&apos;.</description>
+    <errorConditionFormula>AND(
+     ISBLANK(Billing_Call_or_Webinar_Date__c),
+     OR(
+        ISPICKVAL(Billing_Call_or_Webinar_Status__c, &apos;Scheduled&apos;),
+        ISPICKVAL(Billing_Call_or_Webinar_Status__c, &apos;Complete&apos;),
+        ISPICKVAL(Billing_Call_or_Webinar_Status__c, &apos;Missed&apos;)
+   )
+ )</errorConditionFormula>
+    <errorDisplayField>Billing_Call_or_Webinar_Date__c</errorDisplayField>
+    <errorMessage>Billing Call or Webinar Date is required when Billing Call or Webinar Status is set to any value except &apos;Scheduling&apos;.</errorMessage>
+</ValidationRule>

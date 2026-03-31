@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Alerts the user&apos;s manager to the response. Contents determined by prior decision nodes.</description>
+        <name>Send_Manager_Alert</name>
+        <label>Send Manager Alert</label>
+        <locationX>780</locationX>
+        <locationY>942</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <elementReference>OBSLeadID</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>FinalMessageText</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Comment_Alert</name>
+        <label>Comment Alert</label>
+        <locationX>1027</locationX>
+        <locationY>725</locationY>
+        <assignmentItems>
+            <assignToReference>FinalMessageText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CommentText</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>OBSLeadID</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_OBS_Owner_From_Account.CSM_Owner1__r.Manager.Slack_user_ID__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Send_Manager_Alert</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Low_Score_Alert</name>
+        <label>Low Score Alert</label>
+        <locationX>526</locationX>
+        <locationY>728</locationY>
+        <assignmentItems>
+            <assignToReference>FinalMessageText</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>LowScoreText</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>OBSLeadID</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_OBS_Owner_From_Account.CSM_Owner1__r.Manager.Slack_user_ID__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Send_Manager_Alert</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Account_Exists_with_OBS_Owner_and_OBS_Has_Active_Manager</name>
+        <label>Account Exists with OBS Owner and OBS Has Active Manager</label>
+        <locationX>767</locationX>
+        <locationY>527</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>YES</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_OBS_Owner_From_Account</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_OBS_Owner_From_Account.CSM_Owner1__r.Manager.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_OBS_Owner_From_Account.CSM_Owner1__r.Manager.Slack_user_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_OBS_Owner_From_Account.CSM_Owner1__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Determine_Alert_Reason</targetReference>
+            </connector>
+            <label>YES</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines if the alert is needed due to a low score or a comment being received</description>
+        <name>Determine_Alert_Reason</name>
+        <label>Determine Alert Reason</label>
+        <locationX>772</locationX>
+        <locationY>721</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Low_Score_Received</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Wootric__Score__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>2.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Low_Score_Alert</targetReference>
+            </connector>
+            <label>Low Score Received</label>
+        </rules>
+        <rules>
+            <name>Comment_Received</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Wootric__Survey_Feedback__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Wootric__Score__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>2.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Comment_Alert</targetReference>
+            </connector>
+            <label>Comment Received</label>
+        </rules>
+    </decisions>
+    <description>[DJ - 9.1.23] Updated to get the OBS Owner&apos;s Manager Slack ID to use it as the channel variable for the slack apex action. Was not working as expected in previous version Nate launched in prod.
+Sends an alert to the OBS Owner&apos;s manager when a CSAT survey response is received and is either scored as 2 or less, or includes a feedback comment (NA Sprint 14 &apos;23)</description>
+    <environments>Default</environments>
+    <interviewLabel>CSAT - Slack Response Alert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Response - CSAT Score Received - After Save - Slack Response Alert</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_OBS_Owner_From_Account</name>
+        <label>Get OBS Owner From Account</label>
+        <locationX>775</locationX>
+        <locationY>383</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Account_Exists_with_OBS_Owner_and_OBS_Has_Active_Manager</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Wootric__Contact__r.Account.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>CSM_Owner1__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>649</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Get_OBS_Owner_From_Account</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3</filterLogic>
+        <filters>
+            <field>Wootric__Score__c</field>
+            <operator>LessThanOrEqualTo</operator>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Wootric__Survey_Feedback__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Wootric__Metric_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>CSAT</stringValue>
+            </value>
+        </filters>
+        <object>Wootric__Response__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>AccountLink</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;https://brightwheel1--full.sandbox.lightning.force.com/lightning/r/Wootric__Response__c/{!$Record.Wootric__Contact__r.Account.Id}/view|{!$Record.Wootric__Contact__r.Account.Name}&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Stores the text used when a response with a comment is received</description>
+        <name>CommentText</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A survey response with a comment has been received.
+Account: {!AccountLink}
+Submission Received: {!$Record.Wootric__Created_At__c}
+OBS Owner: {!$Record.Wootric__Contact__r.Account.CSM_Owner1__r.FirstName} {!$Record.Wootric__Contact__r.Account.CSM_Owner1__r.LastName}
+Score: {!$Record.Wootric__Score__c}
+Comment: {!$Record.Wootric__Survey_Feedback__c}
+Closed Date: {!$Record.Wootric__Contact__r.Account.Original_Close_Date__c}
+Response Link: {!ResponseRecordLink}</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Stores the text for the Slack notification to be sent to the OBS Owner&apos;s manager</description>
+        <name>LowScoreText</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>A survey response with a low score has been received.
+Account: {!AccountLink}
+Submission Received: {!$Record.Wootric__Created_At__c}
+OBS Owner: {!$Record.Wootric__Contact__r.Account.CSM_Owner1__r.FirstName} {!$Record.Wootric__Contact__r.Account.CSM_Owner1__r.LastName}
+Score: {!$Record.Wootric__Score__c}
+Comment: {!$Record.Wootric__Survey_Feedback__c}
+Closed Date: {!$Record.Wootric__Contact__r.Account.Original_Close_Date__c}
+Response Link: {!ResponseRecordLink}</text>
+    </textTemplates>
+    <variables>
+        <description>Text of the Slack message that will be sent to the OBS lead</description>
+        <name>FinalMessageText</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Stores the Slack ID for the OBS Lead that will receive the message</description>
+        <name>OBSLeadID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>This is the link to the response record that triggered the flow. Always links to Production environment.</description>
+        <name>ResponseRecordLink</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>&lt;https://brightwheel1.lightning.force.com/lightning/r/Wootric__Response__c/{!$Record.Id}/view|Link&gt;</stringValue>
+        </value>
+    </variables>
+</Flow>

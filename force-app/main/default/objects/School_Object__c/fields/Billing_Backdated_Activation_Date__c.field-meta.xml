@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Backdated_Activation_Date__c</fullName>
+    <description>Captures the date when a backdated Billing Activation was applied.</description>
+    <inlineHelpText>Captures the date when a backdated Billing Activation was applied.</inlineHelpText>
+    <label>Billing Backdated Activation Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

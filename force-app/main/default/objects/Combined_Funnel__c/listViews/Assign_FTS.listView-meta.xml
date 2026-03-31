@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assign_FTS</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
+    <columns>Original_Onboarding_Path__c</columns>
+    <columns>Account_Customer_Type__c</columns>
+    <columns>NAME</columns>
+    <columns>FTS_Owner__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <columns>Webinar_1_Scheduled_Date__c</columns>
+    <columns>Webinar_1_Completed_Date__c</columns>
+    <columns>Webinar_2_Scheduled_Date__c</columns>
+    <columns>Onboarding_Path__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Webinar_1_Scheduled_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>FTS_Owner__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>OWNER.LAST_NAME</field>
+        <operation>notEqual</operation>
+        <value>Rasmuson,Powell,Perry,Account Queue,Mlynski,Kerr,Rojas,Anthone,Cribeiro,Pennington,Towle</value>
+    </filters>
+    <filters>
+        <field>Original_Close_Date__c</field>
+        <operation>greaterThan</operation>
+        <value>1/1/2023</value>
+    </filters>
+    <filters>
+        <field>Original_Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Combined</value>
+    </filters>
+    <filters>
+        <field>Billing_Launch_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>Assign FTS</label>
+</ListView>

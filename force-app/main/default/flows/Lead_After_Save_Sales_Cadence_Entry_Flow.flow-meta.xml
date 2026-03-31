@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>In_Active_Cadence</name>
+        <label>In Active Cadence?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_Cadence_Tracker_Found_Enroll</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Is_Lead_in_Active_Cadence</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Cadence_Entry_Evaluation_Subflow</targetReference>
+            </connector>
+            <label>No Cadence Tracker Found - Enroll</label>
+        </rules>
+        <rules>
+            <name>Yes_In_Active_Cadence_Trigger</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Is_Lead_in_Active_Cadence</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Tag_Already_in_Active_Cadence</targetReference>
+            </connector>
+            <label>Yes In Active Cadence Trigger</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Owned_by_Queue</name>
+        <label>Owned by Queue?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Tag_Lead_to_Enroll_After_Ownership_Change</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Not_Owned_by_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LOGIC_Owned_by_queue__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Lead_in_Active_Cadence</targetReference>
+            </connector>
+            <label>Not Owned by Queue</label>
+        </rules>
+    </decisions>
+    <description>v2 - Added Josepf userid for testing in prod
+v3 - Missed Demo Call No Show Trigger
+02.13.2026 - LK - Removed Demo Missed logic and removed testing user ids
+02.18.2026 - LK - Added Scheduled Path - to wait 10 Mins after the change - for edge cases where the owner is still a queue at LDST Field changing
+02.19.2026  - LK - Added FB logic
+03.03.2026 - Added Government Logic to the Flow
+93.10.2026 - LK - Added States to the Entry Certeria</description>
+    <environments>Default</environments>
+    <interviewLabel>Lead - After Save - Sales Cadence Entry Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead - After Save - Sales Cadence Entry Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Is_Lead_in_Active_Cadence</name>
+        <label>Is Lead in Active Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>In_Active_Cadence</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>TargetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>IsTrackerActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionCadenceTracker</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Tag the lead - because the lead was already in an active cadence. We did not enroll into new cadance when the Leandata Revenue Sequence Type was udpated/changed.</description>
+        <name>Tag_Already_in_Active_Cadence</name>
+        <label>Tag Already in Active Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Cadence_Entry_Tag__c</field>
+            <value>
+                <stringValue>Already In Active Cadence</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>The Leandata Reveue Sequeunce type field is stamped before ownership is established, so we have this logic to tag the lean for updatewhen the ownership changed.</description>
+        <name>Tag_Lead_to_Enroll_After_Ownership_Change</name>
+        <label>Tag Lead to Enroll After Ownership Change</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Cadence_Entry_Tag__c</field>
+            <value>
+                <stringValue>Waiting For Owner Change</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>update_Lead</name>
+        <label>update Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Cadence_Entry_Tag__c</field>
+            <value>
+                <stringValue>Lead Sales Cadence Entry Flow </stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Owned_by_Queue</targetReference>
+        </connector>
+        <filterLogic>( 1  OR ( 6 AND 7 )) AND ( 2 OR 3 OR 4 OR 8 OR ( 9 AND ( 10 OR 11 OR 12 OR 13) ) ) AND 5</filterLogic>
+        <filters>
+            <field>LeanData_Revenue_Sequence_Type__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeanData_Revenue_Sequence_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Demo/Pricing</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeanData_Revenue_Sequence_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Content Request</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeanData_Revenue_Sequence_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PTL</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsConverted</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>OwnerId</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Cadence_Entry_Tag__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>Waiting For Owner Change</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeanData_Revenue_Sequence_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>FB</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LeanData_Revenue_Sequence_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Government</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Texas</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Kentucky</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Iowa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Kansas</stringValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Cadence_Entry_Evaluation_Subflow</name>
+        <label>Cadence Entry Evaluation Subflow</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>update_Lead</targetReference>
+        </connector>
+        <flowName>Subflow_Sales_Cadence_Entry</flowName>
+        <inputAssignments>
+            <name>TargetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>LeadAlreadyInCadence</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Record.Name}’s LeanData Revenue Sequence Type changed from “{!$Record__Prior.LeanData_Revenue_Sequence_Type__c}” to “{!$Record.LeanData_Revenue_Sequence_Type__c}.”
+This Lead is already enrolled in an active cadence: {!Is_Lead_in_Active_Cadence.ActionCadence.Name}.
+No changes were made, and the Lead was not enrolled into a different cadence.</text>
+    </textTemplates>
+</Flow>

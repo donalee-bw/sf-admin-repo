@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Child_Care_Associates_CF_s</fullName>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>SaaS_Activation_Funnel_Stage_Value__c</columns>
+    <columns>Billing_Activation_Funnel_Stage_Value__c</columns>
+    <columns>NAME</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>Onboarding_Path__c</columns>
+    <columns>Related_Payer_Account__c</columns>
+    <columns>Active_Student_Count__c</columns>
+    <columns>Active_Student_Enrollment_Percent__c</columns>
+    <columns>Ratio_Students_with_Activated_Parent__c</columns>
+    <columns>Last_Activity_Date__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Dollars_Processed_Online__c</columns>
+    <columns>V3_Next_Invoice_Send_Date__c</columns>
+    <columns>V3_Next_Invoice_Due_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Related_Payer_Account__c</field>
+        <operation>contains</operation>
+        <value>Child Care Associates</value>
+    </filters>
+    <label>Child Care Associates CF&apos;s</label>
+</ListView>

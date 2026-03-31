@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Owned_by_Sales__c</fullName>
+    <formula>OR(
+Owner:User.Profile.Id = &apos;00e1I000000qsyP&apos;,
+Owner:User.Profile.Id = &apos;00e1I000000qt1E&apos;,
+Owner:User.Profile.Id = &apos;00e3u000000S8lA&apos;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Owned by Sales</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Students_with_Charges_Set_Up__c</fullName>
+    <formula>Account__r.School_Object__r.Active_Students_with_Billing_Ratio__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Indicates current % of active students with bill plans set up and/or one time charges sent. Must be 70%.</inlineHelpText>
+    <label>Active Students with Charges Set Up</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

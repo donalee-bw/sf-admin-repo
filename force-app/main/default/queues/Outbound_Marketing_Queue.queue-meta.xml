@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>integration.user@mybrightwheel.com</email>
+    <name>Outbound Marketing Queue</name>
+    <queueMembers>
+        <roleAndSubordinatesInternal>
+            <roleAndSubordinateInternal>Outbound_SDR_Manager_1</roleAndSubordinateInternal>
+        </roleAndSubordinatesInternal>
+        <roles>
+            <role>Admin</role>
+            <role>VP_Sales</role>
+        </roles>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>RDNACadence__Sequence_Action__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Task</sobjectType>
+    </queueSobject>
+</Queue>

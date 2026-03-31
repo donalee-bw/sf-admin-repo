@@ -1,0 +1,34 @@
+public class PostSlackMessage {
+
+    public class Message {
+
+        @InvocableVariable(label='Token' description='An API authentication token, which can be found at https://api.slack.com/web')
+        public String token;
+
+        @InvocableVariable(label='Channel ID' description='Set to the Channel ID (not Channel Name) of where the post should appear.')
+        public String channelId;
+
+        @InvocableVariable(label='Post Contents' description='The text of the message that will appear as the post.')
+        public String text;
+    }
+
+    @InvocableMethod(label='Post Message to Slack Channel'
+                     description='This posts a message to a Slack channel as a user or bot. If posting as a bot, you can specify the avatar or emoji that accompanies the post.')
+
+    public static void PostSlackMessage(List<Message> messageList) {
+
+        for(Message m : messageList) {
+
+            if(Limits.getFutureCalls() >= Limits.getLimitFutureCalls()) {
+                System.debug(LoggingLevel.ERROR, 'Future callout limit exceeded. Skipping records.');
+            } else {
+                // do not run without user id
+                if(string.isNotBlank(m.channelId) ) {
+                    SlackUtils.PostSlackMessageCallout(m.token, m.channelId, m.text);
+                    // testing call to Dylan Williams
+                    // SlackUtils.PostSlackMessageCallout(m.token, 'UFCMXUN4S', m.text);
+                }
+            }
+        }
+    }
+}

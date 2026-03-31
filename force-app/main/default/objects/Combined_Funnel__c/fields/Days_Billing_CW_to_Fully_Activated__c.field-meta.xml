@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_Billing_CW_to_Fully_Activated__c</fullName>
+    <description>Billing_Activated_Date__c -  Billing_Launch_Date__c (from the school object associated to the account)</description>
+    <externalId>false</externalId>
+    <formula>Billing_Activated_Date__c -  Billing_Launch_Date__c</formula>
+    <inlineHelpText>Number of days from Billing Launch Date to Billing Activated Date from the school object associated to the account.</inlineHelpText>
+    <label>Days Billing CW to Fully Activated</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

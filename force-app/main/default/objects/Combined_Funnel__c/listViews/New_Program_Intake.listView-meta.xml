@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Program_Intake</fullName>
+    <columns>NAME</columns>
+    <columns>SaaS_Onboarding_Funnel_Stage__c</columns>
+    <columns>SaaS_Postponed_Reason__c</columns>
+    <columns>Onboarding_Path__c</columns>
+    <columns>Current_Center_Operating_Status__c</columns>
+    <columns>Brand_New_Program__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SaaS_Postponed_Reason__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>New Program Intake</label>
+</ListView>

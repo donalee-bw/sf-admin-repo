@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Payer_Account__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ISPICKVAL(Onboarding_Attempt_Status_New__c , &quot;Closed&quot;) || ISPICKVAL(Onboarding_Attempt_Status_New__c , &quot;Canceled&quot;),
+Related_Payer_Account_Stamp__r.Name,
+IF(NOT(ISBLANK( Related_Payer_Account_Stamp__r.Name )),
+Related_Payer_Account_Stamp__r.Name,
+ Combined_Funnel__r.Account__r.Name )
+)</formula>
+    <label>Related Payer Account</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

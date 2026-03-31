@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Advanced Assessments</fullName>
+        <default>false</default>
+        <label>Advanced Assessments</label>
+    </customValue>
+    <customValue>
+        <fullName>Auto-Late Fees</fullName>
+        <default>false</default>
+        <label>Auto-Late Fees</label>
+    </customValue>
+    <customValue>
+        <fullName>Child Profile Update Notifications</fullName>
+        <default>false</default>
+        <label>Child Profile Update Notifications</label>
+    </customValue>
+    <customValue>
+        <fullName>Confidential Notes</fullName>
+        <default>false</default>
+        <label>Confidential Notes</label>
+    </customValue>
+    <customValue>
+        <fullName>Custom Field on Profiles</fullName>
+        <default>false</default>
+        <label>Custom Field on Profiles</label>
+    </customValue>
+    <customValue>
+        <fullName>Door Lock</fullName>
+        <default>false</default>
+        <label>Door Lock</label>
+    </customValue>
+    <customValue>
+        <fullName>Family Billing</fullName>
+        <default>false</default>
+        <label>Family Billing</label>
+    </customValue>
+    <customValue>
+        <fullName>Form Signing</fullName>
+        <default>false</default>
+        <label>Form Signing</label>
+    </customValue>
+    <customValue>
+        <fullName>General Accounting</fullName>
+        <default>false</default>
+        <label>General Accounting</label>
+    </customValue>
+    <customValue>
+        <fullName>Lesson Plan Sharing</fullName>
+        <default>false</default>
+        <label>Lesson Plan Sharing</label>
+    </customValue>
+    <customValue>
+        <fullName>One Time Charges</fullName>
+        <default>false</default>
+        <label>One Time Charges</label>
+    </customValue>
+    <customValue>
+        <fullName>Online Enrollment</fullName>
+        <default>false</default>
+        <label>Online Enrollment</label>
+    </customValue>
+    <customValue>
+        <fullName>Payroll</fullName>
+        <default>false</default>
+        <label>Payroll</label>
+    </customValue>
+    <customValue>
+        <fullName>Quickbooks API Plug-In</fullName>
+        <default>false</default>
+        <label>Quickbooks API Plug-In</label>
+    </customValue>
+    <customValue>
+        <fullName>Reminder Messages</fullName>
+        <default>false</default>
+        <label>Reminder Messages</label>
+    </customValue>
+    <customValue>
+        <fullName>Single-Reference CheckIn</fullName>
+        <default>false</default>
+        <label>Single-Reference CheckIn</label>
+    </customValue>
+    <customValue>
+        <fullName>Staff-to-Staff Messaging</fullName>
+        <default>false</default>
+        <label>Staff-to-Staff Messaging</label>
+    </customValue>
+    <customValue>
+        <fullName>Teacher Profiles</fullName>
+        <default>false</default>
+        <label>Teacher Profiles</label>
+    </customValue>
+    <description>What features does the prospect want/need that brightwheel does not have?</description>
+    <masterLabel>Features Requests</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

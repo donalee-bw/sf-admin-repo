@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Assigned through LeanData</fullName>
+        <default>false</default>
+        <label>Assigned through LeanData</label>
+    </customValue>
+    <customValue>
+        <fullName>Prospect Requested</fullName>
+        <default>false</default>
+        <label>Prospect Requested</label>
+    </customValue>
+    <customValue>
+        <fullName>Became Customer</fullName>
+        <default>false</default>
+        <label>Became Customer</label>
+    </customValue>
+    <description>Used on Contact and Lead to request the Marketing Operations team resubscribe them to sales emails previously opted out through Hubspot.</description>
+    <masterLabel>Resubscribe to Sales Emails</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

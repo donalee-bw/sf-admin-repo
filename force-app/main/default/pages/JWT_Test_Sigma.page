@@ -1,0 +1,5 @@
+<apex:page standardController="Account">
+    <c:JWT_Test_Sigma_Embed embedPath="https://app.sigmacomputing.com/brightwheel/workbook/6fp9oza5lFuUiMMMkITgt7/page/VT-FLNIaMG" 
+        embedUser="{!$User.Email}"
+        sfAccountId="{!Account.Id}"/>
+</apex:page>

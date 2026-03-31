@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_Hadley_s_Webinar_Notes</fullName>
+    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+    <columns>NAME</columns>
+    <columns>FTS_Owner__c</columns>
+    <columns>Target_Activation_Date__c</columns>
+    <columns>Customer_Billing_Path__c</columns>
+    <columns>Customer_Next_Steps__c</columns>
+    <columns>Billing_Intervals__c</columns>
+    <columns>Uses_Attendance_or_Variable_Rate_Billing__c</columns>
+    <columns>Billing_Conversation_Notes__c</columns>
+    <columns>Billing_Call_or_Webinar_Date__c</columns>
+    <columns>Billing_Call_or_Webinar_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Billing_Setup_Call_Path__c</field>
+        <operation>equals</operation>
+        <value>Webinar</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Onboarding__c.Billing</value>
+    </filters>
+    <filters>
+        <field>Billing_Call_or_Webinar_Date__c</field>
+        <operation>equals</operation>
+        <value>1/13/2021</value>
+    </filters>
+    <label>Sierra&apos;s Billing Webinar Accounts</label>
+</ListView>

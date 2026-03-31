@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Owner__c</fullName>
+    <description>Shows if the current onboarding owner is an active user. For historical updates and reporting.</description>
+    <formula>Owner:User.IsActive</formula>
+    <inlineHelpText>Shows if the current onboarding owner is an active user. For historical updates and reporting.</inlineHelpText>
+    <label>Active Owner</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

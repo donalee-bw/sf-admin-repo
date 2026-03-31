@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UUID_and_Name_Updates</fullName>
+    <columns>School_Object__c</columns>
+    <columns>Account__c</columns>
+    <columns>NAME</columns>
+    <filterScope>Mine</filterScope>
+    <label>UUID and Name Updates</label>
+</ListView>

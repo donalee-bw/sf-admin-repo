@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Activation_Confidence__c</fullName>
+    <description>Manually populated by reps to indicate confidence towards activating on Billing.</description>
+    <inlineHelpText>(Blank): Customer has not had a Kickoff Call or Initial Billing Training and therefore does not have an agreed-upon timeline.
+High: Indicates a high-velocity customer (ie, a “go-getter”) and/or a customer who has been committed to their timeline and has 1-2 funnel stages left to complete
+Medium: Indicates a customer who has 1-2 funnel stages left to complete and/or but has not completed their next steps on time. A risk that they do not activate on schedule
+Low: customer whose timeline is out of date</inlineHelpText>
+    <label>Billing Activation Confidence</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Activation_Confidence</valueSetName>
+    </valueSet>
+</CustomField>

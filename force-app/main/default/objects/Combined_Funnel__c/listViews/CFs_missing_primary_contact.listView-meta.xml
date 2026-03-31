@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CFs_missing_primary_contact</fullName>
+    <columns>NAME</columns>
+    <columns>SaaS_Primary_Contact__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>SaaS_Onboarding_Funnel_Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Activated</value>
+    </filters>
+    <filters>
+        <field>SaaS_Primary_Contact__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <label>CFs missing primary contact</label>
+</ListView>

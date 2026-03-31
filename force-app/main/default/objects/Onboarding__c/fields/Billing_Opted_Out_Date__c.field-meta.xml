@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Opted_Out_Date__c</fullName>
+    <description>Date the Onboarding Status was set to Opted Out. Updated from CF.</description>
+    <inlineHelpText>Date the Onboarding Status was set to Opted Out. Updated from CF.</inlineHelpText>
+    <label>Billing Opted Out Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

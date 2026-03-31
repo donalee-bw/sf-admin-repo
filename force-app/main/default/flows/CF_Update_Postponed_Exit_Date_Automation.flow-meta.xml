@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>SaaS_Postponed_Exit_Date_Today</name>
+        <label>SaaS Postponed Exit Date = Today</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Today</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Postponed_Exit_Date__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Combined_Funnel_and_clear_postponed_dates</targetReference>
+            </connector>
+            <label>Today</label>
+        </rules>
+    </decisions>
+    <description>if a user manually changes the SaaS Postponed Exit date to today, this flow will catch it and update the combined funnel back to an active state for SaaS Onboarding</description>
+    <environments>Default</environments>
+    <interviewLabel>CF - Update - Catch Manual Update of Exit Date {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CF - Update - Postponed Exit Date Automation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Combined_Funnel_and_clear_postponed_dates</name>
+        <label>Update Combined Funnel and clear postponed dates</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>SaaS_Onboarding_Status__c</field>
+            <value>
+                <stringValue>Active</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Postponed_Check_In_Date__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Postponed_Reason__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Postponed_Start_Date__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>SaaS_Postponed_Exit_Date_Today</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SaaS_Postponed_Exit_Date__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Combined_Funnel__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

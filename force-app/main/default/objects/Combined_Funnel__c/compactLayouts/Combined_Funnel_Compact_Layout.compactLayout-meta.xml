@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Combined_Funnel_Compact_Layout</fullName>
+    <fields>Name</fields>
+    <fields>SaaS_Onboarding_Status__c</fields>
+    <fields>SaaS_Activation_Funnel_Stage_Value__c</fields>
+    <fields>Original_Close_Date__c</fields>
+    <fields>Billing_Onboarding_Status__c</fields>
+    <fields>Billing_Activation_Funnel_Stage_Value__c</fields>
+    <fields>Billing_Activation_Start_Date__c</fields>
+    <fields>Customer_Segment__c</fields>
+    <fields>Country_School_Object__c</fields>
+    <label>Combined Funnel Compact Layout</label>
+</CompactLayout>

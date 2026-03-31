@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Determines whether a cadence tracker record was found in GetCadenceTrackerRecord.</description>
+        <name>HasCadenceTracker</name>
+        <label>Has Cadence Tracker?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No (Default)</defaultConnectorLabel>
+        <rules>
+            <name>CadenceTrackerExists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetCadenceTrackerRecord</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetLeadRecord</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines whether a lead record was found in GetLeadRecord.</description>
+        <name>HasLead</name>
+        <label>Has Lead?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No (Default)</defaultConnectorLabel>
+        <rules>
+            <name>LeadExists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetLeadRecord</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateLeadStatus</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Sales Engagement Test 2 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Sales Engagement Test 2</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>ActionCadenceAutolaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets the cadence tracker record with an ID matching the ID in actionCadenceTrackerId. Stores the ID, the TargetId, and the OwnerId of the returned record in the Cadence Tracker from GetCadenceTrackerRecord record variable.</description>
+        <name>GetCadenceTrackerRecord</name>
+        <label>Get Cadence Tracker Record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>HasCadenceTracker</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>actionCadenceTrackerId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionCadenceTracker</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>TargetId</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets the lead record with an ID matching the TargetId from Cadence Tracker from GetCadenceTrackerRecord. Stores the lead record&apos;s ID and status in the Lead from GetLeadRecord record variable.</description>
+        <name>GetLeadRecord</name>
+        <label>Get Lead Record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>HasLead</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GetCadenceTrackerRecord.TargetId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Status</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates the Status field to Contacted for the lead record with an ID matching the ID of Lead from GetLeadRecord and a Status other than Contacted.</description>
+        <name>UpdateLeadStatus</name>
+        <label>Update Lead Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GetLeadRecord.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Contacted</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Contacted</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <sourceTemplate>se_cadence_flow__UpdateLeadPath</sourceTemplate>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>GetCadenceTrackerRecord</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Required by Cadence Autolaunched Flow. Stores the enum value that indicates how the cadence step was completed. It can be used to determine whether the step is skipped or completed.</description>
+        <name>actionCadenceStepTrackerCompletionReason</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Required by Cadence Autolaunched Flow. Stores the ID of the cadence step that&apos;s passed into the flow. It can be used to get information about the step. For example, you can get the step name and step type using the actionCadenceStepTrackerId variable.</description>
+        <name>actionCadenceStepTrackerId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Required by Cadence Autolaunched Flow. Stores the ID of the action cadence step tracker that’s passed into the flow.</description>
+        <name>actionCadenceTrackerId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

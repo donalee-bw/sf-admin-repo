@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Customer_Type__c</fullName>
+    <description>Customer Type from Account record - used to filter Non-Target or Enterprise in Onboarding reporting.</description>
+    <externalId>false</externalId>
+    <formula>TEXT(Account__r.Customer_Type__c)</formula>
+    <inlineHelpText>The Customer Type value set on the associated Account.</inlineHelpText>
+    <label>Account Customer Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

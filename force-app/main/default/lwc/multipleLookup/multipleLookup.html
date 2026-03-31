@@ -1,0 +1,46 @@
+<template>
+
+    <div>
+        <label class="slds-form-element__label slds-no-flex">{lookupLabel} <span if:true={isRequired} class="slds-text-color_error">*</span></label>
+        <div if:true={selectedRecord} style=" --lwc-heightPill: 2rem; --slds-c-pill-spacing-inlinestart: .5rem; ">
+            <lightning-pill label={selectedRecord.Name} onremove={handleClear} size="x-large">
+                <lightning-icon icon-name={selectedRecord.iconName}
+                    alternative-text={selectedRecord.Name}></lightning-icon>
+            </lightning-pill>
+        </div>
+        <div if:false={selectedRecord} onkeyup={handleSearch}>
+            <lightning-input type="Search" label="Search" variant="label-hidden" placeholder="Search Something..."
+                value={searchTerm} onfocus={handleFocus} onblur={handleBlur} is-loading={isLoading}>
+            </lightning-input>
+        </div>
+        <div if:true={isSearchResults} class="slds-p-horizontal-small">
+            <div class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid slds-box" style="width: 97%;">
+                <ul class="slds-listbox slds-listbox_vertical" role="menu">
+                    <template for:each={searchResults} for:item="record">
+                        <!-- <li key={record.Id} class="slds-dropdown__item slds-p-around_x-small" style="cursor: pointer;" data-id={record.Id} onclick={handleSelect}>
+                            <div style="cursor: pointer;" data-id={record.Id} class="slds-grid slds-align-items-center">
+                                <lightning-icon icon-name={record.iconName} size="small" data-id={record.Id}
+                                    class="slds-m-right_x-small"></lightning-icon>
+                                {record.Name}
+                            </div>
+                        </li> -->
+                        <li key={record.Id} class="slds-listbox__item" data-id={record.Id} onclick={handleSelect}>
+                            <div class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta">
+                              <span class="slds-media__figure slds-listbox__option-icon">
+                                <lightning-icon icon-name={record.iconName} size="small" data-id={record.Id}
+                                class="slds-m-right_x-small"></lightning-icon>
+                              </span>
+                              <span class="slds-media__body">
+                                <span class="slds-listbox__option-text slds-listbox__option-text_entity">{record.Name}</span>
+                                <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{record.objectName}</span>
+                              </span>
+                            </div>
+                          </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   
+</template>

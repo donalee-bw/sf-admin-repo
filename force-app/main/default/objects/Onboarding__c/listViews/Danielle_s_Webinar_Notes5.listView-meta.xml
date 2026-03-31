@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Danielle_s_Webinar_Notes5</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+    <columns>Account_Customer_Type__c</columns>
+    <columns>NAME</columns>
+    <columns>Next_Steps_Snapshot__c</columns>
+    <columns>Device_Setup__c</columns>
+    <columns>Device_Status__c</columns>
+    <columns>Billing_Timeline__c</columns>
+    <columns>FTS_Owner__c</columns>
+    <columns>Add_Staff_By__c</columns>
+    <columns>Train_Teachers_By__c</columns>
+    <columns>Invite_Parents_By__c</columns>
+    <columns>Confirmed_Launch_Date__c</columns>
+    <columns>Funnel_Stage__c</columns>
+    <columns>Active_Student_Count__c</columns>
+    <columns>Days_Since_Closed_Won__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Onboarding_Setup_Call_Path__c</field>
+        <operation>equals</operation>
+        <value>Combined</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Onboarding__c.Single_site_SaaS</value>
+    </filters>
+    <filters>
+        <field>Initial_Setup_Call_Scheduled__c</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Inactive</value>
+    </filters>
+    <filters>
+        <field>OWNER.ALIAS</field>
+        <operation>notEqual</operation>
+        <value>hanth</value>
+    </filters>
+    <label>Danielle&apos;s Webinar Notes</label>
+</ListView>

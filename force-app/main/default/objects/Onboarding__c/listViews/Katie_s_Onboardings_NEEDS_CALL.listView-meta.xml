@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Katie_s_Onboardings_NEEDS_CALL</fullName>
+    <columns>Owner__c</columns>
+    <columns>NAME</columns>
+    <columns>Next_Steps_Snapshot__c</columns>
+    <columns>Current_Coupon__c</columns>
+    <columns>Promotion_Offered__c</columns>
+    <columns>Onboarding_Setup_Call_Path__c</columns>
+    <columns>Original_Close_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Onboarding__c.Multi_site_SaaS,Onboarding__c.Single_site_SaaS</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Setup_Call_Path__c</field>
+        <operation>contains</operation>
+        <value>1</value>
+    </filters>
+    <label>Katie&apos;s Onboardings NEEDS CALL</label>
+</ListView>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_Contacts_Last_Connected__c</fullName>
+    <description>Max date between the SaaS and Billing Primary Contact&apos;s Last Connected Dates. Used in Onboarding Last Connected formula.</description>
+    <formula>IF(
+    AND(
+        ISBLANK(Billing_Primary_Contact_Last_Connected__c),
+        ISBLANK(SaaS_Primary_Contact_Last_Connected__c)
+    ),
+    NULL,
+    DATE(1900, 01, 01) +
+    MIN(
+        BLANKVALUE(Billing_Primary_Contact_Last_Connected__c, DATE(4999, 01, 01)) - DATE(1900, 01, 01),
+        BLANKVALUE(SaaS_Primary_Contact_Last_Connected__c, DATE(4999, 01, 01)) - DATE(1900, 01, 01)
+    )
+)</formula>
+    <inlineHelpText>Max date between the SaaS and Billing Primary Contact&apos;s Last Connected Dates.</inlineHelpText>
+    <label>Primary Contacts Last Connected</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

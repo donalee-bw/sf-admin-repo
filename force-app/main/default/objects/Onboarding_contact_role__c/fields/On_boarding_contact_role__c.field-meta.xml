@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>On_boarding_contact_role__c</fullName>
+    <label>On boarding contact role</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Decision Maker</fullName>
+                <default>false</default>
+                <label>Decision Maker</label>
+            </value>
+            <value>
+                <fullName>Implementer</fullName>
+                <default>false</default>
+                <label>Implementer</label>
+            </value>
+            <value>
+                <fullName>Champion</fullName>
+                <default>false</default>
+                <label>Champion</label>
+            </value>
+            <value>
+                <fullName>Billing Expert</fullName>
+                <default>false</default>
+                <label>Billing Expert</label>
+            </value>
+            <value>
+                <fullName>Influencer</fullName>
+                <default>false</default>
+                <label>Influencer</label>
+            </value>
+            <value>
+                <fullName>Site Supervisor</fullName>
+                <default>false</default>
+                <label>Site Supervisor</label>
+            </value>
+            <value>
+                <fullName>Billing End User - Admin</fullName>
+                <default>false</default>
+                <label>Billing End User - Admin</label>
+            </value>
+            <value>
+                <fullName>Billing End User - Accountant</fullName>
+                <default>false</default>
+                <label>Billing End User - Accountant</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

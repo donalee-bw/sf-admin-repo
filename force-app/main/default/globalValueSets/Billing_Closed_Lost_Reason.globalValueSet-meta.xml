@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Adoption timeline: greater than 90 days</fullName>
+        <default>false</default>
+        <label>Adoption timeline: greater than 90 days</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing DM(s) not on call</fullName>
+        <default>false</default>
+        <label>Billing DM(s) not on call</label>
+    </customValue>
+    <customValue>
+        <fullName>EIN Unavailable</fullName>
+        <default>false</default>
+        <label>EIN Unavailable</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer - Fees Too High</fullName>
+        <default>false</default>
+        <label>Fees Too High</label>
+    </customValue>
+    <customValue>
+        <fullName>Implementation concerns</fullName>
+        <default>false</default>
+        <label>Implementation concerns</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer - In Contract With Another Provider</fullName>
+        <default>false</default>
+        <label>In Contract With Another Provider</label>
+    </customValue>
+    <customValue>
+        <fullName>Neglected</fullName>
+        <default>false</default>
+        <label>Neglected</label>
+    </customValue>
+    <customValue>
+        <fullName>No current private payers</fullName>
+        <default>false</default>
+        <label>No current private payers</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Billing Upsell Eligible</fullName>
+        <default>false</default>
+        <label>Not Billing Upsell Eligible</label>
+    </customValue>
+    <customValue>
+        <fullName>Not for Sales - Billing Upsell Pre-Activated CL</fullName>
+        <default>false</default>
+        <label>Not for Sales - Billing Upsell Pre-Activated CL</label>
+    </customValue>
+    <customValue>
+        <fullName>Not for Sales - Cancelled SaaS</fullName>
+        <default>false</default>
+        <label>Not for Sales - Cancelled SaaS</label>
+    </customValue>
+    <customValue>
+        <fullName>Not for Sales - Retention Case Cancelation</fullName>
+        <default>false</default>
+        <label>Not for Sales - Retention Case Cancelation</label>
+    </customValue>
+    <customValue>
+        <fullName>Parent adoption concerns</fullName>
+        <default>false</default>
+        <label>Parent adoption concerns</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - International</fullName>
+        <default>false</default>
+        <label>Product - International</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Missing Accounting Functionality</fullName>
+        <default>false</default>
+        <label>Product - Missing Accounting Functionality</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - missing billing functionality</fullName>
+        <default>false</default>
+        <label>Product - missing billing functionality</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Reporting Functionality</fullName>
+        <default>false</default>
+        <label>Product - Reporting Functionality</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Subsidy Payments</fullName>
+        <default>false</default>
+        <label>Product - Subsidy Payments</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer - Security Concern</fullName>
+        <default>false</default>
+        <label>Security Concern</label>
+    </customValue>
+    <customValue>
+        <fullName>Unable to connect</fullName>
+        <default>false</default>
+        <label>Unable to connect</label>
+    </customValue>
+    <customValue>
+        <fullName>Unresponsive</fullName>
+        <default>false</default>
+        <label>Unresponsive</label>
+    </customValue>
+    <customValue>
+        <fullName>Upsell Re-CW</fullName>
+        <default>false</default>
+        <label>Upsell Re-CW</label>
+    </customValue>
+    <customValue>
+        <fullName>Use Case - All Tuition Paid Offline By Agencies (No Co-Pay)</fullName>
+        <default>false</default>
+        <label>Use Case - All Tuition Paid Offline By Agencies (No Co-Pay)</label>
+    </customValue>
+    <customValue>
+        <fullName>Use Case - Billing Done By Larger Org (e.g., YMCA, Church)</fullName>
+        <default>false</default>
+        <label>Use Case - Billing Done By Larger Org (e.g., YMCA, Church)</label>
+    </customValue>
+    <customValue>
+        <fullName>Adoption Timing - Bad Time of Year For Admins</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Adoption Timing - Bad Time of Year For Admins</label>
+    </customValue>
+    <customValue>
+        <fullName>Adoption Timing - Bad Time of Year For Parents</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Adoption Timing - Bad Time of Year For Parents</label>
+    </customValue>
+    <customValue>
+        <fullName>Unable to Connect (NOT for Sales to use)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Unable to Connect (NOT for Sales to use)</label>
+    </customValue>
+    <customValue>
+        <fullName>Cancelled SaaS</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Cancelled SaaS</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo Logistics - Billing DM(s) not on call</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Demo Logistics - Billing DM(s) not on call</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo Logistics - No Bank Account/EIN</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Demo Logistics - No Bank Account/EIN</label>
+    </customValue>
+    <customValue>
+        <fullName>Demo Logistics - Customer needs to get into TIN/Bank Info</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Demo Logistics - Customer needs to get into TIN/Bank Info</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer - Adoption Timeline</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Customer - Adoption Timeline</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer - Ran Out of Time / Didn&apos;t Upsell</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Customer - Ran Out of Time / Didn&apos;t Upsell</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - QB Compatibility</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - QB Compatibility</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Attendance/Schedule-Based Plans</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - Attendance/Schedule-Based Plans</label>
+    </customValue>
+    <customValue>
+        <fullName>Not for Sales - Unable to Connect (NOT for Sales to use)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Not for Sales - Unable to Connect (NOT for Sales to use)</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Applicable</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Not Applicable</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Fully Subsidized</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - Fully Subsidized</label>
+    </customValue>
+    <customValue>
+        <fullName>Not processing online payments</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Not processing online payments</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - missing payments functionality</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - missing payments functionality</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer does not yet have EIN</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Customer does not yet have EIN</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - missing accounting-related functionality</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - missing accounting-related functionality</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer does not yet have bank account</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Customer does not yet have bank account</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer needs to get into TIN/Bank info</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Customer needs to get into TIN/Bank info</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Canada</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - Canada</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Subsidies</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - Subsidies</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - ABB</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - ABB</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Payroll</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - Payroll</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - QB Integration</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - QB Integration</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - instant / 1-Day Processing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - instant / 1-Day Processing</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Other</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Cost - Processing Fees</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Cost - Processing Fees</label>
+    </customValue>
+    <customValue>
+        <fullName>Use Case - All Tuition Paid Offline By Agencies</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Use Case - All Tuition Paid Offline By Agencies</label>
+    </customValue>
+    <customValue>
+        <fullName>Adoption - Effort to Change</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Adoption - Effort to Change</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Open in Next 90 Days</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Not Open in Next 90 Days</label>
+    </customValue>
+    <customValue>
+        <fullName>Security</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Security</label>
+    </customValue>
+    <customValue>
+        <fullName>Ran Out of Time / Didn&apos;t Upsell</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Ran Out of Time / Didn&apos;t Upsell</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer Plans to Sign Up Soon</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Customer Plans to Sign Up Soon</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Following Up For Billing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sales Following Up For Billing</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Reporting</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - Reporting</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Billing Frequency (Twice Monthly, Annual, Etc.)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - Billing Frequency (Twice Monthly, Annual, Etc.)</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Expense Management</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - Expense Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Sibling/Family Billing</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - Sibling/Family Billing</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Initial Setup Time</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - Initial Setup Time</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Time for Admins to Learn/Train</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Product - Time for Admins to Learn/Train</label>
+    </customValue>
+    <description>Used for tracking closed lost billing attempts on Upsell and SaaS Opportunities.</description>
+    <masterLabel>Billing Closed Lost Reason</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

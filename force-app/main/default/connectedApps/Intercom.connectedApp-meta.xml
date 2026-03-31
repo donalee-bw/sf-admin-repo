@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>salesforce.admin@everpeakpartners.com</contactEmail>
+    <label>Intercom</label>
+    <oauthConfig>
+        <callbackUrl>https://brightwheel1.lightning.force.com/one/one.app#/home</callbackUrl>
+        <consumerKey>3MVG9xfrbKQ6hBytnC5pEE29nNsNinmZHZWQl3shAjX34.u8fs3rxL3SGbdRRX4DvHD8Y9C3BJUGi.VNVbKTT</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Full</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <profileName>API User</profileName>
+    <profileName>Sales User</profileName>
+    <profileName>Sales SDR IB User</profileName>
+    <profileName>Core Engagement User</profileName>
+    <profileName>Retention Support User</profileName>
+    <profileName>Gov/Ent Engagement User</profileName>
+    <profileName>System Administrator</profileName>
+    <profileName>OB Sales SDR User</profileName>
+    <profileName>Single Trainer OBS</profileName>
+    <profileName>Onboarding Coordinator</profileName>
+    <profileName>Gov Sales</profileName>
+    <profileName>Inbound Sales</profileName>
+    <profileName>Outbound Sales</profileName>
+    <profileName>EC Engagement User</profileName>
+    <profileName>BNP User</profileName>
+    <profileName>WebOps User</profileName>
+</ConnectedApp>

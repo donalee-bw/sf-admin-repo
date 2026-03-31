@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_CSAT_Survey</name>
+        <label>Send CSAT Survey</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <actionName>Combined_Funnel__c.OB_CSAT_Survey</actionName>
+        <actionType>outboundMessage</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>Combined_Funnel__c.OB_CSAT_Survey</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Found_School_Object</name>
+        <label>Found  School Object</label>
+        <locationX>380</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Activated_School_Object</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_School_Object.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_School_Object.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Ready_to_Send_Survey_0_0</targetReference>
+            </connector>
+            <label>Found Activated School  Object</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines if the CSAT survey has been sent before, and if it was at least 60 days ago if so.</description>
+        <name>Ready_to_Send_Survey_0_0</name>
+        <label>Ready to Send Survey</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Survey_Not_Yet_Sent_0_0</name>
+            <conditionLogic>1 AND (2 OR 3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CSAT_Survey_First_Sent__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.CSAT_Survey_First_Sent__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>saasActivationDateThreshold</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CSAT_Survey_First_Sent__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.CSAT_Survey_First_Sent__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_CSAT_Survey</targetReference>
+            </connector>
+            <label>Survey Not Yet Sent</label>
+        </rules>
+    </decisions>
+    <description>Secondary Flow triggered off CF update that sends CSAT Survey. Primary flow triggered off School Object is called: School - Send CSAT Email. 
+JH 7/8/25 - Updated to remove exclusion of BNP onboarding path accounts AND replace the condition &apos;billing launch date&apos; = null with &apos;billing activation start date&apos; = null</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Returns a date of 60 days prior to the current date. 
+Used when checking if a billing survey for a previously activated SaaS customer should be sent</description>
+        <name>saasActivationDateThreshold</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() - 60</expression>
+    </formulas>
+    <interviewLabel>CF - Onboarding CSAT Survey {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CF - Onboarding CSAT Survey</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_School_Object</name>
+        <label>Get School Object</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_School_Object</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Account__r.School_Object__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>School_Object__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_School_Object</targetReference>
+        </connector>
+        <filterLogic>1 AND (2 OR 3 OR 4) AND (5 AND 10) AND 6 AND (7 OR 8 OR 9)</filterLogic>
+        <filters>
+            <field>Stop_CES_Survey_Automation__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Onboarding_Funnel_Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Activated</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Onboarding_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opted Out</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Activation_Start_Date__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CSAT_Survey_First_Sent__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Account_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Customer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Account_Customer_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Single-Site</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Account_Customer_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Multi-Site Parent</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Account_Customer_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Multi-Site Child</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CSAT_Survey_First_Sent__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Combined_Funnel__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Stores the default text of the OB Handoff Email</description>
+        <name>OBHandoffBillingText</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi There! 
+
+Congratulations on getting Brightwheel up and running at {!$Record.Account__r.Name}! It has been great working with you and I’m glad you’re seeing value with Brightwheel already. Now that you’re far along with your setup with Brightwheel, our Support team will be your main point of contact and happy to assist you. You can email them at vipsupport@mybrightwheel.com or via Live Chat on your phone or on the web. They will get back to you within 1 business day. 
+
+Lastly, we value your input! Keep an eye out for an email coming your way to gather your feedback on your onboarding experience. Please take a minute to share your thoughts. Your feedback is incredibly valuable as we continue our efforts to improve and better serve centers just like yours! 
+
+It’s been a pleasure working with you, and congratulations again on implementing Brightwheel at your center! 
+
+All the best,
+Your Brightwheel Onboarding Team</text>
+    </textTemplates>
+    <variables>
+        <description>Flags that a billing CSAT survey should be sent on the delayed cadence</description>
+        <name>ConfirmBillingCSATSend</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Stores the status returned by the Pause subflow when the flow resumes.</description>
+        <name>SurveyAutomationResumeStatus</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Stores the email address to be used to send the OB handoff email and CSAT Survey</description>
+        <name>SurveyEmail</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

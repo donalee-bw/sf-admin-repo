@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Closed_Won_Notes__c</fullName>
+    <description>Captured by sales on closed-won opp</description>
+    <inlineHelpText>Notes from the sales team to the onboarding team when the sale was made.</inlineHelpText>
+    <label>Sales Closed Won Notes</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

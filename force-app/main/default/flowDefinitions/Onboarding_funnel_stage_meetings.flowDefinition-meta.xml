@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Supporting onboarding funnel automation driven by scheduling and completing OBS Setup and Training Outreach meetings.  Drivers are rollup helper and process builder</description>
+    <masterLabel>Onboarding funnel stage - Outreach meetings</masterLabel>
+</FlowDefinition>

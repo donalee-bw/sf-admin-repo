@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Onboarding_Object_View</fullName>
+    <columns>NAME</columns>
+    <columns>OBS_Last_Contacted__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>Onboarding Object View</label>
+</ListView>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Setup_Call_Path__c</fullName>
+    <label>Billing Setup Call Path</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Combined</fullName>
+                <default>false</default>
+                <label>Combined</label>
+            </value>
+            <value>
+                <fullName>Brand New Program</fullName>
+                <default>false</default>
+                <label>Brand New Program</label>
+            </value>
+            <value>
+                <fullName>1:1 Single-Site</fullName>
+                <default>false</default>
+                <label>1:1 Single-Site</label>
+            </value>
+            <value>
+                <fullName>1:1 Multi-Site</fullName>
+                <default>false</default>
+                <label>1:1 Multi-Site</label>
+            </value>
+            <value>
+                <fullName>Webinar</fullName>
+                <default>false</default>
+                <label>Webinar</label>
+            </value>
+            <value>
+                <fullName>OBS</fullName>
+                <default>false</default>
+                <label>OBS</label>
+            </value>
+            <value>
+                <fullName>1:1 Setup Call</fullName>
+                <default>false</default>
+                <label>1:1 Setup Call</label>
+            </value>
+            <value>
+                <fullName>Site-Add</fullName>
+                <default>false</default>
+                <label>Site-Add</label>
+            </value>
+            <value>
+                <fullName>Self Serve</fullName>
+                <default>false</default>
+                <label>Self Serve</label>
+            </value>
+            <value>
+                <fullName>Gov Group Training</fullName>
+                <default>false</default>
+                <label>Gov Group Training</label>
+            </value>
+            <value>
+                <fullName>BNP Site-Add</fullName>
+                <default>false</default>
+                <label>BNP Site-Add</label>
+            </value>
+            <value>
+                <fullName>Standard</fullName>
+                <default>false</default>
+                <label>Standard</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

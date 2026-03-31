@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <label>None</label>
+    </customValue>
+    <customValue>
+        <fullName>1MO50OFF-SALES</fullName>
+        <default>false</default>
+        <label>1MO50OFF-SALES</label>
+    </customValue>
+    <customValue>
+        <fullName>3MO50OFF-SALES</fullName>
+        <default>false</default>
+        <label>3MO50OFF-SALES</label>
+    </customValue>
+    <customValue>
+        <fullName>SALES-3MOS90OFF</fullName>
+        <default>false</default>
+        <label>SALES-3MOS90OFF</label>
+    </customValue>
+    <customValue>
+        <fullName>2MONTHS75OFF</fullName>
+        <default>false</default>
+        <label>2MONTHS75OFF</label>
+    </customValue>
+    <customValue>
+        <fullName>6MOS90OFF-SALES</fullName>
+        <default>false</default>
+        <label>6MOS90OFF-SALES</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP - 3MONTHS90</fullName>
+        <default>false</default>
+        <label>BNP - 3MONTHS90</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP - 6MONTHS90</fullName>
+        <default>false</default>
+        <label>BNP - 6MONTHS90</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP - 9MONTHS90</fullName>
+        <default>false</default>
+        <label>BNP - 9MONTHS90</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP - 12MONTHS90</fullName>
+        <default>false</default>
+        <label>BNP - 12MONTHS90</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP - 3MONTHS50</fullName>
+        <default>false</default>
+        <label>BNP - 3MONTHS50</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP - 6MONTHS50</fullName>
+        <default>false</default>
+        <label>BNP - 6MONTHS50</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP - 9MONTHS50</fullName>
+        <default>false</default>
+        <label>BNP - 9MONTHS50</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP - 12MONTHS50</fullName>
+        <default>false</default>
+        <label>BNP - 12MONTHS50</label>
+    </customValue>
+    <customValue>
+        <fullName>6 Months 50% Off</fullName>
+        <default>false</default>
+        <label>6 Months 50% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>1 Month 50% Off</fullName>
+        <default>false</default>
+        <label>1 Month 50% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>2 Months 50% Off</fullName>
+        <default>false</default>
+        <label>2 Months 50% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>3 Months 50% Off</fullName>
+        <default>false</default>
+        <label>3 Months 50% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>4 Months 50% Off</fullName>
+        <default>false</default>
+        <label>4 Months 50% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>Summer21-3mo50%</fullName>
+        <default>false</default>
+        <label>Summer21-3mo50%</label>
+    </customValue>
+    <customValue>
+        <fullName>Summer21-4mo50%</fullName>
+        <default>false</default>
+        <label>Summer21-4mo50%</label>
+    </customValue>
+    <customValue>
+        <fullName>Summer21-4mo75%</fullName>
+        <default>false</default>
+        <label>Summer21-4mo75%</label>
+    </customValue>
+    <customValue>
+        <fullName>SchoolVine12mo25</fullName>
+        <default>false</default>
+        <label>SchoolVine12mo25</label>
+    </customValue>
+    <customValue>
+        <fullName>1 Month 90% off</fullName>
+        <default>false</default>
+        <label>1 Month 90% off</label>
+    </customValue>
+    <customValue>
+        <fullName>2 Months 90% off</fullName>
+        <default>false</default>
+        <label>2 Months 90% off</label>
+    </customValue>
+    <customValue>
+        <fullName>3 Months 90% off</fullName>
+        <default>false</default>
+        <label>3 Months 90% off</label>
+    </customValue>
+    <customValue>
+        <fullName>4 Months 90% off</fullName>
+        <default>false</default>
+        <label>4 Months 90% off</label>
+    </customValue>
+    <customValue>
+        <fullName>5 Months 90% off</fullName>
+        <default>false</default>
+        <label>5 Months 90% off</label>
+    </customValue>
+    <customValue>
+        <fullName>6 Months 90% off</fullName>
+        <default>false</default>
+        <label>6 Months 90% off</label>
+    </customValue>
+    <customValue>
+        <fullName>1 Month 75% Off</fullName>
+        <default>false</default>
+        <label>1 Month 75% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>2 Months 75% Off</fullName>
+        <default>false</default>
+        <label>2 Months 75% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>1 Month 100% Off</fullName>
+        <default>false</default>
+        <label>1 Month 100% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>2 Months 100% Off</fullName>
+        <default>false</default>
+        <label>2 Months 100% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>3 Months 75% Off</fullName>
+        <default>false</default>
+        <label>3 Months 75% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>3 Months 100% Off</fullName>
+        <default>false</default>
+        <label>3 Months 100% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>12 Months 50% Off</fullName>
+        <default>false</default>
+        <label>12 Months 50% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>1+2 Months 50% Off - Activation</fullName>
+        <default>false</default>
+        <label>1+2 Months 50% Off - Activation</label>
+    </customValue>
+    <customValue>
+        <fullName>2+2 Months 50% Off - Activation</fullName>
+        <default>false</default>
+        <label>2+2 Months 50% Off - Activation</label>
+    </customValue>
+    <customValue>
+        <fullName>12 Months 60% Off</fullName>
+        <default>false</default>
+        <label>12 Months 60% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>12 Months 70% Off</fullName>
+        <default>false</default>
+        <label>12 Months 70% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>SDRHOLIDAY20_2MO_100</fullName>
+        <default>false</default>
+        <label>SDRHOLIDAY20_2MO_100</label>
+    </customValue>
+    <customValue>
+        <fullName>SDRHOLIDAY20_1MO_100</fullName>
+        <default>false</default>
+        <label>SDRHOLIDAY20_1MO_100</label>
+    </customValue>
+    <customValue>
+        <fullName>HOLIDAY20_2MO_100</fullName>
+        <default>false</default>
+        <label>HOLIDAY20_2MO_100</label>
+    </customValue>
+    <customValue>
+        <fullName>HOLIDAY20_1MO_100</fullName>
+        <default>false</default>
+        <label>HOLIDAY20_1MO_100</label>
+    </customValue>
+    <customValue>
+        <fullName>12 Months 40% Off</fullName>
+        <default>false</default>
+        <label>12 Months 40% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>REFERRAL</fullName>
+        <default>false</default>
+        <label>REFERRAL</label>
+    </customValue>
+    <customValue>
+        <fullName>6 Months 50% Off (NeighborSchools Only)</fullName>
+        <default>false</default>
+        <label>6 Months 50% Off (NeighborSchools Only)</label>
+    </customValue>
+    <customValue>
+        <fullName>2 Months 99% Off</fullName>
+        <default>false</default>
+        <label>2 Months 99% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>3 Months 99% Off</fullName>
+        <default>false</default>
+        <label>3 Months 99% Off</label>
+    </customValue>
+    <customValue>
+        <fullName>$50 Amazon gift card</fullName>
+        <default>false</default>
+        <label>$50 Amazon gift card</label>
+    </customValue>
+    <customValue>
+        <fullName>Annual 10% off - 2mo50</fullName>
+        <default>false</default>
+        <label>Annual 10% off - 2mo50</label>
+    </customValue>
+    <customValue>
+        <fullName>Annual 20% off - 4mo50</fullName>
+        <default>false</default>
+        <label>Annual 20% off - 4mo50</label>
+    </customValue>
+    <customValue>
+        <fullName>Annual 25% off - 6mo50</fullName>
+        <default>false</default>
+        <label>Annual 25% off - 6mo50</label>
+    </customValue>
+    <customValue>
+        <fullName>Annual 25% off - 3mo90</fullName>
+        <default>false</default>
+        <label>Annual 25% off - 3mo90</label>
+    </customValue>
+    <customValue>
+        <fullName>Annual 45% off - 6mo90</fullName>
+        <default>false</default>
+        <label>Annual 45% off - 6mo90</label>
+    </customValue>
+    <customValue>
+        <fullName>Competitive Take-away - 3 months 90% off</fullName>
+        <default>false</default>
+        <label>Competitive Take-away - 3 months 90% off</label>
+    </customValue>
+    <customValue>
+        <fullName>Annual Competitive Take Away - 3 months 90% off</fullName>
+        <default>false</default>
+        <label>Annual Competitive Take Away - 3 months 90% off</label>
+    </customValue>
+    <customValue>
+        <fullName>$100 off EC</fullName>
+        <default>false</default>
+        <label>$100 off EC</label>
+    </customValue>
+    <customValue>
+        <fullName>$75 off EC</fullName>
+        <default>false</default>
+        <label>$75 off EC</label>
+    </customValue>
+    <customValue>
+        <fullName>$50 off 3m EC</fullName>
+        <default>false</default>
+        <label>$50 off 3m EC</label>
+    </customValue>
+    <customValue>
+        <fullName>3MOS99OFF-SALES-2023B2S</fullName>
+        <default>false</default>
+        <label>3MOS99OFF-SALES-2023B2S</label>
+    </customValue>
+    <customValue>
+        <fullName>BNP - 90% Off Before Open</fullName>
+        <default>false</default>
+        <label>BNP - 90% Off Before Open</label>
+    </customValue>
+    <customValue>
+        <fullName>$100 Amazon gift card</fullName>
+        <default>false</default>
+        <label>$100 Amazon gift card</label>
+    </customValue>
+    <customValue>
+        <fullName>Free Tablet</fullName>
+        <default>false</default>
+        <label>Free Tablet</label>
+    </customValue>
+    <customValue>
+        <fullName>1 Free EC Kit</fullName>
+        <default>false</default>
+        <label>1 Free EC Kit</label>
+    </customValue>
+    <customValue>
+        <fullName>$150 off EC</fullName>
+        <default>false</default>
+        <label>$150 off EC</label>
+    </customValue>
+    <customValue>
+        <fullName>$150 Amazon gift card</fullName>
+        <default>false</default>
+        <label>$150 Amazon gift card</label>
+    </customValue>
+    <customValue>
+        <fullName>$60 Amazon gift card</fullName>
+        <default>false</default>
+        <label>$60 Amazon gift card</label>
+    </customValue>
+    <customValue>
+        <fullName>No Reward</fullName>
+        <default>false</default>
+        <label>No Reward</label>
+    </customValue>
+    <customValue>
+        <fullName>$250 Amazon gift card for customer/$250 Amazon gift card for friend</fullName>
+        <default>false</default>
+        <label>$250 Amazon gift card for customer/$250 Amazon gift card for friend</label>
+    </customValue>
+    <customValue>
+        <fullName>$500 Amazon gift card for customer</fullName>
+        <default>false</default>
+        <label>$500 Amazon gift card for customer</label>
+    </customValue>
+    <customValue>
+        <fullName>ANNUAL5OFF-1MO50OFF-SALES</fullName>
+        <default>false</default>
+        <label>ANNUAL5OFF-1MO50OFF-SALES</label>
+    </customValue>
+    <customValue>
+        <fullName>ANNUAL15OFF-3MO50OFF-SALES</fullName>
+        <default>false</default>
+        <label>ANNUAL15OFF-3MO50OFF-SALES</label>
+    </customValue>
+    <customValue>
+        <fullName>ANNUAL25OFF-3MO90OFF-SALES</fullName>
+        <default>false</default>
+        <label>ANNUAL25OFF-3MO90OFF-SALES</label>
+    </customValue>
+    <customValue>
+        <fullName>ANNUAL45OFF-6MO90OFF-SALES</fullName>
+        <default>false</default>
+        <label>ANNUAL45OFF-6MO90OFF-SALES</label>
+    </customValue>
+    <customValue>
+        <fullName>12MONTHS90-PROCARE$1</fullName>
+        <default>false</default>
+        <label>12MONTHS90-PROCARE$1</label>
+    </customValue>
+    <customValue>
+        <fullName>3MOS90-JACKRABBIT</fullName>
+        <default>false</default>
+        <label>3MOS90-JACKRABBIT</label>
+    </customValue>
+    <customValue>
+        <fullName>BU-2MOS100</fullName>
+        <default>false</default>
+        <label>BU-2MOS100</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID-2MONTHS-50OFF-NEW</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>COVID-2MONTHS-50OFF-NEW</label>
+    </customValue>
+    <customValue>
+        <fullName>TEACH</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>TEACH</label>
+    </customValue>
+    <customValue>
+        <fullName>BEBRIGHT2020</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>BEBRIGHT2020</label>
+    </customValue>
+    <customValue>
+        <fullName>SAVEINJAN2020</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>SAVEINJAN2020</label>
+    </customValue>
+    <customValue>
+        <fullName>WINTERSAVINGS2020</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>WINTERSAVINGS2020</label>
+    </customValue>
+    <customValue>
+        <fullName>NEW YEAR</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>NEW YEAR</label>
+    </customValue>
+    <customValue>
+        <fullName>SUMMER</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>SUMMER</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID-4MONTHS-100OFF</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>COVID-4MONTHS-100OFF</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID-3MONTHS-100OFF</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>COVID-3MONTHS-100OFF</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID-2MONTHS-100OFF</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>COVID-2MONTHS-100OFF</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID-1MONTH-100OFF</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>COVID-1MONTH-100OFF</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID-2MONTHS-50OFF</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>COVID-2MONTHS-50OFF</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID-1MONTH-50OFF</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>COVID-1MONTH-50OFF</label>
+    </customValue>
+    <customValue>
+        <fullName>COVID-19 1 month 100% off</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>COVID-19 1 month 100% off</label>
+    </customValue>
+    <customValue>
+        <fullName>1+2months 50% off</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>1+2months 50% off</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Dec19Holiday</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Dec19Holiday</label>
+    </customValue>
+    <customValue>
+        <fullName>75Amzn19</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>75Amzn19</label>
+    </customValue>
+    <customValue>
+        <fullName>50Amzn19</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>50Amzn19</label>
+    </customValue>
+    <customValue>
+        <fullName>AMZN19</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>AMZN19</label>
+    </customValue>
+    <customValue>
+        <fullName>BACK2SCHOOL2019</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>BACK2SCHOOL2019</label>
+    </customValue>
+    <customValue>
+        <fullName>DMControl2019</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DMControl2019</label>
+    </customValue>
+    <customValue>
+        <fullName>DMForgot2019</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>DMForgot2019</label>
+    </customValue>
+    <customValue>
+        <fullName>VIP</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>VIP</label>
+    </customValue>
+    <masterLabel>Promo Offered</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

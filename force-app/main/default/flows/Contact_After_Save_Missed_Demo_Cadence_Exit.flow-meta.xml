@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Remove_Contact_from_Cadence</name>
+        <label>Remove Contact from Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>removeTargetFromSalesCadence</actionName>
+        <actionType>removeTargetFromSalesCadence</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>completionReasonCode</name>
+            <value>
+                <stringValue>ManuallyRemoved</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>removeTargetFromSalesCadence</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Was_active_cadence_Tracker_Found</name>
+        <label>Was active cadence Tracker Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Active_Cadence_Tracker</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_Contact_from_Cadence</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Contact - After Save - Missed Demo Exit {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - After Save - Missed Demo Cadence Exit</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Active_Cadence_Tracker</name>
+        <label>Get Active Cadence Tracker</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_active_cadence_Tracker_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>TargetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>State</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionCadenceStepTracker</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>AND(
+        TEXT({!$Record.Cadence_Label__c}) = &quot;Sales - Missed Demo&quot; , 
+    OR(
+        {!$Record.Do_Not_Contact__c} = TRUE,
+        {!$Record.LOGIC_Owned_by_queue__c} = TRUE,
+        BEGINS(TEXT({!$Record.Most_Recent_Disposition__c}), &quot;Rec&quot;),
+        BEGINS(TEXT({!$Record.Most_Recent_Disposition__c}), &quot;UNQ - &quot;),
+        BEGINS(TEXT({!$Record.Most_Recent_Disposition__c}), &quot;CC - &quot;),
+         BEGINS(TEXT({!$Record.Most_Recent_Disposition__c}), &quot;PD - &quot;),
+       CONTAINS(TEXT({!$Record.Most_Recent_Disposition__c}), &quot;Rescheduled&quot;),
+   
+        BEGINS({!$Record.Outreach_stage__c}, &quot;Recycled &quot;),
+        BEGINS({!$Record.Outreach_stage__c}, &quot;Unqualified&quot;),
+        BEGINS({!$Record.Outreach_stage__c}, &quot;Connected&quot;),
+        BEGINS(TEXT({!$Record.Manual_Stage_Update__c}), &quot;Recycled &quot;),
+        BEGINS(TEXT({!$Record.Manual_Stage_Update__c}), &quot;Unqualified&quot;),
+        BEGINS(TEXT({!$Record.Manual_Stage_Update__c}), &quot;Connected&quot;)
+        
+    )
+)</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>Run_20_Record_Batch</name>
+            <connector>
+                <targetReference>Get_Active_Cadence_Tracker</targetReference>
+            </connector>
+            <label>Run 20-Record Batch</label>
+            <maxBatchSize>20</maxBatchSize>
+            <offsetNumber>0</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

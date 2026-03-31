@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_to_Lessons_Started_Sequence__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>checkbox that will trigger flow that creates all tasks in the lessons started sequence for ec obs</description>
+    <label>Add to Lessons Started Sequence</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

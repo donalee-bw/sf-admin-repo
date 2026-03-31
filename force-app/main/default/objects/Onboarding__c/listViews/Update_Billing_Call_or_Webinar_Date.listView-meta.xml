@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Update_Billing_Call_or_Webinar_Date</fullName>
+    <columns>NAME</columns>
+    <columns>Combined_Webinar_3_Date__c</columns>
+    <columns>Billing_Call_or_Webinar_Date__c</columns>
+    <columns>Billing_Call_or_Webinar_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Combined_Webinar_3_Date__c</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Update Billing Call or Webinar Date</label>
+</ListView>

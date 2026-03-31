@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clicks_Billing_from_Nav_Tab_Events__c</fullName>
+    <description>Populated by DataEng. Temporary field until DataEng has bandwidth to standup Mixpanel integration with Intercom and Hubspot. # of events of Clicks on Billing tab from the navigation tab</description>
+    <externalId>false</externalId>
+    <inlineHelpText># of events of Clicks on Billing tab from the navigation tab</inlineHelpText>
+    <label>Clicks Billing from Nav Tab Events</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

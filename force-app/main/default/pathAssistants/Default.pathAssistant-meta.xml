@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Lead</entityName>
+    <fieldName>Status</fieldName>
+    <masterLabel>Default</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>How_did_you_hear_about_us__c</fieldNames>
+        <fieldNames>COVID_19_Notes__c</fieldNames>
+        <fieldNames>Current_Tech__c</fieldNames>
+        <info>&lt;p&gt;Gather info for the fields to the left! Try to gather additional info and fill in below.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;After the call - Set a reminder Task to follow up/check-in with them if needed! What&amp;#39;s your next step towards making the sale? - Log it!&lt;/p&gt;</info>
+        <picklistValueName>Connected</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Center_Type__c</fieldNames>
+        <fieldNames>School_Type__c</fieldNames>
+        <fieldNames>LeadSource</fieldNames>
+        <info>&lt;p&gt;&lt;b&gt;Before you call, figure out your pre-call plan:&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Who are you speaking with?&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Where are they located?&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;What is their school makeup? (# of students, school/center type)&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Have they interacted with us before? (Hubspot score, past activity)&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Find nearby schools who are using Brightwheel for reference when you speak with them. (if Address info exists)&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>New</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Company</fieldNames>
+        <fieldNames>Email</fieldNames>
+        <fieldNames>Phone</fieldNames>
+        <fieldNames>LeadSource</fieldNames>
+        <info>&lt;p&gt;&lt;b&gt;Congratulations! &lt;/b&gt;Now it’s time to convert the lead record to an opportunity.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
+        <picklistValueName>Qualified</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Reasons_to_Recycle__c</fieldNames>
+        <fieldNames>Reason_to_Recycle_Detail__c</fieldNames>
+        <fieldNames>Current_Tech__c</fieldNames>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Only mark as RECYCLED if someone from Brightwheel should approach this lead again at some point in the future.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Recycled</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Unqualified_Reason__c</fieldNames>
+        <fieldNames>Reason_to_Unqualify_Detail__c</fieldNames>
+        <fieldNames>OwnerId</fieldNames>
+        <info>&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;Only mark as UNQUALIFIED if no one should approach this lead again in the future.&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Unqualified</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>__MASTER__</recordTypeName>
+</PathAssistant>

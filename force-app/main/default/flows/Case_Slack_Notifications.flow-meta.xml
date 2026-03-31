@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Notifies the owner of the Combined Funnel about a case status updated to &quot;Canceled&quot;.</description>
+        <name>Notify_CF_Owner_CanceledStatus</name>
+        <label>Notify CF Owner</label>
+        <locationX>314</locationX>
+        <locationY>1116</locationY>
+        <actionName>slackPostMessage</actionName>
+        <actionType>slackPostMessage</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackAppIdForToken</name>
+            <value>
+                <stringValue>A03269G3DNE</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackConversationId</name>
+            <value>
+                <elementReference>Get_Combined_Funnel.Owner:User.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackMessage</name>
+            <value>
+                <elementReference>CanceledStatusTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackWorkspaceIdForToken</name>
+            <value>
+                <stringValue>T04QMARLF</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>slackPostMessage</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <description>Notifies the owner of the Combined Funnel about the new case that was created</description>
+        <name>Notify_CF_Owner_NewCase</name>
+        <label>Notify CF Owner</label>
+        <locationX>50</locationX>
+        <locationY>1116</locationY>
+        <actionName>slackPostMessage</actionName>
+        <actionType>slackPostMessage</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackAppIdForToken</name>
+            <value>
+                <stringValue>A03269G3DNE</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackConversationId</name>
+            <value>
+                <elementReference>Get_Combined_Funnel.Owner:User.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackMessage</name>
+            <value>
+                <elementReference>NewCaseCreated</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackWorkspaceIdForToken</name>
+            <value>
+                <stringValue>T04QMARLF</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>slackPostMessage</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <description>Notifies the owner of the Combined Funnel about a case status updated to &quot;Saved&quot;.</description>
+        <name>Notify_CF_Owner_SavedStatus</name>
+        <label>Notify CF Owner</label>
+        <locationX>578</locationX>
+        <locationY>1116</locationY>
+        <actionName>slackPostMessage</actionName>
+        <actionType>slackPostMessage</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackAppIdForToken</name>
+            <value>
+                <stringValue>A03269G3DNE</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackConversationId</name>
+            <value>
+                <elementReference>Get_Combined_Funnel.Owner:User.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackMessage</name>
+            <value>
+                <elementReference>SavedStatusTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackWorkspaceIdForToken</name>
+            <value>
+                <stringValue>T04QMARLF</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>slackPostMessage</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Slack_New_Owner</name>
+        <label>Slack New Owner</label>
+        <locationX>1144</locationX>
+        <locationY>384</locationY>
+        <actionName>slackPostMessage</actionName>
+        <actionType>slackPostMessage</actionType>
+        <connector>
+            <targetReference>Notify_Combined_Funnel_Owner</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>slackAppIdForToken</name>
+            <value>
+                <stringValue>A03269G3DNE</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackWorkspaceIdForToken</name>
+            <value>
+                <stringValue>T04QMARLF</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackConversationId</name>
+            <value>
+                <elementReference>$Record.Owner:User.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackMessage</name>
+            <value>
+                <elementReference>forT_SlackAlertTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackPostMessage</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>If the case status is updated to Assigned or its ownership is changed, evaluate if the Owner is an active user with a Slack ID. If it is, send a Slack notification about the new case assignment.</description>
+        <name>New_Ownership_Assignment</name>
+        <label>New Ownership Assignment?</label>
+        <locationX>1276</locationX>
+        <locationY>276</locationY>
+        <defaultConnector>
+            <targetReference>Notify_Combined_Funnel_Owner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_New_Ownership_Assignment</name>
+            <conditionLogic>(1 AND 2 AND 4 AND 5) OR (3 AND 4 AND 5)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Assigned</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.Slack_user_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Slack_New_Owner</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>If a new case was created on an account, notifies the Combined Funnel owner. Or if a case had its status updated to &quot;Saved&quot; or &quot;Canceled&quot;, also notify the Combined Funnel owner.</description>
+        <name>Notify_Combined_Funnel_Owner</name>
+        <label>Notify Combined Funnel Owner?</label>
+        <locationX>1276</locationX>
+        <locationY>576</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Notify_Combined_Funnel_Owner</name>
+            <conditionLogic>1 OR (2 AND (3 OR 4))</conditionLogic>
+            <conditions>
+                <leftValueReference>IsNewFormula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Saved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Canceled</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Valid_Account</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the Account&apos;s Combined Activation Status is not Fully Activated or Unknown, and then check if the Account Type is either Customer or Canceled Customer.</description>
+        <name>Valid_Account</name>
+        <label>Valid Account?</label>
+        <locationX>1007</locationX>
+        <locationY>684</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_ValidAccount</name>
+            <conditionLogic>1 AND 2 AND (3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account.Combined_Activation_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Fully Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Combined_Activation_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Unknown</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelled Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Combined_Funnel</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if a combined funnel record was found and if the owner is not the user Account Queue, but an active Salesforce user with a Slack Id. Also checks it is not SaaS Activated and Billing is Opted Out and/or there&apos;s no Billing Launch Date.</description>
+        <name>Valid_Combined_Funnel</name>
+        <label>Valid Combined Funnel?</label>
+        <locationX>732</locationX>
+        <locationY>900</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_ValidCombinedFunnel</name>
+            <conditionLogic>1 AND 2 AND 3 AND 4 AND (5 AND (6 OR 7))</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Owner:User.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Owner:User.Id</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>0053u0000035xeBAAQ</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Owner:User.Slack_user_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.SaaS_Onboarding_Funnel_Stage__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Billing_Onboarding_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Opted Out</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Billing_Launch_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>What_Happened</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Identifies what changes were made to the record in order to send the proper notification</description>
+        <name>What_Happened</name>
+        <label>What Happened?</label>
+        <locationX>446</locationX>
+        <locationY>1008</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>New_Case</name>
+            <conditionLogic>(1 OR 2) AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelation_Request</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Failed_Payment</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>IsNewFormula</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Notify_CF_Owner_NewCase</targetReference>
+            </connector>
+            <label>New Case</label>
+        </rules>
+        <rules>
+            <name>Status_Canceled</name>
+            <conditionLogic>2 AND (1 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelation_Request</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Canceled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Failed_Payment</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Notify_CF_Owner_CanceledStatus</targetReference>
+            </connector>
+            <label>Status = Canceled</label>
+        </rules>
+        <rules>
+            <name>Status_Saved</name>
+            <conditionLogic>2 AND (1 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancelation_Request</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Saved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Failed_Payment</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Notify_CF_Owner_SavedStatus</targetReference>
+            </connector>
+            <label>Status = Saved</label>
+        </rules>
+    </decisions>
+    <description>Flow that sends Slack notifications to combined funnel owners when specific case types are created or updated. 
+04/12/2023 - Updated the flow to not ping when SaaS Activated and Billing is Opted Out and/or no ‘Billing Launch Date’ (Sprint 6 - 2023)
+02/06/24 - Added action to notify user upon case ownership change.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forT_SlackAlertTemplate</name>
+        <dataType>String</dataType>
+        <expression>&apos;You have been assigned a &apos; &amp;
+IF(
+     {!$Record.RecordTypeId} = &apos;0121I000000ODmUQAW&apos;, 
+     &apos;Failed Payment&apos;, 
+      IF(
+           {!$Record.RecordTypeId} = &apos;0123u000000aN7yAAE&apos;, 
+           &apos;Cancelation Request&apos;, 
+            &apos;&apos;
+       )
+) &amp;
+&apos; Case&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!$Record.Id}  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Account Name:* &apos; &amp; {!$Record.Account.Name}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Contact Name:* &apos; &amp; {!$Record.Contact.Full_name__c}</expression>
+    </formulas>
+    <formulas>
+        <name>IsNewFormula</name>
+        <dataType>Boolean</dataType>
+        <expression>(NOW() - {!$Record.CreatedDate}) * 86400 &lt; 10</expression>
+    </formulas>
+    <interviewLabel>Case - Slack Notifications {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Slack Notifications</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Find combined funnel records related to the account</description>
+        <name>Get_Combined_Funnel</name>
+        <label>Get Combined Funnel</label>
+        <locationX>732</locationX>
+        <locationY>792</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Valid_Combined_Funnel</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Account.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>405</locationX>
+        <locationY>0</locationY>
+        <filterLogic>(1 AND (2 OR 3 OR 4 OR 5)) OR 6</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Canceled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Saved</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Assigned</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>OwnerId</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>New_Ownership_Assignment</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <textTemplates>
+        <description>Slack message template notifying about a case status being updated to &quot;Canceled&quot;.</description>
+        <name>CanceledStatusTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>:exclamation: A *{!$Record.RecordType.Name}* &lt;https://brightwheel1.my.salesforce.com/{!$Record.Id}|case&gt; just had its status updated to *&quot;Canceled&quot;*. You&apos;re receiving this message because you&apos;re the assigned owner of Combined Funnel on this &lt;https://brightwheel1.my.salesforce.com/{!$Record.Account.Id}|account&gt;.</text>
+    </textTemplates>
+    <textTemplates>
+        <description>DM template that notifies the Combined Funnel Owner about a new failed payment case created</description>
+        <name>NewCaseCreated</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>:exclamation: A new *&lt;https://brightwheel1.my.salesforce.com/{!$Record.Id}|case&gt;* regarding a *{!$Record.RecordType.Name}* was just created. You&apos;re receiving this message because you&apos;re the assigned owner of the Combined Funnel on this &lt;https://brightwheel1.my.salesforce.com/{!$Record.Account.Id}|account&gt;.</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Slack message template notifying about a case status being updated to &quot;Saved&quot;.</description>
+        <name>SavedStatusTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>:exclamation: A *{!$Record.RecordType.Name}* &lt;https://brightwheel1.my.salesforce.com/{!$Record.Id}|case&gt; just had its status updated to *&quot;Saved&quot;*. You&apos;re receiving this message because you&apos;re the assigned owner of the Combined Funnel on this &lt;https://brightwheel1.my.salesforce.com/{!$Record.Account.Id}|account&gt;.</text>
+    </textTemplates>
+</Flow>

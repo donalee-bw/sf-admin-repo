@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CES_Survey_1st_Sent_to_Primary_Contacts__c</fullName>
+    <description>Used in formula field to calculate min date between this field and Account CES Survey Send Date field.</description>
+    <formula>IF(
+    AND(
+        ISBLANK(Billing_Primary_Contact__r.CES_Survey_Send_Date__c),
+        ISBLANK(SaaS_Primary_Contact__r.CES_Survey_Send_Date__c)
+    ),
+    NULL,
+IF(
+    AND(
+        ISBLANK(Billing_Primary_Contact__r.CES_Survey_Send_Date__c),
+        NOT(ISBLANK(SaaS_Primary_Contact__r.CES_Survey_Send_Date__c))
+    ),
+    SaaS_Primary_Contact__r.CES_Survey_Send_Date__c,
+IF(
+    AND(
+        ISBLANK(SaaS_Primary_Contact__r.CES_Survey_Send_Date__c),
+        NOT(ISBLANK(Billing_Primary_Contact__r.CES_Survey_Send_Date__c))
+    ),
+    Billing_Primary_Contact__r.CES_Survey_Send_Date__c,
+    DATE(1900, 01, 01) +
+    MIN(
+        BLANKVALUE(Billing_Primary_Contact__r.CES_Survey_Send_Date__c, DATE(1900, 01, 01)) - DATE(1900, 01, 01),
+        BLANKVALUE(SaaS_Primary_Contact__r.CES_Survey_Send_Date__c, DATE(1900, 01, 01)) - DATE(1900, 01, 01)
+    )
+)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>First time the CES Survey was sent to the SaaS or Billing Primary Contact related to the CF.</inlineHelpText>
+    <label>CES Survey 1st Sent to Primary Contacts</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

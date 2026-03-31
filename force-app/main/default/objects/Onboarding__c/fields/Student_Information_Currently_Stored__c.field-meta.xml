@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Student_Information_Currently_Stored__c</fullName>
+    <description>Captured by sales on closed-won opp.</description>
+    <inlineHelpText>Where the center&apos;s student information is stored when the sale was made.</inlineHelpText>
+    <label>Student Information Currently Stored</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Student_Information_Currently_Located</valueSetName>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Parent Engagement</fullName>
+        <default>false</default>
+        <label>Parent Engagement</label>
+    </customValue>
+    <customValue>
+        <fullName>Check-In</fullName>
+        <default>false</default>
+        <label>Check-In</label>
+    </customValue>
+    <customValue>
+        <fullName>Messaging</fullName>
+        <default>false</default>
+        <label>Messaging</label>
+    </customValue>
+    <customValue>
+        <fullName>Billing</fullName>
+        <default>false</default>
+        <label>Billing</label>
+    </customValue>
+    <customValue>
+        <fullName>Learning</fullName>
+        <default>false</default>
+        <label>Learning</label>
+    </customValue>
+    <customValue>
+        <fullName>Enrollment</fullName>
+        <default>false</default>
+        <label>Enrollment</label>
+    </customValue>
+    <customValue>
+        <fullName>Staff Check-In</fullName>
+        <default>false</default>
+        <label>Staff Check-In</label>
+    </customValue>
+    <masterLabel>Primary Features</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

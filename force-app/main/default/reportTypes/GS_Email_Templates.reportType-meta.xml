@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>RDNACadence__Email_Template__c</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>GS Email Templates</description>
+    <label>GS Email Templates</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>RDNACadence__Email_Template__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Owner</field>
+            <table>RDNACadence__Email_Template__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>RDNACadence__Email_Template__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedDate</field>
+            <table>RDNACadence__Email_Template__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedBy</field>
+            <table>RDNACadence__Email_Template__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>RDNACadence__Email_Template__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedBy</field>
+            <table>RDNACadence__Email_Template__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RDNACadence__Email_Body_Raw__c</field>
+            <table>RDNACadence__Email_Template__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RDNACadence__Email_Body__c</field>
+            <table>RDNACadence__Email_Template__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RDNACadence__Folder__c</field>
+            <table>RDNACadence__Email_Template__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RDNACadence__Subject__c</field>
+            <table>RDNACadence__Email_Template__c</table>
+        </columns>
+        <masterLabel>Guided Selling Email Templates</masterLabel>
+    </sections>
+</ReportType>

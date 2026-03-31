@@ -1,0 +1,3264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Opportunity</baseObject>
+    <category>opportunities</category>
+    <deployed>true</deployed>
+    <description>Opportunity With Or Without Onboarding Attempts</description>
+    <join>
+        <outerJoin>true</outerJoin>
+        <relationship>Onboarding_Attempts__r</relationship>
+    </join>
+    <label>Opportunity With Or Without Onboarding Attempts</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity ID</displayNameOverride>
+            <field>Id</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name</displayNameOverride>
+            <field>Account</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Record Type</displayNameOverride>
+            <field>RecordType</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Private</displayNameOverride>
+            <field>IsPrivate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Opportunity Name</displayNameOverride>
+            <field>Name</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Description</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stage</displayNameOverride>
+            <field>StageName</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stage Sort Order</displayNameOverride>
+            <field>StageSortOrder</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Amount</displayNameOverride>
+            <field>Amount</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Probability (%)</displayNameOverride>
+            <field>Probability</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Expected Revenue</displayNameOverride>
+            <field>ExpectedRevenue</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quantity</displayNameOverride>
+            <field>TotalOpportunityQuantity</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Close Date</displayNameOverride>
+            <field>CloseDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Type</displayNameOverride>
+            <field>Type</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Next Step</displayNameOverride>
+            <field>NextStep</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Source</displayNameOverride>
+            <field>LeadSource</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed</displayNameOverride>
+            <field>IsClosed</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Won</displayNameOverride>
+            <field>IsWon</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Forecast Category</displayNameOverride>
+            <field>ForecastCategoryName</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Campaign Source</displayNameOverride>
+            <field>Campaign</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Has Line Item</displayNameOverride>
+            <field>HasOpportunityLineItem</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Split</displayNameOverride>
+            <field>IsSplit</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Price Book</displayNameOverride>
+            <field>Pricebook2</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Activity</displayNameOverride>
+            <field>LastActivityDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Push Count</displayNameOverride>
+            <field>PushCount</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Stage Change Date</displayNameOverride>
+            <field>LastStageChangeDate</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact</displayNameOverride>
+            <field>Contact</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Partner Account</displayNameOverride>
+            <field>PrimaryPartnerAccount</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Synced Quote</displayNameOverride>
+            <field>SyncedQuote</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract</displayNameOverride>
+            <field>Contract</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Budget Confirmed</displayNameOverride>
+            <field>Budget_Confirmed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Discovery Completed</displayNameOverride>
+            <field>Discovery_Completed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ROI Analysis Completed</displayNameOverride>
+            <field>ROI_Analysis_Completed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitors</displayNameOverride>
+            <field>Competitors__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Hubspot Deal ID</displayNameOverride>
+            <field>Hubspot_Deal_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed Won School ID</displayNameOverride>
+            <field>Closed_Won_School_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Source - Detail</displayNameOverride>
+            <field>Lead_Source_Detail__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pipeline Review</displayNameOverride>
+            <field>Pipeline_Review__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Offered</displayNameOverride>
+            <field>Coupon_Offered__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Promo Code</displayNameOverride>
+            <field>Promo_Code__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Offline Payment</displayNameOverride>
+            <field>Offline_Payment__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Historical Create Date</displayNameOverride>
+            <field>Historical_Create_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Associated Organization</displayNameOverride>
+            <field>Associated_Organization__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed Lost Reason - Detail</displayNameOverride>
+            <field>Closed_Lost_Reason_Detail__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Forecast</displayNameOverride>
+            <field>Forecast__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Next Activity Date</displayNameOverride>
+            <field>Next_Activity_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact</displayNameOverride>
+            <field>Contact__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Age</displayNameOverride>
+            <field>Opportunity_Age__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing Friction</displayNameOverride>
+            <field>Pricing_Friction__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing Friction - Details</displayNameOverride>
+            <field>Pricing_Friction_Details__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pricing Friction - Reasons</displayNameOverride>
+            <field>Pricing_Friction_Reasons__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Students</displayNameOverride>
+            <field>Number_of_Students__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Schools</displayNameOverride>
+            <field>Number_of_Schools__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Created Date</displayNameOverride>
+            <field>Lead_Created_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead to Close Days</displayNameOverride>
+            <field>Lead_to_Close_Days__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>School Tiers</displayNameOverride>
+            <field>School_Tiers__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Removal</displayNameOverride>
+            <field>Competitor_Removal__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel Source</displayNameOverride>
+            <field>Original_Source__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel Source Drilldown 1</displayNameOverride>
+            <field>Original_Source_Drilldown_1__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Inbound or Outbound</displayNameOverride>
+            <field>Inbound_or_Outbound__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Original Lead Source</displayNameOverride>
+            <field>Original_Lead_Source__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Qualified By</displayNameOverride>
+            <field>SDR__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Center Type - Detail</displayNameOverride>
+            <field>School_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Qualified?</displayNameOverride>
+            <field>SDR_Qualified__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Referred From: First Name</displayNameOverride>
+            <field>Referred_From_First_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Referred From: Last Name</displayNameOverride>
+            <field>Referred_From_Last_Name__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Referred From: Email</displayNameOverride>
+            <field>Referred_From_Email__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Referred From: Organization</displayNameOverride>
+            <field>Referred_From_Organization__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Referral</displayNameOverride>
+            <field>Referral__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunities</displayNameOverride>
+            <field>Opportunties__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Forecast Number of Schools</displayNameOverride>
+            <field>Forecast_Number_of_Schools__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Forecast Number of Students</displayNameOverride>
+            <field>Forecast_Number_of_Students__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity to Close Days</displayNameOverride>
+            <field>Opportunity_to_Close_Days__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead To Opportunity Days</displayNameOverride>
+            <field>Lead_To_Opportunity_Days__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Challenges</displayNameOverride>
+            <field>Challenges__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shared Deal</displayNameOverride>
+            <field>Shared_Deal__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Secondary Owner</displayNameOverride>
+            <field>Secondary_Owner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Open and Operating Date</displayNameOverride>
+            <field>Open_and_Operating_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Authority</displayNameOverride>
+            <field>Authority__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Money</displayNameOverride>
+            <field>Money__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Prioritization</displayNameOverride>
+            <field>Prioritization__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CHAMP Score</displayNameOverride>
+            <field>CHAMP_Score__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Inbound Date</displayNameOverride>
+            <field>Last_Inbound_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subscription</displayNameOverride>
+            <field>Subscription__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed Lost Reason</displayNameOverride>
+            <field>Closed_Lost_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>How did you hear about us?</displayNameOverride>
+            <field>How_did_you_hear_about_us__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Setup Fee</displayNameOverride>
+            <field>Setup_Fee__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract</displayNameOverride>
+            <field>Contract__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outbound Eligible</displayNameOverride>
+            <field>Outbound_Eligible__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Recycled Date</displayNameOverride>
+            <field>Recycled_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract End Date</displayNameOverride>
+            <field>In_Contract_Until__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Qualified by Role_OLD</displayNameOverride>
+            <field>SDR_Role__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CW Total Charge</displayNameOverride>
+            <field>CW_Total_Charge__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Delayed Decision - Reason</displayNameOverride>
+            <field>Delayed_Decision_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Demo Booked</displayNameOverride>
+            <field>Last_Demo_Booked__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>x_Last Demo Held</displayNameOverride>
+            <field>Last_Demo_Held__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Most Recent SDR Owner Role</displayNameOverride>
+            <field>Most_Recent_SDR_Owner_Role__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Most Recent SDR Owner</displayNameOverride>
+            <field>Most_Recent_SDR_Owner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Closed Won</displayNameOverride>
+            <field>Billing_Closed_Won__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DM Status</displayNameOverride>
+            <field>DM_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Demo Outcome</displayNameOverride>
+            <field>Last_Demo_Outcome__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Demo Result</displayNameOverride>
+            <field>Demo_Result__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Preferred Language</displayNameOverride>
+            <field>Preferred_Language__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed Won Reason - Detail</displayNameOverride>
+            <field>Closed_Won_Reason_Detail__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed Won Reason</displayNameOverride>
+            <field>Closed_Won_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Multi-Site Type</displayNameOverride>
+            <field>Multi_Site_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Close Date Day of Week</displayNameOverride>
+            <field>Close_Date_Day_of_Week__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Does your school manage your own payroll</displayNameOverride>
+            <field>Does_your_school_manage_your_own_payroll__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payroll interest level</displayNameOverride>
+            <field>Payroll_interest_level__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payroll software currently used?</displayNameOverride>
+            <field>What_payroll_software_do_you_currently_u__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Negotiated Fees</displayNameOverride>
+            <field>Negotiated_Fees__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Self Sourced</displayNameOverride>
+            <field>Self_Sourced__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Source Type</displayNameOverride>
+            <field>Opportunity_Source_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Qualified By Role</displayNameOverride>
+            <field>Qualified_By_Role__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Able To Add Students Today</displayNameOverride>
+            <field>Able_To_Add_Students_Today__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Blockers For Adding Students Today</displayNameOverride>
+            <field>Blockers_For_Adding_Students_Today__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Board or Additional DMs Not Demo&apos;d</displayNameOverride>
+            <field>Board_or_Additional_DMs_Not_Demo_d__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Buying Mindset</displayNameOverride>
+            <field>Buying_Mindset__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Center Operating Status</displayNameOverride>
+            <field>Current_Center_Operating_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status of Devices</displayNameOverride>
+            <field>Status_of_Devices__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Student Information Currently Stored</displayNameOverride>
+            <field>Student_Information_Currently_Stored__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Wifi Throughout Center</displayNameOverride>
+            <field>Wifi_Throughout_Center__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>OBS Owner</displayNameOverride>
+            <field>OBS_Owner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Multi-Site</displayNameOverride>
+            <field>Multi_Site__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Multi-Site Info</displayNameOverride>
+            <field>Multi_Site_Info__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Names and Roles of Implementers</displayNameOverride>
+            <field>Names_and_Roles_of_Implementers__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Concerns/Notes</displayNameOverride>
+            <field>Additional_Concerns_Notes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Target Launch Date</displayNameOverride>
+            <field>Target_Launch_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Enrollment</displayNameOverride>
+            <field>Current_Enrollment__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Licensed Capacity</displayNameOverride>
+            <field>Capacity__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Bill Date</displayNameOverride>
+            <field>First_Bill_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Center Type</displayNameOverride>
+            <field>Center_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Enrollment As Of</displayNameOverride>
+            <field>Current_Enrollment_As_Of__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>&quot;Other&quot; Promo Offered</displayNameOverride>
+            <field>Other_Promo_Offered__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Tech</displayNameOverride>
+            <field>Current_Tech__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SMS Opt Out</displayNameOverride>
+            <field>ringdna__HasOptedOutOfSms2__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Non-Target</displayNameOverride>
+            <field>Non_Target__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MRR per School</displayNameOverride>
+            <field>MRR_per_School__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Contact Roles</displayNameOverride>
+            <field>Number_of_Contact_Roles__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>COVID-19 Notes</displayNameOverride>
+            <field>COVID_19_Notes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>COVID-19 Reopen Date</displayNameOverride>
+            <field>COVID_19_Reopen_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Qualified On</displayNameOverride>
+            <field>Qualified_On__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LOGIC Pricing Approved</displayNameOverride>
+            <field>LOGIC_Pricing_Approved__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Qualified Date</displayNameOverride>
+            <field>Qualified_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>timestamp_for_unittest</displayNameOverride>
+            <field>ambition__timestamp_for_unittest__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Setup Call Path</displayNameOverride>
+            <field>Onboarding_Setup_Call_Path__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Call or Webinar Date</displayNameOverride>
+            <field>Billing_Call_or_Webinar_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Setup Call Path</displayNameOverride>
+            <field>Billing_Setup_Call_Path__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>x_Billing Timeline</displayNameOverride>
+            <field>Billing_Timeline__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Declined Billing Training</displayNameOverride>
+            <field>Declined_Billing_Training__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>FTS Owner</displayNameOverride>
+            <field>FTS_Owner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Call or Webinar Date</displayNameOverride>
+            <field>Onboarding_Call_or_Webinar_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Uses Attendance or Variable Rate Billing</displayNameOverride>
+            <field>Uses_Attendance_or_Variable_Rate_Billing__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Non Standard Agreement</displayNameOverride>
+            <field>Non_Standard_Agreement__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account School Object</displayNameOverride>
+            <field>Account_School_Object__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Tool for Billing</displayNameOverride>
+            <field>Current_Tool_for_Billing__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>(OLD) ACH Fee</displayNameOverride>
+            <field>HelloSign_ACH_Fee__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Not Billing CW Reason</displayNameOverride>
+            <field>Not_Billing_CW_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Why BW Billing</displayNameOverride>
+            <field>Why_BW_Billing__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subsidy Tracking</displayNameOverride>
+            <field>Subsidy_Tracking__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Conversation Notes</displayNameOverride>
+            <field>Billing_Conversation_Notes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Intervals</displayNameOverride>
+            <field>Billing_Intervals__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Annual Amount</displayNameOverride>
+            <field>HelloSign_Annual_Amount__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Discovery Call Completed</displayNameOverride>
+            <field>First_Discovery_Call_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Processing Fee</displayNameOverride>
+            <field>HelloSign_Payment_Processing_Fee__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Demo Call Scheduled</displayNameOverride>
+            <field>Second_Discovery_Call_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Demo Call Completed</displayNameOverride>
+            <field>Billing_Demo_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Upsell Source</displayNameOverride>
+            <field>Billing_Upsell_Source__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Demo Follow Up Date</displayNameOverride>
+            <field>Demo_Follow_Up_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Name of Currently Active Sequence</displayNameOverride>
+            <field>Name_of_Currently_Active_Sequence__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Active Sequences</displayNameOverride>
+            <field>Number_of_Active_Sequences__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Monthly Spend</displayNameOverride>
+            <field>Monthly_Spend__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Sites</displayNameOverride>
+            <field>Number_of_Sites__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Verification Pending Date</displayNameOverride>
+            <field>Verification_Pending_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Onboarding</displayNameOverride>
+            <field>SaaS_Onboarding__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brightwheel School UUID</displayNameOverride>
+            <field>Brightwheel_School_UUID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Launch Date</displayNameOverride>
+            <field>Billing_Launch_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>x_Customer Billing Path</displayNameOverride>
+            <field>Customer_Billing_Path__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Closed Lost Reason</displayNameOverride>
+            <field>Billing_Closed_Lost_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Persona</displayNameOverride>
+            <field>Customer_Persona__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Close Date Push Count</displayNameOverride>
+            <field>Close_Date_Push_Count__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Close Date Pushed Reason</displayNameOverride>
+            <field>Close_Date_Pushed_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LOGIC_Apex_counter</displayNameOverride>
+            <field>LOGIC_Apex_counter__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Close Date</displayNameOverride>
+            <field>Previous_Close_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sales Neglected</displayNameOverride>
+            <field>Sales_Neglected__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Days Close Date Pushed</displayNameOverride>
+            <field>Days_Close_Date_Pushed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Offline Payer</displayNameOverride>
+            <field>SaaS_Offline_Payer__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Offline Contract Start Date</displayNameOverride>
+            <field>SaaS_Offline_Contract_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Offline Contract End Date</displayNameOverride>
+            <field>SaaS_Offline_Contract_End_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DM Status at Demo 1</displayNameOverride>
+            <field>DM_Status_at_Demo_1__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Decision Call Completed</displayNameOverride>
+            <field>Decision_Call_Completed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Decision Call Scheduled</displayNameOverride>
+            <field>Decision_Call_Scheduled__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Demo Call Completed</displayNameOverride>
+            <field>Demo_Call_Completed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Demo Call Scheduled</displayNameOverride>
+            <field>Demo_Call_Scheduled__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Discovery Call Completed</displayNameOverride>
+            <field>Discovery_Call_Completed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Discovery Call Scheduled</displayNameOverride>
+            <field>Discovery_Call_Scheduled__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Has Board</displayNameOverride>
+            <field>Has_Board__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Transfer Date</displayNameOverride>
+            <field>Last_Transfer_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sales Last Contacted</displayNameOverride>
+            <field>Sales_Last_Contacted__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Meetings Held</displayNameOverride>
+            <field>Number_of_Meetings_Held__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Meeting Held</displayNameOverride>
+            <field>First_Meeting_Held__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Demo Started</displayNameOverride>
+            <field>First_Demo_Started__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By Role</displayNameOverride>
+            <field>Created_By_Role__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Power of One</displayNameOverride>
+            <field>Power_of_One__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Days Since First Meeting Held</displayNameOverride>
+            <field>Days_Since_First_Meeting_Held__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Training Call Scheduled Date</displayNameOverride>
+            <field>Billing_1_1_Onboarding_Call_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Active User</displayNameOverride>
+            <field>Is_Active_User__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Primary Contact</displayNameOverride>
+            <field>Billing_Primary_Contact__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Status at CW</displayNameOverride>
+            <field>Billing_Status_at_CW__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Combined Funnel</displayNameOverride>
+            <field>Combined_Funnel__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Declined Billing Training Reason</displayNameOverride>
+            <field>Declined_Billing_Training_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Generator(s)</displayNameOverride>
+            <field>Gong__CurrentGenerators__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Delivery/Installation Status</displayNameOverride>
+            <field>Gong__DeliveryInstallationStatus__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Gong Count</displayNameOverride>
+            <field>Gong__Gong_Count__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Main Competitor(s)</displayNameOverride>
+            <field>Gong__MainCompetitors__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Order Number</displayNameOverride>
+            <field>Gong__OrderNumber__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tracking Number</displayNameOverride>
+            <field>Gong__TrackingNumber__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>App Owner Email</displayNameOverride>
+            <field>ringdna100__App_Owner_Email__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Call Attempts</displayNameOverride>
+            <field>ringdna100__Call_Attempts__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Generator(s)</displayNameOverride>
+            <field>ringdna100__CurrentGenerators__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Delivery/Installation Status</displayNameOverride>
+            <field>ringdna100__DeliveryInstallationStatus__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email Attempts</displayNameOverride>
+            <field>ringdna100__Email_Attempts__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Inbound Call</displayNameOverride>
+            <field>ringdna100__First_Inbound_Call__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Outbound Call</displayNameOverride>
+            <field>ringdna100__First_Outbound_Call__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Email Attempt</displayNameOverride>
+            <field>ringdna100__Last_Email_Attempt__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Inbound Call</displayNameOverride>
+            <field>ringdna100__Last_Inbound_Call__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Outbound Call</displayNameOverride>
+            <field>ringdna100__Last_Outbound_Call__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Source Detail</displayNameOverride>
+            <field>ringdna100__Lead_Source_Detail__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lending Tree Email First Time</displayNameOverride>
+            <field>ringdna100__LendingTreeEmailFirstTime__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Main Competitor(s)</displayNameOverride>
+            <field>ringdna100__MainCompetitors__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Order Number</displayNameOverride>
+            <field>ringdna100__OrderNumber__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Stage</displayNameOverride>
+            <field>ringdna100__Previous_Stage__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Response Type</displayNameOverride>
+            <field>ringdna100__Response_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>RingDNA Context</displayNameOverride>
+            <field>ringdna100__RingDNA_Context__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Time to First Dial (Minutes)</displayNameOverride>
+            <field>ringdna100__Time_to_First_Dial_Minutes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Time to First Response (Minutes)</displayNameOverride>
+            <field>ringdna100__Time_to_First_Response__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tracking Number</displayNameOverride>
+            <field>ringdna100__TrackingNumber__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stage Open First Time</displayNameOverride>
+            <field>ringdna100__stageOpenFirstTime__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Days Since Last Attempt (Call or Email)</displayNameOverride>
+            <field>ringdna100__Days_Since_Last_Attempt_Call_or_Email__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Time Since Last Call Attempt (Days)</displayNameOverride>
+            <field>ringdna100__Time_Since_Last_Call_Attempt_Days__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Time Since Last Call Attempt (Minutes)</displayNameOverride>
+            <field>ringdna100__Time_Since_Last_Call_Attempt_Minutes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Time Since Last Email Attempt (Days)</displayNameOverride>
+            <field>ringdna100__Time_Since_Last_Email_Attempt_Days__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Time Since Last Email Attempt (Minutes)</displayNameOverride>
+            <field>ringdna100__Time_Since_Last_Email_Attempt_Minutes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>JG Impersonate Link</displayNameOverride>
+            <field>JG_Impersonate_Link__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Upsell Call Scheduled</displayNameOverride>
+            <field>Billing_Upsell_Call_Scheduled__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Upsell Owner Last Connected</displayNameOverride>
+            <field>Billing_Upsell_Owner_Last_Connected__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Upsell Owner Last Contacted</displayNameOverride>
+            <field>Billing_Upsell_Owner_Last_Contacted__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ever Premium ECE</displayNameOverride>
+            <field>Ever_Premium_ECE__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Upsell Call Completed</displayNameOverride>
+            <field>Billing_Upsell_Call_Completed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Net New EC Customer?</displayNameOverride>
+            <field>Net_New_EC_Customer__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe Customer ID</displayNameOverride>
+            <field>Stripe_Customer_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>BNP 1:1 Intro Call Date</displayNameOverride>
+            <field>BNP_1_1_Intro_Call_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Target Launch Date - SaaS</displayNameOverride>
+            <field>Target_Launch_Date_SaaS__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Teachers</displayNameOverride>
+            <field>of_Teachers__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Total Staff</displayNameOverride>
+            <field>of_Total_Staff__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Discovery Call Scheduled</displayNameOverride>
+            <field>Billing_Discovery_Call_Scheduled__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Declined Billing Demo Reason</displayNameOverride>
+            <field>Declined_Billing_Demo_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Declined Billing Demo</displayNameOverride>
+            <field>Declined_Billing_Demo__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Price Match</displayNameOverride>
+            <field>Competitor_Price_Match__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Confirmed Processing Fees</displayNameOverride>
+            <field>Customer_Confirmed_Processing_Fees__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EIN/Bank Info Collected?</displayNameOverride>
+            <field>EIN_Bank_Info_Collected__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Target Billing Launch Timeframe</displayNameOverride>
+            <field>Target_Billing_Launch_Timeframe__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Country (School Object)</displayNameOverride>
+            <field>Country_School_Object__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CL Quoted Price</displayNameOverride>
+            <field>CL_Quoted_Price__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>List Price</displayNameOverride>
+            <field>List_Price__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Discount</displayNameOverride>
+            <field>Discount__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HotPass</displayNameOverride>
+            <field>HotPass__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>OBC Call Scheduled Date</displayNameOverride>
+            <field>OBC_Call_Scheduled_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>OBC Owner</displayNameOverride>
+            <field>OBC_Owner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bypass Validation Rule</displayNameOverride>
+            <field>Bypass_Validation_Rule__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Demo Path</displayNameOverride>
+            <field>Demo_Path__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HS Recent Conversion</displayNameOverride>
+            <field>HS_Recent_Conversion__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Source</displayNameOverride>
+            <field>Opportunity_Source__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Secondary Contact</displayNameOverride>
+            <field>Secondary_Contact__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Did you add parents?</displayNameOverride>
+            <field>Did_you_add_parents__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Did you add staff ?</displayNameOverride>
+            <field>Did_you_add_staff__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Did you add students?</displayNameOverride>
+            <field>Did_you_add_students__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Did you collect EIN/bank info?</displayNameOverride>
+            <field>Did_you_collect_EIN_bank_info__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date Time Closed By Screenflow</displayNameOverride>
+            <field>Date_Time_Closed_By_Screenflow__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Demo Call Set</displayNameOverride>
+            <field>Demo_Call_Set__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case Safe Opportunity ID</displayNameOverride>
+            <field>Case_Safe_Opportunity_ID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PD Closed Lost Reason</displayNameOverride>
+            <field>PD_Closed_Lost_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reason SSP was not added</displayNameOverride>
+            <field>Reason_SSP_was_not_added__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Was SSP added on call?</displayNameOverride>
+            <field>Was_SSP_added_on_call__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Was rate card captured?</displayNameOverride>
+            <field>Was_rate_card_captured__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pain Points of Current Solution</displayNameOverride>
+            <field>Pain_Points_of_Current_Solution__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Prof Dev Conversation Notes</displayNameOverride>
+            <field>Prof_Dev_Conversation_Notes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Professional Development Demo Scheduled</displayNameOverride>
+            <field>Professional_Development_Demo_Scheduled__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Professional Development Demo held</displayNameOverride>
+            <field>Professional_Development_Demo_held__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subscription Start Date</displayNameOverride>
+            <field>Subscription_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subscription end date</displayNameOverride>
+            <field>Subscription_end_date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>OBS Call Scheduled Date</displayNameOverride>
+            <field>OBS_Call_Scheduled_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary Onboarding Contact</displayNameOverride>
+            <field>Primary_Onboarding_Contact__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reason SSP was not added details</displayNameOverride>
+            <field>Reason_SSP_was_not_added_details__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sales Follow-up Call Scheduled Date</displayNameOverride>
+            <field>Sales_Follow_up_Call_Scheduled_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Upsell Opportunity Type</displayNameOverride>
+            <field>Billing_Upsell_Opportunity_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Path</displayNameOverride>
+            <field>Onboarding_Path__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Webinar Date</displayNameOverride>
+            <field>Onboarding_Webinar_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS 1:1 Onboarding Call Date</displayNameOverride>
+            <field>SaaS_1_1_Onboarding_Call_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CF - Onboarding Path</displayNameOverride>
+            <field>CF_Onboarding_Path__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Curriculum Method</displayNameOverride>
+            <field>Current_Purchased_Curriculum__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CF - Billing Call or Webinar Date</displayNameOverride>
+            <field>CF_Billing_Call_or_Webinar_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CF - Billing Call or Webinar Status</displayNameOverride>
+            <field>CF_Billing_Call_or_Webinar_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CF - Initial Setup Call Scheduled</displayNameOverride>
+            <field>CF_Initial_Setup_Call_Scheduled__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CF - Initial Setup Call Completed</displayNameOverride>
+            <field>CF_Initial_Setup_Call_Completed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CF - SaaS Training Call Scheduled</displayNameOverride>
+            <field>CF_SaaS_Training_Call_Scheduled__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CF - SaaS Training Call Completed</displayNameOverride>
+            <field>CF_SaaS_Training_Call_Completed__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>School Object Email Address</displayNameOverride>
+            <field>School_Object_Email_Address__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opp School UUID</displayNameOverride>
+            <field>Opp_School_UUID__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opp Primary Contact Email Address</displayNameOverride>
+            <field>Opp_Primary_Contact_Email_Address__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Webinar Date</displayNameOverride>
+            <field>Billing_Webinar_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Webinar 1 Date</displayNameOverride>
+            <field>Onboarding_Webinar_1_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Webinar 2 Scheduled Date</displayNameOverride>
+            <field>Onboarding_Webinar_2_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Declined SaaS Training</displayNameOverride>
+            <field>Declined_SaaS_Training__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner User Role</displayNameOverride>
+            <field>Owner_User_Role__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Days Since Last Contact</displayNameOverride>
+            <field>Days_Since_Last_Contact__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Days in Current Stage</displayNameOverride>
+            <field>Days_in_Current_Stage__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing CF Notes</displayNameOverride>
+            <field>Billing_CF_Notes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Onboarding Funnel Stage</displayNameOverride>
+            <field>Billing_Onboarding_Funnel_Stage__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Onboarding Status</displayNameOverride>
+            <field>Billing_Onboarding_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Postponed Reason</displayNameOverride>
+            <field>Billing_Postponed_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS CF Notes</displayNameOverride>
+            <field>SaaS_CF_Notes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Onboarding Funnel Stage</displayNameOverride>
+            <field>SaaS_Onboarding_Funnel_Stage__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Onboarding Status</displayNameOverride>
+            <field>SaaS_Onboarding_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Postponed Reason</displayNameOverride>
+            <field>SaaS_Postponed_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Verified Date</displayNameOverride>
+            <field>Billing_Verified_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Verification Status</displayNameOverride>
+            <field>Current_Verification_Status__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dollars Processed Online</displayNameOverride>
+            <field>Dollars_Processed_Online__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Online Payment Date</displayNameOverride>
+            <field>Last_Online_Payment_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Verification Started Date</displayNameOverride>
+            <field>Verification_Started_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Open Failed Payment Cases</displayNameOverride>
+            <field>Number_of_Open_Failed_Payment_Cases__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Open Cancel Request Cases</displayNameOverride>
+            <field>Number_of_Open_Cancel_Request_Cases__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Other Open Cases</displayNameOverride>
+            <field>Number_of_Other_Open_Cases__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Relaunch Date</displayNameOverride>
+            <field>Opportunity_Relaunch_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Upsell Auto Created</displayNameOverride>
+            <field>Upsell_Auto_Created__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Attachments</displayNameOverride>
+            <field>No_of_Attachments__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Government Grant/Subsidized/Sponsored</displayNameOverride>
+            <field>State_or_Government_Subsidized_Sponsored__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Email for Invoice</displayNameOverride>
+            <field>Additional_Email_for_Invoice__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By Role Snapshot</displayNameOverride>
+            <field>Created_By_Role_Snapshot__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner Role Snapshot</displayNameOverride>
+            <field>Owner_Role_Snapshot__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Qualified By Role Snapshot</displayNameOverride>
+            <field>Qualified_By_Role_Snapshot__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Premium ECE</displayNameOverride>
+            <field>Premium_Target_Updated_Definition__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Opp Billing Conversation Notes</displayNameOverride>
+            <field>Billing_Conversation_Notes_From_Saas__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Premium Target to Non-Target Date Stamp</displayNameOverride>
+            <field>Premium_Target_to_Non_Target_Date_Stamp__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Webinar Day</displayNameOverride>
+            <field>Onboarding_Webinar_Day__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Webinar Time</displayNameOverride>
+            <field>Onboarding_Webinar_Time__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Type</displayNameOverride>
+            <field>Customer_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First ISR Concierge Meeting Date</displayNameOverride>
+            <field>First_ISR_Concierge_Meeting_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Activation Date</displayNameOverride>
+            <field>Billing_Activation_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Add On Services</displayNameOverride>
+            <field>Add_On_Services__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract Start Date</displayNameOverride>
+            <field>Contract_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Deal Structure</displayNameOverride>
+            <field>Deal_Structure__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Launch Date</displayNameOverride>
+            <field>Launch_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>License Type</displayNameOverride>
+            <field>License_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous Partnerships</displayNameOverride>
+            <field>Previous_Partnerships__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Providing Devices for Schools?</displayNameOverride>
+            <field>Providing_Devices_for_Schools__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Term Length (Months)</displayNameOverride>
+            <field>Term_Length_Months__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Related Payer Account</displayNameOverride>
+            <field>Related_Payer_Account__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Parent Opportunity</displayNameOverride>
+            <field>Parent_Opportunity__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Billing Country</displayNameOverride>
+            <field>Account_Billing_Country__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Curriculum Other</displayNameOverride>
+            <field>Current_Curriculum_Other__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Curriculum</displayNameOverride>
+            <field>Current_Curriculum__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Interested in bw Learning?</displayNameOverride>
+            <field>Interested_in_bw_Learning__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Days in Stage</displayNameOverride>
+            <field>LeanData__Days_In_Stage__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reporting Opportunity Source</displayNameOverride>
+            <field>LeanData__Reporting_Opportunity_Source__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reporting Total Marketing Touches</displayNameOverride>
+            <field>LeanData__Reporting_Total_Marketing_Touches__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Routing Action</displayNameOverride>
+            <field>LeanData__Routing_Action__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>State Info</displayNameOverride>
+            <field>LeanData__Status_Info__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Segment</displayNameOverride>
+            <field>Customer_Segment__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Call Back Scheduled</displayNameOverride>
+            <field>Call_Back_Scheduled__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competitor Price Point (per month)</displayNameOverride>
+            <field>Competitor_Price_Point_per_month__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ACH Fee Max</displayNameOverride>
+            <field>ACH_Fee_Max__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Curriculum End Month</displayNameOverride>
+            <field>Curriculum_End_Month__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Curriculum Payment Type</displayNameOverride>
+            <field>Curriculum_Payment_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Curriculum Start Month</displayNameOverride>
+            <field>Curriculum_Start_Month__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>DM Connected?</displayNameOverride>
+            <field>DM_Connected__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Education Conversation Notes</displayNameOverride>
+            <field>Education_Conversation_Notes__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Experience Curriculum Demo Scheduled</displayNameOverride>
+            <field>Experience_Curriculum_Demo_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Connected Date</displayNameOverride>
+            <field>First_Connected_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pain Points of Current Curriculum</displayNameOverride>
+            <field>Pain_Points_of_Current_Curriculum__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pitch outcome</displayNameOverride>
+            <field>Pitch_outcome__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Experience Curriculum Demo Held</displayNameOverride>
+            <field>Experience_Curriculum_Demo_Held__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CF - OBS Owner</displayNameOverride>
+            <field>CF_OBS_Owner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ACH Fee Structure</displayNameOverride>
+            <field>ACH_Fee_Structure__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ACH Fee</displayNameOverride>
+            <field>ACH_Fee__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>W2 Not Eligible</displayNameOverride>
+            <field>W2_Not_Eligible__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Closed Lost Reason</displayNameOverride>
+            <field>Additional_Closed_Lost_Reason__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Winning Competitor</displayNameOverride>
+            <field>Winning_Competitor__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Organization</displayNameOverride>
+            <field>Organization__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Location</displayNameOverride>
+            <field>Location__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Licenses</displayNameOverride>
+            <field>Number_of_Licenses__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity Record Type</displayNameOverride>
+            <field>Opportunity_Record_Type__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Target Billing Start Date</displayNameOverride>
+            <field>Target_Billing_Start_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Expected # of Paying Students</displayNameOverride>
+            <field>of_Students_Processing_Tuition_Online__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>HS_Number_of_Sites__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AE_Owner__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Billing_Submit_Verify_Stage_Met_Date__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Total_Talk_Time__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EC_Previously_Purchased__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Team_at_CW_Snapshot__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Intent_Grouping__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Intent_Grouping_at_CW__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ADMIN_Tag__c</field>
+            <table>Opportunity</table>
+        </columns>
+        <masterLabel>Opportunities</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Attempt ID</displayNameOverride>
+            <field>Id</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Onboarding Attempt Name</displayNameOverride>
+            <field>Name</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Record Type</displayNameOverride>
+            <field>RecordType</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Activity Date</displayNameOverride>
+            <field>LastActivityDate</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
+            <field>Account__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Customer Type - Stamp</displayNameOverride>
+            <field>Account_Customer_Type_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Type - Stamp</displayNameOverride>
+            <field>Account_Type_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Activation Funnel Stage - Stamp</displayNameOverride>
+            <field>Billing_Activation_Funnel_Stage_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Onboarding Funnel Stage - Stamp</displayNameOverride>
+            <field>Billing_Onboarding_Funnel_Stage_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Onboarding Status - Stamp</displayNameOverride>
+            <field>Billing_Onboarding_Status_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Override Approved by Mgr - Stamp</displayNameOverride>
+            <field>Billing_Override_Approved_by_Mgr_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Override Reasoning - Stamp</displayNameOverride>
+            <field>Billing_Override_Reasoning_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Status at CW - Stamp</displayNameOverride>
+            <field>Billing_Status_at_CW_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brand New Program - Stamp</displayNameOverride>
+            <field>Brand_New_Program_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>Created_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Attempt Status</displayNameOverride>
+            <field>Onboarding_Attempt_Status_New__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Path - Stamp</displayNameOverride>
+            <field>Onboarding_Path_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Related Payer Account Type - Stamp</displayNameOverride>
+            <field>Related_Payer_Account_Type_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Activation Funnel Stage - Stamp</displayNameOverride>
+            <field>SaaS_Activation_Funnel_Stage_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Onboarding Funnel Stage - Stamp</displayNameOverride>
+            <field>SaaS_Onboarding_Funnel_Stage_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Onboarding Status - Stamp</displayNameOverride>
+            <field>SaaS_Onboarding_Status_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Override Approved by Mgr - Stamp</displayNameOverride>
+            <field>SaaS_Override_Approved_by_Mgr_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Override Reasoning - Stamp</displayNameOverride>
+            <field>SaaS_Override_Reasoning_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account AE Owner - Stamp</displayNameOverride>
+            <field>Account_AE_Owner_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account SaaS Owner - Stamp</displayNameOverride>
+            <field>Account_SaaS_Owner_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bill Rate Uploaded Date - Stamp</displayNameOverride>
+            <field>Bill_Rate_Uploaded_Date_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Activation Date - Stamp</displayNameOverride>
+            <field>Billing_Activation_Date_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Activation Override - Stamp</displayNameOverride>
+            <field>Billing_Activation_Override_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Activation Start Date - Stamp</displayNameOverride>
+            <field>Billing_Activation_Start_Date_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Adding Payers Stage Met - Stamp</displayNameOverride>
+            <field>Billing_Adding_Payers_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Addng Students Stage Met - Stamp</displayNameOverride>
+            <field>Billing_Addng_Students_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Complete SetUp Stage Met - Stamp</displayNameOverride>
+            <field>Billing_Complete_SetUp_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Onboarding Eligible Date - Stamp</displayNameOverride>
+            <field>Billing_Onboarding_Eligible_Date_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Online Payment Stage Met - Stamp</displayNameOverride>
+            <field>Billing_Online_Payment_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Override Reason - Stamp</displayNameOverride>
+            <field>Billing_Override_Reason_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Sending Bills Stage Met - Stamp</displayNameOverride>
+            <field>Billing_Sending_Bills_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing SetUp Bills Stage Met - Stamp</displayNameOverride>
+            <field>Billing_SetUp_Bills_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Submit Verify Stage Met - Stamp</displayNameOverride>
+            <field>Billing_Submit_Verify_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Training Call Completed - Stamp</displayNameOverride>
+            <field>Billing_Training_Call_Completed_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Training Call Scheduled - Stamp</displayNameOverride>
+            <field>Billing_Training_Call_Scheduled_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Upsell Owner - Stamp</displayNameOverride>
+            <field>Billing_Upsell_Owner_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Verify Complet Stage Met - Stamp</displayNameOverride>
+            <field>Billing_Verify_Complet_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brightwheel Organization UUID - Stamp</displayNameOverride>
+            <field>Brightwheel_Organization_UUID_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brightwheel School UUID - Stamp</displayNameOverride>
+            <field>Brightwheel_School_UUID_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancelation Case - Stamp</displayNameOverride>
+            <field>Cancelation_Case_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancelation Date - Stamp</displayNameOverride>
+            <field>Cancelation_Date_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed Date</displayNameOverride>
+            <field>Closed_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Combined Funnel Owner - Stamp</displayNameOverride>
+            <field>Combined_Funnel_Owner_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Combined Funnel</displayNameOverride>
+            <field>Combined_Funnel__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Days Since Closed Won - Stamp</displayNameOverride>
+            <field>Days_Since_Closed_Won_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># Days to Activate from CW - Stamp</displayNameOverride>
+            <field>Days_to_Activate_from_CW_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Initial Setup Call Completed - Stamp</displayNameOverride>
+            <field>Initial_Setup_Call_Completed_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Initial Setup Call Scheduled - Stamp</displayNameOverride>
+            <field>Initial_Setup_Call_Scheduled_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Sites - Stamp</displayNameOverride>
+            <field>Number_of_Sites_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Training Call Compl - Stamp</displayNameOverride>
+            <field>Onboarding_Training_Call_Compl_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Training Call Sched - Stamp</displayNameOverride>
+            <field>Onboarding_Training_Call_Sched_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Related Payer Account - Stamp</displayNameOverride>
+            <field>Related_Payer_Account_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Activation Date - Stamp</displayNameOverride>
+            <field>SaaS_Activation_Date_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Activation Override - Stamp</displayNameOverride>
+            <field>SaaS_Activation_Override_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Adding Parents Stage Met - Stamp</displayNameOverride>
+            <field>SaaS_Adding_Parents_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Adding Staff Stage Met Date - Stamp</displayNameOverride>
+            <field>SaaS_Adding_Staff_Stage_Met_Date_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Adding Students Stage Met - Stamp</displayNameOverride>
+            <field>SaaS_Adding_Students_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Funnel Start Date - Stamp</displayNameOverride>
+            <field>SaaS_Funnel_Start_Date_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Logging Actv Stage Met - Stamp</displayNameOverride>
+            <field>SaaS_Logging_Actv_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Onboarding Eligible Date - Stamp</displayNameOverride>
+            <field>SaaS_Onboarding_Eligible_Date_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Override Reason - Stamp</displayNameOverride>
+            <field>SaaS_Override_Reason_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Parents Signing Up Stge Met - Stamp</displayNameOverride>
+            <field>SaaS_Parents_Signing_Up_Stge_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Staff Logging In Stage Met - Stamp</displayNameOverride>
+            <field>SaaS_Staff_Logging_In_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Tracking Attennd Stage Met - Stamp</displayNameOverride>
+            <field>SaaS_Tracking_Attennd_Stage_Met_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Students at Bill Activation - Stamp</displayNameOverride>
+            <field>of_Students_at_Bill_Activation_Stamp__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account AE Owner</displayNameOverride>
+            <field>Account_AE_Owner__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Customer Type</displayNameOverride>
+            <field>Account_Customer_Type__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account SaaS Owner</displayNameOverride>
+            <field>Account_SaaS_Owner__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Type</displayNameOverride>
+            <field>Account_Type__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bill Rate Uploaded Date</displayNameOverride>
+            <field>Bill_Rate_Uploaded_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Activation Date</displayNameOverride>
+            <field>Billing_Activation_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Activation Funnel Stage</displayNameOverride>
+            <field>Billing_Activation_Funnel_Stage__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Activation Override</displayNameOverride>
+            <field>Billing_Activation_Override__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Activation Start Date</displayNameOverride>
+            <field>Billing_Activation_Start_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Adding Payers Stage Met Date</displayNameOverride>
+            <field>Billing_Adding_Payers_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Adding Students Stage Met Date</displayNameOverride>
+            <field>Billing_Adding_Students_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Complete Set-Up Stage Met Date</displayNameOverride>
+            <field>Billing_Complete_Set_Up_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Onboarding Eligible Date</displayNameOverride>
+            <field>Billing_Onboarding_Eligible_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Online Payments Stage Met Date</displayNameOverride>
+            <field>Billing_Online_Payments_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Override Approved by Manager</displayNameOverride>
+            <field>Billing_Override_Approved_by_Manager__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Override Reasoning</displayNameOverride>
+            <field>Billing_Override_Reasoning__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Sending Bills Stage Met Date</displayNameOverride>
+            <field>Billing_Sending_Bills_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Setting Up Bills Stage Met Date</displayNameOverride>
+            <field>Billing_Setting_Up_Bills_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Status at CW</displayNameOverride>
+            <field>Billing_Status_at_CW__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Submit Verify Stage Met Date</displayNameOverride>
+            <field>Billing_Submit_Verify_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Training Call Completed</displayNameOverride>
+            <field>Billing_Training_Call_Completed__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Training Call Scheduled</displayNameOverride>
+            <field>Billing_Training_Call_Scheduled__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Upsell Owner</displayNameOverride>
+            <field>Billing_Upsell_Owner__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Verify Complete Stage Met Date</displayNameOverride>
+            <field>Billing_Verify_Complete_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brand New Program</displayNameOverride>
+            <field>Brand_New_Program__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brightwheel Organization UUID</displayNameOverride>
+            <field>Brightwheel_Organization__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brightwheel School UUID</displayNameOverride>
+            <field>Brightwheel_School_UUID__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancelation Date</displayNameOverride>
+            <field>Cancelation_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case Cancelation Reason</displayNameOverride>
+            <field>Case_Cancelation_Reason__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Combined Funnel Owner</displayNameOverride>
+            <field>Combined_Funnel_Owner__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Days since CW</displayNameOverride>
+            <field>Days_since_CW__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># Days to Activate from CW</displayNameOverride>
+            <field>Days_to_Activate_from_CW__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Initial Setup Call Completed</displayNameOverride>
+            <field>Initial_Setup_Call_Completed__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Initial Setup Call Scheduled</displayNameOverride>
+            <field>Initial_Setup_Call_Scheduled__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Sites</displayNameOverride>
+            <field>Number_of_Sites__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>OB Attempt Record Type</displayNameOverride>
+            <field>OB_Attempt_Record_Type__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Path</displayNameOverride>
+            <field>Onboarding_Path__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Training Call Completed</displayNameOverride>
+            <field>Onboarding_Training_Call_Completed__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Training Call Scheduled</displayNameOverride>
+            <field>Onboarding_Training_Call_Scheduled__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Opportunity CW Date</displayNameOverride>
+            <field>Opportunity_CW_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Related Payer Account Type</displayNameOverride>
+            <field>Related_Payer_Account_Type__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Related Payer Account</displayNameOverride>
+            <field>Related_Payer_Account__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Activation Date</displayNameOverride>
+            <field>SaaS_Activation_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Activation Funnel Stage</displayNameOverride>
+            <field>SaaS_Activation_Funnel_Stage__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Activation Override</displayNameOverride>
+            <field>SaaS_Activation_Override__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Adding Parents Stage Met Date</displayNameOverride>
+            <field>SaaS_Adding_Parents_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Adding Staff Stage Met Date</displayNameOverride>
+            <field>SaaS_Adding_Staff_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Adding Students Stage Met Date</displayNameOverride>
+            <field>SaaS_Adding_Students_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Funnel Start Date</displayNameOverride>
+            <field>SaaS_Funnel_Start_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Logging Activities Stage Met Date</displayNameOverride>
+            <field>SaaS_Logging_Activities_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Onboarding Eligible Date</displayNameOverride>
+            <field>SaaS_Onboarding_Eligible_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Override Approved by Manager</displayNameOverride>
+            <field>SaaS_Override_Approved_by_Manager__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Override Reasoning</displayNameOverride>
+            <field>SaaS_Override_Reasoning__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Parents Signing Up Stage Met Date</displayNameOverride>
+            <field>SaaS_Parents_Signing_Up_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Staff Logging In Stage Met Date</displayNameOverride>
+            <field>SaaS_Staff_Logging_In_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Tracking Attendance Stage Met Date</displayNameOverride>
+            <field>SaaS_Tracking_Attendance_Stage_Met_Date__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Students at Billing Activation</displayNameOverride>
+            <field>of_Students_at_Billing_Activation__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Power of One</displayNameOverride>
+            <field>Power_of_One__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date_of_Billing_Override_Denial__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Date_of_SaaS_Override_Denial__c</field>
+            <table>Opportunity.Onboarding_Attempts__r</table>
+        </columns>
+        <masterLabel>Onboarding Attempts</masterLabel>
+    </sections>
+</ReportType>

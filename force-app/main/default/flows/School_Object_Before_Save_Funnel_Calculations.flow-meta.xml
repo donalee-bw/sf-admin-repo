@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Billing_Funnel_Decision</name>
+        <label>Billing Funnel Decision</label>
+        <locationX>1238</locationX>
+        <locationY>923</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>To_9_Activated</name>
+            <conditionLogic>1 OR 2 OR (3 AND 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_Billing_Activation_Funnel__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Date_2024__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Date_2024__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_to_Activated</targetReference>
+            </connector>
+            <label>To (9) Activated</label>
+        </rules>
+        <rules>
+            <name>To_8_Receiving_Online_Payments</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_Billing_Activation_Funnel__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Receiving Online Payments</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_to_Receiving_Online_Payments</targetReference>
+            </connector>
+            <label>To (8) Receiving Online Payments</label>
+        </rules>
+        <rules>
+            <name>To_7_Sending_Bills</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_Billing_Activation_Funnel__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sending Bills</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_to_Sending_Bills</targetReference>
+            </connector>
+            <label>To (7) Sending Bills</label>
+        </rules>
+        <rules>
+            <name>To_6_Adding_Payers</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_Billing_Activation_Funnel__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Adding Payers</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_to_Adding_Payers</targetReference>
+            </connector>
+            <label>To (6) Adding Payers</label>
+        </rules>
+        <rules>
+            <name>To_5_Finalizing_Verification</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_Billing_Activation_Funnel__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Finalizing Verification</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_to_Finalizing_Verification</targetReference>
+            </connector>
+            <label>To (5) Finalizing Verification</label>
+        </rules>
+        <rules>
+            <name>To_4_Completing_Bill_Set_Up</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_Billing_Activation_Funnel__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Completing Bill Set-Up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_to_Completing_Bill_Set_Up</targetReference>
+            </connector>
+            <label>To (4) Completing Bill Set-Up</label>
+        </rules>
+        <rules>
+            <name>To_3_Submitting_Verification</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_Billing_Activation_Funnel__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Submitting Verification</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_to_Submitting_Verification</targetReference>
+            </connector>
+            <label>To (3) Submitting Verification</label>
+        </rules>
+        <rules>
+            <name>To_2_Setting_Up_Bills</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_Billing_Activation_Funnel__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Setting Up Bills</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_to_Setting_Up_Bills</targetReference>
+            </connector>
+            <label>To (2) Setting Up Bills</label>
+        </rules>
+        <rules>
+            <name>To_1_Adding_Students2</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_Billing_Activation_Funnel__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Adding Students</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Billing_to_Adding_Students</targetReference>
+            </connector>
+            <label>To (1) Adding Students</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Billing_Funnel_Metrics_Updated_decision</name>
+        <label>Billing Funnel Metrics Updated decision</label>
+        <locationX>1964</locationX>
+        <locationY>815</locationY>
+        <defaultConnectorLabel>Move On</defaultConnectorLabel>
+        <rules>
+            <name>Hit_Billing_Funnel</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>forBillingFunnelChange</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Billing_Funnel_Decision</targetReference>
+            </connector>
+            <label>Hit Billing Funnel</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>SaaS_Funnel_Decision</name>
+        <label>SaaS Funnel Decision</label>
+        <locationX>1348</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Billing_Funnel_Metrics_Updated_decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>To_8_Activated</name>
+            <conditionLogic>1 OR 2 OR (3 AND 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Calculated_SaaS_Activation_Funnel_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Date_2024__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Date_2024__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SaaS_to_Activated</targetReference>
+            </connector>
+            <label>To (8) Activated</label>
+        </rules>
+        <rules>
+            <name>To_Logging_Activities_or_Messages</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_SaaS_Activation_Funnel_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Logging Activities or Messages</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SaaS_to_Logging_Activities_or_Messages</targetReference>
+            </connector>
+            <label>To (7) Logging Activities or Messages</label>
+        </rules>
+        <rules>
+            <name>To_Tracking_Attendance</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_SaaS_Activation_Funnel_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Tracking Attendance</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SaaS_to_Tracking_Attendance</targetReference>
+            </connector>
+            <label>To (6) Tracking Attendance</label>
+        </rules>
+        <rules>
+            <name>To_Parents_Signing_Up</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_SaaS_Activation_Funnel_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Parents Signing Up</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SaaS_to_Parents_Signing_Up</targetReference>
+            </connector>
+            <label>To (5) Parents Signing Up</label>
+        </rules>
+        <rules>
+            <name>To_4_Staff_Logging_In</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_SaaS_Activation_Funnel_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Staff Logging In</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Update_SaaS_to_Parents_Signing_Up</targetReference>
+            </connector>
+            <label>To (4) Staff Logging In</label>
+        </rules>
+        <rules>
+            <name>To_3_Adding_Staff</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_SaaS_Activation_Funnel_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Adding Staff</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SaaS_to_Adding_Staff</targetReference>
+            </connector>
+            <label>To (3) Adding Staff</label>
+        </rules>
+        <rules>
+            <name>To_2_Adding_Parents</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_SaaS_Activation_Funnel_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Adding Parents</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SaaS_to_Adding_Parents</targetReference>
+            </connector>
+            <label>To (2) Adding Parents</label>
+        </rules>
+        <rules>
+            <name>To_1_Adding_Students</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Calculated_SaaS_Activation_Funnel_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Adding Students</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_SaaS_to_Adding_Students</targetReference>
+            </connector>
+            <label>To (1) Adding Students</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>SaaS_Funnel_Metrics_Updated_decision</name>
+        <label>SaaS Funnel Metrics Updated decision</label>
+        <locationX>1964</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Billing_Funnel_Metrics_Updated_decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Move On</defaultConnectorLabel>
+        <rules>
+            <name>Hit_SaaS_Funnel</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>forSaaSFunnelChange</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SaaS_Funnel_Decision</targetReference>
+            </connector>
+            <label>Hit SaaS Funnel</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>forBillingFunnelChange</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+  OR(
+IsNEW(),
+ISCHANGED({!$Record.Payers_with_1_Online_Payment_Made__c}),
+ISCHANGED({!$Record.Applied_Bill_Plans_Sent_to_Payers__c}),
+ISCHANGED({!$Record.Active_Students_with_Payment_Method__c}),
+ISCHANGED({!$Record.Billing_Verification_Submitted__c}),
+ISCHANGED({!$Record.Active_Students_with_Billing_Ratio__c}),
+ISCHANGED({!$Record.Billing_Verification_Approved__c}),
+ISCHANGED({!$Record.Bill_Plans_or_Charges_Applied__c}),
+ISCHANGED({!$Record.Current_Enrollment_Active_Percentage__c}),
+ISCHANGED({!$Record.of_Total_Staff__c}),
+ISCHANGED({!$Record.Billing_Adding_Payers_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Adding_Students_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Complete_Set_Up_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Online_Payments_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Sending_Bills_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Setting_Up_Bills_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Submit_Verify_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_FinalVerification_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Activation_Date_2024__c})
+ )
+,TRUE,FALSE)</expression>
+    </formulas>
+    <formulas>
+        <name>forSaaSFunnelChange</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+  OR(
+IsNEW(),
+ISCHANGED({!$Record.Current_Enrollment_Active_Percentage__c}),
+ISCHANGED({!$Record.Active_Students_with_1_Guardian_Added__c}),
+ISCHANGED({!$Record.Staff_Profiles_Created_Percentage__c}),
+ISCHANGED({!$Record.Invited_Staff_with_1_Login_Percentage__c}),
+ISCHANGED({!$Record.Invited_Parents_with_1_Login_Percentage__c}),
+ISCHANGED({!$Record.Tracking_Attendance_Average__c}),
+ISCHANGED({!$Record.Logging_Actions_Average__c}),
+ISCHANGED({!$Record.SaaS_Activation_Date_2024__c}),
+ISCHANGED({!$Record.SaaS_Adding_Parents_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Adding_Staff_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Adding_Students_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Logging_Activities_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Parents_Signing_Up_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Staff_Logging_In_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Tracking_Attendance_Stage_Met_Date__c})
+    ),TRUE,FALSE)</expression>
+    </formulas>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>School Object - Before Save - Funnel Calculations {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>School Object - Before Save - Funnel Calculations</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Copy_1_of_Update_SaaS_to_Parents_Signing_Up</name>
+        <label>Update SaaS to Parents Signing Up</label>
+        <locationX>1348</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Billing_Funnel_Metrics_Updated_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Staff Logging In</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>4.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_to_Activated</name>
+        <label>Update Billing to Activated</label>
+        <locationX>50</locationX>
+        <locationY>1031</locationY>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Activated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>9.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_to_Adding_Payers</name>
+        <label>Update Billing to Adding Payers</label>
+        <locationX>842</locationX>
+        <locationY>1031</locationY>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Adding Payers</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>6.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_to_Adding_Students</name>
+        <label>Update Billing to Adding Students</label>
+        <locationX>2162</locationX>
+        <locationY>1031</locationY>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Adding Students</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_to_Completing_Bill_Set_Up</name>
+        <label>Update Billing to Completing Bill Set-Up</label>
+        <locationX>1370</locationX>
+        <locationY>1031</locationY>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Completing Bill Set-Up</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>4.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_to_Finalizing_Verification</name>
+        <label>Update Billing to Finalizing Verification</label>
+        <locationX>1106</locationX>
+        <locationY>1031</locationY>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Finalizing Verification</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>5.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_to_Receiving_Online_Payments</name>
+        <label>Update Billing to Receiving Online Payments</label>
+        <locationX>314</locationX>
+        <locationY>1031</locationY>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Receiving Online Payments</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>8.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_to_Sending_Bills</name>
+        <label>Update Billing to Sending Bills</label>
+        <locationX>578</locationX>
+        <locationY>1031</locationY>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Sending Bills</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>7.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_to_Setting_Up_Bills</name>
+        <label>Update Billing to Setting Up Bills</label>
+        <locationX>1898</locationX>
+        <locationY>1031</locationY>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Setting Up Bills</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Billing_to_Submitting_Verification</name>
+        <label>Update Billing to Submitting Verification</label>
+        <locationX>1634</locationX>
+        <locationY>1031</locationY>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Submitting Verification</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Billing_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_SaaS_to_Activated</name>
+        <label>Update SaaS to Activated</label>
+        <locationX>292</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Billing_Funnel_Metrics_Updated_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Activated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>8.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_SaaS_to_Adding_Parents</name>
+        <label>Update SaaS to Adding Parents</label>
+        <locationX>1876</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Billing_Funnel_Metrics_Updated_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Adding Parents</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_SaaS_to_Adding_Staff</name>
+        <label>Update SaaS to Adding Staff</label>
+        <locationX>1612</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Billing_Funnel_Metrics_Updated_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Adding Staff</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>3.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_SaaS_to_Adding_Students</name>
+        <label>Update SaaS to Adding Students</label>
+        <locationX>2140</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Billing_Funnel_Metrics_Updated_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Adding Students</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_SaaS_to_Logging_Activities_or_Messages</name>
+        <label>Update SaaS to Logging Activities or Messages</label>
+        <locationX>556</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Billing_Funnel_Metrics_Updated_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Logging Activities or Messages</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>7.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_SaaS_to_Parents_Signing_Up</name>
+        <label>Update SaaS to Parents Signing Up</label>
+        <locationX>1084</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Billing_Funnel_Metrics_Updated_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Parents Signing Up</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>5.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_SaaS_to_Tracking_Attendance</name>
+        <label>Update SaaS to Tracking Attendance</label>
+        <locationX>820</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Billing_Funnel_Metrics_Updated_decision</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Stage_2024__c</field>
+            <value>
+                <stringValue>Tracking Attendance</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>SaaS_Activation_Funnel_Value_2024__c</field>
+            <value>
+                <numberValue>6.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1838</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>SaaS_Funnel_Metrics_Updated_decision</targetReference>
+        </connector>
+        <filterFormula>OR(
+IsNEW(),
+ISCHANGED({!$Record.Current_Enrollment_Active_Percentage__c}),
+ISCHANGED({!$Record.Active_Students_with_1_Guardian_Added__c}),
+ISCHANGED({!$Record.Staff_Profiles_Created_Percentage__c}),
+ISCHANGED({!$Record.Invited_Staff_with_1_Login_Percentage__c}),
+ISCHANGED({!$Record.Invited_Parents_with_1_Login_Percentage__c}),
+ISCHANGED({!$Record.Tracking_Attendance_Average__c}),
+ISCHANGED({!$Record.Logging_Actions_Average__c}),
+ISCHANGED({!$Record.SaaS_Activation_Date_2024__c}),
+ISCHANGED({!$Record.SaaS_Adding_Parents_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Adding_Staff_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Adding_Students_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Logging_Activities_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Parents_Signing_Up_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Staff_Logging_In_Stage_Met_Date__c}),
+ISCHANGED({!$Record.SaaS_Tracking_Attendance_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Payers_with_1_Online_Payment_Made__c}),
+ISCHANGED({!$Record.Applied_Bill_Plans_Sent_to_Payers__c}),
+ISCHANGED({!$Record.Active_Students_with_Payment_Method__c}),
+ISCHANGED({!$Record.Billing_Verification_Submitted__c}),
+ISCHANGED({!$Record.Active_Students_with_Billing_Ratio__c}),
+ISCHANGED({!$Record.Billing_Verification_Approved__c}),
+ISCHANGED({!$Record.Bill_Plans_or_Charges_Applied__c}),
+ISCHANGED({!$Record.Current_Enrollment_Active_Percentage__c}),
+ISCHANGED({!$Record.of_Total_Staff__c}),
+ISCHANGED({!$Record.Billing_Adding_Payers_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Adding_Students_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Complete_Set_Up_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Online_Payments_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Sending_Bills_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Setting_Up_Bills_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Submit_Verify_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_FinalVerification_Stage_Met_Date__c}),
+ISCHANGED({!$Record.Billing_Activation_Date_2024__c})
+)</filterFormula>
+        <object>School_Object__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>500</triggerOrder>
+    <variables>
+        <name>varTempSchoolObject</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>School_Object__c</objectType>
+    </variables>
+    <variables>
+        <name>varUpdateSchoolObject</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

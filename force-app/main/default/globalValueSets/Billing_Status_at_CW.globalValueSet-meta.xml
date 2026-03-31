@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Opted In</fullName>
+        <default>false</default>
+        <label>Opted In</label>
+    </customValue>
+    <customValue>
+        <fullName>Soft Opt Out</fullName>
+        <default>false</default>
+        <label>Soft Opt Out</label>
+    </customValue>
+    <customValue>
+        <fullName>Hard Opt Out</fullName>
+        <default>false</default>
+        <label>Hard Opt Out</label>
+    </customValue>
+    <customValue>
+        <fullName>Not for Sales - Cancelled SaaS</fullName>
+        <default>false</default>
+        <label>Not for Sales - Cancelled SaaS</label>
+    </customValue>
+    <customValue>
+        <fullName>Passed to Upsell</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Passed to Upsell</label>
+    </customValue>
+    <customValue>
+        <fullName>Closed Won During Demo</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Closed Won During Demo</label>
+    </customValue>
+    <customValue>
+        <fullName>Opted Out</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Opted Out</label>
+    </customValue>
+    <masterLabel>Billing Status at CW</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

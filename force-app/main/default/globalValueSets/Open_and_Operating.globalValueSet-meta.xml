@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Yes, we are open and enrolling</fullName>
+        <default>false</default>
+        <label>Yes, we are open and enrolling</label>
+    </customValue>
+    <customValue>
+        <fullName>No, we are opening within the next 3 months</fullName>
+        <default>false</default>
+        <label>No, we are opening within the next 3 months</label>
+    </customValue>
+    <customValue>
+        <fullName>No, we are opening in more than 3 months</fullName>
+        <default>false</default>
+        <label>No, we are opening in more than 3 months</label>
+    </customValue>
+    <customValue>
+        <fullName>Yes</fullName>
+        <default>false</default>
+        <label>Yes</label>
+    </customValue>
+    <customValue>
+        <fullName>No</fullName>
+        <default>false</default>
+        <label>No</label>
+    </customValue>
+    <masterLabel>Open and Operating</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

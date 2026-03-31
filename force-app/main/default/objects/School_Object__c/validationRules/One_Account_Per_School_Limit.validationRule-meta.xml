@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>One_Account_Per_School_Limit</fullName>
+    <active>true</active>
+    <description>Ensures that each school record is limited to a single associated account.</description>
+    <errorConditionFormula>AND(
+NOT($User.ProfileId = &apos;00e1I000001rqxt&apos;) /* System Admin */,
+ISCHANGED(LOGIC_associated_accounts__c),
+LOGIC_associated_accounts__c &gt; 1,
+NOT(PRIORVALUE(LOGIC_associated_accounts__c) &gt; 1)
+)</errorConditionFormula>
+    <errorMessage>This school record already has an associated account. A school record can only be linked to one account.</errorMessage>
+</ValidationRule>

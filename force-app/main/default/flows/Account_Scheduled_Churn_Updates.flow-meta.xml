@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>If there are any CW Saas Opp that have closed in the last 7 days</description>
+        <name>Is_there_Sass_CW_Oppty_Last_7_days</name>
+        <label>Is there Sass CW Oppty Last 7 days</label>
+        <locationX>176</locationX>
+        <locationY>360</locationY>
+        <defaultConnector>
+            <targetReference>Update_Account_to_Cancelled_Customer</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Do_nothing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Saas_CW_Oppty</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>SaasCWOpptyClosedLast7Days</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Yes - Do nothing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Update_Account_to_Cancelled_Customer</name>
+        <label>Update Account to Cancelled Customer?</label>
+        <locationX>374</locationX>
+        <locationY>468</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Update_Account_to_Cancelled_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Official_Date_of_Churn__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Brightwheel_Plan__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Type_To_Cancelled_Customer</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Identifies accounts that have officially churned but are still showing as &quot;Customer&quot; and update their type to &quot;Cancelled Customer&quot;.
+05/15/24 - PE - Added logic to double-check if the account type is not Premium before updating it to Cancelled Customer
+05/28/24 - PE - Tweaked entry criteria to not run on accounts where plan = Trialing.
+09/18/2024 - LK - Updated to exclude previously churned customer with a Saas Closed Won Opportunity in the last 7 days.
+05/20/25 - AC - Removed Account Status from entry criteria.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forT_AdminTag</name>
+        <dataType>String</dataType>
+        <expression>TEXT({!$Flow.CurrentDate}) &amp; &quot; PE - Churn Flow&quot;</expression>
+    </formulas>
+    <formulas>
+        <description>Checking to see if the related Saas opportunity was closed in the last 7 days.</description>
+        <name>SaasCWOpptyClosedLast7Days</name>
+        <dataType>Boolean</dataType>
+        <expression>{!Get_Saas_CW_Oppty.CloseDate} &gt;= TODAY() - 7</expression>
+    </formulas>
+    <interviewLabel>Account - Scheduled - Churn Updates {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - Scheduled - Churn Updates</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get all Saas closed Won Opportunity records related to the $Account. Only need the latest Saas CW Oppty record - so we included any churned customers that have the previously cancellation dates/data but have become customers again. We want to exclude these account records from being updated to Cancelled Customers.</description>
+        <name>Get_Saas_CW_Oppty</name>
+        <label>Get Saas CW Oppty</label>
+        <locationX>176</locationX>
+        <locationY>252</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_there_Sass_CW_Oppty_Last_7_days</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SaaS</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <sortField>CloseDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Account_Type_To_Cancelled_Customer</name>
+        <label>Update Account Type To Cancelled Customer</label>
+        <locationX>242</locationX>
+        <locationY>576</locationY>
+        <inputAssignments>
+            <field>ADMIN_Tag__c</field>
+            <value>
+                <elementReference>forT_AdminTag</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Cancelled Customer</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Saas_CW_Oppty</targetReference>
+        </connector>
+        <filterLogic>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8 AND 9 AND 10</filterLogic>
+        <filters>
+            <field>Official_Date_of_Churn__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Customer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Customer_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Enterprise</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Customer_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Government Payer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Customer_Segment__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Enterprise</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Related_Payer_Customer_Type__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Government Payer</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>BW_Customer_Product_Listing__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>EC Customer Only</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Offline_Payer__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Brightwheel_Plan__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Premium</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Brightwheel_Plan__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Trialing</stringValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2024-04-25</startDate>
+            <startTime>05:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

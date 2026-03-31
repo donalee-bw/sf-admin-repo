@@ -1,0 +1,1357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Case</baseObject>
+    <category>activities</category>
+    <deployed>true</deployed>
+    <description>Cases w/ Lookups</description>
+    <label>Cases w/ Lookups</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case ID</displayNameOverride>
+            <field>Id</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Case Number</displayNameOverride>
+            <field>CaseNumber</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact Name</displayNameOverride>
+            <field>Contact</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name</displayNameOverride>
+            <field>Account</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset</displayNameOverride>
+            <field>Asset</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Business Hours</displayNameOverride>
+            <field>BusinessHours</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Parent Case</displayNameOverride>
+            <field>Parent</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Web Name</displayNameOverride>
+            <field>SuppliedName</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Web Email</displayNameOverride>
+            <field>SuppliedEmail</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Web Phone</displayNameOverride>
+            <field>SuppliedPhone</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Web Company</displayNameOverride>
+            <field>SuppliedCompany</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Type</displayNameOverride>
+            <field>Type</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case Record Type</displayNameOverride>
+            <field>RecordType</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>Status</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancel Category</displayNameOverride>
+            <field>Reason</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case Origin</displayNameOverride>
+            <field>Origin</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Language</displayNameOverride>
+            <field>Language</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subject</displayNameOverride>
+            <field>Subject</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Priority</displayNameOverride>
+            <field>Priority</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Description</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed</displayNameOverride>
+            <field>IsClosed</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date/Time Closed</displayNameOverride>
+            <field>ClosedDate</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Escalated</displayNameOverride>
+            <field>IsEscalated</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Closed When Created</displayNameOverride>
+            <field>IsClosedOnCreate</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date/Time Opened</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case Owner Override</displayNameOverride>
+            <field>Case_Owner_Override__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancelation Request Reason</displayNameOverride>
+            <field>Cancellation_Reason__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subscription Type</displayNameOverride>
+            <field>Subscription_Type__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>At-Risk Type</displayNameOverride>
+            <field>At_Risk_Type__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Previous MRR</displayNameOverride>
+            <field>Previous_MRR__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Type</displayNameOverride>
+            <field>Coupon_Type__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Offline Payer</displayNameOverride>
+            <field>SaaS_Offline_Payer__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Offline Contract Start Date</displayNameOverride>
+            <field>SaaS_Offline_Contract_Start_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Call Complete</displayNameOverride>
+            <field>Onboarding_Call_Complete__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancelation - Competitor</displayNameOverride>
+            <field>Cancellation_Competitor__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Competition Type</displayNameOverride>
+            <field>Competition_Type__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Retention - Product Feature(s)</displayNameOverride>
+            <field>Retention_Product_Feature_s__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Save Tactic Executed</displayNameOverride>
+            <field>Save_Tactic_Executed__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date of Cancelation Request</displayNameOverride>
+            <field>Date_of_Cancellation_Request__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date of Cancelation/Save</displayNameOverride>
+            <field>Date_of_Cancellation_Save__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date of Return</displayNameOverride>
+            <field>Date_of_Return__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancelation Type</displayNameOverride>
+            <field>Cancellation_Type__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Implementation Status</displayNameOverride>
+            <field>Implementation_Status__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Missing Features - Details</displayNameOverride>
+            <field>Missing_Features_Details__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Re-Start Date</displayNameOverride>
+            <field>Billing_Re_Start_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Retention Follow-Up Date</displayNameOverride>
+            <field>Billing_Retention_Follow_Up_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Original Close Date</displayNameOverride>
+            <field>Original_Close_Date2__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Monthly Spend Per Site</displayNameOverride>
+            <field>Monthly_Spend_Per_Site2__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Implementation Status</displayNameOverride>
+            <field>Implementation_Status2__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding Call Complete</displayNameOverride>
+            <field>Onboarding_Call_Complete2__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Related Payer Account</displayNameOverride>
+            <field>Related_Payer_Account__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Engineering Req Number</displayNameOverride>
+            <field>ringdna__EngineeringReqNumber__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Potential Liability</displayNameOverride>
+            <field>ringdna__PotentialLiability__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product</displayNameOverride>
+            <field>ringdna__Product__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SLA Violation</displayNameOverride>
+            <field>ringdna__SLAViolation__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Check-in Date</displayNameOverride>
+            <field>Check_in_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Onboarding / Support Call Date</displayNameOverride>
+            <field>Onboarding_Support_Call_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Forms of Payment Accepted</displayNameOverride>
+            <field>Other_Forms_of_Payment_Accepted__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reason for Being Stuck Utilizing Billing</displayNameOverride>
+            <field>Reason_for_Being_Stuck_Utilizing_Billing__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner Calendar Link</displayNameOverride>
+            <field>Owner_Calendar_Link__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride># of Subsidized Students</displayNameOverride>
+            <field>of_Subsidized_Students__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Secondary reason holding you back?</displayNameOverride>
+            <field>Secondary_reason_holding_you_back__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Retention Call Completed</displayNameOverride>
+            <field>Retention_Call_Completed__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Retention Call Scheduled</displayNameOverride>
+            <field>Retention_Call_Scheduled__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe amount due</displayNameOverride>
+            <field>Stripe_amount_due__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe attempt count</displayNameOverride>
+            <field>Stripe_attempt_count__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe brand</displayNameOverride>
+            <field>Stripe_brand__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe customer ID</displayNameOverride>
+            <field>Stripe_customer_ID__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe failure code</displayNameOverride>
+            <field>Stripe_failure_code__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe failure message</displayNameOverride>
+            <field>Stripe_failure_message__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe funding</displayNameOverride>
+            <field>Stripe_funding__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe invoice ID</displayNameOverride>
+            <field>Stripe_invoice_ID__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe invoice email</displayNameOverride>
+            <field>Stripe_invoice_email__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe reason</displayNameOverride>
+            <field>Stripe_reason__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe seller message</displayNameOverride>
+            <field>Stripe_seller_message__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe link</displayNameOverride>
+            <field>Stripe_link__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Sequence Status</displayNameOverride>
+            <field>Current_Sequence_Status__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Migrated Date</displayNameOverride>
+            <field>Billing_Migrated_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>School Revenue Status</displayNameOverride>
+            <field>School_Revenue_Status__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brightwheel Organization UUID</displayNameOverride>
+            <field>Brightwheel_Organization_UUID__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Next Steps</displayNameOverride>
+            <field>Customer_Next_Steps__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Promotion Offered</displayNameOverride>
+            <field>Promotion_Offered__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>COVID-19 Notes</displayNameOverride>
+            <field>COVID_19_Notes__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>COVID-19 Reopen Date</displayNameOverride>
+            <field>COVID_19_Reopen_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Next Call Date</displayNameOverride>
+            <field>Next_Call_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Follow-Up Needed</displayNameOverride>
+            <field>Follow_Up_Needed__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Sites</displayNameOverride>
+            <field>Number_of_Sites__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Remote Engagement Notes</displayNameOverride>
+            <field>Remote_Engagement_Notes__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Churn Risk Level</displayNameOverride>
+            <field>Churn_Risk_Level__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Biggest Challenges</displayNameOverride>
+            <field>Biggest_Challenges__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Ways Brightwheel Can Support</displayNameOverride>
+            <field>Additional_Ways_Brightwheel_Can_Support__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Sites Impacted</displayNameOverride>
+            <field>Number_of_Sites_Impacted__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Excluded Reason</displayNameOverride>
+            <field>Excluded_Reason__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pause/Cancel Request Status</displayNameOverride>
+            <field>Pause_Cancel_Request_Status__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Type</displayNameOverride>
+            <field>Account_Type__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account State</displayNameOverride>
+            <field>Account_State__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Country</displayNameOverride>
+            <field>Account_Country__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Parent Account</displayNameOverride>
+            <field>Parent_Account__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Billing Funnel Status</displayNameOverride>
+            <field>Account_Billing_Funnel_Status__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Coupon</displayNameOverride>
+            <field>Current_Coupon__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Customer Type</displayNameOverride>
+            <field>Account_Customer_Type__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner Email</displayNameOverride>
+            <field>Owner_Email__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner First Name</displayNameOverride>
+            <field>Owner_First_Name__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner Last Name</displayNameOverride>
+            <field>Owner_Last_Name__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>School Phone</displayNameOverride>
+            <field>School_Phone__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brightwheel School UUID</displayNameOverride>
+            <field>Brightwheel_School_UUID__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Recently Expired Coupon</displayNameOverride>
+            <field>Recently_Expired_Coupon__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Center Operating Status</displayNameOverride>
+            <field>Current_Center_Operating_Status__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Remote Family Engagement Method</displayNameOverride>
+            <field>Remote_Family_Engagement_Method__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dollars Processed Online</displayNameOverride>
+            <field>Dollars_Processed_Online__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>x_COVID is Primary Driver</displayNameOverride>
+            <field>COVID_is_Primary_Driver__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LOGIC Non Target Retention</displayNameOverride>
+            <field>LOGIC_Non_Target_Retention__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LOGIC Owned by queue</displayNameOverride>
+            <field>LOGIC_Owned_by_queue__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Primary reason holding you back?</displayNameOverride>
+            <field>What_s_holding_you_back__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Web First Name</displayNameOverride>
+            <field>Web_First_Name__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Monthly Spend</displayNameOverride>
+            <field>Monthly_Spend__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Name of Currently Active Sequence</displayNameOverride>
+            <field>Name_of_Currently_Active_Sequence__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Sequence Step Number</displayNameOverride>
+            <field>Current_Sequence_Step_Number__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Sequence User SFDC ID</displayNameOverride>
+            <field>Current_Sequence_User_SFDC_ID__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Number of Active Sequences</displayNameOverride>
+            <field>Number_of_Active_Sequences__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contract</displayNameOverride>
+            <field>Contract__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Activity Date</displayNameOverride>
+            <field>Last_Activity_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>COVID is Primary Driver</displayNameOverride>
+            <field>COVID_is_Primary_Driver_2__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Process Base Time</displayNameOverride>
+            <field>Process_Base_Time__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner Outreach meeting link</displayNameOverride>
+            <field>Owner_Outreach_meeting_link__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Offline Contract End Date</displayNameOverride>
+            <field>SaaS_Offline_Contract_End_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Date Opened</displayNameOverride>
+            <field>Date_Opened__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe ACH Status</displayNameOverride>
+            <field>Stripe_ACH_Status__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe Bank Id</displayNameOverride>
+            <field>Stripe_Bank_Id__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stripe account email</displayNameOverride>
+            <field>Stripe_account_email__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancel Billing?</displayNameOverride>
+            <field>Cancel_Billing__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Stripe Attempt Over 10 Days</displayNameOverride>
+            <field>Last_Stripe_Attempt_Over_10_Days__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Stripe Attempt</displayNameOverride>
+            <field>Last_Stripe_Attempt__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Manual Override</displayNameOverride>
+            <field>Manual_Override__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Avg Online Dollars Processed Last 6month</displayNameOverride>
+            <field>Avg_Online_Dollars_Processed__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Activated Date</displayNameOverride>
+            <field>Billing_Activated_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Version</displayNameOverride>
+            <field>Billing_Version__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brightwheel Satisfaction</displayNameOverride>
+            <field>Brightwheel_Satisfaction__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Connection Notes</displayNameOverride>
+            <field>Connection_Notes__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Applied</displayNameOverride>
+            <field>Coupon_Applied__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Engagement Subject</displayNameOverride>
+            <field>Engagement_Subject__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Feedback Category</displayNameOverride>
+            <field>Feedback_Category__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Next Step for Customer</displayNameOverride>
+            <field>Next_Step_for_Customer__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Post-Call Notes</displayNameOverride>
+            <field>Post_Call_Notes__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pre-Call Notes</displayNameOverride>
+            <field>Pre_Call_Notes__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Feedback</displayNameOverride>
+            <field>Product_Feedback__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Activated Date</displayNameOverride>
+            <field>SaaS_Activated_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>School Owner</displayNameOverride>
+            <field>School_Owner__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>If no churn, why did transaction lapse?</displayNameOverride>
+            <field>If_no_churn_why_did_transaction_lapse__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Online Payment Date</displayNameOverride>
+            <field>Last_Online_Payment_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Need additional training/resources</displayNameOverride>
+            <field>Need_additional_training_resources__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reason for Lapse</displayNameOverride>
+            <field>Reason_for_Lapse__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brightwheel Plan</displayNameOverride>
+            <field>Brightwheel_Plan__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>ACH Verification Distribution Type</displayNameOverride>
+            <field>ACH_Verification_Distribution_Type__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Annual Rate</displayNameOverride>
+            <field>Annual_Rate__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Enrollment</displayNameOverride>
+            <field>Current_Enrollment__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Offline Payer Contract End Date</displayNameOverride>
+            <field>Offline_Payer_Contract_End_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Offline Payer Contract Start Date</displayNameOverride>
+            <field>Offline_Payer_Contract_Start_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Offline Payer Renewal</displayNameOverride>
+            <field>Offline_Payer_Renewal__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Renewal Contract End Date</displayNameOverride>
+            <field>Renewal_Contract_End_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Renewal Contract Start Date</displayNameOverride>
+            <field>Renewal_Contract_Start_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Renewal Rate</displayNameOverride>
+            <field>Renewal_Rate__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Triggering Offline Payer Record</displayNameOverride>
+            <field>Triggering_Offline_Payer_Record__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Premium Target - Updated Definition</displayNameOverride>
+            <field>Premium_Target_Updated_Definition__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Premium Target to Non-Target Date Stamp</displayNameOverride>
+            <field>Premium_Target_to_Non_Target_Date_Stamp__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>NPS Score</displayNameOverride>
+            <field>NPS_Score__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Call Meeting Date</displayNameOverride>
+            <field>Call_Meeting_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Combined Funnel</displayNameOverride>
+            <field>Combined_Funnel__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Disable Verification Date</displayNameOverride>
+            <field>Disable_Verification_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Engagement  Notes</displayNameOverride>
+            <field>Engagement_Notes__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>JG Cancelation Status</displayNameOverride>
+            <field>JG_Cancelation_Status__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>JG Impersonate Link</displayNameOverride>
+            <field>JG_Impersonate_Link__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Dollars Processed</displayNameOverride>
+            <field>Total_Dollars_Processed__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>V3 Next Invoice Send Date</displayNameOverride>
+            <field>V3_Next_Invoice_Send_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancel Call Meeting Date</displayNameOverride>
+            <field>Cancel_Call_Meeting_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Days Since Created Date</displayNameOverride>
+            <field>Days_Since_Created_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Admin Tag</displayNameOverride>
+            <field>Admin_Tag__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Routing Action</displayNameOverride>
+            <field>LeanData__Routing_Action__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>State Info</displayNameOverride>
+            <field>LeanData__Status_Info__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Segment</displayNameOverride>
+            <field>Customer_Segment__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Follow Up Date</displayNameOverride>
+            <field>Follow_Up_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Slack Notification</displayNameOverride>
+            <field>Slack_Notification__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Owner Last Connected</displayNameOverride>
+            <field>SaaS_Owner_Last_Connected__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Owner Last Contacted</displayNameOverride>
+            <field>SaaS_Owner_Last_Contacted__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Verified</displayNameOverride>
+            <field>Billing_Verified__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Coupon Details</displayNameOverride>
+            <field>Coupon_Details__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Downgraded Date</displayNameOverride>
+            <field>Downgraded_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>What’s holding you back if Other</displayNameOverride>
+            <field>What_s_holding_you_back_if_Other__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Admin Next Step Completion</displayNameOverride>
+            <field>Admin_Next_Step_Completion__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SaaS Activation Date</displayNameOverride>
+            <field>SaaS_Activation_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Cancel Request Case</displayNameOverride>
+            <field>Created_Cancel_Request_Case__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Delayed Subscription Change Date</displayNameOverride>
+            <field>Delayed_Subscription_Change_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>OBS Reason for Reassignment</displayNameOverride>
+            <field>OBS_Reason_for_Reassignment__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Secondary Cancel Category</displayNameOverride>
+            <field>Secondary_Cancel_Category__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Secondary Cancelation Request Reason</displayNameOverride>
+            <field>Secondary_Cancelation_Request_Reason__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancel Request Reason Detail</displayNameOverride>
+            <field>Cancel_Request_Reason_Detail__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Billing Retention Closed Lost Reason</displayNameOverride>
+            <field>Billing_Retention_Closed_Lost_Reason__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Payment Period End Date</displayNameOverride>
+            <field>Payment_Period_End_Date__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dollar Value of Case: MRR</displayNameOverride>
+            <field>Dollar_Value_of_Case_MRR__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Requester__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Revert_Opt_Out_Record__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Requester_Current_User__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Related_Record_Link__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SysOps_Internal_Notes__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>SysOps_Issue_Classification__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Issue__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Resolution__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Summary__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Standardized_Phone__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EC_Cancel_Outcome__c</field>
+            <table>Case</table>
+        </columns>
+        <masterLabel>Cases</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case : Account Name : School Object</displayNameOverride>
+            <field>Account.School_Object__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case : Account Name : Most Recent SaaS CW Opportunity</displayNameOverride>
+            <field>Account.Most_Recent_SaaS_CW_Opportunity__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case : Account Name : School Object : SaaS Activation Date</displayNameOverride>
+            <field>Account.School_Object__c.SaaS_Activation_Date_2024__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case : Account Name : School Object : SaaS Activation Funnel Stage</displayNameOverride>
+            <field>Account.School_Object__c.SaaS_Activation_Funnel_Stage_2024__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case : Account Name : School Object : Billing Activation Date</displayNameOverride>
+            <field>Account.School_Object__c.Billing_Activation_Date_2024__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case : Account Name : School Object : Billing Activation Funnel Stage</displayNameOverride>
+            <field>Account.School_Object__c.Billing_Activation_Funnel_Stage_2024__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case : Account Name : Most Recent SaaS CW Opportunity : Close Date</displayNameOverride>
+            <field>Account.Most_Recent_SaaS_CW_Opportunity__c.CloseDate</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case : Account Name : Most Recent SaaS CW Opportunity : Billing Status at CW</displayNameOverride>
+            <field>Account.Most_Recent_SaaS_CW_Opportunity__c.Billing_Status_at_CW__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case : Account Name : Most Recent SaaS CW Opportunity : Opportunity Owner</displayNameOverride>
+            <field>Account.Most_Recent_SaaS_CW_Opportunity__c.Owner</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case : Account Name : Most Recent SaaS CW Opportunity : Opportunity Record Type</displayNameOverride>
+            <field>Account.Most_Recent_SaaS_CW_Opportunity__c.Opportunity_Record_Type__c</field>
+            <table>Case</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account.Most_Recent_SaaS_CW_Opportunity__c.Post_CW_Status__c</field>
+            <table>Case</table>
+        </columns>
+        <masterLabel>Look Ups</masterLabel>
+    </sections>
+</ReportType>

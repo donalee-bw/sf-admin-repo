@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Set SaaS Onboarding Status to Requesting Postponement</description>
+        <name>Assign_Postponement_Values</name>
+        <label>Assign Postponement Values</label>
+        <locationX>176</locationX>
+        <locationY>350</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.SaaS_Onboarding_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Requesting Postpone - Awaiting Approval</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.SaaS_Postponed_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SaaS_Postponed_Reason</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.SaaS_Postponed_Reason_Detail__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SaaS_Postponed_Reason_Detail</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.SaaS_Postponed_Start_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SaaS_Postponed_Start_Date</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.SaaS_Postponed_Check_In_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SaaS_Postponed_Check_in_Date</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.SaaS_Postponed_Exit_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SaaS_Postponed_Exit_Date</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.Confirmed_Launch_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Confirmed_Launch_Date</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Combined_Funnel</targetReference>
+        </connector>
+    </assignments>
+    <description>Sets the fields required for postponement
+11/01/24 - PE - Remove Target Launch Date - SaaS field from screen component</description>
+    <dynamicChoiceSets>
+        <name>choiceSaaSPostponedReason</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>SaaS_Postponed_Reason__c</picklistField>
+        <picklistObject>Combined_Funnel__c</picklistObject>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <formulas>
+        <description>display the combined funnel check-in date if it exists, otherwise Start Date + 30</description>
+        <name>forDCheckinDate</name>
+        <dataType>Date</dataType>
+        <expression>IF( ISNULL( {!Get_Combined_Funnel.SaaS_Postponed_Check_In_Date__c} ), (TODAY()+30), {!Get_Combined_Funnel.SaaS_Postponed_Check_In_Date__c})</expression>
+    </formulas>
+    <formulas>
+        <description>display the combined funnel exit date if it exists, otherwise null</description>
+        <name>forDExitDate</name>
+        <dataType>Date</dataType>
+        <expression>IF( ISNULL( {!Get_Combined_Funnel.SaaS_Postponed_Exit_Date__c} ), NULL, {!Get_Combined_Funnel.SaaS_Postponed_Exit_Date__c})</expression>
+    </formulas>
+    <formulas>
+        <name>forDStartDate</name>
+        <dataType>Date</dataType>
+        <expression>IF( ISNULL( {!Get_Combined_Funnel.SaaS_Postponed_Start_Date__c} ), TODAY(), {!Get_Combined_Funnel.SaaS_Postponed_Start_Date__c} )</expression>
+    </formulas>
+    <formulas>
+        <name>forTSlackMessage</name>
+        <dataType>String</dataType>
+        <expression>{!Get_Combined_Funnel.Owner:User.Name} &amp; &apos; is requesting Postponement for &apos; &amp; {!Get_Combined_Funnel.Name} &amp;
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;) &amp;
+&apos;Click here to review the postponement request:&apos; &amp; 
+SUBSTITUTE({!$Label.NewLine} , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp;{!Get_Combined_Funnel.Id} &amp; &apos;|[View in Salesforce]&gt;&apos;</expression>
+    </formulas>
+    <interviewLabel>CF - Screen - Request Postponement {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CF - Screen - Request Postponement</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Combined_Funnel</name>
+        <label>Get Combined Funnel</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Field_Entry</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Combined_Funnel</name>
+        <label>Update Combined Funnel</label>
+        <locationX>176</locationX>
+        <locationY>458</locationY>
+        <inputReference>Get_Combined_Funnel</inputReference>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Field_Entry</name>
+        <label>Field Entry</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Assign_Postponement_Values</targetReference>
+        </connector>
+        <fields>
+            <name>Postpone_Request_Required_Fields</name>
+            <fieldText>Postpone Request Required Fields</fieldText>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Postpone_Request_Required_Fields_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>SaaS_Postponed_Reason</name>
+                    <choiceReferences>choiceSaaSPostponedReason</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldText>SaaS Postponed Reason</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <fields>
+                    <name>SaaS_Postponed_Reason_Detail</name>
+                    <defaultValue>
+                        <stringValue>{!Get_Combined_Funnel.SaaS_Postponed_Reason_Detail__c}</stringValue>
+                    </defaultValue>
+                    <fieldText>SaaS Postponed Reason Detail</fieldText>
+                    <fieldType>LargeTextArea</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Postpone_Request_Required_Fields_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>SaaS_Postponed_Start_Date</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>forDStartDate</elementReference>
+                    </defaultValue>
+                    <fieldText>SaaS Postponed Start Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <helpText>&lt;p&gt;Proposed start date for postponement&lt;/p&gt;</helpText>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isDisabled>
+                        <booleanValue>true</booleanValue>
+                    </isDisabled>
+                    <isReadOnly>
+                        <booleanValue>true</booleanValue>
+                    </isReadOnly>
+                    <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <fields>
+                    <name>SaaS_Postponed_Check_in_Date</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>forDCheckinDate</elementReference>
+                    </defaultValue>
+                    <fieldText>SaaS Postponed Check-in Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <helpText>&lt;p&gt;First check-in date after postponement&lt;/p&gt;</helpText>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;The SaaS Postponed Check-in Date must be within 30 days of the SaaS Postponed Start Date&lt;/p&gt;</errorMessage>
+                        <formulaExpression>({!SaaS_Postponed_Check_in_Date} -{!SaaS_Postponed_Start_Date} ) &lt;= 30</formulaExpression>
+                    </validationRule>
+                </fields>
+                <fields>
+                    <name>SaaS_Postponed_Exit_Date</name>
+                    <dataType>Date</dataType>
+                    <fieldText>SaaS Postponed Exit Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <helpText>&lt;p&gt;The date the customer will exit postponement&lt;/p&gt;</helpText>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;SaaS Postponed Exit Date must be less than 6 months from the SaaS Postponed Start Date&lt;/p&gt;</errorMessage>
+                        <formulaExpression>({!SaaS_Postponed_Exit_Date} - {!SaaS_Postponed_Start_Date}) &lt;= 180</formulaExpression>
+                    </validationRule>
+                </fields>
+                <fields>
+                    <name>Confirmed_Launch_Date</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>Get_Combined_Funnel.Confirmed_Launch_Date__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Confirmed Launch Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Combined_Funnel</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

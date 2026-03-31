@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Enterprise and Country Only</fullName>
+        <active>false</active>
+        <ruleEntry>
+            <assignedTo>Enterprise_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 OR 2 OR 3</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Company</field>
+                <operation>contains</operation>
+                <value>KinderCare,Learning Care,Bright Horizons,Goddard,Childcare Network,Primrose,Kids ‘R’ Learning,Kids R Learning,Kids R&apos; Learning,Nobel Learning,Learning Experience,Cadence Academy,Kiddie Academy,Rainbow Child,Sunshine House</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Company</field>
+                <operation>contains</operation>
+                <value>Children of America,New Horizon,Minnieland,Discovery Point,Brightside Academy,Brightpath,Children&apos;s Lighthouse,Creme de la Creme,Crème de la Crème,Kids R Kids,Creative World,Acetero,Action Day,Primary Plus,Country Home Learning</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Company</field>
+                <operation>contains</operation>
+                <value>Celebree,Rainbow Station,Petite,Childtime,Tutortime,Tutor Time</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>International_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND (2 OR 3) AND 4</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Country</field>
+                <operation>notEqual</operation>
+                <value>United States,United States of America,US,USA,U.S.A,America,Canada</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>notEqual</operation>
+                <value>Alabama,Alaska,Arizona,Arkansas,California,Colorado,Connecticut,Delaware,Florida,Georgia,Hawaii,Idaho,Illinois,Indiana,Iowa,Kansas,Kentucky,Louisiana,Maine,Maryland,Massachusetts,Michigan,Minnesota,Mississippi,Missouri,Montana,Nebraska,Nevada</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.State</field>
+                <operation>notEqual</operation>
+                <value>New Hampshire,New Jersey,New Mexico,New York,North Carolina,North Dakota,Ohio,Oklahoma,Oregon,Pennsylvania,Rhode Island,South Carolina,South Dakota,Tennessee,Texas,Utah,Vermont,Virginia,Washington,West Virginia,Wisconsin,Wyoming,District of Columbia</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Country</field>
+                <operation>notEqual</operation>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

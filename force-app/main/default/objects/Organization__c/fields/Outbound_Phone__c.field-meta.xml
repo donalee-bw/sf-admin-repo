@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outbound_Phone__c</fullName>
+    <description>Sourced phone number for the school or person.</description>
+    <inlineHelpText>Sourced phone number for the school or person.</inlineHelpText>
+    <label>Organization Phone</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Phone</type>
+</CustomField>

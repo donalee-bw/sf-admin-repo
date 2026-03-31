@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Blackbaud</fullName>
+        <default>false</default>
+        <label>Blackbaud</label>
+    </customValue>
+    <customValue>
+        <fullName>Childcare Manager</fullName>
+        <default>false</default>
+        <label>Childcare Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Childcare SAGE</fullName>
+        <default>false</default>
+        <label>Childcare SAGE</label>
+    </customValue>
+    <customValue>
+        <fullName>ClassDojo</fullName>
+        <default>false</default>
+        <label>ClassDojo</label>
+    </customValue>
+    <customValue>
+        <fullName>CuraCubby</fullName>
+        <default>false</default>
+        <label>CuraCubby</label>
+    </customValue>
+    <customValue>
+        <fullName>Dubsado</fullName>
+        <default>false</default>
+        <label>Dubsado</label>
+    </customValue>
+    <customValue>
+        <fullName>EZcare</fullName>
+        <default>false</default>
+        <label>EZcare</label>
+    </customValue>
+    <customValue>
+        <fullName>File on Computer</fullName>
+        <default>false</default>
+        <label>File on Computer</label>
+    </customValue>
+    <customValue>
+        <fullName>HiMama</fullName>
+        <default>false</default>
+        <label>HiMama</label>
+    </customValue>
+    <customValue>
+        <fullName>Jackrabbit</fullName>
+        <default>false</default>
+        <label>Jackrabbit</label>
+    </customValue>
+    <customValue>
+        <fullName>LifeCubby</fullName>
+        <default>false</default>
+        <label>LifeCubby</label>
+    </customValue>
+    <customValue>
+        <fullName>Nowhere</fullName>
+        <default>false</default>
+        <label>Nowhere</label>
+    </customValue>
+    <customValue>
+        <fullName>On Paper</fullName>
+        <default>false</default>
+        <label>On Paper</label>
+    </customValue>
+    <customValue>
+        <fullName>Other Tech</fullName>
+        <default>false</default>
+        <label>Other Tech</label>
+    </customValue>
+    <customValue>
+        <fullName>Procare</fullName>
+        <default>false</default>
+        <label>Procare</label>
+    </customValue>
+    <customValue>
+        <fullName>Procare Connect</fullName>
+        <default>false</default>
+        <label>Procare Connect</label>
+    </customValue>
+    <customValue>
+        <fullName>Procare Staff Export</fullName>
+        <default>false</default>
+        <label>Procare Staff Export</label>
+    </customValue>
+    <customValue>
+        <fullName>Sandbox</fullName>
+        <default>false</default>
+        <label>Sandbox</label>
+    </customValue>
+    <customValue>
+        <fullName>Seesaw</fullName>
+        <default>false</default>
+        <label>Seesaw</label>
+    </customValue>
+    <customValue>
+        <fullName>SmartCare</fullName>
+        <default>false</default>
+        <label>SmartCare</label>
+    </customValue>
+    <customValue>
+        <fullName>Tadpoles</fullName>
+        <default>false</default>
+        <label>Tadpoles</label>
+    </customValue>
+    <description>Used on Opp and Account. Shows where a center&apos;s student information currently lives at the time of closed won opp.</description>
+    <masterLabel>Student Information Currently Located</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

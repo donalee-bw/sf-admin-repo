@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Payer_Account_Type_Stamp__c</fullName>
+    <label>Related Payer Account Type - Stamp</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Customer</fullName>
+                <default>false</default>
+                <label>Customer</label>
+            </value>
+            <value>
+                <fullName>Prospect</fullName>
+                <default>false</default>
+                <label>Prospect</label>
+            </value>
+            <value>
+                <fullName>Cancelled Customer</fullName>
+                <default>false</default>
+                <label>Cancelled Customer</label>
+            </value>
+            <value>
+                <fullName>Inactive Prospect</fullName>
+                <default>false</default>
+                <label>Inactive Prospect</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

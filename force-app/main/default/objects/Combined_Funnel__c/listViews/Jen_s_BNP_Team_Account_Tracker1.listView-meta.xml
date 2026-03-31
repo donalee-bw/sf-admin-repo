@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Jen_s_BNP_Team_Account_Tracker1</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND (4 OR (5 AND 6)) and 7</booleanFilter>
+    <columns>NAME</columns>
+    <columns>SaaS_Contact_Most_Recent_Sequence__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Original_Close_Date__c</columns>
+    <columns>Open_and_Operating_Date__c</columns>
+    <columns>Open_and_Operating_Date_Last_Updated__c</columns>
+    <columns>BNP_Licensing_Status__c</columns>
+    <columns>BNP_Intro_Call_status__c</columns>
+    <columns>Current_Coupon__c</columns>
+    <columns>Current_Coupon_End__c</columns>
+    <columns>Current_Enrollment__c</columns>
+    <columns>SaaS_Activation_Confidence__c</columns>
+    <columns>Billing_Activation_Confidence__c</columns>
+    <columns>Active_Students_with_1_Guardian_Added__c</columns>
+    <columns>Billing_Onboarding_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Brand New Program,BNP Site-Add</value>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Laura</value>
+    </filters>
+    <filters>
+        <field>SaaS_Activation_Funnel_Stage_Value__c</field>
+        <operation>notEqual</operation>
+        <value>8 - Activated</value>
+    </filters>
+    <filters>
+        <field>Billing_Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Opted Out</value>
+    </filters>
+    <filters>
+        <field>Billing_Activation_Funnel_Stage_Value__c</field>
+        <operation>notEqual</operation>
+        <value>9 - Activated</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>notEqual</operation>
+        <value>Inactive</value>
+    </filters>
+    <label>Laura&apos;s BNP Team Account Tracker</label>
+</ListView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AE_Owner__c</fullName>
+    <description>Account Executive mapped from the Account Object. Used for reporting and performance metrics without affecting rep attribution when the AE that closed the CW Opp is inactive.</description>
+    <externalId>false</externalId>
+    <formula>Account__r.AE_Owner__r.FirstName &amp; &quot; &quot; &amp; Account__r.AE_Owner__r.LastName</formula>
+    <inlineHelpText>Account Executive mapped from the Account Object</inlineHelpText>
+    <label>AE Owner</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

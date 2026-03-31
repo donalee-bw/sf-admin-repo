@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Grants Edit permissions for the Brightwheel School UUID Field on Accounts. For managers who need to easily trigger account dupes in order to merge. No other users should have edit access for that field (matching key for prod school object data)</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Brightwheel_School_UUID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Edit Brightwheel School UUID Field on Accounts</label>
+</PermissionSet>

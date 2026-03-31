@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Brand_New_Programs_Notes</fullName>
+    <booleanFilter>(1 OR (3 AND 4)) AND 2</booleanFilter>
+    <columns>SaaS_Primary_Contact__c</columns>
+    <columns>NAME</columns>
+    <columns>SaaS_Primary_Contact_Email__c</columns>
+    <columns>SaaS_Next_Steps__c</columns>
+    <columns>Current_Center_Operating_Status__c</columns>
+    <columns>BNP_Licensing_Status__c</columns>
+    <columns>Open_and_Operating_Date__c</columns>
+    <columns>BNP_Webinar_Status__c</columns>
+    <columns>BNP_Webinar_Date__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>Onboarding_Path__c</columns>
+    <columns>Brightwheel_Org_UUID__c</columns>
+    <columns>SaaS_Contact_Most_Recent_Sequence__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Brand New Program,BNP Site-Add,1:1 Multi-Site</value>
+    </filters>
+    <filters>
+        <field>BNP_Webinar_Date__c</field>
+        <operation>equals</operation>
+        <value>YESTERDAY</value>
+    </filters>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Combined,Brand New Program,BNP Site-Add,1:1 Single-Site,1:1 Multi-Site,Webinar,Site-Add</value>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>contains</operation>
+        <value>Angel,hannah,jacob,laura</value>
+    </filters>
+    <label>BNP Webinar List of Registrants</label>
+</ListView>

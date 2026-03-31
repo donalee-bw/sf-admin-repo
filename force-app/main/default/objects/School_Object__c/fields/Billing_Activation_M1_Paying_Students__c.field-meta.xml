@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Activation_M1_Paying_Students__c</fullName>
+    <description>Billing Activation - M1 number of students with online payments. Pulled from the data warehouse field: billing_activation_m1_count_students_with_online_payment__c</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Billing Activation - M1 number of students with online payments. Pulled from the data warehouse field: billing_activation_m1_count_students_with_online_payment__c</inlineHelpText>
+    <label>Billing Activation M1 Paying Students</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

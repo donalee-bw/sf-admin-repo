@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Message_New_Owner</name>
+        <label>Slack Message New Owner</label>
+        <locationX>248</locationX>
+        <locationY>1439</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Slack_Message_Lindsey</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <elementReference>$Record.Owner.Slack_user_ID__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>contactOwnerAssigned</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>Send slack message to a user other than the record owner - currently set to Lindsey Daniel.</description>
+        <name>Slack_Message_Lindsey</name>
+        <label>Slack Message- Lindsey</label>
+        <locationX>248</locationX>
+        <locationY>1547</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Slack_Message_Shannon</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>U025NUBENGP</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>contactOwnerAssignedManagers</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <description>Send a slack message to a user other than the owner - currently set to Shannon</description>
+        <name>Slack_Message_Shannon</name>
+        <label>Slack Message- Shannon</label>
+        <locationX>248</locationX>
+        <locationY>1655</locationY>
+        <actionName>PostSlackMessage</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>U02N0RJ2UG0</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>contactOwnerAssignedManagers</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>token</name>
+            <value>
+                <stringValue>xoxb-4837365695-992742781238-Ff5IoJWIuI3KsAlRX2Np5lzO</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PostSlackMessage</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Org_to_AQ</name>
+        <label>Assign Org to AQ</label>
+        <locationX>314</locationX>
+        <locationY>947</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Organization.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Label.Account_Queue</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Org</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Org_to_new_Contact_Owner</name>
+        <label>Assign Org to new Contact Owner</label>
+        <locationX>50</locationX>
+        <locationY>947</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Organization.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Org</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Contact_New_Owner_Decicion</name>
+        <label>Contact New Owner Decicion</label>
+        <locationX>182</locationX>
+        <locationY>839</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Org_to_AQ</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default to Account Queue</defaultConnectorLabel>
+        <rules>
+            <name>Active_User_Record</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner.IsActive</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Org_to_new_Contact_Owner</targetReference>
+            </connector>
+            <label>Active User Record</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Contact_Reassigned</name>
+        <label>Contact Reassigned</label>
+        <locationX>380</locationX>
+        <locationY>1331</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Assignment_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OwnerId</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.OwnerId</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Owner.UserRole.Name</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Inbound SDR</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Message_New_Owner</targetReference>
+            </connector>
+            <label>Contact Assignment Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Found_Org_Decision</name>
+        <label>Found Org Decision</label>
+        <locationX>380</locationX>
+        <locationY>731</locationY>
+        <defaultConnector>
+            <targetReference>Contact_Reassigned</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Did Not Find Org</defaultConnectorLabel>
+        <rules>
+            <name>Found_Organization</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Organization.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Primary_Contact__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contact_New_Owner_Decicion</targetReference>
+            </connector>
+            <label>Found Organization and Primary Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Moved_from_to_Owner_decision</name>
+        <label>Moved from to Owner decision</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Get_Organization</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Moved_from_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LOGIC_Owned_by_queue__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.LOGIC_Owned_by_queue__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Most_Recent_Disposition__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Clear_Latest_Dispo_Field</targetReference>
+            </connector>
+            <label>Moved from Queue</label>
+        </rules>
+    </decisions>
+    <description>Sends Slack Messages to new owners and managers when a contact is reassigned.
+LK - 10/29/2025 - Replaced ringdna latest dispostion field with native custom Most Recent Disposition field</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>contactOwnerAssigned</name>
+        <dataType>String</dataType>
+        <expression>&apos;You have been assigned a new contact&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!$Record.Id}  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Organization:* &apos; &amp; {!$Record.Account.Name} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!$Record.Account.Id}  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*First Name:* &apos; &amp; {!$Record.FirstName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Last Name:* &apos; &amp; {!$Record.LastName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Email:* &apos; &amp; {!$Record.Email} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Phone:* &apos; &amp; {!$Record.Phone} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*State/Province:* &apos; &amp; {!$Record.MailingState}</expression>
+    </formulas>
+    <formulas>
+        <description>The message that will be sent to the relevant managers when a contact is assigned</description>
+        <name>contactOwnerAssignedManagers</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Owner.FirstName}  &amp; &apos; &apos; &amp; {!$Record.Owner.LastName} &amp; &apos; has been assigned a new contact&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!$Record.Id}  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Organization:* &apos; &amp; {!$Record.Account.Name} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;&lt;https://brightwheel1.my.salesforce.com/&apos; &amp; {!$Record.Account.Id}  &amp; &apos;|[View in Salesforce]&gt;&apos; &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Owner First Name:* &apos; &amp; {!$Record.Owner.FirstName} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*Owner Last Name:* &apos; &amp; {!$Record.Owner.LastName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp;
+&apos;*First Name:* &apos; &amp; {!$Record.FirstName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Last Name:* &apos; &amp; {!$Record.LastName}  &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Email:* &apos; &amp; {!$Record.Email} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*Phone:* &apos; &amp; {!$Record.Phone} &amp;
+SUBSTITUTE($Label.NewLine , &quot;-&quot;, &quot;&quot;)  &amp; 
+&apos;*State/Province:* &apos; &amp; {!$Record.MailingState}</expression>
+    </formulas>
+    <interviewLabel>Contact - Send Slack Message on Reassign {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - Send Slack Message on Reassign</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Organization</name>
+        <label>Get Organization</label>
+        <locationX>380</locationX>
+        <locationY>623</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_Org_Decision</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Organization__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Organization__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Clear_Latest_Dispo_Field</name>
+        <label>Clear Latest Dispo Field</label>
+        <locationX>248</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Get_Organization</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Most_Recent_Disposition__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Org</name>
+        <label>Update Org</label>
+        <locationX>182</locationX>
+        <locationY>1139</locationY>
+        <connector>
+            <targetReference>Contact_Reassigned</targetReference>
+        </connector>
+        <inputReference>Get_Organization</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Moved_from_to_Owner_decision</targetReference>
+        </connector>
+        <filterFormula>AND({!$Permission.Admin_Data_Loader} = FALSE, 
+ISCHANGED({!$Record.OwnerId}))</filterFormula>
+        <object>Contact</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

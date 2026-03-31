@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Remove_From_Cadence1</name>
+        <label>Remove From Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>removeTargetFromSalesCadence</actionName>
+        <actionType>removeTargetFromSalesCadence</actionType>
+        <connector>
+            <targetReference>Remove_From_Cadence</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>Remove_From_Cadence.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>completionReasonCode</name>
+            <value>
+                <stringValue>ManuallyRemoved</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>removeTargetFromSalesCadence</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Cadence_Exit_Criteria_Evaluation</name>
+        <label>Cadence Exit Criteria Evaluation</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>OBS_GOBSdec</name>
+            <conditionLogic>1 AND ( ( 2 AND ( 3 OR 4 OR 5 ) ) OR 6 OR 7 OR 8 )</conditionLogic>
+            <conditions>
+                <leftValueReference>Remove_From_Cadence.Cadence_Label__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Core Onboarding - OBS &amp; GOBS</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Remove_From_Cadence.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Remove_From_Cadence.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Onboarding_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Opted Out</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Start_Date__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CSM_Owner1__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Account_Queue</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Brightwheel_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Remove_From_Cadence.New_Case_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancel Request</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_From_Cadence1</targetReference>
+            </connector>
+            <label>OBS &amp; GOBS</label>
+        </rules>
+        <rules>
+            <name>BNP</name>
+            <conditionLogic>1 AND ( ( 2 AND ( 3 OR 4 OR 5)) OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 )</conditionLogic>
+            <conditions>
+                <leftValueReference>Remove_From_Cadence.Cadence_Label__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Core Onboarding - BNP</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Remove_From_Cadence.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Remove_From_Cadence.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Onboarding_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Opted Out</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Start_Date__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CSM_Owner1__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Label.Account_Queue</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Brightwheel_Plan__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Premium</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Remove_From_Cadence.New_Case_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cancel Request</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Brand_New_Program__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Brand New Program</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Onboarding_Setup_Call_Path__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>BNP Site-Add</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.BNP_Graduation_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_From_Cadence1</targetReference>
+            </connector>
+            <label>BNP</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Contacts_Found</name>
+        <label>Contacts Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contacts_in_Onboarding_Cadence</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remove_From_Cadence</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>01.15.2026 - LK - Added missing logic to the entry condition ( obs owner is changed to account queue or bw plan is changed and does not = premium</description>
+    <environments>Default</environments>
+    <interviewLabel>Account - After Save - Onboarding Cadence Exit {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - After Save - Onboarding Cadence Exit</label>
+    <loops>
+        <name>Remove_From_Cadence</name>
+        <label>Remove From Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Contacts_in_Onboarding_Cadence</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Cadence_Exit_Criteria_Evaluation</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Contacts_in_Onboarding_Cadence</name>
+        <label>Get Contacts in Onboarding Cadence</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contacts_Found</targetReference>
+        </connector>
+        <filterLogic>1 AND (2 OR 3) AND 4</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Cadence_Label__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Core Onboarding - BNP</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Cadence_Label__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Core Onboarding - OBS &amp; GOBS</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SaaS_Activation_Funnel_Stage_2024__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Activated</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Contacts_in_Onboarding_Cadence</targetReference>
+        </connector>
+        <filterFormula>OR(
+ AND(
+        TEXT({!$Record.Billing_Onboarding_Status__c}) = &quot;Opted Out&quot;,
+        TEXT({!$Record__Prior.Billing_Onboarding_Status__c}) &lt;&gt; &quot;Opted Out&quot;
+    ),
+AND( 
+ISCHANGED({!$Record.CSM_Owner1__c}),
+{!$Record.CSM_Owner1__c} = {!$Label.Account_Queue} 
+),
+
+AND( 
+TEXT({!$Record__Prior.Brand_New_Program__c}) &lt;&gt; &quot;No&quot;,
+TEXT({!$Record.Brand_New_Program__c}) = &quot;No&quot; )
+
+)</filterFormula>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>conList</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+</Flow>

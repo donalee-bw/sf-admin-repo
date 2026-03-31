@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Needs_FTS_CF</fullName>
+    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+    <columns>Account_Customer_Type__c</columns>
+    <columns>NAME</columns>
+    <columns>Webinar_2_Scheduled_Date__c</columns>
+    <columns>FTS_Owner__c</columns>
+    <columns>OWNER.FIRST_NAME</columns>
+    <columns>OWNER.LAST_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Webinar_2_Scheduled_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>FTS_Owner__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>OWNER.LAST_NAME</field>
+        <operation>notEqual</operation>
+        <value>Rasmuson,Powell,Perry,Account Queue,Mlynski,Kerr,Rojas,Anthone,Cribeiro,Pennington</value>
+    </filters>
+    <label>Attend W2_Needs FTS Assigned _ CF</label>
+</ListView>

@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Checks if the contact listed on the opportunity was changed. If true, wipe out the value from the BIlling Upsell Opportunity stage field for the previous contact.</description>
+        <name>Contact_Updated_BU</name>
+        <label>Contact Updated?</label>
+        <locationX>182</locationX>
+        <locationY>1631</locationY>
+        <defaultConnector>
+            <targetReference>Update_Contact_BU</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Contact_Updated_BU</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Contact__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Contact__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Wipe_Out_Previous_Contact_Fields_BU</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the contact listed on the opportunity was changed. If true, wipe out the value from the EC Upsell Opportunity Stage field for the previous contact.</description>
+        <name>Contact_Updated_EC</name>
+        <label>Contact Updated?</label>
+        <locationX>886</locationX>
+        <locationY>1631</locationY>
+        <defaultConnector>
+            <targetReference>Update_Contact_EC</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Contact_Updated_EC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Contact__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Contact__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.ContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Wipe_Out_Previous_Contact_Fields_EC</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if there&apos;s a contact record associated with the opportunity</description>
+        <name>Has_Associated_Contact_BU</name>
+        <label>Has Associated Contact?</label>
+        <locationX>336</locationX>
+        <locationY>1523</locationY>
+        <defaultConnectorLabel>No Contact Found</defaultConnectorLabel>
+        <rules>
+            <name>Yes_ContactRecordFound_BU</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Contact__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contact_Updated_BU</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if there&apos;s a contact record associated with the opportunity</description>
+        <name>Has_Associated_Contact_EC</name>
+        <label>Has Associated Contact?</label>
+        <locationX>1040</locationX>
+        <locationY>1523</locationY>
+        <defaultConnectorLabel>No Contact Found</defaultConnectorLabel>
+        <rules>
+            <name>Yes_ContactRecordFound_EC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Contact__r.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contact_Updated_EC</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Newly_Created_Opportunity</name>
+        <label>Newly Created Opportunity?</label>
+        <locationX>897</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Stage_Updated_or_Contact_Added</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_NewOpportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>forB_IsNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Record_Type_Decision</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks the opportunity record type</description>
+        <name>Opportunity_Record_Type</name>
+        <label>Opportunity Record Type</label>
+        <locationX>1062</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Opportunity_Record_Type_Billing_Upsell</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity_Record_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Billing Upsell</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Most_Recent_BU_Opportunity</targetReference>
+            </connector>
+            <label>Billing Upsell</label>
+        </rules>
+        <rules>
+            <name>Opportunity_Record_Type_Experience_Curriculum</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity_Record_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Experience Curriculum</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Most_Recent_EC_Opportunity</targetReference>
+            </connector>
+            <label>Experience Curriculum</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Record_Type_Decision</name>
+        <label>Record Type Decision</label>
+        <locationX>897</locationX>
+        <locationY>1307</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Billing_Upsell_Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity_Record_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Billing Upsell</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account</targetReference>
+            </connector>
+            <label>Billing Upsell Update</label>
+        </rules>
+        <rules>
+            <name>EC_Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity_Record_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Experience Curriculum</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_EC</targetReference>
+            </connector>
+            <label>EC Update</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Checks if the stage of an opportunity was updated or if a new contact was associated with that opportunity. If a new contact was added, then the opportunity stage should be stamped.</description>
+        <name>Stage_Updated_or_Contact_Added</name>
+        <label>Stage Updated or Contact Added?</label>
+        <locationX>1392</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Stage_Updated_or_Contact_Added</name>
+            <conditionLogic>1 OR (2 AND 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.StageName</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Contact__r.Id</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.Contact__r.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Contact__r.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Opportunity_Record_Type</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Triggering_BU_Opportunity_Is_Most_Recent</name>
+        <label>Triggering BU Opportunity Is Most Recent?</label>
+        <locationX>666</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Triggering_BU_Opportunity_Is_Most_Recent</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Most_Recent_BU_Opportunity.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Record_Type_Decision</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Triggering_EC_Opportunity_Is_Most_Recent</name>
+        <label>Triggering EC Opportunity Is Most Recent?</label>
+        <locationX>1106</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Triggering_EC_Opportunity_Is_Most_Recent</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Most_Recent_EC_Opportunity.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Record_Type_Decision</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>PE - When the stage of a Billing Upsell or Experience Curriculum opportunity is updated, this flow checks if it&apos;s the latest Billing Upsell opportunity. If so, it updates the corresponding field on the associated Account with this stage value. (Revenue.io Implementation Project)
+12/21/23 - PE - Added contact records to be stamped with the opportunity stage as well.
+01/03/24 - PE - Adjusted the flow to compare the creation date of each opportunity based on their record type.
+01/04/24 - PE - Adjusted flow so if a contact is added to the opportunity, then the stage is stamped on that contact.
+02/23/24 - PE Updated node that identifies contact on a new opportunity.
+04/25/24 - PE - Updated flow to wipe out values from the previous contact when linked contact gets updated.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>forB_IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record__Prior.Id} = null</expression>
+    </formulas>
+    <formulas>
+        <name>forT_OpportunityStage</name>
+        <dataType>String</dataType>
+        <expression>TEXT({!$Record.StageName})</expression>
+    </formulas>
+    <interviewLabel>Opportunity - After Save - Sync Fields to Account {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - After Save - Sync Fields to Account</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets the most recent Billing Upsell opportunity on the account.</description>
+        <name>Most_Recent_BU_Opportunity</name>
+        <label>Most Recent BU Opportunity</label>
+        <locationX>666</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Triggering_BU_Opportunity_Is_Most_Recent</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Account.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Billing Upsell</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>StageName</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Gets the most recent Experience Curriculum opportunity on the account.</description>
+        <name>Most_Recent_EC_Opportunity</name>
+        <label>Most Recent EC Opportunity</label>
+        <locationX>1106</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Triggering_EC_Opportunity_Is_Most_Recent</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Account.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Experience Curriculum</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>StageName</queriedFields>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates field &quot;Billing Upsell Opportunity Stage&quot; on related account.</description>
+        <name>Update_Account</name>
+        <label>Update Account</label>
+        <locationX>336</locationX>
+        <locationY>1415</locationY>
+        <connector>
+            <targetReference>Has_Associated_Contact_BU</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Billing_Upsell_Opportunity_Stage__c</field>
+            <value>
+                <elementReference>forT_OpportunityStage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Account</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates field &quot;EC Upsell Opportunity Stage&quot; on related account.</description>
+        <name>Update_Account_EC</name>
+        <label>Update Account</label>
+        <locationX>1040</locationX>
+        <locationY>1415</locationY>
+        <connector>
+            <targetReference>Has_Associated_Contact_EC</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>EC_Upsell_Opportunity_Stage__c</field>
+            <value>
+                <elementReference>forT_OpportunityStage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Account</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates the contact record with the current stage of the associated opportunity.</description>
+        <name>Update_Contact_BU</name>
+        <label>Update Contact</label>
+        <locationX>182</locationX>
+        <locationY>1931</locationY>
+        <inputAssignments>
+            <field>Billing_Upsell_Opportunity_Stage__c</field>
+            <value>
+                <elementReference>forT_OpportunityStage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Contact__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Updates the contact record with the current stage of the associated opportunity.</description>
+        <name>Update_Contact_EC</name>
+        <label>Update Contact</label>
+        <locationX>886</locationX>
+        <locationY>1931</locationY>
+        <inputAssignments>
+            <field>EC_Upsell_Opportunity_Stage__c</field>
+            <value>
+                <elementReference>forT_OpportunityStage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Contact__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Wipe_Out_Previous_Contact_Fields_BU</name>
+        <label>Wipe Out Previous Contact Fields</label>
+        <locationX>50</locationX>
+        <locationY>1739</locationY>
+        <connector>
+            <targetReference>Update_Contact_BU</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record__Prior.ContactId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Billing_Upsell_Opportunity_Stage__c</field>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Wipe_Out_Previous_Contact_Fields_EC</name>
+        <label>Wipe Out Previous Contact Fields</label>
+        <locationX>754</locationX>
+        <locationY>1739</locationY>
+        <connector>
+            <targetReference>Update_Contact_EC</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record__Prior.ContactId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>EC_Upsell_Opportunity_Stage__c</field>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <start>
+        <locationX>771</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Newly_Created_Opportunity</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Opportunity_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Billing Upsell</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Experience Curriculum</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

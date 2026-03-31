@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enrichment_Status__c</fullName>
+    <description>Used to monitor the progression of the organization&apos;s data enrichment for each record in the &apos;Organization&apos; object. This field is populated manually by the Operations team. (Sprint 10)</description>
+    <label>Enrichment Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>Awaiting</fullName>
+                <default>false</default>
+                <label>Awaiting</label>
+            </value>
+            <value>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+                <label>Not Started</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Date_of_SaaS_Override__c</fullName>
+    <description>When the SaaS Override Approved by Manager field on a Combined Funnel is updated to Yes, the automation will find the respective In Progress Onboarding Attempt and update it with today’s date.</description>
+    <inlineHelpText>When the SaaS Override Approved by Manager field on a Combined Funnel is updated to Yes, the automation will find the respective In Progress Onboarding Attempt and update it with today’s date.</inlineHelpText>
+    <label>Date of SaaS Override</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

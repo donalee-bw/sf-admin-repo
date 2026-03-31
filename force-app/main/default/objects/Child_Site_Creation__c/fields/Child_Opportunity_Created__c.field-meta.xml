@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Child_Opportunity_Created__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Child Opportunity Created</label>
+    <referenceTo>Opportunity</referenceTo>
+    <relationshipLabel>Child Sites Creation (Child Opportunity Created)</relationshipLabel>
+    <relationshipName>Child_Sites_Creation1</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

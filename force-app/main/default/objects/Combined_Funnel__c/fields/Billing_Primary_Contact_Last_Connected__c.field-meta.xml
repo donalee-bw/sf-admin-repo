@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Primary_Contact_Last_Connected__c</fullName>
+    <description>Onboarding Last Connected date from the Billing Primary Contact associated with the Combined Funnel.</description>
+    <formula>Billing_Primary_Contact__r.Onboarding_Last_Connected__c</formula>
+    <inlineHelpText>Onboarding Last Connected date from the Billing Primary Contact associated with the Combined Funnel.</inlineHelpText>
+    <label>Billing Primary Contact Last Connected</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

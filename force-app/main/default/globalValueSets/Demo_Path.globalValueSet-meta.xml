@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Call Me Now</fullName>
+        <default>false</default>
+        <label>Call Me Now</label>
+    </customValue>
+    <customValue>
+        <fullName>Schedule</fullName>
+        <default>false</default>
+        <label>Schedule</label>
+    </customValue>
+    <customValue>
+        <fullName>Chase Me: Chili Piper</fullName>
+        <default>false</default>
+        <label>Chase Me: Chili Piper</label>
+    </customValue>
+    <customValue>
+        <fullName>Chase Me: Distribution</fullName>
+        <default>false</default>
+        <label>Chase Me: Distribution</label>
+    </customValue>
+    <customValue>
+        <fullName>No Action</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>No Action</label>
+    </customValue>
+    <masterLabel>Demo Path</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

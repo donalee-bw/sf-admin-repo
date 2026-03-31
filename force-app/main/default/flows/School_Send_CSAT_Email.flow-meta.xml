@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Billing_OB_Handoff_Email</name>
+        <label>Billing OB Handoff Email</label>
+        <locationX>314</locationX>
+        <locationY>816</locationY>
+        <actionName>Combined_Funnel__c.OB_Billing_Handoff_Email</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Create_Billing_Related_OB_Handoff_Activity</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>Get_Combined_Funnel.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Combined_Funnel__c.OB_Billing_Handoff_Email</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_OB_SaaS_Handoff</name>
+        <label>Send OB SaaS Handoff</label>
+        <locationX>50</locationX>
+        <locationY>816</locationY>
+        <actionName>Combined_Funnel__c.OB_SaaS_Handoff_Email</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Create_Related_OB_Handoff_Activity</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>Get_Combined_Funnel.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Combined_Funnel__c.OB_SaaS_Handoff_Email</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Billing_Email</name>
+        <label>Assign Billing Email</label>
+        <locationX>314</locationX>
+        <locationY>600</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.Last_CSAT_Survey_Email__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Combined_Funnel.Billing_Primary_Contact__r.Email</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_CF_Billing_Email</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_SaaS_Email</name>
+        <label>Assign SaaS Email</label>
+        <locationX>50</locationX>
+        <locationY>600</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Combined_Funnel.Last_CSAT_Survey_Email__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Combined_Funnel.SaaS_Primary_Contact__r.Email</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_CF_SaaS_Email_0</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Assigns an email to the &quot;CSAT Last Email&quot; based on the most recent activated date</description>
+        <name>Contact_Assignment_Email</name>
+        <label>Contact Assignment Email</label>
+        <locationX>314</locationX>
+        <locationY>492</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>SaaS_Email_Assigned</name>
+            <conditionLogic>1 OR (2 AND 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Date_2024__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Combined_Funnel.Billing_Activated_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.SaaS_Primary_Contact__r.Email</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Billing_Primary_Contact__r.Email</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_SaaS_Email</targetReference>
+            </connector>
+            <label>SaaS Email Assigned</label>
+        </rules>
+        <rules>
+            <name>Billing_Email_Assigned</name>
+            <conditionLogic>1 OR( 2 AND 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Date_2024__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>Get_Combined_Funnel.SaaS_Activation_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Billing_Primary_Contact__r.Email</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.SaaS_Primary_Contact__r.Email</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Billing_Email</targetReference>
+            </connector>
+            <label>Billing Email Assigned</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines which route the survey sending action should take, if any</description>
+        <name>Survey_Eligibility</name>
+        <label>Survey Eligibility</label>
+        <locationX>578</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Survey_Eligible</name>
+            <conditionLogic>((1 OR 2 OR 3) OR 11) AND (4 OR 5 OR 6) AND 7 AND (8 OR 9 OR 10) AND 12 AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Billing_Activation_Start_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Billing_Activation_Start_Date__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Billing_Onboarding_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Opted Out</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.CSAT_Survey_First_Sent__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.CSAT_Survey_First_Sent__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.CSAT_Survey_First_Sent__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>BillingActivationThreshold</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Account_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Account_Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Single-Site</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Account_Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Parent</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Account_Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Child</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel.Stop_CES_Survey_Automation__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contact_Assignment_Email</targetReference>
+            </connector>
+            <label>Survey Eligible</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determines which route the survey sending action should take, if any</description>
+        <name>Survey_Eligibility_0</name>
+        <label>Survey Eligibility</label>
+        <locationX>1238</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Survey_Eligible_0</name>
+            <conditionLogic>((1 OR 2 OR 3) OR 11) AND (4 OR 5 OR 6) AND 7 AND (8 OR 9 OR 10) AND 12 AND 13</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_48_Hr.Billing_Activation_Start_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_48_Hr.Billing_Activation_Start_Date__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_48_Hr.Billing_Onboarding_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Opted Out</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_48_Hr.CSAT_Survey_First_Sent__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_48_Hr.CSAT_Survey_First_Sent__c</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_48_Hr.CSAT_Survey_First_Sent__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>BillingActivationThreshold</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_48_Hr.Account_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_48_Hr.Account_Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Single-Site</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_48_Hr.Account_Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Parent</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_48_Hr.Account_Customer_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Multi-Site Child</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Billing_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Combined_Funnel_48_Hr.Stop_CES_Survey_Automation__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.SaaS_Activation_Funnel_Stage_2024__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Activated</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_CF_Fields</targetReference>
+            </connector>
+            <label>Survey Eligible</label>
+        </rules>
+    </decisions>
+    <description>10/25/23 - PE - Updated email template with new email address
+6/14/24 - BW - Swapped out old Funnel Stage fields with new Funnel Stage Fields on the School Object
+1/10/25 - BW - Removed fields identified by the School Object cleanup project
+7/8/25 - JH - Updated Survey Eligibility criteria in decision nodes. Removed exclusion of BNP path and replaced &apos;Billing Launch Date&apos; = Null with &apos;Billing Activation Start Date&apos; from account being null.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Get the earliest date a customer is eligible to receive a CSAT email after completing billing Activation</description>
+        <name>BillingActivationThreshold</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() - 60</expression>
+    </formulas>
+    <interviewLabel>School - Send CSAT Email {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>School - Send CSAT Email</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create an email task associated with the Combined Funnel&apos;s SaaS Primary Contact</description>
+        <name>Create_Billing_Related_OB_Handoff_Activity</name>
+        <label>Create Billing Related OB Handoff Activity</label>
+        <locationX>314</locationX>
+        <locationY>924</locationY>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Assigned_To_Role_Snapshot__c</field>
+            <value>
+                <elementReference>$UserRole.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>OBHandoffSaaSText</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>IsReminderSet</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>Normal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <stringValue>0121I000000OEYFQA4</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Auto completed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>One Last Thing...</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TaskSubtype</field>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Task__c</field>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Template_Name__c</field>
+            <value>
+                <stringValue>OB Handoff Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>Get_Combined_Funnel.Account__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>Get_Combined_Funnel.SaaS_Primary_Contact__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <description>Create an email task associated with the Combined Funnel&apos;s SaaS Primary Contact</description>
+        <name>Create_Related_OB_Handoff_Activity</name>
+        <label>Create SaaS Related OB Handoff Activity</label>
+        <locationX>50</locationX>
+        <locationY>924</locationY>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Assigned_To_Role_Snapshot__c</field>
+            <value>
+                <elementReference>$UserRole.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>OBHandoffSaaSText</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>IsReminderSet</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>Normal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <stringValue>0121I000000OEYFQA4</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Auto completed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>One Last Thing...</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TaskSubtype</field>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Task__c</field>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Template_Name__c</field>
+            <value>
+                <stringValue>OB Handoff Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>Get_Combined_Funnel.Account__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>Get_Combined_Funnel.SaaS_Primary_Contact__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Get the combined funnel associated with the school</description>
+        <name>Get_Combined_Funnel</name>
+        <label>Get Combined Funnel</label>
+        <locationX>578</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Survey_Eligibility</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Brightwheel_School_UUID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Brightwheel_School_UUID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get the combined funnel associated with the school</description>
+        <name>Get_Combined_Funnel_48_Hr</name>
+        <label>Get Combined Funnel 48 Hr</label>
+        <locationX>1238</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Survey_Eligibility_0</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Brightwheel_School_UUID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Brightwheel_School_UUID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Combined_Funnel__c</object>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_CF_Billing_Email</name>
+        <label>Update CF Billing Email</label>
+        <locationX>314</locationX>
+        <locationY>708</locationY>
+        <connector>
+            <targetReference>Billing_OB_Handoff_Email</targetReference>
+        </connector>
+        <inputReference>Get_Combined_Funnel</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update CSAT Sent date and Last CSAT Email on related combined funnel</description>
+        <name>Update_CF_Fields</name>
+        <label>Update CF Fields</label>
+        <locationX>1106</locationX>
+        <locationY>492</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Combined_Funnel_48_Hr.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CSAT_Survey_First_Sent__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Combined_Funnel__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_CF_SaaS_Email_0</name>
+        <label>Update CF SaaS Email</label>
+        <locationX>50</locationX>
+        <locationY>708</locationY>
+        <connector>
+            <targetReference>Send_OB_SaaS_Handoff</targetReference>
+        </connector>
+        <inputReference>Get_Combined_Funnel</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>386</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>SaaS_Activation_Funnel_Stage_2024__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Activated</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Billing_Activation_Funnel_Stage_2024__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Activated</stringValue>
+            </value>
+        </filters>
+        <object>School_Object__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>X24_Hour_Delay</name>
+            <connector>
+                <targetReference>Get_Combined_Funnel</targetReference>
+            </connector>
+            <label>24 Hour Delay</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>X48_Hour_Delay</name>
+            <connector>
+                <targetReference>Get_Combined_Funnel_48_Hr</targetReference>
+            </connector>
+            <label>48 Hour Delay</label>
+            <offsetNumber>2</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>OBHandoffSaaSText</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi there!
+
+Congratulations on getting brightwheel up and running at {!$Record.Account_Name__c}! It has been great working with you and I’m glad you’re seeing value with Brightwheel already. 
+
+Where to find ongoing support and resources
+Even though onboarding is wrapping up, support is always available. The fastest ways to get help are:
+Help Center: Search step-by-step guides and articles anytime.
+Live Support: Use the chat feature inside brightwheel to connect with a support specialist, you can request a scheduled phone call through that same chat.
+Brightwheel Academy  (Resource Library &amp; Training Materials): Access tutorials and best practices to help your team continue getting the most out of brightwheel.
+Our goal is to make sure you always have the tools and support you need to succeed.
+
+Lastly, we value your input! Keep an eye out for an email coming your way to gather your feedback on your onboarding experience. Please take a minute to share your thoughts. Your feedback is incredibly valuable as we continue our efforts to improve and better serve centers just like yours! 
+
+It’s been a pleasure working with you, and congratulations again on implementing Brightwheel at your center! 
+
+All the best,
+Your Brightwheel Onboarding Team</text>
+    </textTemplates>
+</Flow>

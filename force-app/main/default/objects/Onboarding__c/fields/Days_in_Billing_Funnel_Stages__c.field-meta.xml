@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_in_Billing_Funnel_Stages__c</fullName>
+    <description>Today minus Funnel Stage Changed. Different API name to distinguish from SaaS onboarding Days in Stage (populated from school object cross-object formula)</description>
+    <externalId>false</externalId>
+    <formula>TODAY() - Funnel_Stage_Changed__c</formula>
+    <inlineHelpText>Number of days since the Funnel Stage value was changed last.</inlineHelpText>
+    <label>Days in Billing Funnel Stage</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

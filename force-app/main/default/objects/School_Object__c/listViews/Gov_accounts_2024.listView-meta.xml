@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gov_accounts_2024</fullName>
+    <columns>NAME</columns>
+    <filterScope>Mine</filterScope>
+    <label>[Gov] accounts 2024</label>
+</ListView>

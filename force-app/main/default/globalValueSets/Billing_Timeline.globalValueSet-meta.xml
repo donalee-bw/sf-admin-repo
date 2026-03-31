@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>&lt; 1 Month</fullName>
+        <default>false</default>
+        <label>&lt; 1 Month</label>
+    </customValue>
+    <customValue>
+        <fullName>2-3 Months</fullName>
+        <default>false</default>
+        <label>2-3 Months</label>
+    </customValue>
+    <customValue>
+        <fullName>4-6 Months</fullName>
+        <default>false</default>
+        <label>4-6 Months</label>
+    </customValue>
+    <customValue>
+        <fullName>&gt; 6 Months</fullName>
+        <default>false</default>
+        <label>&gt; 6 Months</label>
+    </customValue>
+    <masterLabel>Billing Timeline</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

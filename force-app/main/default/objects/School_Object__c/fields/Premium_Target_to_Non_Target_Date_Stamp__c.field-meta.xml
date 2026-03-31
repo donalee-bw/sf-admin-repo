@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Premium_Target_to_Non_Target_Date_Stamp__c</fullName>
+    <description>Date field that stamps when &apos;Premium Target - Updated Definition&apos; field changed from true to false. (When the school went from target to non-target). Updated by flow &quot;CF - Active Student Enrollment Percent Met Date&quot;</description>
+    <inlineHelpText>Date reflects when the &apos;Premium Target - Updated Definition&apos; field changed from true to false. (When the school went from target to non-target)</inlineHelpText>
+    <label>Premium Target to Non-Target Date Stamp</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Two_Bill_Sent_Threshold_Met_Date__c</fullName>
+    <description>Billing funnel - Indicate the date when school met the threshold of sending two bills</description>
+    <label>Two Bill Sent Threshold Met Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

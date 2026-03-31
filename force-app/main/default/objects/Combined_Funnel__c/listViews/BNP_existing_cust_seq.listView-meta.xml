@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BNP_existing_cust_seq</fullName>
+    <columns>SaaS_Primary_Contact__c</columns>
+    <columns>Current_Center_Operating_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Onboarding_Path__c</field>
+        <operation>equals</operation>
+        <value>Brand New Program</value>
+    </filters>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Ellie</value>
+    </filters>
+    <filters>
+        <field>SaaS_Onboarding_Status__c</field>
+        <operation>equals</operation>
+        <value>Postponed</value>
+    </filters>
+    <filters>
+        <field>Account_Type__c</field>
+        <operation>equals</operation>
+        <value>Customer</value>
+    </filters>
+    <filters>
+        <field>Current_Center_Operating_Status__c</field>
+        <operation>equals</operation>
+        <value>Going Through Licensing,In Process of Taking Over a School</value>
+    </filters>
+    <label>BNP- existing cust seq</label>
+</ListView>

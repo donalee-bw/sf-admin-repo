@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Student_Enrollment_Percent__c</fullName>
+    <description>Active Student Enrollment Percent from the school object associated to the account.</description>
+    <formula>Account__r.School_Object__r.Active_Student_Enrollment_Percent__c</formula>
+    <inlineHelpText>The Active Student Enrollment Percent that informs the 90% enrollment threshold needed to move past the Completing Student Setup funnel stage.</inlineHelpText>
+    <label>Active Student Enrollment Percent</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>
