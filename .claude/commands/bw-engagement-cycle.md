@@ -7,8 +7,8 @@ Use when flows, fields, or automation reference `Outreach_Stage__c`, `Most_Recen
 Read `context/sfdc/automation-inventory.md` and `context/sfdc/business-processes.md` for the current state of this cycle. The general pattern:
 
 ```
-Outreach Stage determines → which Cadence a lead enters
-Cadence steps produce    → Call/Email Tasks
+Outreach Stage determines → status of a Lead in a Cadence
+Cadence steps produce    → Call/Email/SMS Tasks
 Task outcomes set        → Most Recent Disposition
 Disposition drives       → Outreach Stage update
 Outreach Stage triggers  → Cadence exit/entry criteria
