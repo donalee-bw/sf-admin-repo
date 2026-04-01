@@ -69,6 +69,7 @@ Gearset will now commit metadata it retrieves from your orgs into this repositor
 
 ## Step 6: Read These Guides Next
 
+- [Claude Code Workflow](claude-code-workflow.md) — How to use Claude Code before every config change
 - [Gearset Workflow](gearset-workflow.md) — How to use Gearset with this repo
 - [Branching Strategy](branching-strategy.md) — How we use branches
 - [Deployment Checklist](deployment-checklist.md) — Required steps for every deployment
