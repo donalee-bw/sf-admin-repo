@@ -10,6 +10,7 @@ This directory contains org-specific domain knowledge maintained by the Architec
 | `business-processes.md` | Sales motions, pipeline stages, cadence logic, disposition lifecycle | 60 days | _[Architect: update this date]_ |
 | `automation-inventory.md` | Active flows, triggers, validation rules, integrations, known fragile patterns | 30 days | _[Architect: update this date]_ |
 | `field-reference.md` | Key custom fields, fill rates, hidden fields, consolidation constraints | 60 days | _[Architect: update this date]_ |
+| `How-It-Works-Documentation/` | Process walkthroughs for specific automations and business workflows | 90 days | 2026-03-31 |
 
 ## How Claude uses these files
 
