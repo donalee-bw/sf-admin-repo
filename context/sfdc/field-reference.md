@@ -1,6 +1,5 @@
 # Field Reference
 
-> **Architect**: Replace this placeholder with your org's key field documentation.
 > Last refreshed: _2026-03-31_
 
 ## Critical fields

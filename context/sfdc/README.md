@@ -6,10 +6,10 @@ This directory contains org-specific domain knowledge maintained by the Architec
 
 | File | Contents | TTL | Last refreshed |
 |------|----------|-----|----------------|
-| `object-model.md` | Objects, fields, relationships, custom objects, key data volumes | 90 days | _[Architect: update this date]_ |
-| `business-processes.md` | Sales motions, pipeline stages, cadence logic, disposition lifecycle | 60 days | _[Architect: update this date]_ |
-| `automation-inventory.md` | Active flows, triggers, validation rules, integrations, known fragile patterns | 30 days | _[Architect: update this date]_ |
-| `field-reference.md` | Key custom fields, fill rates, hidden fields, consolidation constraints | 60 days | _[Architect: update this date]_ |
+| `object-model.md` | Objects, fields, relationships, custom objects, key data volumes | 90 days | 2026-03-31 |
+| `business-processes.md` | Sales motions, pipeline stages, cadence logic, disposition lifecycle | 60 days | 2026-03-31 |
+| `automation-inventory.md` | Active flows, triggers, validation rules, integrations, known fragile patterns | 30 days | 2026-03-31 |
+| `field-reference.md` | Key custom fields, fill rates, hidden fields, consolidation constraints | 60 days | 2026-03-31 |
 | `How-It-Works-Documentation/` | Process walkthroughs for specific automations and business workflows | 90 days | 2026-03-31 |
 
 ## How Claude uses these files
