@@ -1,0 +1,284 @@
+# Main Onboarding Attempt Record Automation
+
+# Business Process Solution Overview
+
+It is essential for the business to be able to track current and historical Onboarding attempts on a single account for a variety of reasons: KPIs, goals, success rate of each Onboarding attempt, YoY/MoM activation rates etc. When an account becomes a customer (through a CW SaaS, Billing, or Gov opportunity), a new SaaS and/or Billing Onboarding Attempt(s) is created. The Onboarding Attempt status will remain “In Progress” until that attempt is deemed closed (either by the customer canceling or activating).  While the attempt is In Progress, the data on the Onboarding Attempt is updating in real time. Once the attempt is Closed or Canceled, the Attempt locks down and no future changes will be made to it. See below for a more detailed description of how this process works:
+
+## Onboarding Attempt Creation Process
+
+When a SaaS or Government Opportunity is CW:
+FIRST, the automation will check for any In Progress SaaS or Billing Onboarding Attempts associated with the account. If one exists, the automation will set it to Closed.
+THEN, the automation will create a SaaS and Billing Onboarding Attempt and set the statuses to “In Progress”.
+If the Billing Status at CW equals Hard Opt Out, the Billing Onboarding Attempt will still be created, but the status will be Closed.
+
+When a Billing Upsell Opportunity is CW:
+FIRST, the automation will check for any In Progress Billing Onboarding Attempts associated with the account. If one exists, the automation will set it to Closed.
+THEN, the automation will create a Billing Onboarding Attempt and set the status to “In Progress”.
+
+Mapped Fields on SaaS Onboarding Attempts (at Creation or Update)
+
+Field Name
+Source
+Brightwheel School UUID
+School Object
+Brightwheel Organization UUID
+School Object
+Number of Sites - Stamp
+School Object
+Account Name
+Account
+Opportunity
+Opportunity
+Opportunity CW Date
+Opportunity
+SaaS Funnel Start Date - Stamp
+School Object
+Combined Funnel Owner - Stamp
+Combined Funnel
+Account AE Owner - Stamp
+Account
+Billing Upsell Owner - Stamp
+Account
+SaaS Owner - Stamp
+Account
+Days since CW - Stamp
+Account
+SaaS Adding Parents Stage Met Date - Stamp
+School Object
+SaaS Adding Staff Stage Met Date - Stamp
+School Object
+SaaS Adding Students Stage Met Date - Stamp
+School Object
+SaaS Logging Activities Stage Met Date - Stamp
+School Object
+SaaS Parents Signing Up Stage Met Date - Stamp
+School Object
+SaaS Staff Logging In Stage Met Date - Stamp
+School Object
+SaaS Tracking Attendance Stage Met Date - Stamp
+School Object
+SaaS Activation Date - Stamp
+School Object
+Initial Setup Call Scheduled - Stamp
+Combined Funnel
+Initial Setup Call Completed - Stamp
+Combined Funnel
+Onboarding Training Call Scheduled - Stamp
+Combined Funnel
+Onboarding Training Call Completed - Stamp
+Combined Funnel
+Brand New Program - Stamp
+Combined Funnel
+Onboarding Path - Stamp
+Combined Funnel
+Related Payer Account - Stamp
+Account
+Related Payer Account Type - Stamp
+Account
+Account Customer Type - Stamp
+Account
+Account Type - Stamp
+Account
+SaaS Onboarding Eligible Date - Stamp
+School Object
+SaaS Activation Funnel Stage - Stamp
+School Object
+SaaS Activation Override - Stamp
+Combined Funnel
+SaaS Override Reasoning - Stamp
+Combined Funnel
+Date of SaaS Override
+Automation, when SaaS Activation Override on Combined Funnel is updated and SaaS Onboarding Attempt is In Progress.
+
+Mapped Fields on Billing Onboarding Attempts (at Creation or Update)
+
+Field Name
+Source
+Brightwheel School UUID
+School Object
+Brightwheel Organization UUID
+School Object
+Number of Sites - Stamp
+School Object
+Account Name
+Account
+Opportunity
+Opportunity
+Opportunity CW Date
+Opportunity
+Billing Activation Start Date - Stamp
+Account
+Combined Funnel Owner - Stamp
+Combined Funnel
+Cancelation Date - Stamp
+School Object
+Account AE Owner - Stamp
+Account
+Billing Upsell Owner - Stamp
+Account
+SaaS Owner - Stamp
+Account
+Days since CW - Stamp
+Account
+# Days to Activate from CW - Stamp
+Account
+Billing Adding Payers Stage Met Date - Stamp
+School Object
+Billing Adding Students Stage Met Date - Stamp
+School Object
+Billing Complete Set-Up Stage Met Date - Stamp
+School Object
+Billing Online Payments Stage Met Date - Stamp
+School Object
+Billing Sending Bills Stage Met Date - Stamp
+School Object
+Billing Setting Up Bills Stage Met Date - Stamp
+School Object
+Billing Submit Verify Stage Met Date - Stamp
+School Object
+Billing Verify Complete Stage Met Date - Stamp
+School Object
+Billing Activation Date - Stamp
+School Object
+Initial Setup Call Scheduled - Stamp
+Combined Funnel
+Initial Setup Call Completed - Stamp
+Combined Funnel
+Onboarding Training Call Scheduled - Stamp
+Combined Funnel
+Onboarding Training Call Completed - Stamp
+Combined Funnel
+Billing Training Call Scheduled - Stamp
+Combined Funnel
+Billing Training Call Completed - Stamp
+Combined Funnel
+Brand New Program - Stamp
+Combined Funnel
+Onboarding Path - Stamp
+Combined Funnel
+# of Students at Billing Activation - Stamp
+School
+Related Payer Account - Stamp
+Account
+Related Payer Account Type - Stamp
+Account
+Account Customer Type - Stamp
+Account
+Billing Status at CW - Stamp
+Combined Funnel
+Account Type - Stamp
+Account
+Billing Onboarding Eligible Date - Stamp
+School Object
+Bill Rate Uploaded Date - Stamp
+School Object
+Billing Activation Override - Stamp
+Combined Funnel
+Billing Override Reasoning - Stamp
+Combined Funnel
+Billing Override Approved by Manager - Stamp
+Combined Funnel
+Billing Activation Funnel Stage - Stamp
+School Object
+Date of Billing Override
+Automation, when Billing Activation Override on Combined Funnel is updated and SaaS Onboarding Attempt is In Progress.
+
+## Onboarding Attempt Update Process
+
+Once an update triggers a status change on an Onboarding Attempt, the automation takes a snapshot of all the values listed in the tables above. From that moment on, those values remain locked until another status update occurs. Below is the list of statuses, what they mean for SaaS and Billing Onboarding Attempts, and what triggers an Onboarding Attempt to be updated to each status.
+
+SaaS Onboarding Attempt Statuses
+IN PROGRESS
+Set when a new Onboarding Attempt is created
+Active
+Postponed
+Unresponsive
+Requesting Postpone - Awaiting Approval
+CANCELED
+Set when the field Cancelation Date on the School Object is updated with a date.
+Inactive
+CLOSED
+Set when there’s a new CW opportunity or when the field SaaS Activation Date on the School Object is updated and the date value is greater than Original Close Date on the Account
+Billing Onboarding Attempt Statuses
+IN PROGRESS
+Set when a new Onboarding Attempt is created
+Active
+Postponed
+Unresponsive
+Requesting Postpone - Awaiting Approval
+Billing At Risk
+Requesting Opt Out - Awaiting approval
+Soft Opt Out (at POS)
+CANCELED
+Set when the field Cancelation Date on the School Object is updated with a date.
+Inactive
+CLOSED
+Set when there’s a new CW opportunity or when the field Billing Activation Date on the School Object is updated and the date value is greater than Billing Activation Start Date on the Account
+Hard Opt Out (at POS)
+Opted Out
+
+When an Onboarding Attempt record is set to IIn Progress, it can only move to either Canceled or Closed. A Closed status can never be changed to Canceled, and vice versa.
+
+# Technical Process Solution Overview
+
+The Onboarding Attempt solution involves the business selecting key fields from the School Object, Combined Funnel, and Account that will display “live” values while the Onboarding Attempt is in In Progress status. Once the status changes to Canceled or Closed, a “snapshot” of the data is taken. After that, the values on the Onboarding Attempt should remain unchanged, even if the source fields are updated.
+
+Each key field will have a corresponding formula field and a -” stamp” field. The formula field checks if the respective “- stamp” field is populated. If it is, it displays the value from the stamp field. If not, it pulls the value from the original source field (Account, School Object, or Combined Funnel). While the Onboarding Attempt is In Progress, it displays “live” values from the source fields since no value has been stamped yet. When the Onboarding Attempt moves to Canceled or Closed, the flows listed below trigger and update the “- stamp” field with the latest values. To lock these values, the formula fields will always display the value from the “ - stamp” field once the Onboarding Attempt is in Canceled or Closed status.
+
+If, at the time an Onboarding Attempt moves to Canceled or Closed, a specific source field is blank, the corresponding “- stamp” field will also be blank. Later, if the source field is updated with a value, the formula field would display that updated value—since the formula pulls from the source field when the “ - stamp” field is empty.
+
+This could cause a Canceled or Closed Onboarding Attempt to show a different value than what was recorded at the time of status change.  By ensuring the formula field always displays the “- stamp” field value once the status is Canceled or Closed, we make sure that even if the source field gets updated later, it won’t reflect on the Onboarding Attempt, keeping historical data intact.
+
+The main flow handles the creation and updating of Onboarding Attempts using input values.   Whenever we need to update existing “In Progress” Onboarding Attempts to stamp values, the variable UpdateOBAttemptsInput must be set to **true**. This determines that the record has to follow the “Update” path in the main flow.  Updates to existing Onboarding Attempts can also occur in the ”Create” path of the flow. When creating new Onboarding Attempts, the flow checks for any open Onboarding Attempts and closes them before creating new ones when necessary.
+
+To manage the creation and updates of Onboarding Attempts, three new flows were created, and three existing flows were updated.
+
+## New Flows
+Name: Onboarding Attempt - Subflow - Create and Update OAs
+Type: Autolaunched
+Description: This is the main subflow responsible for updating and creating new Onboarding Attempts.
+
+Values from related records are captured through inputs from other flows and managed via assignments within the flow.
+Updates and creations are only executed at the end of the flow to optimize performance.
+Throughout the flow, there are calls to another subflow called Onboarding Attempt - Subflow - OAs Field Mappings, which handles assigning values to the mapped fields listed in the table above—this is also done using variables only, which serves as inputs to the main flow to continue with the creation or update of the record.
+The initial basic values of a newly created Onboarding Attempt—such as record type, name, status, etc—are set in the main subflow. The Onboarding Attempt - Subflow - OAs Field Mappings subflow is only responsible for updating the stamp fields.
+
+Name: Onboarding Attempt - Subflow - OAs Field Mappings
+Type: Autolaunched
+Description: This subflow assigns values to fields on the Onboarding Attempt from related records, which will later be used to create or update the Onboarding Attempt via the main subflow.
+It was created to simplify value mapping across different Onboarding Attempt records. By handling this in one place, updates to the mapping can be made easily without needing to modify multiple nodes in another flow.
+This subflow is responsible for assigning values to fields that are common across all Onboarding Attempt record types. Any additional, record-specific mapping assignments will be handled in the main subflow.
+Name: School Object - After Save - Update Onboarding Attempts
+Type: Record-Triggered Flow
+Description: This is triggered by updates to the related School Object, setting all Onboarding Attempt statuses to Closed. It checks the following fields on the School Object:
+Cancellation Date
+SaaS Activation Date
+Billing Activation Date
+LOGIC-associated accounts
+
+If SaaS Activation Date is updated to any date greater than the Original Close Date on the related account, the SaaS Onboarding record status is updated to Closed. Then, the main subflow is triggered to snapshot the current field values and lock the record from further edits.
+If Billing Activation Date is updated to any date greater than the Billing Activation Start Date on the related account, the Billing Onboarding record status is updated to Closed. Then, the main subflow is triggered to snapshot the current field values and lock the record from further edits.
+If Cancellation Date is updated to any date, all In Progress Onboarding Attempt records are updated to Canceled. Then, the main subflow is triggered to snapshot the current field values and lock the records from further edits.
+Name: Account - Scheduled - Create Onboarding Attempts for Child Accounts
+Type: Schedule-Triggered Flow
+Description: Schedule-triggered flow that runs daily at 11 PM, checking for child accounts created that day and don’t have an Onboarding Attempt record.  It checks the following fields on the Account:
+Customer Account
+Onboarding Attempts
+LOGIC Created by Flow
+Account Status
+
+Flow was created to handle the creation of Onboarding Attempts for child accounts created that day, since plugging the main subflow into the main flow was causing APEX CPU errors.
+
+## Updated Flows
+
+Name: Opportunity - SaaS CW - After Save - Create Combined Funnel and Onboarding Records
+Description: At the end of the immediate path in the flow, a node was added to retrieve the opportunity’s account (to use as AccountInput in the subflow). Then, the main subflow is called to create Onboarding Attempts for the main account that had the opportunity closed won.
+
+Name: CF - Billing Upsell Opp CW - Combined Funnel and Onboarding Create or Update
+Description: At the end of the flow, a node was added to retrieve the opportunity’s account, combined funnel, and school object (to use as inputs in the subflow). Then, the main subflow is called to create Onboarding Attempts for the main account that had the opportunity closed won.
+
+Name: Opportunity - Gov CW - After Save - Create Combined Funnel and Onboarding Records
+Description: At the end of the immediate path in the flow, a node was added to retrieve the opportunity’s account (to use as AccountInput in the subflow). Then, the main subflow is called to create Onboarding Attempts for the main account that had the opportunity closed won.
+
+Name: Combined Funnel Update Billing Onboarding Fields from CF Record
+Description: Added a node after the decision node that checks if the field Billing Onboarding Status was updated to Opted Out to check for any open Billing Onboarding Attempt. If one is found, it will update its status to Closed and call the subflow to stamp values.
